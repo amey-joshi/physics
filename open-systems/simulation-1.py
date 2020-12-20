@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Numerical simulation of the variance matrix using the simplification introduced
+by Simon, Mukunda and others.
+
 Created on Thu Dec 10 14:00:02 2020
 
 @author: ajoshi
 """
 
 import numpy as np
-# import scipy.constants as sc
 import matplotlib.pyplot as plt
-# import pandas as pd
 
 omega_1 = 1
 omega_2 = 1
@@ -29,12 +30,6 @@ def get_S(phi, theta, omega_minus):
                   [-np.sin(phi), np.cos(phi), 0, 0],
                   [0, 0, np.cos(phi), np.sin(phi)],
                   [0, 0, -np.sin(phi), np.cos(phi)]])
-# =============================================================================
-#   S3 = np.matrix([[np.cos(theta), 0, np.sin(theta) * np.cos(omega_minus), np.sin(theta) * np.sin(omega_minus)],
-#                   [0, np.cos(theta), np.sin(theta) * np.sin(omega_minus), -np.sin(theta) * np.cos(omega_minus)],
-#                   [-np.sin(theta) * np.cos(omega_minus), -np.sin(theta) * np.sin(omega_minus), np.cos(theta), 0],
-#                   [-np.sin(theta) * np.sin(omega_minus), np.sin(theta) * np.cos(omega_minus), 0, np.cos(theta)]])
-# =============================================================================
 
   S3 = np.matrix([[np.cos(theta), np.sin(theta) * np.cos(omega_minus), 0, np.sin(theta) * np.sin(omega_minus)],
                   [-np.sin(theta) * np.cos(omega_minus), np.cos(theta), -np.sin(theta) * np.sin(omega_minus), 0],
