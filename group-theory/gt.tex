@@ -1,0 +1,443 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools, physics, xcolor}
+
+\newcommand{\sor}{\mathbf{R}}
+
+\DeclareMathOperator{\card}{card}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+\numberwithin{equation}{section}
+
+\title{Group Theory}
+\author{Amey Joshi}
+\date{24-Dec-2020}
+\begin{document}
+\maketitle
+\section{Basic definitions}\label{s1}
+\begin{defn}\label{s1d1}
+A group is a set $G$ and a binary operation $\cdot$ defined on it with the
+following properties:
+\begin{enumerate}
+\item For all $a, b \in G$, $a \cdot b \in G$;
+\item For all $a, b, c \in G$, $a \cdot (b \cdot c)= (a \cdot b) \cdot c$;
+\item There exists an element $e \in G$ such that for all $a \in G$, $a \cdot e
+= e \cdot a = a$. It is called the identity element.
+\item For all $a \in G$ there exists an element $x_1$ such that $a \cdot x_1 = e$
+and an element $x_2$ such that $x_2 \cdot a = e$. The elements $x_1$ and $x_2$ 
+are called the right and left inverse of $a$.
+\end{enumerate}
+\end{defn}
+\begin{rem}
+We frequently abbreviate $a \cdot b$ as $ab$.
+\end{rem}
+
+A few propositions follow immediately.
+\begin{prop}\label{s1p1}
+Identity element is unique.
+\end{prop}
+\begin{proof}
+Let, if possible, there be two identity elements $e_1$ and $e_2$. Since $e_1$
+is an identity $a e_1 = a$ for all $a \in G$. Choose $a = e_2$ so that $e_2
+e_1 = e_2$. But $e_2$ is also an identity so that $e_2 e_1 = e_1$.
+\end{proof}
+
+\begin{prop}\label{s1p2}
+The right and left inverse of an element are identical.
+\end{prop}
+\begin{proof}
+Let is possible there be elements $x, y \in G$ such that $xa = e$ and $ay = e$.
+Then $(xa)y = ey \Rightarrow x(ay) = y \Rightarrow xe = y \Rightarrow x = y$.
+\end{proof}
+
+\begin{rem}
+We no longer have to differentiate between the right and the left inverse of 
+an element and call it just the inverse.
+\end{rem}
+
+\begin{prop}\label{s1p3}
+The inverse of an element is unique.
+\end{prop}
+\begin{proof}
+Let if possible there be elements $x, y \in G$ such that $ax = e$ and $ay = e$.
+Then $y(ax) = ye \Rightarrow (ya)x = y \Rightarrow ex = y \Rightarrow x = y$.
+\end{proof}
+
+\begin{rem}
+The unique inverse of an element $a$ is denoted by $a^{-1}$.
+\end{rem}
+
+\begin{prop}\label{s1p4}
+If $x, y \in G$ then $(xy)^{-1} = y^{-1}x^{-1}$.
+\end{prop}
+\begin{proof}
+It is easy to check that $y^{-1}x^{-1}$ is an inverse of $xy$. From proposition
+\ref{s1p3} it is the only inverse.
+\end{proof}
+
+\begin{prop}\label{s1p5}
+For all $x \in G$, $(x^{-1})^{-1} = x$.
+\end{prop}
+\begin{proof}
+Follows from the fact that $xx^{-1} = e$ and the uniqueness of inverse of 
+$x^{-1}$.
+\end{proof}
+
+\begin{defn}\label{s1d2}
+A group $G$ is called abelian if $xy = yx$ for all $x, y \in G$.
+\end{defn}
+
+\section{Conjugate elements}\label{s2}
+\begin{defn}\label{s2d1}
+Elements $a$ and $b$ of a group $G$ are said to be conjugate to each other
+if there exists an element $c \in G$ such that $a = cbc^{-1}$. 
+\end{defn}
+
+If $a$ is conjugate to $b$ it is written as $a \sim b$. Clearly, conjugacy is
+a binary relation on $G$. Here are a few examples of conjugate elements.
+
+\begin{enumerate}
+\item
+Let $a$ denote a rotation of a rigid body by an angle $\phi$ about the $x$-axis
+and $b$ be the rotation by an angle $\phi$ about the $y$ axis. Then,
+\begin{eqnarray}
+a &=& \begin{pmatrix}1 & 0 & 0 \\ 0 & \cos\phi & \sin\phi \\
+0 & -\sin\phi & \cos\phi\end{pmatrix} \label{s2e1} \\
+b &=& \begin{pmatrix} \cos\phi & 0 & \sin\phi \\ 0 & 1 & 0 \\
+-\sin\phi  & 0 & \cos\phi\end{pmatrix} \label{s2e2} 
+\end{eqnarray}
+Choose
+\begin{equation}\label{s2e3}
+c = \begin{pmatrix}0 & 1 & 0 \\ -1 & 0 & 0 \\ 0 & 0 & 1\end{pmatrix}
+\end{equation}
+so that
+\begin{equation}\label{s2e4}
+c^{-1} = \begin{pmatrix}0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1\end{pmatrix}.
+\end{equation}
+We can readily confirm that $cac^{-1} = b$. The matrix $c$ is just the
+rotation around the $z$-axis by $\pi/2$.
+
+\item Consider the elements of the symmetric group $S_3$ which involve 
+transposing two elements. They are written in Cayley's two line notation as
+\begin{eqnarray}
+x &=& \begin{pmatrix}1 & 2 & 3 \\ 1 & 3 & 2 \end{pmatrix} \label{s2e5} \\
+y &=& \begin{pmatrix}1 & 2 & 3 \\ 3 & 2 & 1 \end{pmatrix} \label{s2e6} \\
+z &=& \begin{pmatrix}1 & 2 & 3 \\ 2 & 1 & 3 \end{pmatrix} \label{s2e7}
+\end{eqnarray}
+It is easy to check that the elements $x, y, z$ are their own inverses. This
+is not a surprising observation because carrying out the same transposition
+twice gives the original arrangement. It is easy to confirm that $zxz^{-1} = y$.
+\end{enumerate}
+
+In some sense, conjugate elements are `similar' to each other. The matrices
+$a$ and $b$ in equations \eqref{s2e1} and \eqref{s2e2} are both rotations 
+by the same angle but about different axes. This notion of similarity is 
+captured in
+\begin{prop}\label{s2p1}
+Conjugacy is an equivalence relation.
+\end{prop}
+\begin{proof}
+Choose $c = a, b = a$ in the equation $a = cbc^{-1}$ to show that $a \sim a$.
+If $a = cbc^{-1}$ then $c^{-1}a = bc^{-1} \Rightarrow c^{-1}ac = b$ so that
+$b \sim a$. Finally, let $a \sim b$ and $b \sim c$. Thus, there exist $x, y
+\in G$ such that $a = xbx^{-1}$ and $b = ycy^{-1}$ so that $a = xycy^{-1}x^{-1}
+= (xy)c(xy)^{-1}$. Thus, $a \sim c$.
+\end{proof}
+
+\section{Subgroups}\label{s3}
+\begin{defn}\label{s3d1}
+A subset $H$ of a group $G$ is called a subgroup of $H$ is a group under
+the same binary operation.
+\end{defn}
+
+\begin{rem}
+A subgroup must contain the identity element.
+\end{rem}
+
+\begin{rem}
+$H = G$ and $H = \{e\}$ are called trivial subgroups of $G$.
+\end{rem}
+
+\begin{prop}\label{s3p1}
+$H$ is a subgroup of a group $G$ if and only if for all $h_1, h_2 \in H$,
+$h_1^{-1}h_2 \in H$.
+\end{prop}
+\begin{proof}
+The `only if' part follows immediately from the closure and inverse properties
+of $H$.
+
+Let $H \subset G$ such that for all $h_1, h_2 \in G$, $h_1^{-1}h_2 \in G$.
+Choose $h_2 = h_1$ to conclude that $e \in G$. Choose $h_2 = e$ to conclude
+that $h_1^{-1} \in G$. Since $h_1^{-1} \in G$, $(h_1^{-1})^{-1}h_2 = h_1h_2
+\in G$. Associatity of the binary operation is valid for all elements of $G$
+and therefore is valid for $H \in G$.
+\end{proof}
+
+A subgroup $H$ of a group $G$ is a set from which one cannot escape by carrying
+out group operations among its elements. The only way to move out of $H$ is
+by operating an $h \in H$ with a $g \in G$ such that $g \notin H$.
+
+\begin{defn}\label{s3d2}
+Given a subgroup $H$ of a group $G$, the left coset of an element $a \in G$
+is the set $aH = \{ah | h \in H\}$.
+\end{defn}
+
+\begin{prop}\label{s3p2}
+$\card{aH} = \card{H}$.
+\end{prop}
+\begin{proof}
+If $ah_i = ah_j$ then $a^{-1}ah_i = a^{-1}ah_j \Rightarrow h_i = h_j$. Thus
+all elements of $aH$ are distinct.
+\end{proof}
+
+\begin{prop}\label{s3p3}
+$a \in aH$. If $b \in aH$ then $aH = bH$.
+\end{prop}
+\begin{proof}
+Since $H$ is a subgroup, $e \in H$. Therefore, the set $aH$ contains $ae = a$.
+
+Let $b \in aH$. Therefore, there exists $h \in H$ such that $b = ah$. Therefore
+any element of $bH$ is of the form $bh^\prime = ahh^\prime$. Thus $bH \subset
+aH$. Since $b = ah$, $a = bh^\prime$ and any element of $aH$ can be written
+as $ah = bh^\prime h$, which is an element of $bH$. Thus $aH \subset bH$.
+\end{proof}
+
+Given a subgroup $H$ of $G$, the left cosets of $H$ partition the set $G$.
+Therefore, the relation $a R b$ if $b \in aH$ is an equivalence relation. We
+can prove this fact independently of proposition \ref{s3p2}.
+
+\begin{prop}\label{s3p4}
+Let $H$ be a subgroup of a group $G$ and $aH$ be one of its left cosets. Define
+a relation $R$ on $G$ as $a R b$ if $b \in aH$. Then $R$ is an equivalence
+relation.
+\end{prop}
+\begin{proof}
+Since $H$ is a subgroup of $G$, $e \in H$ and hence $a \in aH$. We showed
+in the proof of proposition \ref{s3p2} that if $b \in aH$ then $a \in bH$.
+Finally, assume $a \in bH$ and $b \in cH$. Then $a = bh_1$ and $b = ch_2$ 
+so that $a = c(h_1h_2)$. Thus $a \in cH$.
+\end{proof}
+
+\begin{prop}\label{s3p5}
+Left coset $aH$ of a subgroup $H$ of a group $G$ is not a subgroup of $G$
+unless $a = e$.
+\end{prop}
+\begin{proof}
+If $a \ne e$ then $e \notin aH$.
+\end{proof}
+
+Since all left cosets of a subgroup $H$ of a group $G$ have the same cardinality
+and since they partition $G$, we have
+\begin{thm}\label{s3t1}
+$\card H | \card G$.
+\end{thm}
+
+\begin{defn}\label{s3d3}
+Given a subgroup $H$ of a group $G$, the right coset of an element $a \in G$
+is the set $Ha = \{ha | h \in H\}$.
+\end{defn}
+
+Right cosets have properties similar to that of left cosets. In particular,
+they obey propositions analogous to \ref{s3p2}, \ref{s3p3}, \ref{s3p4} and
+\ref{s3p5}.
+
+Although cosets of a subgroup are not themselves subgroups, the set
+\begin{equation}\label{s3e1}
+H_a = \{aha^{-1} | h \in H\}
+\end{equation}
+for a fixed element $a \in G$ is indeed a group. We prove it as 
+\begin{prop}\label{s3p6}
+$H_a$ is a subgroup of $G$.
+\end{prop}
+\begin{proof}
+Consider two elements $x_1 = ah_1a^{-1}$ and $x_2 = ah_2a^{-1}$. Then $x_1^{-1}
+x_2 = ah_1^{-1}a^{-1}ah_2 a^{-1} = a(h_1^{-1}h_2) a^{-1}$. From proposition
+\ref{s3p1}, $h_1^{-1}h_2 \in H$ so that $x_1^{-1}x_2 \in H_a$.
+\end{proof}
+
+We also have
+\begin{prop}\label{s3e7}
+If $a \in H$, $H_a = H$.
+\end{prop}
+\begin{proof}
+From the closure properties of $H$ it is clear that $H_a \subset H$. Let $x$
+be an element of $H$ and $y = axa^{-1} \in H$. But $y$ is also a member of
+$H_a$ so that $H \subset H_a$.
+\end{proof}
+
+\begin{defn}\label{s3d4}
+If $H = H_a$ for all $a \in G$ then $H$ us called an invariant subgroup of $G$.
+\end{defn}
+
+\begin{rem}
+Invariant subgroup is also called a normal subgroup.
+\end{rem}
+
+\begin{prop}\label{s3e8}
+If $H$ is an invariant subgroup of $G$ then $aH = Ha$ for all $a \in G$.
+\end{prop}
+\begin{proof}
+$aha^{-1}$ must be equal to an element $h^\prime$ of $H$. Therefore, $ah =
+h^\prime a$. Since this is true for all $h \in H$, $aH = Ha$.
+\end{proof}
+
+If $H$ is an invariant subgroup of $G$ then we can define the product of its
+cosets as
+\begin{equation}\label{s3e2}
+aHbH  = \{ahbh^\prime | h, h^\prime \in H\}.
+\end{equation}
+
+\begin{prop}\label{s3e9}
+The set of all cosets of an invariant group is closed under coset composition
+defined by equation \eqref{s3e2}.
+\end{prop}
+\begin{proof}
+$ahbh^\prime = a(hb)h^\prime$. Since $H$ is an invariant subgroup $bH = Hb$.
+Therefore, we can write $hb = bh^{\prime\prime}$ and hence $ahbh^\prime = 
+ab(h^{\prime\prime}h^\prime)$, which is a member of $abH$.
+\end{proof}
+
+If $H$ is an invariant subgroup then the set $G/H$ of its cosets with a 
+composition law defined by equation \eqref{s3e2} forms a group. It is called
+the factor group. Its closure is proved in proposition \eqref{s3e9}. The set
+$eH = H$ is its identity. The set $a^{-1}H$ is the inverse of $aH$ and the
+associativity of coset composition follows immediately from the associativity
+of the elements of $G$.
+
+\begin{defn}\label{s3d5}
+The set $G/H$ of all cosets of an invariant subgroup $H$ of a group $G$ is
+called the factor group.
+\end{defn}
+
+\section{Some important groups}\label{s4}
+In this section we list a few groups that are of importance in physics.
+\begin{enumerate}
+\item $O(n)$, the set of all orthogonal $n \times n$ matrices. Recall that an
+$n \times n$ matrix $M$ is orthogonal if $MM^T = M^T M = I_n$.
+\item $SO(n)$, a subgroup of $O(n)$ of matrices whose determinant is $1$.
+\item $U(n)$, the set of all unitary matrices. $M$ is a unitary matrix if
+$MM^\dagger = M^\dagger M = I_n$.
+\item $SU(n)$, a subgroup of $U(n)$ of matrices whose determinant is $1$.
+\item $GL(n, \sor)$, the set of all invertible, real $n \times n$ matrices.
+\item $SL(n, \sor)$ is a subgroup of $GL(n, \sor)$ of matrices with determinant
+equal to $1$.
+\item A $(2n) \times (2n)$ matrix $M$ is called a symplectic matrix if
+\begin{equation}\label{s4e1}
+M^T\Omega M = \Omega,
+\end{equation}
+where
+\begin{equation}\label{s4e2}
+\Omega = \begin{pmatrix}0 & I_n \\ -I_n & 0 \end{pmatrix}.
+\end{equation}
+The set of all symplectic matrices also forms a group. It is called $Sp(2n,
+\sor)$.
+\end{enumerate}
+
+\section{Commutator subgroup}\label{s5}
+\begin{defn}\label{s5d1}
+A function $q: G \times G \rightarrow G$ defined as
+\[
+q(a, b) = aba^{-1}b^{-1}
+\]
+is called the commutator of $a$ and $b$.
+\end{defn}
+
+\begin{prop}\label{s5p1}
+If $G$ is abelian then $q(a, b) = e$ for all $a, b \in G$.
+\end{prop}
+\begin{proof}
+Since $G$ is abelian, $aba^{-1}b^{-1} = abb^{-1}a^{-1} = e$.
+\end{proof}
+
+\begin{prop}\label{s5p2}
+The commutator function has the following properties:
+\begin{itemize}
+\item $q(a, b)^{-1} = q(b, a)$.
+\item $cq(a, b)c^{-1} = q(cac^{-1}, cbc^{-1})$.
+\end{itemize}
+\end{prop}
+\begin{proof}
+$q(a, b)q(b, a) = aba^{-1}b^{-1}bab^{-1}a^{-1} = e$ implies that $q(b, a)$
+is an inverse of $q(a, b)$. From proposition \eqref{s1p3} it is the only
+inverse.
+
+The second property follows from 
+\begin{eqnarray*}
+cq(a, b)c^{-1} &=& caba^{-1}b^{-1}c^{-1} \\
+ &=& (cac^{-1})(cbc^{-1})(ca^{-1}c^{-1})(cb^{-1}c^{-1}) \\
+ &=& (cac^{-1})(cbc^{-1})(cac^{-1})^{-1}(cbc^{-1})^{-1} \\
+ &=& q(cac^{-1}, cbc^{-1}).
+\end{eqnarray*}
+\end{proof}
+
+\begin{defn}\label{s5d2}
+$Q(G, G) = \{q(a, b) | a, b \in G\}$.
+\end{defn}
+
+\begin{rem}
+$Q(G,G) \subset G$.
+\end{rem}
+
+\begin{prop}\label{s5p3}
+$Q(G, G)$ is an invariant subgroup of $G$.
+\end{prop}
+\begin{proof}
+Let $x, y \in Q(G, G)$. Then $x = q(a, b)$ and $y = q(c, d)$ for some $a, b,
+c, d \in G$. Consider $q(a, b)^{-1}q(c, d) = q(b, a)q(c, d) \in Q(G, G)$, by
+definition. Therefore, by proposition \ref{s3p1}, $Q(G, G)$ is a subgroup of
+$G$.
+
+Let $c \in G$. Now $cq(a, b)c^{-1} = q(cac^{-1}, cbc^{-1}) \in Q(G, G)$. 
+Therefore, $Q(G, G)_c = Q(G, G)$. Since $c$ was an arbitrary element of $G$,
+$Q(G, G)_c = Q(G, G)$ for all $c \in G$. This makes is an invariant subgroup.
+\end{proof}
+
+\begin{prop}\label{s5p4}
+The factor group $G/Q(G, G)$ is abelian.
+\end{prop}
+\begin{proof}
+Recall that $G/Q(G, G)$ is a set of all cosets of $Q(G, G)$ with the coset
+composition law defined in equation \eqref{s3e2}. By definition of $Q(G, G)$,
+$x^{-1}y^{-1}xyQ(G, G) = Q(G, G)$. Therefore, $y^{-1}xyQ(G, G) = xQ(G, G)$ and
+hence $xyQ(G, G) = yxQ(G, G)$ or $xQ(G, G) yQ(G, G) = yQ(G, G) xQ(G, G)$.
+\end{proof}
+
+\begin{prop}\label{s5p5}
+Let $H$ be an invariant subgroup of $G$. $G/H$ is abelian if and only if $H
+\supset Q(G, G)$.
+\end{prop}
+\begin{proof}
+Let $G/H$ be abelian. Therefore, $abH = baH$ for all $a, b \in G$. In other
+words, $H = b^{-1}a^{-1}baH$ or that $b^{-1}a^{-1}ba = q(b^{-1}, a^{-1}) \in
+H$ for all $a, b \in G$. Therefore, $Q(G, G) \subset H$.
+
+Now consider a normal subgroup $H \supset Q(G, G)$ and its coset $abH$.
+Since $H \supset Q(G, G)$, $x = b^{-1}a^{-1}ba \in H$. Therefore, $abxH = abH$,
+or $abb^{-1}a^{-1}ba H = abH$ or $baH = abH$.
+\end{proof}
+
+A statement equivalent to proposition \eqref{s5p5} is
+\begin{prop}\label{s5p6}
+$Q(G, G)$ is the smallest subgroup of $G$ such that its factor group is
+abelian.
+\end{prop}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{gt}
+\end{document}

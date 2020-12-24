@@ -31,9 +31,9 @@ def get_S(phi, alpha, beta):
                   [0, np.sin(alpha), np.cos(alpha), 0],
                   [-np.sin(alpha), 0, 0, np.cos(alpha)]])
 
-  S3 = np.matrix([[np.cos(beta), np.sin(beta), 0, 0],
+  S3 = np.matrix([[np.cos(beta), -np.sin(beta), 0, 0],
                   [-np.sin(beta), np.cos(beta), 0, 0],
-                  [0, 0, np.cos(beta), np.sin(beta)],
+                  [0, 0, np.cos(beta), -np.sin(beta)],
                   [0, 0, -np.sin(beta), np.cos(beta)]])
 
   S = S1 @ S2 @ S3
