@@ -1,9 +1,10 @@
 \documentclass{article}
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
 \usepackage{mathtools, physics, xcolor}
+\usepackage{hyperref}
 
 \newcommand{\sor}{\mathbf{R}}
-
+\DeclareMathOperator{\aut}{Aut}
 \DeclareMathOperator{\card}{card}
 
 \theoremstyle{plain}
@@ -614,9 +615,132 @@ is surjective.
 
 Let, if possible, $\psi(a\ker(\phi)) = \psi(b\ker(\phi)) = g^\prime$. Therefore
 there exists $x, y \in \ker(\phi)$ such that $\phi(ax) = \phi(by)$, or $\phi(a)
-= (\phi(x))^{-1}\phi(b)\phi(y)$ so that ...
-{\color{red}Incomplete.}
+= (\phi(x))^{-1}\phi(b)\phi(y) = \phi(b)$, because $x$ and $y$ belong to 
+$\ker(\phi)$ and therefore map to $e^\prime$, the identity in $G^\prime$. This
+shows that $\psi$ is injective.
 \end{proof}
+
+\begin{defn}\label{s6d4}
+An automorphism on a group $G$ is an isomorphism $G \mapsto G$.
+\end{defn}
+
+\section{Direct and semidirect products}\label{s7}
+\begin{defn}\label{s7d1}
+The direct product $G_1 \times G_2$ of two groups $G_1$ and $G_2$ is the set
+$\{(g_1, g_2) | g_1 \in G_1, g_2 \in G_2\}$ with the binary operation
+\[
+(a_1, a_2)(b_1, b_2) = (a_1b_1, a_2b_2).
+\]
+\end{defn}
+\begin{rem}
+Note that $a_1, b_1 \in G_1$ so that $a_1b_1$ is a well-defined operation. 
+Same holds good for $a_2b_2$.
+\end{rem}
+
+\begin{rem}
+The difference between direct product and direct sum is explained in 
+\href{https://math.stackexchange.com/questions/2412232/direct-product-vs-direct-sum-of-infinite-dimensional-vector-spaces}{Wikipedia} article.
+\end{rem}
+
+It is easy to confirm that
+\begin{thm}\label{s7t1}
+$G_1 \times G_2$ is a group.
+\end{thm}
+\begin{proof}
+The operation is clearly closed. $(e_1, e_2)$ is the identity, $(a^{-1}_1, 
+b_1^{-1})$ is the inverse of $(a, b)$ and the associativity of the binary
+operation follows from the associativity of components. 
+\end{proof}
+
+\begin{defn}\label{s7d2}
+Let $N$ and $H$ be two groups, $\aut{N}$ be the set of all automorphisms on $N$ 
+and let $\varphi : H \rightarrow \aut{N}$ be a homomorphism. Then a semidirect 
+product of $N$ and $H$ with respect to $\varphi$, denoted $N \rtimes_\varphi H$,
+is defined the set $N \times H$ with a binary operation $\ast$ defined as
+\[
+(n_1, h_1)\ast(n_2, h_2) = (n_1 + \varphi(h_1)(n_2), h_1 \cdot h_2),
+\]
+where $+$ is the group operation of $N$ and $\cdot$ that of $H$.
+\end{defn}
+
+\begin{prop}\label{s7t2}
+$(N \rtimes_\varphi H, \ast)$ is a group.
+\end{prop}
+\begin{proof}
+Closure of $\ast$ follows from the definition. 
+
+Let $e_N$ and $e_H$ be identities of $N$ and $H$. Therefore, $(e_N, e_H)\ast
+(n, h) = (e_N + \varphi(e_H)(n), e_H \cdot h)$. Since $\varphi$ is a 
+homomorphism $\varphi(e_H) = I$, where $I$ is the identity isomorphism, so that 
+$(e_N, e_H)\ast(n, h) = (e_N + I(n), h) = (n, h)$. Similarly $(n, h)\ast
+(e_N, e_H) = (n + \varphi(h)(e_N), e_H \cdot h) = (n + e_N, h) = (n, h)$. Thus, 
+$(e_N, e_H)$ is an identity.
+
+Consider 
+\[
+(n, h) \ast (\varphi(h^{-1})(n^{-1}), h^{-1}) = 
+(n + \varphi(h)\varphi(h^{-1})(n^{-1}), h\cdot h^{-1})
+\]
+Since $\varphi$ is a homomorphism, $\varphi(h)\varphi(h^{-1}) = \varphi(hh^{-1})
+ = \varphi(e_H) = I$ so that,
+\[
+(n, h) \ast (\varphi(h^{-1})(n^{-1}), h^{-1}) = 
+(n + I(n^{-1}), e_H) = (n + n^{-1}, e_H) = (e_N, e_H)
+\]
+Similarly, $(\varphi(h^{-1})(n^{-1}), h^{-1}) \ast (n, h) = (e_N, e_H)$. Thus 
+$(\varphi(h^{-1})(n^{-1}), h^{-1})$ is an inverse.
+
+Lastly 
+\begin{eqnarray*}
+(n_1, h_1) \ast ((n_2, h_2) \ast (n_3, h_3)) &=& 
+(n_1, h_1) \ast (n_2 + \varphi(h_2)(n_3), h_2 \cdot h_3) \\
+ &=& (n_1 + \varphi(h_1)(n_2 + \varphi(h_2)(n_3)), h_1 \cdot (h_2 \cdot h_3)) \\
+ &=& (n_1 + \varphi(h_1)(n_2) + \varphi(h_1)\varphi(h_2)(n_3), (h_1 \cdot h_2) 
+ \cdot h_3) \\
+ &=& (n_1 + \varphi(h_1)(n_2) + \varphi(h_1h_2)(n_3), (h_1 \cdot h_2) \cdot h_3) \\
+ &=& (n_1 + \varphi(h_1) + n_2, h_1 \cdot h_2) \ast (n_3, h_3) \\
+ &=& ((n_1, h_1) \ast ((n_2, h_2)) \ast (n_3, h_3)
+\end{eqnarray*}
+Thus $\ast$ is an associative operation.
+\end{proof}
+
+If $\varphi$ in definition \ref{s7d2} is an identity then 
+\begin{equation}\label{s7e1}
+(n_1, h_1) \ast (n_2, h_2) = (n_1 + n_2, h_1h_2).
+\end{equation}
+Thus, the semidirect product becomes the direct product. We also observe that
+\begin{enumerate}
+\item $\{e_N\} \rtimes_\varphi H$ is a subgroup of $N \rtimes_{\varphi} H$ and 
+it is isomorphic to $H$.
+\item $N \rtimes_\varphi \{e_H\}$ is a subgroup of $N \rtimes_{\varphi} H$ and 
+it is isomorphic to $N$.
+\end{enumerate}
+
+\begin{prop}\label{s7p1}
+$N \rtimes_\varphi \{e_H\}$ is an invariant subgroup of $N \rtimes_\varphi H$.
+\end{prop}
+\begin{proof}
+Let $(n, e_H)$ be an element of $N \rtimes_\varphi \{e_H\}$ and $(m, h)$ be
+an element of $N \rtimes_\varphi H$. 
+\[
+(m,h)\ast(n,e_H)\ast(m,h)^{-1} = (m + \varphi(e_H)(n), h e_H)\ast(m, h)^{-1}.
+\]
+Since $\varphi(e_H)$ is an identity mapping,
+\[
+(m,h)\ast(n,e_H)\ast(m,h)^{-1} = (m + n, h)\ast(m, h)^{-1}.
+\]
+Since $(m, h)^{-1} = (\varphi(h^{-1})(m^{-1}), h^{-1})$
+\begin{eqnarray*}
+(m,h)\ast(n,e_H)\ast(m,h)^{-1} &=& (m + n, h)\ast
+(\varphi(h^{-1})(m^{-1}), h^{-1}) \\
+ &=& (m + n + \varphi(h)(\varphi(h^{-1})(m^{-1})), hh^{-1}) 
+\end{eqnarray*}
+Since $\varphi$ is an automorphism $\varphi(h^{-1}) = \varphi^{-1}(h)$ so that
+\[
+(m,h)\ast(n,e_H)\ast(m,h)^{-1} = (m + n + m^{-1}, e_H) = (n, e_H).
+\]
+\end{proof}
+
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{gt}
