@@ -1,0 +1,435 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{bm}
+\numberwithin{equation}{section}
+\let\vec\bm
+\newcommand{\qev}[1]{\langle #1 \rangle}
+\DeclareMathOperator{\Tr}{Tr}
+
+\title{The Theory of Angular Momentum}
+\author{Amey Joshi}
+\date{24-Jan-2021}
+\begin{document}
+\maketitle
+\abstract{These notes are based on chapter 3 of Sakurai's Modern Quantum 
+Mechanics \cite{sakurai2011modern}.}
+\section{Notation}\label{s1}
+We use the mathematicians' notation in this article. The complex conjugate of
+$z$ is denoted by $\bar{z}$ and the adjoint of an operator $A$ by $A^\ast$.
+However, the inner product is defined with the property
+\begin{equation}\label{s1e1}
+(x,\alpha y)=\alpha(x, y)\;\forall x, y \in \mathcal{H}, \alpha \in \mathbf{C},
+\end{equation}
+where $\mathcal{H}$ is a Hilbert space.
+
+The states of a quantum system are assumed to be members of a Hilbert space
+$\mathcal{H}$. If $x \in \mathcal{H}$ then there exists a linear functional
+$x^\ast \in \mathcal{H}^\ast$, the dual space of $\mathcal{H}$ such that
+\begin{equation}\label{s1e2}
+x^\ast(y) = (x, y), \forall y \in \mathcal{H}.
+\end{equation}
+Thus, $x$ corresponds to $|x\rangle$ and $x^\ast$ to $\langle x|$. The adjoint
+of an operator $A$ is defined as
+\begin{equation}\label{s1e3}
+(x, A(y)) = (A^\ast(x), y).
+\end{equation}
+If $\{e_1, \ldots\, e_n\}$ for a basis of $\mathcal{H}$ then
+\begin{equation}\label{s1e4}
+\left(\sum_{i=1}^n e_i e_i^\ast\right)(x) = \sum_{i=1}^n e_i e_i^\ast(x) = 
+\sum_{i=1}^n e_i (x, e_i) = x
+\end{equation}
+as a result
+\begin{equation}\label{s1e5}
+\sum_{i=1}^n e_i e_i^\ast = I_n,
+\end{equation}
+$I_n$ being the identity operator.
+
+\section{The non-commutativity of rotations}\label{s2}
+It is well-known that a body initially at a point $\vec{x}$ when first 
+translated by $\vec{t}_1$ and then by $\vec{t}_2$ reaches the same position if 
+we had first translated it by $\vec{t}_2$ and then by $\vec{t}_1$. This is 
+because the result of two translation is an addition of vectors, a commutative 
+operation.
+
+Rotations cannot be described by vectors. If a vector $\vec{x} =
+[x_1, x_2, x_3]^T$ is rotated then its components after rotation $[x_1^\prime, 
+x_2^\prime, x_3^\prime]^T$ are related to its original components by 
+\begin{equation}\label{s2e1}
+\begin{bmatrix}x_1^\prime \\ x_2^\prime \\ x_3^\prime\end{bmatrix} = 
+R\begin{bmatrix}x_1 \\ x_2 \\ x_3\end{bmatrix} 
+\end{equation}
+If $R_1$ and $R_2$ are the matrices representing two rotations and if they 
+happen one after the other then their combined effect is represented by either
+$R_2R_1$ or $R_1R_2$. Unlike addition of vectors, the multiplication of
+matrices is \emph{not} commutative.
+
+We shall follow the convention of interpreting a rotation as the act of moving
+a vector keeping the coordinate systems untouched. With the convention, a
+rotation of a vector by and angle $\phi$ about the three axes is represented
+by
+\begin{eqnarray}
+R_x(\phi) &=& \begin{bmatrix}1 & 0 & 0 \\
+0 & \cos\phi & -\sin\phi \\
+0 & \sin\phi & \cos\phi
+\end{bmatrix} \label{s2e2} \\
+R_y(\phi) &=& \begin{bmatrix}\cos\phi & 0 & \sin\phi \\
+0 & 1 & 0 \\
+-\sin\phi & 0 & \cos\phi
+\end{bmatrix} \label{s2e3} \\
+R_z(\phi) &=& \begin{bmatrix}\cos\phi & -\sin\phi & 0 \\
+\sin\phi & \cos\phi & 0 \\
+0 & 0 & 1
+\end{bmatrix} \label{s2e4}
+\end{eqnarray}
+Note that the negative sign of $\sin\phi$ appears in the $y$ position for $R_x$,
+ $z$ position for $R_y$ and $x$ position for $R_z$.
+
+If $\phi$ is infinitesimally small then we can write the above equations as
+\begin{eqnarray}
+R_x(\phi) &=& \begin{bmatrix}1 & 0 & 0 \\
+0 & 1 - \phi^2/2 & -\phi \\
+0 & \phi & 1 - \phi^2/2
+\end{bmatrix} \label{s2e5} \\
+R_y(\phi) &=& \begin{bmatrix}1 - \phi^2/2 & 0 & \phi \\
+0 & 1 & 0 \\
+-\phi & 0 & 1 - \phi^2/2
+\end{bmatrix} \label{s2e6} \\
+R_z(\phi) &=& \begin{bmatrix}1 - \phi^2/2 & -\phi & 0 \\
+\phi & 1 - \phi^2/2 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \label{s2e7}
+\end{eqnarray}
+We can easily verify that, when $\phi$ is infinitesimally small,
+\begin{equation}\label{s2e8}
+R_xR_y - R_yR_x = \begin{bmatrix}0 & -\phi^2 & 0 \\
+\phi^2 & 0 & 0 \\
+0 & 0 & 0 \end{bmatrix} = R_z(\phi^2) - I,
+\end{equation}
+where we ignored terms of $O(\phi^3)$ and above. In fact, if we ignore terms
+of $O(\phi^2)$ and above then 
+\begin{equation}\label{s2e9}
+R_xR_y - R_yR_x = 0 \text{ up to } O(\phi).
+\end{equation}
+Thus, even if finite rotations do not commute, infinitesimal ones do. Can we 
+express infinitesimal rotations as vectors?
+
+\section{Infinitesimal rotations as vectors}\label{s3}
+We notice that the matrix $R_z(\phi^2)$ is anti-symmetric. We will now argue
+that every infinitisimal rotation is represented by an anti-symmetric matrix.
+If $R$ is one such then we can write its effect on a vector $\vec{x}$ as
+\begin{equation}\label{s3e1}
+\vec{x}^\prime = (1 + R)\vec{x}.
+\end{equation}
+It is clear that, up to first order, the inverse of the transformation $1 + R$
+is $1 - R$. We also know that rotation matrices are always orthogonal, that is
+their transpose is their inverse. Therefore, for infinitesimal rotations, we
+have \cite{wolfram1}
+\begin{equation}\label{s3e2}
+(1 + R)^T = (1 - R) \Rightarrow R^T = -R,
+\end{equation}
+that is, $R$ is anti-symmetric. An anti-symmetric matrix has only three
+independent entries and is therefore isomorphic to a vector. One can represent
+a general infinitesimal rotation as
+\begin{equation}\label{s3e3}
+R = \begin{bmatrix}0 & d\Omega_3 & -d\Omega_2 \\
+-d\Omega_3 & 0 & d\Omega_1 \\
+d\Omega_2 & -d\Omega_1 & 0
+\end{bmatrix}
+\end{equation}
+so that 
+\begin{equation}\label{s3e4}
+\begin{bmatrix}x_1^\prime \\ x_2^\prime \\ x_3^\prime \end{bmatrix} = 
+\begin{bmatrix}0 & d\Omega_3 & -d\Omega_2 \\
+-d\Omega_3 & 0 & d\Omega_1 \\
+d\Omega_2 & -d\Omega_1 & 0
+\end{bmatrix}\begin{bmatrix}x_1 \\ x_2 \\ x_3 \end{bmatrix}
+= \begin{bmatrix}
+x_2d\Omega_3 - x_3d\Omega_2 \\
+x_3d\Omega_1 - x_1d\Omega_3 \\
+x_2d\Omega_2 - x_2d\Omega_1
+\end{bmatrix}.
+\end{equation}
+We can write this equation succintly as
+\begin{equation}\label{s3e5}
+x_i^\prime = \epsilon_{ijk}x_jd\Omega_k
+\end{equation}
+which allows us to consider $[d\Omega_1, d\Omega_2, d\Omega_3]^T$ as a vector.
+We can write equation \eqref{s3e6} as
+\begin{equation}\label{s3e6}
+\vec{x}^\prime = \vec{x} \wedge d\vec{\Omega}.
+\end{equation}
+
+An operator representing an infinitesimal rotation can be written as
+\begin{equation}\label{s3e7}
+D_k(\delta\phi) = 1 - i\frac{J_k}{\hslash}\delta\phi.
+\end{equation}
+If $J_k$ is hermitian then $D_k$ is unitary. If $\psi^\prime = D_k\psi$ then
+$(\psi^\prime, \psi^\prime) = (D_k\psi, D_k\psi) = (\psi, D_k^\ast D_k \psi)
+= (\psi, \psi)$, which is as it should be for a rotation opertor. The operator
+for a finite rotation can be written as
+\begin{equation}\label{s3e8}
+D_k(\phi) = \lim_{n \rightarrow \infty} D_k\left(\frac{\phi}{n}\right)^n =
+\lim_{n \rightarrow \infty}\left(1-i\frac{J_k}{\hslash}\frac{\phi}{n}\right)^n
+= \exp\left(-\frac{iJ_k\phi}{\hslash}\right).
+\end{equation}
+We now observe that if $\varepsilon$ is an infinitesimal quantity then
+\begin{eqnarray}
+D_x(\varepsilon) &=& 1 - \frac{iJ_x\varepsilon}{\hslash} - 
+\frac{J_x^2 \varepsilon^2}{\hslash^2} - \ldots \label{s3e9} \\
+D_y(\varepsilon) &=& 1 - \frac{iJ_y\varepsilon}{\hslash} - 
+\frac{J_y^2 \varepsilon^2}{\hslash^2} - \ldots \label{s3e10} 
+\end{eqnarray}
+so that
+\begin{equation}\label{s3e11}
+D_x(\varepsilon)D_y(\varepsilon) - D_y(\varepsilon)D_x(\varepsilon) =
+-\frac{1}{\hslash}(J_xJ_y-J_yJ_x)\epsilon^2+O(\epsilon^3)
+\end{equation}
+From equation \eqref{s2e8}, the right hand side is expected to be
+\begin{equation}\label{s3e12}
+D_z(\epsilon^2) - 1 = -\frac{iJ_z}{\hslash}\epsilon^2
+\end{equation}
+so that we have
+\begin{equation}\label{s3e13}
+-(J_xJ_y - J_yJ_x) = -i\hslash J_z
+\end{equation}
+which is same as
+\begin{equation}\label{s3e14}
+[J_x, J_y] = i\hslash J_z.
+\end{equation}
+We can similarly show that
+\begin{eqnarray}
+[J_y, J_z] &=& i\hslash J_x \label{s3e15} \\
+{}[J_z, J_x] &=& i\hslash J_y \label{s3e16}
+\end{eqnarray}
+The commutations relations of equations \eqref{s3e14}, \eqref{s3e15}
+and \eqref{s3e16} depend only on:
+\begin{enumerate}
+\item definition \eqref{s3e8} of rotation operator and
+\item expectation \eqref{s2e8} from the commutation of infinitesimal
+rotations.
+\end{enumerate}
+In particular, we have nowhere used the classical definiton of the
+angular momentum as $\vec{x} \wedge \vec{p}$.
+
+\section{An overview of spin-1/2 systems}\label{s4}
+The states $x_+$, $x_-$ are defined in such a way that
+\begin{equation}\label{s4e1}
+S_zx_{\pm} = \pm\frac{\hslash}{2}x_\pm.
+\end{equation}
+In the basis $\{x_+, x_-\}$ the three spin operators are defined as
+\begin{eqnarray}
+S_x &=& \frac{\hslash}{2}(x_+ x_-^\ast + x_- x_+^\ast) \label{s4e2} \\
+S_y &=& -\frac{i\hslash}{2}(x_+ x_-^\ast + x_- x_+^\ast) \label{s4e3} \\
+S_z &=& \frac{\hslash}{2}(x_+ x_+^\ast + x_- x_-^\ast) \label{s4e4}
+\end{eqnarray}
+From these equations, we can confirm that
+\begin{eqnarray}
+S_z x_+ &=& \frac{\hslash}{2}\left( x_+ x_+^\ast(x_+) + x_-x_-^\ast(x_+)\right)
+\nonumber \\
+ &=& \frac{\hslash}{2}\left(x_+(x_+, x_+) + x_-(x_-, x_+)\right) \nonumber \\
+ &=& \frac{\hslash}{2}x_+. \label{s4e5}
+\end{eqnarray}
+Now consider a spin-1/2 system in a state $x$ and let it be subjected to the
+operator $D_z(\phi)$ to give another state $y$. That is
+\begin{equation}\label{s4e6}
+y = D_z(\phi)(x).
+\end{equation}
+Since $\phi$ is fixed, we will use $D_z$ instead of $D_z(\phi)$ for sake of
+brevity. We will now compute $\qev{S_x}$ after rotation. Thus,
+\begin{eqnarray}
+\qev{S_x} &=& (y, S_x(y)) \nonumber \\
+ &=& (D_z(x), S_x(D_z(x))) \nonumber \\
+ &=& (x, D_z^\ast S_x D_z (x)) \label{s4e7}
+\end{eqnarray}
+To make further progress, we will find out what $D_z^\ast S_xD_z$ is. To that
+end, we use equation \eqref{s4e2} to get
+\begin{equation}\label{s4e8}
+D_z^\ast S_x D_z = e^{iS_z\phi/\hslash}\frac{\hslash}{2}(x_+x_-^\ast + 
+x_-x_+^\ast)e^{-iS_z\phi/\hslash}
+\end{equation}
+Now,
+\begin{equation}\label{s4e9}
+e^{iS_z\phi/\hslash}x_+ = 
+\sum_{k \ge 0}\left(\frac{i\phi}{\hslash}\right)^kS_z^k x_+
+\end{equation}
+Using equation \eqref{s4e1}
+\begin{equation}\label{s4e10}
+e^{iS_z\phi/\hslash}x_+ = 
+\sum_{k \ge 0}\left(\frac{i\phi}{2}\right)^k x_+ = e^{i\phi/2}x_+.
+\end{equation}
+Similarly,
+\begin{equation}\label{s4e11}
+e^{-iS_z\phi/\hslash}x_- = e^{i\phi/2}x_-.
+\end{equation}
+The adjoints of equations \eqref{s4e8} and \eqref{s4e9} are
+\begin{eqnarray}
+x_+^\ast e^{-iS_z\phi/\hslash} &=& e^{-i\phi/2}x_+^\ast \label{s4e12} \\
+x_-^\ast e^{-iS_z\phi/\hslash} &=& e^{i\phi/2}x_-^\ast \label{s4e13}
+\end{eqnarray}
+Using equations \eqref{s4e9} to \eqref{s4e11} in \eqref{s4e8} we get
+\begin{eqnarray}
+D_z^\ast S_x D_z &=& \frac{\hslash}{2}\left(e^{i\phi/2}x_+x_-^\ast e^{i\phi/2}
++ e^{-i\phi/2}x_-x_+^\ast e^{-i\phi/2}\right) \nonumber \\
+ &=& x_+x_-^\ast e^{i\phi} + x_-x_+^\ast e^{-i\phi} \nonumber \\
+ &=& (x_+x_-^\ast + x_-x_+^\ast)\cos\phi + i(x_+x_-^\ast - x_-x_+^\ast)\sin\phi
+\label{s4e14}
+\end{eqnarray}
+Using equations \eqref{s4e3} and \eqref{s4e4} we get
+\begin{equation}\label{s4e15}
+D_z^\ast S_x D_z = S_x\cos\phi - S_y\sin\phi
+\end{equation}
+so that equation \eqref{s4e6} becomes
+\begin{equation}\label{s4e16}
+\qev{S_x}_y = (x, S_x\cos\phi - S_y\sin\phi, x) = \qev{S_x}_x\cos\phi -
+\qev{S_y}_x\sin\phi,
+\end{equation}
+where the subscript to the expectation value indicates the state with respect
+to which the expectation was calculated. We can similarly derive the analogous 
+relations
+\begin{eqnarray}
+\qev{S_y}_y &=& \qev{S_x}_x\cos\phi + \qev{S_y}_x\sin\phi \label{s4e17} \\
+\qev{S_z}_y &=& \qev{S_z}_y. \label{s4e18}
+\end{eqnarray}
+Equations \eqref{s4e16} to \eqref{s4e17} can be written as
+\begin{equation}\label{s4e19}
+\begin{bmatrix}\qev{S_x}_y \\ \qev{S_y}_y \\ \qev{S_z}_y\end{bmatrix}
+= \begin{bmatrix}\cos\phi & -\sin\phi & 0 \\
+\sin\phi & \cos\phi & 0 \\
+0 & 0 & 1\end{bmatrix}
+\begin{bmatrix}\qev{S_x}_x \\ \qev{S_y}_x \\ \qev{S_z}_x\end{bmatrix} =
+R_z(\phi)\begin{bmatrix}\qev{S_x}_x \\ \qev{S_y}_x \\ \qev{S_z}_x\end{bmatrix}
+\end{equation}
+Thus, the expected values of the spin operators in the rotated state behave 
+like vectors in $\mathbf{R}^3$.
+
+In equation \eqref{s4e8} we assumed that 
+\[
+D_z(\phi) = \exp\left(-\frac{iS_z\phi}{\hslash}\right)
+\]
+and we used the representation of spin operators given by equations \eqref{s4e2}
+to \eqref{s4e4} to get \eqref{s4e19}. Could we have drawn the same conclusion
+for a general angular momentum operator? That is, will we get \eqref{s4e19}
+if
+\begin{equation}\label{s4e20}
+D_z(\phi) = \exp\left(-\frac{iJ_z\phi}{\hslash}\right)?
+\end{equation}
+We will now demonstrate that we can indeed get \eqref{s4e19} based solely on
+the commutation relations of the angular momentum components. In order to 
+proceed we need Baker-Campbell-Hausdorff formula
+\begin{equation}\label{s4e21}
+e^{iG\lambda}Ae^{-iG\lambda} = 
+\sum_{k \ge 0}\left(\frac{i^k\lambda^k}{k!}\right)[G, A]_k,
+\end{equation}
+where
+\begin{equation}\label{s4e22}
+[G, A]_k = \begin{cases}
+A & \text{ if } k = 0 \\
+[G, [G, A]_{k-1}] & \text{ if } k > 0.
+\end{cases}
+\end{equation}
+In particular,
+\begin{eqnarray}
+[J_z, J_x]_0 &=& J_x \label{s4e23} \\
+{}[J_z, J_x]_1 &=& i\hslash J_y \label{s4e24} \\
+{}[J_z, J_x]_2 &=& (i\hslash)^2 (-J_x) \label{s4e25} \\
+{}[J_z, J_x]_3 &=& -(i\hslash)^3 J_y \label{s4e26} \\
+\vdots &=& \vdots \nonumber
+\end{eqnarray}
+so that
+\[
+e^{iJ_z\phi/\hslash}J_xe^{-iJ_z\phi/\hslash} = J_x + \frac{i\phi}{\hslash}
+(i\hslash J_y) + \left(\frac{i\phi}{\hslash}\right)^2(-i\hslash)^2(-J_x)
++ \left(\frac{i\phi}{\hslash}\right)^3(i\hslash)^3(-J_y) + \ldots.
+\]
+Getting together the real and the imaginary parts together, we get
+\[
+e^{iJ_z\phi/\hslash}J_xe^{-iJ_z\phi/\hslash} = J_x\left(1 - \frac{\phi^2}{2!}
++ \cdots\right) - J_y\left(\phi - \frac{\phi^3}{3!} + \cdots\right)
+\]
+or
+\begin{equation}\label{s4e27}
+e^{iJ_z\phi/\hslash}J_xe^{-iJ_z\phi/\hslash} = J_x\cos\phi - J_y\sin\phi.
+\end{equation}
+We can similarly show that
+\begin{eqnarray}
+e^{iJ_z\phi/\hslash}J_ye^{-iJ_z\phi/\hslash} &=& J_x\sin\phi + J_y\cos\phi 
+\label{s4e28} \\
+e^{iJ_z\phi/\hslash}J_ze^{-iJ_z\phi/\hslash} &=& J_z \label{s4e29}
+\end{eqnarray}
+
+An arbitrary state of a spin-1/2 system can be expressed in terms of the
+base states $\{x_+, x_-\}$ as
+\begin{equation}\label{s4e30}
+x = (x_+x_+^\ast + x_-x_-^\ast)x = x_+(x_+, x) + x_-(x_-, x)
+\end{equation}
+so that using equations \eqref{s4e10} and \eqref{s4e11} we have
+\begin{equation}\label{s4e31}
+e^{iS_z\phi/\hslash}x = e^{i\phi/2}(x_+(x_+,x)+x_-(x_-,x))=e^{i\phi/2}x.
+\end{equation}
+In particular, if $\phi = 2\pi$ we get the strange result
+\begin{equation}\label{s4e32}
+e^{2\pi i S_z/\hslash}x = -x.
+\end{equation}
+Thus, rotating a spin-1/2 state by $2\pi$ reverses its sign!
+
+\section{Pauli matrices}\label{s5}
+We will now compute the matrix elements of the spin operators defined by
+equations \eqref{s4e2} to \eqref{s4e4}. As the state space of spin-1/2 systems
+is two dimensional, the matrix representation of $S_z$ is
+\begin{equation}\label{s5e1}
+S_z = \begin{bmatrix} (x_+, S_z x_+) & (x_+, S_z x_-) \\
+(x_-, S_z x_+) & (x_-, S_z x_-) 
+\end{bmatrix} = \frac{\hslash}{2}\begin{bmatrix} 1 & 0 \\ 0 & -1\end{bmatrix}
+\end{equation}
+We can similarly show that
+\begin{eqnarray}
+S_x &=& \frac{\hslash}{2}\begin{bmatrix}0 & 1 \\ 1 & 0 \end{bmatrix}
+\label{s5e2} \\
+S_y &=& \frac{\hslash}{2}\begin{bmatrix}0 & i \\ -i & 0 \end{bmatrix}
+\label{s5e3}
+\end{eqnarray}
+The three matrices
+\begin{eqnarray}
+\sigma_x &=& \begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix} \label{s5e4} \\
+\sigma_y &=& \begin{bmatrix}0 & i \\ -i & 0\end{bmatrix} \label{s5e5} \\
+\sigma_z &=& \begin{bmatrix}1 & 0 \\ 0 & -1\end{bmatrix} \label{s5e6}
+\end{eqnarray}
+are called \emph{Pauli matrices}. Their main properties are
+\begin{eqnarray}
+\Tr(\sigma_i) &=& 0 \label{s5e7} \\
+\det(\sigma_i) &=& -1 \label{s5e8} \\
+\sigma_i^\ast &=& \sigma_i \label{s5e9} \\
+\{\sigma_i, \sigma_j\} &=& 2\delta_{ij} \label{s5e10} \\
+{}[\sigma_i, \sigma_j] &=& 2i\hslash\epsilon_{ijk}\sigma_k \label{s5e11}
+\end{eqnarray}
+
+The three spin operators $S_x, S_y, S_z$ can be considered as components of
+a vector operator $\vec{S}$. Likewise, the three Pauli matrices can be 
+considered to be components of the vector operator $\vec{\sigma}$. It is
+easy to confirm that
+\begin{equation}\label{s5e12}
+\vec{\sigma}\cdot\vec{a} = \begin{bmatrix}a_z & a_x + ia_y \\ a_x -ia_y & -a_z
+\end{bmatrix}
+\end{equation}
+and
+\begin{equation}\label{s5e13}
+(\vec{\sigma}\cdot\vec{a})^2 = a^2 I_2,
+\end{equation}
+where $\vec{a} \in \mathbf{R}^3$ is an arbitrary vector. Since
+\begin{equation}\label{s5e14}
+\sigma_i\sigma_j = \frac{\{\sigma_i, \sigma_j\} + [\sigma_i, \sigma_j]}{2},
+\end{equation}
+we have
+\begin{eqnarray}
+(\vec{\sigma}\cdot\vec{a})(\vec{\sigma}\cdot\vec{b}) &=&
+\sum_j \sigma_j a_j \sum_k \sigma_k b_k \nonumber \\
+ &=& \sum_{j,k} \sigma_j\sigma_k a_j b_k \nonumber \\
+ &=& \sum_{j,k}\frac{\{\sigma_i, \sigma_j\} + [\sigma_i, \sigma_j]}{2}a_jb_k
+\nonumber \\
+ &=& \sum_{j,k}(\delta_{jk} + i\epsilon_{jkl}\sigma_l)a_jb_k \nonumber \\
+ &=& \vec{a}\cdot\vec{b} + i\vec{\sigma}\cdot(\vec{a} \wedge \vec{b}) 
+\label{s5e15}.
+\end{eqnarray}
+\bibliographystyle{plain}
+\bibliography{am}
+\end{document}
