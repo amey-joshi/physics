@@ -400,23 +400,24 @@ are called \emph{Pauli matrices}. Their main properties are
 \det(\sigma_i) &=& -1 \label{s5e8} \\
 \sigma_i^\ast &=& \sigma_i \label{s5e9} \\
 \{\sigma_i, \sigma_j\} &=& 2\delta_{ij} \label{s5e10} \\
-{}[\sigma_i, \sigma_j] &=& 2i\hslash\epsilon_{ijk}\sigma_k \label{s5e11}
+{}[\sigma_i, \sigma_j] &=& 2i\hslash\epsilon_{ijk}\sigma_k \label{s5e11} \\
+\sigma_i^2 &=& I_2 \label{s5e12}
 \end{eqnarray}
 
 The three spin operators $S_x, S_y, S_z$ can be considered as components of
 a vector operator $\vec{S}$. Likewise, the three Pauli matrices can be 
 considered to be components of the vector operator $\vec{\sigma}$. It is
 easy to confirm that
-\begin{equation}\label{s5e12}
+\begin{equation}\label{s5e13}
 \vec{\sigma}\cdot\vec{a} = \begin{bmatrix}a_z & a_x + ia_y \\ a_x -ia_y & -a_z
 \end{bmatrix}
 \end{equation}
 and
-\begin{equation}\label{s5e13}
+\begin{equation}\label{s5e14}
 (\vec{\sigma}\cdot\vec{a})^2 = a^2 I_2,
 \end{equation}
 where $\vec{a} \in \mathbf{R}^3$ is an arbitrary vector. Since
-\begin{equation}\label{s5e14}
+\begin{equation}\label{s5e15}
 \sigma_i\sigma_j = \frac{\{\sigma_i, \sigma_j\} + [\sigma_i, \sigma_j]}{2},
 \end{equation}
 we have
@@ -428,8 +429,206 @@ we have
 \nonumber \\
  &=& \sum_{j,k}(\delta_{jk} + i\epsilon_{jkl}\sigma_l)a_jb_k \nonumber \\
  &=& \vec{a}\cdot\vec{b} + i\vec{\sigma}\cdot(\vec{a} \wedge \vec{b}) 
-\label{s5e15}.
+\label{s5e16}.
 \end{eqnarray}
+
+From equation \eqref{s3e7} we can write the general rotation operator as
+\begin{equation}\label{s5e17}
+D(\phi) = \exp\left(-i\frac{\vec{J}\cdot\vec{n}\phi}{\hslash}\right).
+\end{equation}
+In the case of spin-1/2 systems, $\vec{J} = \vec{S}$ and since
+\begin{equation}\label{s5e18}
+\vec{S} = \frac{\hslash}{2}\vec{\sigma},
+\end{equation}
+the general rotation operator is
+\begin{equation}\label{s5e19}
+D(\phi) = \exp\left(-i\frac{\vec{\sigma}\cdot\vec{n}}{2}\phi\right).
+\end{equation}
+From equation \eqref{s5e10}
+\[
+(\vec{\sigma}\cdot\vec{n})^2 = \left(\sum_{i=1}^3\sigma_i n_i\right)^2 = 
+\sum_{i,j=1}^3\sigma_i\sigma_jn_i n_j = \sum_{i=1}^3\sigma_i^2n_i^2 = 
+\sum_{i=1}^3n_i^2 = 1
+\]
+so that we can write the general relation
+\begin{equation}\label{s5e20}
+(\vec{\sigma}\cdot\vec{n})^n = \begin{cases}
+1 & \text{ if } n \text{ is even,} \\
+\vec{\sigma}\cdot\vec{n} & \text{ if } n \text{ is odd.}
+\end{cases}
+\end{equation}
+Therefore,
+\begin{eqnarray}
+D(\phi) &=& \sum_{k \ge 0}(-1)^k\left(\frac{\phi}{2}\right)^{2k}\frac{1}{(2k)!}
+ + \nonumber \\
+ & & -i\vec{\sigma}\cdot\vec{n}
+ \sum_{k \ge 0}(-1)^k\left(\frac{\phi}{2}\right)^{2k+1}\frac{1}{(2k+1)!} 
+ \nonumber \\
+ &=& \cos\left(\frac{\phi}{2}\right) - i\vec{\sigma}\cdot\vec{n}
+     \sin\left(\frac{\phi}{2}\right), \label{s5e21}
+\end{eqnarray}
+where it is understood that an appropriate idendity operator multiplies the
+cosine term. We can express this result in matrix form as
+\begin{equation}\label{s5e22}
+D(\phi) = \begin{bmatrix}
+\cos\left(\frac{\phi}{2}\right) -in_z\sin\left(\frac{\phi}{2}\right) &
+(-in_x -n_y)\sin\left(\frac{\phi}{2}\right) \\
+(-in_x + n_y)\sin\left(\frac{\phi}{2}\right) &
+\sin\left(\frac{\phi}{2}\right) + in_z\cos\left(\frac{\phi}{2}\right)
+\end{bmatrix}
+\end{equation}
+We notice, once again, that
+\begin{equation}\label{s5e23}
+D(2\pi) = -D.
+\end{equation}
+
+\section{Euler angles}\label{s6}
+Any rotation can be described by the angle of rotation, $\phi$, and the axis
+around which the rotation happens. The axis itself can be expressed by the
+normal vector $\vec{n}$. A unit vector can be described by its polar and
+azimuthal angles alone. Thus, three angles suffice to completely describe any
+rotation.
+
+Euler angles provide another way to specify the three angles. Consider a body
+with three axes $x^\prime, y^\prime, z^\prime$ embedded in it. They are called
+the body axes because they move as the body moves. The space axes, on the other
+hand, stay fixed. The initial position of the body is chosen so that the two
+sets of axes coincide. An arbitrary rotation can be described by three steps:
+\begin{enumerate}
+\item Rotate the body about the $z$ axis by an angle $\alpha$;
+\item Rotate the body about the $y^\prime$ axis by an angle $\beta$ and
+\item Rotate the body about the $z^\prime$ axis by an angle $\gamma$.
+\end{enumerate}
+Mathematically, the rotation is described as
+\begin{equation}\label{s6e1}
+R(\alpha, \beta, \gamma) = R_{z^\prime}(\gamma)R_{y^\prime}(\beta)R_z(\alpha)
+\end{equation}
+and the three angles $\alpha, \beta, \gamma$ are called the \emph{Euler angles}.
+
+It would be more convenient if we can express the second and the third steps
+in terms of rotations about the space axes. We can do so because of the 
+relations
+\begin{eqnarray}
+R_{y^\prime}(\beta) &=& R_z(\alpha)R_y(\beta)R_z(-\alpha) \label{s6e2}\\
+R_{z^\prime}(\gamma) &=& R_{y^\prime}(\beta)R_z(\gamma)R_{y^\prime}(-\beta).
+\label{s6e3}
+\end{eqnarray}
+Substituting these equations in \eqref{s6e1} we get
+\begin{eqnarray}
+R(\alpha, \beta, \gamma) &=& R_{z^\prime}(\gamma)R_{y^\prime}(\beta)R_z(\alpha)
+\nonumber \\
+ &=& R_{y^\prime}(\beta)R_z(\gamma)R_{y^\prime}(-\beta)
+     R_{y^\prime}(\beta)R_z(\alpha) \nonumber \\
+ &=& R_{y^\prime}(\beta)R_z(\gamma)R_z(\alpha) \nonumber \\
+ &=& R_z(\alpha)R_y(\beta)R_z(-\alpha)R_z(\gamma)R_z(\alpha) \nonumber \\
+ &=& R_z(\alpha)R_y(\beta)R_z(-\alpha + \gamma + \alpha) \nonumber \\
+ &=& R_z(\alpha)R_y(\beta)R_z(\gamma) \label{s6e4}
+\end{eqnarray}
+
+Translating equation \eqref{s6e4} to quantum mechanical language we get
+\begin{equation}\label{s6e5}
+D(\alpha,\beta,\gamma) = D_z(\alpha)D_y(\beta)D_z(\gamma),
+\end{equation}
+which is equivalent to
+\begin{equation}\label{s6e6}
+D(\alpha,\beta,\gamma) = \exp\left(-i\frac{J_z\alpha}{\hslash}\right)
+\exp\left(-i\frac{J_y\beta}{\hslash}\right)
+\exp\left(-i\frac{J_z\gamma}{\hslash}\right).
+\end{equation}
+When applied to a spin-1/2 system it becomes
+\begin{equation}\label{s6e7}
+D(\alpha,\beta,\gamma) = e^{-i\sigma_z\alpha/2}e^{-i\sigma_y\beta/2}
+e^{-i\sigma_z\gamma/2}.
+\end{equation}
+Since $\sigma_z$ is a diagonal matrix, the matrix representation of the first
+and the third factors on rhs of equation \eqref{s6e7} are easy to evaluate.
+They are
+\begin{eqnarray}
+e^{-i\sigma_z\alpha/2} &=& \begin{bmatrix}e^{-i\alpha/2} & 0 \\
+0 & e^{i\alpha/2}\end{bmatrix} \label{s6e8} \\
+e^{-i\sigma_z\gamma/2} &=& \begin{bmatrix}e^{-i\gamma/2} & 0 \\
+0 & e^{i\gamma/2}\end{bmatrix} \label{s6e9}
+\end{eqnarray}
+The second factor can be computed as
+\[
+e^{-i\sigma_y\beta/2} = \sum_{k\ge 0}\left(-\frac{i\sigma_y\beta}{2}\right)^k
+\frac{1}{k!}.
+\]
+Since $\sigma_y^2 = I_2$, we get
+\[
+e^{-i\sigma_y\beta/2} = \sum_{k\ge 0}(-1)^k\left(\frac{\beta}{2}\right)^{2k}
+\frac{1}{(2k)!} + 
+i\sigma_y\sum_{k\ge 0}(-1)^k\left(\frac{\beta}{2}\right)^{2k+1}\frac{1}{(2k+1)!}
+\]
+or
+\begin{equation}\label{s6e10}
+e^{-i\sigma_y\beta/2} = \cos\left(\frac{\beta}{2}\right) + i\sigma_y
+\sin\left(\frac{\beta}{2}\right).
+\end{equation}
+In matrix form,
+\begin{equation}\label{s6e11}
+e^{-i\sigma_y\beta/2} = \begin{bmatrix}
+\cos\left(\frac{\beta}{2}\right) & -\sin\left(\frac{\beta}{2}\right) \\
+\sin\left(\frac{\beta}{2}\right) & \cos\left(\frac{\beta}{2}\right)
+\end{bmatrix}
+\end{equation}
+From equations \eqref{s6e7}, \eqref{s6e8}, \eqref{s6e9} and \eqref{s6e11}
+we get the matrix representation
+\begin{equation}\label{s6e12}
+D(\alpha,\beta,\gamma) = \begin{bmatrix}
+e^{-i(\alpha+\gamma)/2}\cos\left(\frac{\beta}{2}\right) & 
+-e^{-i(\alpha-\gamma)/2}\sin\left(\frac{\beta}{2}\right) \\
+e^{i(\alpha-\gamma)/2}\sin\left(\frac{\beta}{2}\right) & 
+e^{i(\alpha+\gamma)/2}\cos\left(\frac{\beta}{2}\right)
+\end{bmatrix}
+\end{equation}
+
+\section{Pure states}\label{s7}
+The state $x_+$ is the one whose spin points `upwards' while the state $x_-$
+is the onw whose spin points `downwards'. It is customary to treat `upwards'
+to be along the positive $z$ axis and downwards to be along the negative
+$z$ axis. Where does the spin of the state
+\begin{equation}\label{s7e1}
+x = c_+x_+ + c_-x_-
+\end{equation}
+point?
+
+Let it point to along the direction specified by the normal $\vec{n}$ specified
+by its azimuthal angle $\alpha$ and polar angle $\beta$. That is,
+\begin{equation}\label{s7e2}
+\vec{n} = \sin\beta\cos\alpha\vec{e}_x + \sin\beta\sin\alpha\vec{e}_y +
+\cos\beta\vec{e}_z
+\end{equation}
+so that the matrix representation of $\vec{\sigma}\cdot\vec{n}$ is
+\begin{equation}\label{s7e3}
+\begin{bmatrix}
+\cos\beta & \sin\beta e^{i\alpha} \\
+\sin\beta e^{-i\alpha} & -\cos\beta
+\end{bmatrix}.
+\end{equation}
+If $x$ is the eigenstate of $\vec{\sigma}\cdot\vec{n}$ then
+\begin{equation}\label{s7e4}
+\vec{\sigma}\cdot\vec{n}x = \lambda x,
+\end{equation}
+where $\lambda$ is the eigenvalue. It is easy to confirm that $\lambda = \pm 1$.
+If $x = [x_1, x_2]^T$ then we further conclude that $x_2 = \pm x_1 e^{-i\alpha}
+\tan(\beta/2)$. From this, we readily conclude that
+\begin{equation}\label{s7e5}
+\frac{c_-}{c_+} = \pm e^{-i\alpha}\tan\left(\frac{\beta}{2}\right).
+\end{equation}
+Thus, the state $x$ given by \eqref{s7e1} has its spin pointing along the
+normal \eqref{s7e2} where the angles $\alpha$ and $\beta$ are determined by
+equation \eqref{s7e5}.
+
+\section{Mixed states}\label{s8}
+The key point of the previous section is that the states $x_+, x_-$ and $x$ all 
+have spins pointing to a definite direction. That is why they are called \emph{
+pure states}. If we have a Stern-Gerlach apparatus pointing along $\vec{e}_z$ 
+then it will give a reading $1$ with probabilities $1, 0$ and $|c_+|^2$ for 
+states $x_+ , x_-$ and $x$. If we have an ensemble of states some of which have 
+spins pointing upwards and the rest pointing downwards then we need a different 
+way of descrbing it. Such a system is said to be in a \emph{mixed state}
+
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
