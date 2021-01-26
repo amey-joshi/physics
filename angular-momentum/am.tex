@@ -3,7 +3,8 @@
 \usepackage{bm}
 \numberwithin{equation}{section}
 \let\vec\bm
-\newcommand{\qev}[1]{\langle #1 \rangle}
+\newcommand{\qev}[1]{\langle #1 \rangle} % Quantum mechanical average.
+\newcommand{\eav}[1]{\{ #1 \}}           % Ensemble average.
 \DeclareMathOperator{\Tr}{Tr}
 
 \title{The Theory of Angular Momentum}
@@ -627,8 +628,142 @@ pure states}. If we have a Stern-Gerlach apparatus pointing along $\vec{e}_z$
 then it will give a reading $1$ with probabilities $1, 0$ and $|c_+|^2$ for 
 states $x_+ , x_-$ and $x$. If we have an ensemble of states some of which have 
 spins pointing upwards and the rest pointing downwards then we need a different 
-way of descrbing it. Such a system is said to be in a \emph{mixed state}
+way of descrbing it. Such a system is said to be in a \emph{mixed state}.
 
+In general, if an ensemble is prepared from pure states $x_1, x_2, \ldots, x_M$
+with proportions $w_1, w_2, \ldots, w_M$ with the restriction 
+\begin{eqnarray}
+w_i &\ge& 0 \;\forall i \label{s8e1} \\
+\sum_{i=1}^M w_i &=& 1 \label{s8e2}
+\end{eqnarray}
+then the state of the system is represented by
+\begin{equation}\label{s8e3}
+x = \sum_{i=1}^M w_i x_i.
+\end{equation}
+Such a state is called the \emph{mixed state}. The number of terms in the sum
+is not limited by the dimensions of the system.
+
+If we measure an observabe $A$ on such a system then the expected value of the
+measurement is
+\begin{equation}\label{s8e4}
+\eav{A} = \sum_{i=1}^Mw_i(x_i, A(x_i)) = \sum_{i=1}^Mw_i\qev{A}_i.
+\end{equation}
+The quantity $\eav{A}$ is called the \emph{ensemble average} in contrast with 
+the quantum mechanical expectation value $\qev{A}_i$. The subscript $i$ to the
+quantum mechanical average indicates the state in which it was taken. Let us 
+express the state $x_i$ in terms of a basis $e_1, \ldots, e_N$ so that
+\begin{equation}\label{s8e5}
+x_i = \sum_{j=1}^N \alpha_j^{(i)} e_j.
+\end{equation}
+If $e_1, \ldots, e_N$ are an orthonormal basis then
+\begin{equation}\label{s8e6}
+\alpha_j^{(i)} = (x_i, e_j).
+\end{equation}
+Substituting this equation in \eqref{s8e4} we get
+\begin{eqnarray*}
+\eav{A} &=& \sum_{i=1}^Mw_i\left(\sum_{j=1}^N \alpha_j^{(i)} e_j, 
+     A\left(\sum_{k=1}^N \alpha_k^{(i)} e_k\right)\right) \\
+ &=& \sum_{i=1}^M w_i \sum_{j,k=1}^N\bar{\alpha}_j^{(i)}\alpha_k^{(i)}
+     (e_j, A(e_k)) \\
+ &=& \sum_{i=1}^M\sum_{j,k=1}^Nw_i(e_j, x_i)(x_i,e_k)(e_j, A(e_k)) \\
+ &=& \sum_{i=1}^M\sum_{j,k=1}^Nw_i(x_i,e_k)(e_j, x_i)(e_j, A(e_k)) \\
+ &=& \sum_{i=1}^M\sum_{j,k=1}^Nw_i\left(e_j, (x_i,e_k)x_i\right)(e_j,A(e_k))
+\end{eqnarray*}
+The manipulation in the last equation is possible because $(x_i, e_k)$ is a
+number. Continuing further
+\begin{equation}\label{s8e7}
+\eav{A} = \sum_{i=1}^M\sum_{j,k=1}^Nw_i
+     \left(e_j, x_i(x_i,e_k)\right)(e_j,A(e_k)) 
+\end{equation}
+The quantity
+\begin{equation}\label{s8e8}
+\left(e_j, \sum_{i=1}^M w_ix_ix_i^\ast(e_k))\right)
+\end{equation}
+is independent of the observable $A$. It depends solely on the composition of
+the mixed state given by \eqref{s8e3}. The operator
+\begin{equation}\label{s8e9}
+\rho = \sum_{i=1}^M w_ix_ix_i^\ast
+\end{equation}
+is called the \emph{density operator}. We can write \eqref{s8e8} in terms of
+the density operator as
+\begin{equation}\label{s8e10}
+\eav{A} = \sum_{j,k=1}^N (e_j, \rho(e_k))(e_j, A(e_k)).
+\end{equation}
+We can simplify this expression as
+\begin{eqnarray}
+\eav{A} &=& \sum_{j,k=1}^N((e_j, \rho(e_k))e_j, A(e_k)) \nonumber \\
+ &=& \sum_{j,k=1}^N(e_j^\ast(\rho(e_k))e_j, A(e_k)) \nonumber \\
+ &=& \sum_{k=1}^N\left(\left(\sum_{j=1}^N e_j e_j^\ast (\rho(e_k))\right), 
+     A(e_k)\right) \label{s8e11} 
+\end{eqnarray}
+From the completeness relation, we know that
+\begin{equation}\label{s8e12}
+\sum_{j=1}^N e_j e_j^\ast = I,
+\end{equation}
+the identity operator so that equation \eqref{s8e11} becomes
+\begin{equation}\label{s8e13}
+\eav{A} = \sum_{k=1}^N (\rho(e_k), A(e_k)) = \sum_{k=1}^N(e_k, \rho(A(e_k)))
+\end{equation}
+because $\rho$ is Hermitian (proved in equation \eqref{s8e15}. We can write 
+$\rho(A(e_k))$ as $(\rho A)(e_k)$ so that 
+\begin{equation}\label{s8e14}
+\eav{A} = \sum_{k=1}^N(e_k, (\rho A)(e_k)) = \Tr(\rho A).
+\end{equation}
+
+We note the following properties of the density operator:
+\begin{enumerate}
+\item $\rho$ is Hermitian. Consider
+\begin{equation}\label{s8e15}
+\rho^\ast = \sum_{i=1}^Mw_i(x_ix_i^\ast)^\ast = 
+\sum_{i=1}^Mw_i x_i^{\ast\ast}x_i^\ast = \sum_{i=1}^Mw_i x_ix_i^\ast = \rho.
+\end{equation}
+\item $\rho$ has unit trace.
+\begin{eqnarray}
+\Tr(\rho) &=& \sum_{k=1}^N(e_k, \rho(e_k)) \nonumber \\
+ &=&\sum_{k=1}^N\left(e_k, \sum_{i \ge 1}w_i x_ix_i^\ast(e_k)\right)\nonumber\\
+ &=&\sum_{i=1}^M\sum_{k=1}^Nw_i(e_k, x_ix_i^\ast(e_k)) \nonumber \\
+ &=&\sum_{i=1}^M\sum_{k=1}^N w_i(e_k, x_i(x_i, e_k)) \nonumber \\
+ &=&\sum_{i=1}^M\sum_{k=1}^N w_i(x_i, e_k)(e_k, x_i) \nonumber \\
+ &=&\sum_{i=1}^M\sum_{k=1}^N w_i |(x_i, e_k)|^2 \label{s8e16}
+\end{eqnarray}
+From equations \eqref{s8e5} and \eqref{s8e6} we know that $(x_i, e_k) = 
+\alpha_k^{(i)}$ and 
+\begin{equation}\label{s8e17}
+\sum_{k=1}^N |\alpha_k^{(i)}|^2 = 1
+\end{equation}
+so that
+\begin{equation}\label{s8e18}
+\Tr(\rho) = \sum_{i=1}^Mw_i = 1.
+\end{equation}
+
+\item $\rho$ is positive semi-definite. Consider an arbitrary state 
+\begin{equation}\label{s8e19}
+y = \sum_{j=1}^N\beta_j e_j
+\end{equation}
+for which we compute
+\begin{eqnarray}
+(y, \rho(y)) &=& \sum_{i=1}^Mw_i(y, x_ix_i^\ast(y)) \nonumber \\
+ &=& \sum_{i=1}^Mw_i\sum_{j,k=1}^N\bar{\beta}_j\beta_k(e_j, x_ix_i^\ast(e_k))
+\nonumber \\
+ &=& \sum_{i=1}^Mw_i\sum_{j,k=1}^N\bar{\beta}_j\beta_k(x_i, e_k)(e_j, x_i).
+\nonumber
+\end{eqnarray}
+From equation \eqref{s8e5}
+\begin{eqnarray}
+(y,\rho(y)) &=& \sum_{i=1}^Mw_i\sum_{j,k=1}^N\bar{\beta}_j\beta_k
+\sum_{l,m=1}^N \bar{\alpha}_l^{(i)}\alpha_m^{(i)}(e_l, e_k)(e_j, e_m) 
+\nonumber \\
+ &=& \sum_{i=1}^Mw_i\sum_{j,k=1}^N\bar{\beta}_j\beta_k
+\sum_{l,m=1}^N \bar{\alpha}_l^{(i)}\alpha_m^{(i)}\delta_{lk}\delta{jm}
+\nonumber \\
+ &=& \sum_{i=1}^Mw_i\sum_{j,k=1}^N\bar{\beta}_j\beta_k\bar{\alpha}_k^{(i)}
+\alpha_j^{(i)} \nonumber \\
+ &=& \sum_{i=1}^Mw_i\sum_{j=1}^N\bar{\beta}_j\alpha_j^{(i)}
+ \sum_{k=1}^N\beta_k\bar{\alpha}_k^{(i)} \nonumber \\
+ &=& \sum_{i=1}^Mw_i\left|\sum_{j=1}^N\bar{\beta}_j\alpha_j^{(i)}\right|^2
+ \ge 0 \label{s8e20}
+\end{eqnarray}
+\end{enumerate}
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
