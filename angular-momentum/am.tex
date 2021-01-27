@@ -763,7 +763,112 @@ From equation \eqref{s8e5}
  &=& \sum_{i=1}^Mw_i\left|\sum_{j=1}^N\bar{\beta}_j\alpha_j^{(i)}\right|^2
  \ge 0 \label{s8e20}
 \end{eqnarray}
+
+\item If all members in an ensemble are in the state $x_j$, say, then the 
+system is in a pure state and its density matrix is
+\begin{equation}\label{s8e21}
+\rho = x_j x_j^\ast
+\end{equation}
+because $w_i=1$ only for $i=j$ and zero for all others. In this case,
+\begin{equation}\label{s8e22}
+\rho^2 = (x_j x_j^\ast)(x_j x_j^\ast) = x_j x_j^\ast(x_j) x_j^\ast = 
+x_j (x_j, x_j) x_j^\ast = x_j x_j^\ast = \rho.
+\end{equation}
+Thus, the density operator for a pure state is idempotent. The third step
+follows from the second because a functional acts on the entity immediately to
+its right.
 \end{enumerate}
+
+Refer to \cite[pages 179-180]{sakurai2011modern} for density matrices of 
+spin-1/2 systems of various compositions.
+
+We know that the time evolution of a state $x$ is governed by Schr\"{o}dinger
+equation
+\begin{equation}\label{s8e23}
+i\hslash\frac{\partial x}{\partial t} = Hx
+\end{equation}
+whose formal solution is
+\begin{equation}\label{s8e24}
+x(t) = \exp\left(-\frac{iHt}{\hslash}\right)x(0).
+\end{equation}
+Therefore, the density operator evolves in time as
+\[
+\rho(t) = \sum_{i=1}^Mw_i \exp\left(-\frac{iHt}{\hslash}\right)x(0)x^\ast(0)
+\exp\left(\frac{iHt}{\hslash}\right)
+\]
+which is same as
+\begin{equation}\label{s8e25}
+\rho(t) = \exp\left(-\frac{iHt}{\hslash}\right)\rho(0)
+\exp\left(\frac{iHt}{\hslash}\right)
+\end{equation}
+because
+\[
+\rho(0) = \sum_{i=1}^M w_i x_i(0)x_i^\ast(0).
+\]
+We can also derive the differential equation of evolution of the density matrix.
+\[
+\frac{\partial\rho}{\partial t} = \sum_{i=1}^M w_i
+\left(\frac{\partial x}{\partial t}x^\ast + x\frac{\partial x^\ast}{\partial t}\right)
+\]
+Taking the adjoint of equation \eqref{s8e23},
+\[
+-i\hslash\frac{\partial x^\ast}{\partial t} = x^\ast H^\ast = x^\ast H,
+\]
+as $H$ is assumed to be Hermitian. Therefore
+\[
+\frac{\partial\rho}{\partial t} = \sum_{i=1}^M w_i\left(
+-\frac{iH}{\hslash}xx^\ast + xx^\ast\frac{iH}{\hslash}\right)
+= -\frac{i}{\hslash}(H\rho - \rho H)
+\]
+or
+\begin{equation}\label{s8e26}
+i\hslash\frac{\partial\rho}{\partial t} = [H, \rho].
+\end{equation}
+This equation is analogous to the Lioville equation of classical stastical 
+mechanics
+\begin{equation}\label{s8e27}
+\frac{\partial\rho}{\partial t} = \{H, \rho\}.
+\end{equation}
+Here $\{\cdot, \cdot\}$ denotes the Poisson bracket and \emph{not} the 
+anti-commutator.
+
+\section{Properties of angular momentum operators}\label{s9}
+We introduced the three angular momentum operators $J_x, J_y$ and $J_z$ in
+section \ref{s3} and applied them to spin-1/2 systems in section \ref{s4}. We 
+will study them for dimension $N > 2$ in this section.
+
+Define the operator
+\begin{equation}\label{s9e1}
+J^2 = J_xJ_x + J_yJ_y + J_zJ_z.
+\end{equation}
+Consider the commutator
+\begin{eqnarray}
+[J^2, J_x] &=& [J_xJ_x, J_x] + [J_yJ_y, J_x] + [J_zJ_z, J_x] \nonumber \\
+ &=& 0 + J_yJ_yJ_x - J_xJ_yJ_y + J_zJ_zJ_x - J_xJ_zJ_z \nonumber \\
+ &=& J_yJ_yJ_x - J_yJ_xJ_y + J_yJ_xJ_y - J_xJ_yJ_y \nonumber \\
+ & & J_zJ_zJ_x - J_zJ_xJ_z + J_zJ_xJ_z - J_xJ_zJ_z \nonumber \\
+ &=& J_y[J_y, J_x] + [J_y, J_x]J_y + J_z[J_z, J_x] + [J_z, J_x]J_z \nonumber \\
+ &=& -i\hslash J_yJ_z - i\hslash J_zJ_y + i\hslash J_zJ_y + i\hslash J_yJ_z
+\nonumber  \\
+ &=& 0 \label{s9e2}
+\end{eqnarray}
+By symmetry, we conclude that
+\begin{eqnarray}
+[J^2, J_y] &=& 0 \label{s9e3} \\
+{}[J^2, J_z] &=& 0 \label{s9e4}
+\end{eqnarray}
+
+Since $J^2$ commutes with all of $\{J_x, J_y, J_z\}$ but the latter set of
+operators do not commute among each other, we can find simultaneous eigenstates
+of $J^2$ and one of $\{J_x, J_y, J_z\}$. By convention, we choose $J^2$ and
+$J_z$.
+
+Let $l$ and $m$ denote the eigenvalues of $J^2$ and $J_z$ so that we have
+\begin{eqnarray}
+J^2 x_{l,m} &=& l x_{l, m} \label{s9e5} \\
+J_z x_{l,m} &=& m x_{l, m} \label{s9e6} 
+\end{eqnarray}
+
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
