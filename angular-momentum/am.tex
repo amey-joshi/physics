@@ -278,7 +278,8 @@ Similarly,
 \begin{equation}\label{s4e11}
 e^{-iS_z\phi/\hslash}x_- = e^{i\phi/2}x_-.
 \end{equation}
-The adjoints of equations \eqref{s4e8} and \eqref{s4e9} are
+The adjoints of equations \eqref{s4e9} and \eqref{s4e11} (explained at the
+end of the section in equation \eqref{s4e34}) are
 \begin{eqnarray}
 x_+^\ast e^{-iS_z\phi/\hslash} &=& e^{-i\phi/2}x_+^\ast \label{s4e12} \\
 x_-^\ast e^{-iS_z\phi/\hslash} &=& e^{i\phi/2}x_-^\ast \label{s4e13}
@@ -388,6 +389,24 @@ In particular, if $\phi = 2\pi$ we get the strange result
 e^{2\pi i S_z/\hslash}x = -x.
 \end{equation}
 Thus, rotating a spin-1/2 state by $2\pi$ reverses its sign!
+
+Before closing this section, we will explain how to compute the adjoint of
+the expression $\exp(iS_z\hslash)x_+$. Note that the expression is a member
+of the Hilbert space, say $y$, that is
+\begin{equation}\label{s4e33}
+y = \exp\left(\frac{iS_z}{\hslash}\right)x_+.
+\end{equation}
+Consider the expression $(y, z) = y^\ast(z)$. Now,
+\begin{eqnarray*}
+(y, z) &=& \left(\exp\left(\frac{iS_z}{\hslash}\right)x_+, z\right) \\
+ &=& \left(x_+, \exp\left(-\frac{iS_z}{\hslash}\right)(z)\right) \\
+ &=&  x_+^\ast\left(\exp\left(-\frac{iS_z}{\hslash}\right)(z)\right) \\
+ &=&  x_+^\ast\exp\left(-\frac{iS_z}{\hslash}(z)\right)
+\end{eqnarray*}
+But this expression, we know, is $y^\ast(z)$. Therefore,
+\begin{equation}\label{s4e34}
+y^\ast = x_+^\ast\exp\left(-\frac{iS_z}{\hslash}\right).
+\end{equation}
 
 \section{Pauli matrices}\label{s5}
 We will now compute the matrix elements of the spin operators defined by
