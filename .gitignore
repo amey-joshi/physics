@@ -134,4 +134,5 @@ dmypy.json
 **/*.blg
 **/*.dvi
 **/*.out
+**/*.swp
 

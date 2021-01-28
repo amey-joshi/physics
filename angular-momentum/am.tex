@@ -6,6 +6,22 @@
 \newcommand{\qev}[1]{\langle #1 \rangle} % Quantum mechanical average.
 \newcommand{\eav}[1]{\{ #1 \}}           % Ensemble average.
 \DeclareMathOperator{\Tr}{Tr}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
 
 \title{The Theory of Angular Momentum}
 \author{Amey Joshi}
@@ -832,7 +848,7 @@ mechanics
 Here $\{\cdot, \cdot\}$ denotes the Poisson bracket and \emph{not} the 
 anti-commutator.
 
-\section{Properties of angular momentum operators}\label{s9}
+\section{Ladder operators}\label{s9}
 We introduced the three angular momentum operators $J_x, J_y$ and $J_z$ in
 section \ref{s3} and applied them to spin-1/2 systems in section \ref{s4}. We 
 will study them for dimension $N > 2$ in this section.
@@ -865,9 +881,130 @@ $J_z$.
 
 Let $l$ and $m$ denote the eigenvalues of $J^2$ and $J_z$ so that we have
 \begin{eqnarray}
-J^2 x_{l,m} &=& l x_{l, m} \label{s9e5} \\
-J_z x_{l,m} &=& m x_{l, m} \label{s9e6} 
+J^2(x_{l,m}) &=& l x_{l, m} \label{s9e5} \\
+J_z(x_{l,m}) &=& m x_{l, m} \label{s9e6} 
 \end{eqnarray}
+We also introduce two new operators
+\begin{eqnarray}
+J_+ &=& J_x + iJ_y \label{s9e7} \\
+J_- &=& J_x - iJ_y \label{s9e8}
+\end{eqnarray}
+We observe that
+\begin{eqnarray}
+[J_+, J_-] &=& J_+J_- - J_-J_+ \nonumber \\
+ &=& -iJ_xJ_y + iJ_yJ_x -iJ_xJ_y + i J_yJ_x \nonumber \\
+ &=& -2i[J_x, J_y] \nonumber \\
+ &=& 2\hslash J_z \label{s9e9}
+\end{eqnarray}
+and 
+\begin{eqnarray}
+[J_z, J_\pm] &=& J_zJ_\pm - J_\pm J_z \nonumber \\
+ &=& J_zJ_x \pm iJ_zJ_y - J_xJ_z \mp iJ_yJ_z \nonumber \\
+ &=& [J_z, J_x] \mp i[J_y,J_z] \nonumber \\
+ &=& i\hslash J_y \mp (-\hslash J_x) \nonumber \\
+ &=& i\hslash J_y \pm \hslash J_x \nonumber \\
+ &=& \pm\hslash(J_x \pm iJ_y)  \nonumber \\
+ &=& \pm\hslash J_\pm. \label{s9e10}
+\end{eqnarray}
+Further, since $J^2$ commutes with all components of $\vec{J}$,
+\begin{equation}\label{s9e11}
+[J^2, J_\pm] = 0.
+\end{equation}
+From equation \eqref{s9e9} we have, from equation \eqref{s9e10},
+\[
+J_zJ_\pm = [J_z, J_\pm] + J_\pm J_z = \pm\hslash J_\pm + J_\pm J_z
+\]
+so that
+\begin{equation}\label{s9e12}
+J_zJ_\pm x_{l,m} = \pm\hslash J_\pm x_{l,m} + J_\pm mx_{l,m}
+= (m \pm \hslash)J_\pm x_{l, m}
+\end{equation}
+which suggests that the effect of $J_\pm$ on $x_{l,m}$ is to raise or lower
+the eigenvalue of $J_z$ by $\hslash$. That is why $J_\pm$ are called the ladder
+operators. On the other hand, owing to \eqref{s9e11},
+\begin{equation}\label{s9e13}
+J^2J_\pm(x_{l,m}) = J_\pm J^2(x_{l,m}) = lJ_\pm(x_{l, m}).
+\end{equation}
+The ladder operators have no effect on the eigenvalues of $J^2$. Equations 
+\eqref{s9e12} and \eqref{s9e13} tell that $J_\pm x_{l,m}$ are simultaneous
+eigenstates of $J^2$ and $J_z$ with eigenvalues $l$ and $m \pm \hslash$. 
+Contrast this with equations \eqref{s9e5} and \eqref{s9e6} which tell that
+$x_{l,m}$ are simultaneous eigenstates of $J^2$ and $J_z$ with eigenvalues
+$l$ and $m$.
+
+We now prove 
+\begin{prop}\label{s9p1}
+$l \ge m^2$ where $l$ and $m$ are defined by equations \eqref{s9e5} and
+\eqref{s9e6}.
+\end{prop}
+\begin{proof}
+From the definitions of ladder operators in equations \eqref{s9e7} and
+\eqref{s9e8} we observe that $J_- = J_+^\ast$ and that
+\begin{equation}\label{s9e14}
+J_+J_- + J_-J_+ = 2(J_x^2 + J_y^2)
+\end{equation}
+or that
+\begin{equation}\label{s9e15}
+J^2 - J_z^2 = \frac{1}{2}(J_x^2 + J_y^2) = \frac{J_+J_+^\ast + J_-J_-^\ast}{2}
+\end{equation}
+from which we get
+\begin{equation}\label{s9e16}
+(x_{l,m}, (J^2 - J_z^2)(x_{l,m})) = 
+\frac{1}{2}(x_{l,m}, J_+J_+^\ast x_{l,m}) + (x_{l,m}, J_-J_-^\ast x_{l,m}).
+\end{equation}
+Now $(x_{l,m}, J_+J_+^\ast x_{l,m}) = (J_+^\ast x_{l,m},J_+^\ast x_{l,m})\ge 0$.
+Similarly $ (x_{l,m}, J_-J_-^\ast x_{l,m}) \ge 0$ so that
+\begin{equation}\label{s9e17}
+(x_{l,m}, (J^2 - J_z^2)(x_{l,m})) = (l - m^2) \ge 0.
+\end{equation}
+\end{proof}
+
+\begin{prop}\label{s9p2}
+If $\tilde{m}$ is the largest value of $m$ then 
+\begin{equation}\label{s9e18}
+l = \tilde{m}(\tilde{m} + \hslash).
+\end{equation}
+\end{prop}
+\begin{proof}
+From proposition \ref{s9p1} $\tilde{m}$ exists. Consider a state 
+$x_{l,\tilde{m}}$. Since $\tilde{m}$ is the maximum value of the second
+index $m$, we must have
+\begin{equation}\label{s9e19}
+J_+( x_{l,\tilde{m}}) = 0
+\end{equation}
+from which we conclude that $J_-J_+(x_{l,\tilde{m}}) = 0$ or
+\begin{equation}
+(J_x^2 + J_y^2 - \hslash J_z)(x_{l, \tilde{m}}) = 0 \Rightarrow
+(J^2 - J_z^2 - \hslash J_z)(x_{l, \tilde{m}}) = 0
+\end{equation}
+or
+\begin{equation}\label{s9e21}
+(l^2 - \tilde{m}^2 - \hslash\tilde{m})x_{l, \tilde{m}} = 0.
+\end{equation}
+As $x_{l, \tilde{m}}$ is assumed to be non-null, we have 
+$l = \tilde{m}(\tilde{m} + \hslash)$.
+\end{proof}
+
+Define
+\begin{equation}\label{s9e22}
+j = \frac{\tilde{m}}{\hslash}
+\end{equation}
+then we can write equation \eqref{s9e21} as
+\begin{equation}\label{s9e23}
+l = j(j + 1)\hslash^2.
+\end{equation}
+Thus, if $j$ is the maximum value of $m$ then $l = j(j+1)\hslash$ and $m$ can
+take $2j+1$ values $-j\hslash, (-j + 1)\hslash, \ldots, j\hslash$. It is 
+convenient to express equations \eqref{s9e5} and \eqref{s9e6} in terms of $j$
+and $m$ as 
+\begin{eqnarray}
+J^2(x_{j,m}) &=& j(j + 1)\hslash^2 x_{j, m} \label{s9e24} \\
+J_z(x_{j,m}) &=& m\hslash x_{j, m} \label{s9e25}
+\end{eqnarray}
+It is important to realise that equations \eqref{s9e24} and \eqref{s9e25}
+depend only on the angular momentum commuation relations, which in turn depend
+only on the properties of rotation. In particular, we have not used the 
+classical analogue of $\vec{x} \wedge \vec{p}$.
 
 \bibliographystyle{plain}
 \bibliography{am}
