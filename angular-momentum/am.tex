@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{bm}
+\usepackage{color}
 \numberwithin{equation}{section}
 \let\vec\bm
 \newcommand{\qev}[1]{\langle #1 \rangle} % Quantum mechanical average.
@@ -1024,6 +1025,219 @@ It is important to realise that equations \eqref{s9e24} and \eqref{s9e25}
 depend only on the angular momentum commuation relations, which in turn depend
 only on the properties of rotation. In particular, we have not used the 
 classical analogue of $\vec{x} \wedge \vec{p}$.
+
+\section{Addition of angular momenta}\label{s10}
+Consider two angular momentum operators, $\vec{J}_1$ and $\vec{J}_2$, operating
+on two different Hilbert spaces. Individually, their components obey the
+commutation relations
+\begin{eqnarray}
+[J_{1i}, J_{1j}] &=& i\hslash \epsilon_{ijk}J_{1k} \label{s10e1} \\
+{}[J_{2i}, J_{2j}] &=& i\hslash \epsilon_{ijk}J_{2k} \label{s10e2} 
+\end{eqnarray}
+An infinitesimal rotation of \emph{both} systems about an axix $\vec{n}$ 
+by an infinitesimal angle $\delta\phi$ is
+\begin{equation}\label{s10e3}
+\left(1 - \frac{i\vec{J}_1\cdot\vec{n}\delta\phi}{\hslash}\right) \otimes
+\left(1 - \frac{i\vec{J}_2\cdot\vec{n}\delta\phi}{\hslash}\right)
+= 1 - \frac{i(\vec{J}_1 \otimes I_2 + I_1 \otimes \vec{J}_2).\vec{n}\delta\phi}
+{\hslash}
+\end{equation}
+We define the total angular momentum operator
+\begin{equation}\label{s10e4}
+\vec{J} = (\vec{J}_1 \otimes I_2 + I_1 \otimes \vec{J}_2).
+\end{equation}
+Note that:
+\begin{enumerate}
+\item $\vec{J}_1$ is an operator on a Hilbert space $\mathcal{H}_1$, $\vec{J}_2$
+is an operator on $\mathcal{H}_2$ and $\vec{J}$ on $\mathcal{H}_1 \otimes
+\mathcal{H}_2$.
+\item $I_1$ is the identity operator on a Hilbert space $\mathcal{H}_1$
+and $I_2$ is the identity operator on $\mathcal{H}_2$.
+\item The definition of \eqref{s10e5} is possible because both systems 
+are rotated by the same angle $\delta\phi$ about the same axis $\vec{n}$.
+\end{enumerate}
+
+\begin{prop}\label{s10p1}
+For the operator defined by equation \eqref{s10e4},
+\begin{equation}\label{s10e5}
+[J_i, J_j] = i\epsilon_{ijk}J_k.
+\end{equation}
+\end{prop}
+\begin{proof}
+Consider the state $x = x_1 \otimes x_2$ on which $[J_i, J_j]$ acts. Thus,
+\begin{eqnarray*}
+[J_i, J_j](x) &=& (J_iJ_j - J_jJ_i)(x) \\
+ &=&(J_{1i}\otimes I_2+I_1\otimes J_{2i})(J_{1j}\otimes I_2+I_1\otimes J_{2j})
+(x_1 \otimes x_2) - \\
+ & &(J_{1j}\otimes I_2+I_1\otimes J_{2j})(J_{1i}\otimes I_2+I_1\otimes J_{2i}) 
+(x_1 \otimes x_2) \\
+ &=&(J_{1i}\otimes I_2+I_1\otimes J_{2i})(J_{1j}(x_1)\otimes x_2 + x_1 \otimes
+J_{2j}(x_2)) - \\
+ & &(J_{1j}\otimes I_2+I_1\otimes J_{2j})(J_{1i}(x_1)\otimes x_2 + x_1 \otimes
+J_{2i}(x_2)) \\
+ &=& J_{1i}J_{1j}(x_1) \otimes x_2+J_{1i}(x_1)\otimes J_{2j}(x_2)+J_{1j}(x_1)
+\otimes J_{2i}(x_2) + \\
+ & & x_1 \otimes J_{2i}J_{2j}(x_2) - \\
+ & & J_{1j}J_{1i}(x_1) \otimes x_2-J_{1j}(x_1)\otimes J_{2i}(x_2)-J_{1i}(x_1)
+\otimes J_{2j}(x_2) - \\
+ & & x_1 \otimes J_{2j}J_{2i}(x_2)  \\
+ &=& J_{1i}J_{1j}(x_1) \otimes x_2 + x_1 \otimes J_{2i}J_{2j}(x_2) - \\
+ & & J_{1j}J_{1i}(x_1) \otimes x_2 - x_1 \otimes J_{2j}J_{2i}(x_2) \\
+ &=& \{J_{1i}J_{1j} - J_{1j}J_{1i}\}(x_1) \otimes x_2 + 
+x_1 \otimes \{J_{2i}J_{2j} - J_{2j}J_{2i}\}(x_2)
+\end{eqnarray*}
+Using the commutation relations of \eqref{s10e1} and \eqref{s10e2}
+\begin{eqnarray*}
+[J_i, J_j](x) &=& i\hslash\epsilon_{ijk}J_{1k}(x_1)\otimes x_2 + 
+x_1 \otimes (i\hslash\epsilon_{ijk}J_{2k}(x_2) \\
+ &=& i\hslash\epsilon_{ijk}J_k(x)
+\end{eqnarray*}
+\end{proof}
+
+\begin{rem}
+The operator $\vec{J}$ is indeed an angular momentum operator and can be
+considered to be the angular momentum of the composite system.
+\end{rem}
+
+Note that, from equation \eqref{s10e4}
+\begin{equation}\label{s10e6}
+\vec{J}(x) = (\vec{J}_1 \otimes I_2 + I_1 \otimes \vec{J}_2)(x_1 \otimes x_2)
+= \vec{J}_1(x_1) \otimes I_2 + I_1 \otimes \vec{J}_2(x_2).
+\end{equation}
+Moreover,
+\begin{equation}\label{s10e7}
+\vec{J}(x) \ne \vec{J}_1(x_1) \otimes \vec{J}_2(x_2).
+\end{equation}
+This last assertion can be easily checked with small matrices $A$ and $B$.
+
+Sometimes we see the commutation relation
+\begin{equation}\label{s10e8}
+[J_{1i}, J_{2j}] = 0.
+\end{equation}
+It should be interpreted as
+\begin{equation}\label{s10e9}
+[J_{1i} \otimes I_2, I_1 \otimes J_{2j}] = 0.
+\end{equation}
+It is true because
+\begin{eqnarray*}
+[J_{1i} \otimes I_2, I_1 \otimes J_{2j}](x) &=&
+(J_{1i} \otimes I_2)(I_1 \otimes J_{2j})(x) - 
+(I_1 \otimes J_{2j})(J_{1i} \otimes I_2)(x) \\
+&=& (J_{i1}\otimes I_2)(x_1 \otimes J_{2j}(x_2)) - (I_1\otimes J_{2j})
+(J_{1i}(x_1) \otimes x_2) \\
+&=& J_{1i}(x_1) \otimes J_{2j}(x_2) - J_{1i}(x_1) \otimes J_{2j}(x_2) \\
+&=& 0
+\end{eqnarray*}
+The commutation relation
+\begin{equation}\label{s10e10}
+[J_1^2, J_2^2] = 0
+\end{equation}
+should also be interpreted as
+\begin{equation}\label{s10e11}
+[J_1^2 \otimes I_2, I_1 \otimes J_2^2] = 0
+\end{equation}
+and is proved exactly like the way we proved \eqref{s10e8}.
+
+Now consider the operator
+\begin{equation}\label{s10e12}
+J^2 = (\vec{J} \otimes I_2 + I_1 \otimes\vec{J}_2)^2.
+\end{equation}
+We observe that
+\begin{eqnarray*}
+J^2(x) &=& (\vec{J}_1 \otimes I_2 + I_1 \otimes\vec{J}_2)
+(\vec{J}_1(x_1) \otimes x_2 + x_1 \otimes \vec{J}_2(x_2) \\
+&=& J_1^2(x_1) \otimes x_2 + \vec{J}_1(x_1) \otimes \vec{J}_2(x_2) + 
+\vec{J}_1(x_1) \otimes \vec{J}_2(x_2) + x_1 \otimes J_2^2(x_2) \\
+&=& J_1^2(x_1) \otimes x_2 + 2\vec{J}_1(x_1) \otimes \vec{J}_2(x_2) + 
+x_1 \otimes J_2^2(x_2) \\
+&=& (J_1^2 \otimes I_2 + 2\vec{J}_1 \otimes \vec{J}_2 + I_1 \otimes J_2^2)(x)
+\end{eqnarray*}
+so that
+\begin{equation}\label{s10e13}
+J^2 =(J_1^2 \otimes I_2 + 2\vec{J}_1 \otimes \vec{J}_2 + I_1 \otimes J_2^2).
+\end{equation}
+
+The components of $\vec{J}$ satisfy the commutation relations \eqref{s10e5},
+because of which we have
+\begin{equation}\label{s10e14}
+[J^2, J_z] = 0.
+\end{equation}
+We will now prove
+\begin{prop}\label{s10p2}
+\begin{eqnarray}
+[J^2, J_{1i} \otimes I_2] &=& 0\label{s10e15}  \\
+{}[J^2, I_1 \otimes J_{2i}] &=& 0\label{s10e16}
+\end{eqnarray}
+\end{prop}
+\begin{proof}
+From equation \eqref{s10e13},
+\[
+[J^2, J_{1i} \otimes I_2] = [J_1^2 \otimes I_2, J_{1i} \otimes I_2] + 
+2[\vec{J}_1 \otimes \vec{J}_2, J_{1i} \otimes I_2] + 
+[I_1 \otimes J_2^2, J_{1i} \otimes I_2].
+\]
+The first commutator on the rhs is zero because $[J_1^2, J_{1i}] = 0$ for 
+all $i = 1, 2, 3$. The third commutator on the rhs is zero because of 
+\eqref{s10e9}. Therefore,
+\begin{equation}\label{s10e17}
+[J^2, J_{1i} \otimes I_2] = 2\sum_{j,k}[J_{1j} \otimes J_{2k}, J_{1i} 
+\otimes I_2].
+\end{equation}
+Consider
+\begin{eqnarray*}
+[J_{1j} \otimes J_{2k}, J_{1i} \otimes I_2](x) &=& 
+(J_{1j} \otimes J_{2k})(J_{1i} \otimes I_2)(x) -  \\
+& & (J_{1i} \otimes I_2)((J_{1j} \otimes J_{2k})(x)  \\
+&=& (J_{1j} \otimes J_{2k})(J_{1i}(x_1) \otimes x_2) - \\
+& & (J_{1i} \otimes I_2)(J_{1j}(x_1) \otimes J_{2k}(x_2) \\
+&=& J_{1j}J_{1i}(x_1)\otimes J_{2k}(x_2)-J_{1i}J_{1j}(x_1)\otimes J_{2k}(x_2) \\
+&=& [J_{1j}, J_{1i}](x_1) \otimes J_{2k}(x_2) \\
+&=& i\hslash\epsilon_{jil}J_{1l}(x_1) \otimes J_{2k}(x_2)
+\end{eqnarray*}
+We will now explicity write the nine terms on the rhs of \eqref{s10e17}.
+\begin{eqnarray*}
+-\frac{i}{\hslash}[J^2, J_{1i} \otimes I_2](x) &=&  
+ \epsilon_{1il}J_{1l}(x_1) \otimes J_{21}(x_2) + \\
+& & \epsilon_{1il}J_{1l}(x_1) \otimes J_{22}(x_2) + \\
+& & \epsilon_{1il}J_{1l}(x_1) \otimes J_{23}(x_2) + \\
+& & \epsilon_{2il}J_{1l}(x_1) \otimes J_{21}(x_2) + \\
+& & \epsilon_{2il}J_{1l}(x_1) \otimes J_{22}(x_2) + \\
+& & \epsilon_{2il}J_{1l}(x_1) \otimes J_{23}(x_2) + \\
+& & \epsilon_{3il}J_{1l}(x_1) \otimes J_{21}(x_2) + \\
+& & \epsilon_{3il}J_{1l}(x_1) \otimes J_{22}(x_2) + \\
+& & \epsilon_{3il}J_{1l}(x_1) \otimes J_{23}(x_2) 
+\end{eqnarray*}
+Note that each term on the rhs is really a summation over $l$. Writing the
+terms of the sum, after taking into account the properties of the Levi-Civita
+tensor, we get
+\begin{eqnarray*}
+-\frac{i}{\hslash}[J^2, J_{1i} \otimes I_2](x) &=&  
+    \epsilon_{1i2}J_{12}(x_1) \otimes J_{21}(x_2) + 
+    \epsilon_{1i3}J_{13}(x_1) \otimes J_{21}(x_2)\\
+& & \epsilon_{1i2}J_{12}(x_1) \otimes J_{22}(x_2) + 
+    \epsilon_{1i3}J_{13}(x_1) \otimes J_{22}(x_2)\\
+& & \epsilon_{1i2}J_{12}(x_1) \otimes J_{23}(x_2) + 
+    \epsilon_{1i3}J_{13}(x_1) \otimes J_{23}(x_2)\\
+& & \epsilon_{2i1}J_{11}(x_1) \otimes J_{21}(x_2) + 
+    \epsilon_{2i3}J_{13}(x_1) \otimes J_{21}(x_2) \\
+& & \epsilon_{2i1}J_{11}(x_1) \otimes J_{22}(x_2) + 
+    \epsilon_{2i3}J_{13}(x_1) \otimes J_{22}(x_2) \\
+& & \epsilon_{2i1}J_{11}(x_1) \otimes J_{23}(x_2) + 
+    \epsilon_{2i3}J_{13}(x_1) \otimes J_{23}(x_2)\\
+& & \epsilon_{3i1}J_{11}(x_1) \otimes J_{21}(x_2) + 
+    \epsilon_{3i2}J_{12}(x_1) \otimes J_{21}(x_2)\\
+& & \epsilon_{3i1}J_{11}(x_1) \otimes J_{22}(x_2) + 
+    \epsilon_{3i2}J_{12}(x_1) \otimes J_{22}(x_2)\\
+& & \epsilon_{3i1}J_{11}(x_1) \otimes J_{23}(x_2) + 
+    \epsilon_{3i2}J_{12}(x_1) \otimes J_{23}(x_2)
+\end{eqnarray*}
+{\color{red}Incomplete.}
+
+\end{proof}
+
+From equations \eqref{s10e9} and \eqref{s10e11}, the operators $J_{1z} \otimes
+I_2, I_1 \otimes J_{2z}, J_1^2 \otimes I_2$ and $I_1 \otimes J_2^2$ all 
+commute with each other. Since $\vec{J}$ is an angular momemtum ope
 
 \bibliographystyle{plain}
 \bibliography{am}
