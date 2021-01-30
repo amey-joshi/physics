@@ -1265,7 +1265,131 @@ Without loss of generality, choose $i=3$, so that the rhs simplifies to
 
 From equations \eqref{s10e9} and \eqref{s10e11}, the operators $J_{1z} \otimes
 I_2, I_1 \otimes J_{2z}, J_1^2 \otimes I_2$ and $I_1 \otimes J_2^2$ all 
-commute with each other. Since $\vec{J}$ is an angular momemtum ope
+commute with each other. From equations \eqref{s10e14}, \eqref{s10e15} and
+\eqref{s10e16} we see that the operators $J^2, J_z, J_1^2 \otimes I_2$ and 
+$I_1 \times J_2^2$ also commute with each other. Therefore, one can express
+the eigenstates of the direct product of two systems as
+\begin{enumerate}
+\item Simultaneous eigenstates $x_{j_1,j_2;m_1,m_2}$ of $J_1^2 \otimes I_2, 
+I_1 \otimes J_2^2, J_{1z} \otimes I_2, I_2 \otimes J_{2z}$ \emph{or}
+\item Simultaneous eigenstates $y_{j_1,j_2;j,m}$ of $J^2, J_z, J_1^2 \otimes 
+I_2, I_1 \otimes J_2^2$.
+\end{enumerate} 
+
+They have the following properties. Often times $j_1, j_2$ are understood
+and suppressed from the symbols of the states. Thus, we denote $y_{j_1,j_2;j,m}$
+as $y_{j,m}$ and $x_{j_1,j_2;m_1,m_2}$ as $x_{m_1,m_2}$.
+\begin{eqnarray}
+J_1^2(x_{m_1,m_2}) &=& j_1(j_1 + 1)\hslash^2 x_{m_1,m_2}
+\label{s10e20} \\
+J_2^2(x_{m_1,m_2}) &=& j_2(j_2 + 1)\hslash^2 x_{m_1,m_2}
+\label{s10e21} \\
+J_{1z}(x_{m_1,m_2}) &=& m_1\hslash x_{m_1,m_2}\label{s10e22} \\
+J_{2z}(x_{m_1,m_2}) &=& m_2\hslash x_{m_1,m_2}\label{s10e23} \\
+J^2(y_{j,m}) &=& j(j+1)\hslash^2 y_{j,m} \label{s10e24} \\
+J_z(y_{j,m}) &=& m\hslash y_{j,m} \label{s10e25} \\
+J_1^2(y_{j,m}) &=& j_1(j_1+1)\hslash^2 y_{j,m} \label{s10e26} \\
+J_2^2(y_{j,m}) &=& j_2(j_2+1)\hslash^2 y_{j,m} \label{s10e27} 
+\end{eqnarray}
+
+Since both choices form a complete set of states, we have
+\begin{equation}\label{s10e28}
+y_{j,m} = \sum_{m_1, m_2}x_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m})
+\end{equation}
+The quantities $x_{m_1,m_2}^\ast(y_{j,m})$ are called the \emph{Clebsch-Gordon coefficients}. They have the following properties.
+
+\begin{prop}\label{s10p4}
+$x_{m_1,m_2}^\ast(y_{j,m}) = 0$ unless $m = m_1 + m_2$.
+\end{prop}
+\begin{proof}
+Since $J_z = J_{1z} \otimes I_2 + I_1 \otimes J_{2z}$ so that
+\begin{eqnarray}
+J_z y_{j,m} &=& my_{j,m} \label{s10e29} \\
+(J_{1z}\otimes I_2)(y_{j,m}) &=& \sum_{m_1,m_2}m_1x_{m_1,m_2}x_{m_1,m_2}^\ast
+(y_{j,m}) \label{s10e30} \\
+(I_1\otimes J_{2z})(y_{j,m}) &=& \sum_{m_1,m_2}m_2x_{m_1,m_2}x_{m_1,m_2}^\ast
+(y_{j,m}) \label{s10e31}
+\end{eqnarray}
+We also have
+\begin{equation}\label{s10e32}
+my_{j,m} = m\sum_{m_1,m_2}x_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}).
+\end{equation}
+Therefore,
+\begin{equation}\label{s10e33}
+(J_z - J_{1z} \otimes I_2 - I_1 \otimes J_{1z})(y_{j,m}) = 0
+\end{equation}
+so that
+\begin{equation}\label{s10e34}
+\sum_{m_1,m_2}(m - m_1 - m_2)x_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}) = 0
+\end{equation}
+If $x_{m_1,m_2}$ are non-trivial then either $x_{m_1,m_2}^\ast(y_{j,m}) = 0$
+or $m = m_1 + m_2$.
+\end{proof}
+
+\begin{prop}\label{s10p5}
+For given values of $j_1$ and $j_2$, the space spanned by $x_{m_1,m_2}$ is
+of dimensions $(2j_1 + 1)(2j_2 + 1)$.
+\end{prop}
+\begin{proof}
+For a given value of $j$ there are $2j+1$ values of $m$ ranging from $-j$ to
+$+j$.
+\end{proof}
+
+\begin{prop}\label{s10p6}
+$x_{m_1,m_2}^\ast(x_{j,m}) = 0$ unless $|j_1 - j_2| \le j \le j_1 + j_2$.
+\end{prop}
+\begin{proof}
+Fix $j_1$ and $j_2$ and without loss of generality, let $j_1 \ge j_2$. The
+maximum value of $m_1$ is $j_1$ and that of $m_2$ is $j_2$. The maximum value
+of $m$ is $j_1 + j_2$. Thus the two states $x_{j_1, j_2}$ (in $x_{m_1,m_2}$
+basis) is equivalent to $x_{j_1+j_2, j_1+j_2}$ (in $x_{j,m}$ basis). The minimum
+value if $m_1$ is $-j_1$ and that of $m_2$ is $-j_2$ so that the least value
+$m$ can take is $-j_1-j_2$. For this case, the two states $x_{-j_1,-j_2}$
+and $x_{-j_1-j_2,-j_1-j_2}$ are equivalent.
+
+The next highest value of $m$ is $j_1+j_2-1$. We can get it with $m_1 = j_1$ 
+and $m_2 = j_2 - 1$ or $m_1 = j_1 - 1$ and $m_2 = j_2$. Thus, there are two 
+states for this value of $m$. By the same reasoning it follows that there are
+two states for $m = -j_1 - j_2 + 1$.
+
+The third highest value of $m$ is $j_1 + j_2 - 2$. It can be achieved by
+the states $x_{j_1, j_2 - 2}, x_{j_1 - 1, j_2 - 1}, x_{j_1 - 2, j_2}$. Similarly
+the third lowest value of $m$ can be described by three states.
+
+The degeneracy will be maximum when the term added to $j_1$ is the least, that
+is $-j_2$. This is also the least value of $j$. Thus, when $j_1 \ge j_2$, $
+j_1 - j_2 \le j \le j_1 + j_2$. If $j_1 \le j_2$, we will get $j_2 - j_1 \le
+j \le j_1 + j_2$.
+\end{proof}
+
+\begin{prop}\label{s10p7}
+The Clebsch-Gordon coefficients form a unitary matrix.
+\end{prop}
+\begin{proof}
+From equation \eqref{s10e28}
+\[
+y_{j,m} = \sum_{m_1,m_2} x_{m_1,m_2}x^\ast_{m_1,m_2}(y_{j,m})
+\]
+so that
+\begin{eqnarray*}
+(y_{j^\prime,m^\prime}, y_{j,m}) &=& 
+ \left(\sum_{m_1,m_2}x_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j^\prime,m^\prime}),
+ \sum_{n_1,n_2}x_{n_1,n_2}x_{n_1,n_2}^\ast(y_{j^\prime,m^\prime})\right) \\
+ &=& \sum_{m_1,m_2,n_1,n_2}\overline{(x_{m_1,m_2}, y_{j^\prime,m^\prime})}
+ (x_{n_1,n_2}, y_{j,m}) (x_{m_1,m_2}, x_{n_1,n_2}) \\
+ &=& \sum_{m_1,m_2,n_1,n_2}\overline{(x_{m_1,m_2}, y_{j^\prime,m^\prime})}
+ (x_{n_1,n_2}, y_{j,m}) \delta_{m_1,n_1}\delta_{m_2,n_2} \\
+ &=& \sum_{m_1,m_2}(y_{j^\prime,m^\prime}, x_{m_1,m_2})(x_{m_1,m_2}, y_{j,m}) \\
+ &=& \sum_{m_1,m_2} y_{j^\prime,m^\prime}^\ast(x_{m_1,m_2}) x^\ast_{m_1,m_2}
+ (y_{j,m}).
+\end{eqnarray*}
+Since $y_{j,m}$ are an orthonormal basis we have
+\[
+\sum_{m_1,m_2} y_{j^\prime,m^\prime}^\ast(x_{m_1,m_2}) x^\ast_{m_1,m_2}(y_{j,m})
+= \delta_{jj^\prime}\delta_{mm^\prime}.
+\]
+
+\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{am}
