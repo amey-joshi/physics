@@ -1162,11 +1162,30 @@ because of which we have
 \begin{equation}\label{s10e14}
 [J^2, J_z] = 0.
 \end{equation}
-We will now prove
+We will now prove a few more propositions.
 \begin{prop}\label{s10p2}
 \begin{eqnarray}
-[J^2, J_{1i} \otimes I_2] &=& 0\label{s10e15}  \\
-{}[J^2, I_1 \otimes J_{2i}] &=& 0\label{s10e16}
+[J^2, J_1^2 \otimes I_2] &=& 0 \label{s10e15} \\
+{}[J^2, I_1 \otimes J_2^2] &=& 0 \label{s10e16}
+\end{eqnarray}
+\end{prop}
+\begin{proof}
+From equation \eqref{s10e13}, we have
+\begin{eqnarray*}
+[J^2, J_1^2 \otimes I_2] &=&
+[J_1^2 \otimes I_2 + 2\vec{J}_1 \otimes \vec{J}_2 + I_1 \otimes J_2^2, 
+J_1^2 \otimes I_2] \\
+&=& 0 + 2[\vec{J}_1 \otimes \vec{J}_2, J_1^2 \otimes I_2] + 0 \\
+&=& 2\sum_{j,k}[J_{1j} \otimes J_{2k}, J_1^2 \otimes I_2] \\
+&=& 0
+\end{eqnarray*}
+because $[J_{1j}, J_1^2] = 0$ for all $j$.
+\end{proof}
+
+\begin{prop}\label{s10p3}
+\begin{eqnarray}
+[J^2, J_{1i} \otimes I_2] &\ne 0\label{s10e17}  \\
+{}[J^2, I_1 \otimes J_{2i}] &\ne 0\label{s10e18}
 \end{eqnarray}
 \end{prop}
 \begin{proof}
@@ -1179,7 +1198,7 @@ From equation \eqref{s10e13},
 The first commutator on the rhs is zero because $[J_1^2, J_{1i}] = 0$ for 
 all $i = 1, 2, 3$. The third commutator on the rhs is zero because of 
 \eqref{s10e9}. Therefore,
-\begin{equation}\label{s10e17}
+\begin{equation}\label{s10e19}
 [J^2, J_{1i} \otimes I_2] = 2\sum_{j,k}[J_{1j} \otimes J_{2k}, J_{1i} 
 \otimes I_2].
 \end{equation}
@@ -1231,8 +1250,17 @@ tensor, we get
 & & \epsilon_{3i1}J_{11}(x_1) \otimes J_{23}(x_2) + 
     \epsilon_{3i2}J_{12}(x_1) \otimes J_{23}(x_2)
 \end{eqnarray*}
-{\color{red}Incomplete.}
-
+Without loss of generality, choose $i=3$, so that the rhs simplifies to
+\begin{eqnarray*}
+-\frac{i}{\hslash}[J^2, J_{1i} \otimes I_2](x) &=&  
+    \epsilon_{132}J_{12}(x_1) \otimes J_{21}(x_2) + 
+ \epsilon_{132}J_{12}(x_1) \otimes J_{22}(x_2) + \\
+& & \epsilon_{132}J_{12}(x_1) \otimes J_{23}(x_2) + 
+ \epsilon_{231}J_{11}(x_1) \otimes J_{21}(x_2) + \\
+& & \epsilon_{231}J_{11}(x_1) \otimes J_{22}(x_2) + 
+ \epsilon_{231}J_{11}(x_1) \otimes J_{23}(x_2) \\
+&\ne& 0.
+\end{eqnarray*}
 \end{proof}
 
 From equations \eqref{s10e9} and \eqref{s10e11}, the operators $J_{1z} \otimes
