@@ -1564,6 +1564,78 @@ Similarly, we have
 Equations \eqref{s11e20} and \eqref{s11e21} are the recurrence relations for
 the Clebsch-Gordon coefficients.
 
+\section{Schwinger's oscillator model}\label{s12}
+Consider two uncoupled harmonic oscillators with creation and annihilation
+operators $a_+, a_+^\ast$ and $a_-, a_-^\ast$ with the following properties
+\begin{eqnarray}
+[a_+, a_+^\ast] &=& 1 \label{s12e1} \\
+{}[a_-, a_-^\ast] &=& 1 \label{s12e2} \\
+{}[a_+, a_-^\ast] &=& 1 \label{s12e3} \\
+{}[a_-, a_+^\ast] &=& 1 \label{s12e4} 
+\end{eqnarray}
+and with the `number' operators
+\begin{eqnarray}
+N_+ &=& a_+^\ast a_+ \label{s12e5} \\
+N_- &=& a_-^\ast a_- \label{s12e6}
+\end{eqnarray}
+Clearly, $[N_+, N_-] = 0$ and therefore the two number operators have 
+simultaneous eigenstates $x_{n_+,n_-}$ such that
+\begin{eqnarray}
+N_+(x_{n_+,n_-}) &=& n_+x_{n_+,n_-} \label{s12e7} \\
+N_-(x_{n_+,n_-}) &=& n_-x_{n_+,n_-} \label{s12e8} 
+\end{eqnarray}
+We also have the usual properties
+\begin{eqnarray}
+a_+^\ast(x_{n_+, n_-}) &=& \sqrt{n_+ + 1} x_{n_+ + 1, n_-} \label{s12e9} \\
+a_+(x_{n_+, n_-}) &=& \sqrt{n_+} x_{n_+, n_- - 1} \label{s12e10} \\
+a_-^\ast(x_{n_+, n_-}) &=& \sqrt{n_- + 1} x_{n_+, n_- + 1} \label{s12e11} \\
+a_-(x_{n_+, n_-}) &=& \sqrt{n_-} x_{n_+, n_- - 1} \label{s12e12}
+\end{eqnarray}
+Starting with the vacuum state $x_{0,0}$, defined by its properties
+\begin{eqnarray}
+a_+(x_{0,0}) &=& 0 \label{s12e13} \\
+a_-(x_{0,0}) &=& 0 \label{s12e14} \\
+a_+^\ast(x_{0,0}) &=& x_{1,0} \label{s12e15} \\
+a_-^\ast(x_{0,0}) &=& x_{0,1} \label{s12e16}
+\end{eqnarray}
+we can obtain any state $x_{m,n}$ as
+\begin{equation}\label{s12e17}
+x_{m,n} = \frac{(a_+^\ast)^m (a_-^\ast)^m}{\sqrt{m!}\sqrt{n!}} x_{0,0}.
+\end{equation}
+Define the operators
+\begin{eqnarray}
+J_+ &=& \hslash a_+^\ast a_- \label{s12e18} \\
+J_- &=& \hslash a_-^\ast a_+ \label{s12e19} \\
+J_z &=& \frac{\hslash}{2}(N_+ - N_-) \label{s12e20}
+\end{eqnarray}
+Consider
+\begin{eqnarray}
+[J_z, J_+] &=& J_zJ_+ - J_+J_z \nonumber \\
+ &=& \frac{\hslash^2}{2}(a_+^\ast a_+ a_+^\ast a_- - a_+^\ast a_- a_+^\ast a_+)
+ - \frac{\hslash^2}{2}(a_-^\ast a_- a_+^\ast a_- - a_+^\ast a_- a_-^\ast a_-)
+ \nonumber 	\\
+ &=& \frac{\hslash^2}{2}(a_+^\ast a_+ a_+^\ast a_- - a_+^\ast a_+^\ast a_+a_-)
+  - \frac{\hslash^2}{2}(a_+^\ast a_-^\ast a_- a_- - a_+^\ast a_- a_-^\ast a_-)
+ \nonumber 	\\
+ &=& \frac{\hslash^2}{2}a_+^\ast(a_+ a_+^\ast - a_+^\ast a_+)a_- - 
+ \frac{\hslash^2}{2}a_+^\ast(a_-^\ast a_- - a_-a_-^\ast)a_- \nonumber \\
+ &=& \hslash^2 a_+^\ast a_- \nonumber \\
+ &=& \hslash J_+ \label{s12e21}
+\end{eqnarray}
+Similarly, we can show that
+\begin{equation}\label{s12e22}
+[J_z, J_-] = -\hslash J_-.
+\end{equation}
+Now consider
+\begin{eqnarray}
+[J_+, J_-] &=& \hslash(a_+^\ast a_- a_-^\ast a_+ - a_-^\ast a_+ a_+^\ast a_-)
+	\nonumber \\
+&=&\hslash(a_+^\ast a_+ + a_+^\ast a_-^\ast a_- a_+ - a_+ a_+^\ast a_-^\ast a_-)
+ \nonumber \\
+&=&\hslash(N_+ + [a_+^\ast, a_+]N_-) \nonumber \\
+&=& 2\hslash J_z \label{s12e23}
+\end{eqnarray}
+
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
