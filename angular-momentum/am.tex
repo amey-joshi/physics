@@ -1534,6 +1534,7 @@ x_{j_1, m_1^\prime}^\ast \otimes x_{j_2, m_2^\prime}^\ast
 \nonumber \\
  &=& \delta_{m_1^\prime, m_1+1} \otimes x_{j_2,m_2^\prime} \label{s11e18}
 \end{eqnarray}
+{\color{red}This is wrong. LHS is a number, RHS is not.}
 Similarly,
 \begin{eqnarray}
 x_{m_1^\prime,m_2^\prime}^\ast(I_1 \otimes x_{j_2,m_2+1}) &=&
@@ -1545,12 +1546,46 @@ x_{m_1^\prime,m_2^\prime}^\ast(I_1 \otimes x_{j_2,m_2+1}) &=&
 \end{eqnarray}
 Using equations \eqref{s11e18} and \eqref{s11e19} in \eqref{s11e17} we get
 \begin{eqnarray}
-\sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) &=&
-\sum_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}) \nonumber \\
-& & \left(\sqrt{(j_1-m_1)(j_1+m_1+1)}\delta_{m_1^\prime,m_1+1}\otimes
+\text{lhs} &=&
+ \sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) \nonumber \\
+ &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}) 
+ \left(\sqrt{(j_1-m_1)(j_1+m_1+1)}\delta_{m_1^\prime,m_1+1}\otimes
 x_{j_2,m_2^\prime} \right. + \nonumber \\
 & & \left.\sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_1,m_1^\prime}\otimes
-\delta_{m_2^\prime,m_2+1}\right) \nonumber 
+\delta_{m_2^\prime,m_2+1}\right) \nonumber \\
+&=& \sum_{m_1,m_2}\sqrt{(j_1-m_1)(j_1+m_1+1)}x_{m_1,m_2}^\ast(y_{j,m}) 
+ \delta_{m_1^\prime,m_1+1}\otimes x_{j_2,m_2^\prime} + \nonumber \\
+& & \sum_{m_1,m_2}\sqrt{(j_2-m_2)(j_2+m_2+1)}x_{m_1,m_2}^\ast(y_{j,m})
+  x_{j_1,m_1^\prime}\otimes\delta_{m_2^\prime,m_2+1} \nonumber \\
+&=& \sum_{m_2}\sqrt{(j_1-m_1^\prime+1)(j_1+m_1^\prime)}
+    x_{m_1^\prime-1,m_2}^\ast(y_{j,m}) I_1 \otimes x_{j_2,m_2^\prime} +
+\nonumber \\
+& & \sum_{m_1}\sqrt{(j_2-m_2^\prime+1)(j_2+m_2^\prime)}
+ x_{m_1,m_2^\prime-1}^\ast(y_{j,m}) x_{j_1,m_1^\prime}\otimes I_2 \label{s11e20}
+\end{eqnarray}
+Now consider the term,
+\begin{eqnarray}
+x_{m_1^\prime-1,m_2}^\ast(y_{j,m}) I_1 \otimes x_{j_2,m_2^\prime} 
+&=& (x^\ast_{j_1,m_1^\prime-1}\otimes x_{j_2,m_2}^\ast)(y_{j,m})
+(I_1 \otimes x_{j_2,m_2^\prime}) \nonumber \\
+&=& (x^\ast_{j_1,m_1^\prime-1}\otimes x_{j_2,m_2}^\ast)
+(I_1 \otimes x_{j_2,m_2^\prime})(y_{j,m}) \nonumber \\
+&=& (x_{j_1,m_1^\prime-1} \otimes \delta_{m_2,m_2^\prime})(y_{j,m}) 
+\label{s11e21}
+\end{eqnarray}
+Similarly, we have
+\begin{equation}\label{s11e22}
+x_{m_1,m_2^\prime-1}^\ast(y_{j,m}) x_{j_1,m_1} \otimes I_2 = 
+(\delta_{m_1,m_1^\prime} \otimes x_{j_2,m_2^\prime-1})(y_{j,m})
+\end{equation}
+Substituting \eqref{s11e21} and \eqref{s11e22} in \eqref{s11e20} we get
+\begin{eqnarray}
+\sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) &=&
+\sqrt{(j_1-m_1^\prime+1)(j_1+m_1^\prime)}(x_{j_1,m_1^\prime-1}\otimes I_2)
+(y_{j,m}) +  \nonumber \\
+& & \sqrt{(j_2-m_2^\prime+1)(j_2+m_2^\prime)}(I_1 \otimes x_{j_2,m_2^\prime-1})
+(y_{j,m}) \nonumber \\
+& & \label{s11e23} 
 \end{eqnarray}
 \bibliographystyle{plain}
 \bibliography{am}
