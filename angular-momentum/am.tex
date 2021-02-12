@@ -1481,19 +1481,19 @@ so that
 \begin{eqnarray*}
 J_+(y_{j,m}) &=& \sum_{m_1,m_2}J_+(x_{m_1,m_2})x_{m_1,m_2}^\ast (y_{j,m})
 \\
-\sqrt{(j-m)(j+m+1)}\hslash y_{j,m+1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}
+\sqrt{(j-m)(j+m+1)}\hslash y_{j,m+1}&=&\sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m})
 \\
- & &\left(\sqrt{j_1-m_1)(j_1+m_1+1)}\hslash x_{j_1,m_1+1} \otimes I_2 + \right. 
-\\
- & & \left. I_1 \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}\hslash x_{j_2,m_2+1}\right)
+ & &\left(\sqrt{j_1-m_1)(j_1+m_1+1)}\hslash x_{j_1,m_1+1} \otimes x_{j_2,m_2} 
++ \right.  \\
+ & & \left. x_{j_1,m_1} \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}\hslash x_{j_2,m_2+1}\right)
 \end{eqnarray*}
 or
 \begin{eqnarray}
 \sqrt{(j-m)(j+m+1)}y_{j,m+1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
 \nonumber \\
- & & \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{j_1,m_1+1} \otimes I_2 + \right. 
-\nonumber \\
- & & \left. I_1 \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_2,m_2+1}\right)
+ & & \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{j_1,m_1+1} \otimes x_{j_2,m_2} + 
+\right. \nonumber \\
+ & & \left. x_{j_1,m_1} \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_2,m_2+1}\right)
 \nonumber \\
  & & \label{s11e15}
 \end{eqnarray}
@@ -1501,9 +1501,9 @@ Similarly by considering $J_-(y_{j,m})$ we get
 \begin{eqnarray}
 \sqrt{(j+m)(j-m+1)}y_{j,m-1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
 \nonumber \\
- & & \left(\sqrt{j_1+m_1)(j_1-m_1+1)}x_{j_1,m_1-1} \otimes I_2 + \right. 
+ & & \left(\sqrt{j_1+m_1)(j_1-m_1+1)}x_{j_1,m_1-1} \otimes x_{j_2,m_2}+\right. 
 \nonumber \\
- & & \left. I_1 \otimes \sqrt{(j_2+m_2)(j_2-m_2+1)}x_{j_2,m_2-1}\right)
+ & & \left. x_{j_1,m_1} \otimes \sqrt{(j_2+m_2)(j_2-m_2+1)}x_{j_2,m_2-1}\right)
 \nonumber \\
  & & \label{s11e16}
 \end{eqnarray}
@@ -1512,81 +1512,58 @@ Recall that the Clebsch-Gordon coefficients are $x_{m_1,m_2}^\ast(y_{j,m}) =
 functional $x_{j_1,j_2;m_1^\prime, m_2^\prime}^\ast \equiv x_{m_1^\prime, 
 m_2^\prime}^\ast$ on equation \eqref{s11e15}. This is equivalent to taking an 
 inner product of the equation with $x_{m_1^\prime, m_2^\prime}$. Thus,
-\begin{eqnarray}
-\sqrt{(j-m)(j+m+1)}x^\ast_{m_1^\prime, m_2^\prime}(y_{j,m+1}) &=& 
+\begin{equation}\label{s11e17}
+\begin{split}
+\sqrt{(j-m)(j+m+1)}x^\ast_{m_1^\prime, m_2^\prime}(y_{j,m+1}) =&  \\
  \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
-\nonumber \\
- & & \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{m_1^\prime, m_2^\prime}^\ast
-(x_{j_1,m_1+1} \otimes I_2) + \right. 
-\nonumber \\
- & & \left. \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{m_1^\prime,m_2^\prime}^\ast
-(I_1 \otimes x_{j_2,m_2+1})\right)
-\nonumber \\
- & & \label{s11e17}
-\end{eqnarray}
+ \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{m_1^\prime, m_2^\prime}^\ast
+(x_{j_1,m_1+1} \otimes x_{j_2,m_2}) + \right. & \\
+  \left. \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{m_1^\prime,m_2^\prime}^\ast
+(x_{j_1,m_1} \otimes x_{j_2,m_2+1})\right)
+\end{split}
+\end{equation}
 We now consider the expression
 \begin{eqnarray}
-x_{m_1^\prime, m_2^\prime}^\ast(x_{j_1,m_1+1} \otimes I_2) &=& 
+x_{m_1^\prime, m_2^\prime}^\ast(x_{j_1,m_1+1} \otimes x_{j_2,m_2}) &=& 
 x_{j_1, m_1^\prime}^\ast \otimes x_{j_2, m_2^\prime}^\ast
-(x_{j_1,m_1+1} \otimes I_2)
+(x_{j_1,m_1+1} \otimes x_{j_2,m_2})
 \nonumber \\
- &=& x_{j_1, m_1^\prime}^\ast(x_{j_1,m_1+1}) \otimes x_{j_2, m_2^\prime}
-\nonumber \\
- &=& \delta_{m_1^\prime, m_1+1} \otimes x_{j_2,m_2^\prime} \label{s11e18}
+ &=& x_{j_1, m_1^\prime}^\ast(x_{j_1,m_1+1}) x_{j_2, m_2^\prime}^\ast(
+x_{j_2,m_2}) \nonumber \\
+ &=& \delta_{m_1^\prime, m_1+1} \delta_{m_2^\prime,m_2} \label{s11e18}
 \end{eqnarray}
-{\color{red}This is wrong. LHS is a number, RHS is not.}
 Similarly,
 \begin{eqnarray}
-x_{m_1^\prime,m_2^\prime}^\ast(I_1 \otimes x_{j_2,m_2+1}) &=&
+x_{m_1^\prime,m_2^\prime}^\ast(x_{j_1,m_1} \otimes x_{j_2,m_2+1}) &=&
  x_{j_1,m_1^\prime}^\ast \otimes x_{j_2,m_2^\prime}^\ast
-(I_1 \otimes x_{j_2,m_2+1}) \nonumber \\
- &=& x_{j_1,m_1^\prime} \otimes x_{j_2,m_2^\prime}^\ast(x_{j_2,m_2+1})
+(x_{j_1,m_1} \otimes x_{j_2,m_2+1}) \nonumber \\
+ &=& x_{j_1,m_1^\prime}^\ast(x_{j_1,m_1}) x_{j_2,m_2^\prime}^\ast(x_{j_2,m_2+1})
 \nonumber \\
- &=& x_{j_1,m_1^\prime} \otimes \delta_{m_2^\prime,m_2+1} \label{s11e19}
+ &=& \delta_{m_1^\prime,m_1} \delta_{m_2^\prime,m_2+1} \label{s11e19}
 \end{eqnarray}
 Using equations \eqref{s11e18} and \eqref{s11e19} in \eqref{s11e17} we get
-\begin{eqnarray}
-\text{lhs} &=&
- \sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) \nonumber \\
- &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}) 
- \left(\sqrt{(j_1-m_1)(j_1+m_1+1)}\delta_{m_1^\prime,m_1+1}\otimes
-x_{j_2,m_2^\prime} \right. + \nonumber \\
-& & \left.\sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_1,m_1^\prime}\otimes
-\delta_{m_2^\prime,m_2+1}\right) \nonumber \\
-&=& \sum_{m_1,m_2}\sqrt{(j_1-m_1)(j_1+m_1+1)}x_{m_1,m_2}^\ast(y_{j,m}) 
- \delta_{m_1^\prime,m_1+1}\otimes x_{j_2,m_2^\prime} + \nonumber \\
-& & \sum_{m_1,m_2}\sqrt{(j_2-m_2)(j_2+m_2+1)}x_{m_1,m_2}^\ast(y_{j,m})
-  x_{j_1,m_1^\prime}\otimes\delta_{m_2^\prime,m_2+1} \nonumber \\
-&=& \sum_{m_2}\sqrt{(j_1-m_1^\prime+1)(j_1+m_1^\prime)}
-    x_{m_1^\prime-1,m_2}^\ast(y_{j,m}) I_1 \otimes x_{j_2,m_2^\prime} +
-\nonumber \\
-& & \sum_{m_1}\sqrt{(j_2-m_2^\prime+1)(j_2+m_2^\prime)}
- x_{m_1,m_2^\prime-1}^\ast(y_{j,m}) x_{j_1,m_1^\prime}\otimes I_2 \label{s11e20}
-\end{eqnarray}
-Now consider the term,
-\begin{eqnarray}
-x_{m_1^\prime-1,m_2}^\ast(y_{j,m}) I_1 \otimes x_{j_2,m_2^\prime} 
-&=& (x^\ast_{j_1,m_1^\prime-1}\otimes x_{j_2,m_2}^\ast)(y_{j,m})
-(I_1 \otimes x_{j_2,m_2^\prime}) \nonumber \\
-&=& (x^\ast_{j_1,m_1^\prime-1}\otimes x_{j_2,m_2}^\ast)
-(I_1 \otimes x_{j_2,m_2^\prime})(y_{j,m}) \nonumber \\
-&=& (x_{j_1,m_1^\prime-1} \otimes \delta_{m_2,m_2^\prime})(y_{j,m}) 
-\label{s11e21}
-\end{eqnarray}
-Similarly, we have
-\begin{equation}\label{s11e22}
-x_{m_1,m_2^\prime-1}^\ast(y_{j,m}) x_{j_1,m_1} \otimes I_2 = 
-(\delta_{m_1,m_1^\prime} \otimes x_{j_2,m_2^\prime-1})(y_{j,m})
-\end{equation}
-Substituting \eqref{s11e21} and \eqref{s11e22} in \eqref{s11e20} we get
+{\tiny
 \begin{eqnarray}
 \sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) &=&
-\sqrt{(j_1-m_1^\prime+1)(j_1+m_1^\prime)}(x_{j_1,m_1^\prime-1}\otimes I_2)
-(y_{j,m}) +  \nonumber \\
-& & \sqrt{(j_2-m_2^\prime+1)(j_2+m_2^\prime)}(I_1 \otimes x_{j_2,m_2^\prime-1})
-(y_{j,m}) \nonumber \\
-& & \label{s11e23} 
-\end{eqnarray}
+\sqrt{(j_1-m_1^\prime+1)(j_1+m_1^\prime)}x_{m_1^\prime-1,m_2^\prime}
+     (y_{j,m}) + \nonumber \\
+ & & \sqrt{(j_1-m_2^\prime+1)(j_2+m_2^\prime)}x_{m_1^\prime,m_2^\prime-1}
+     (y_{j,m}) \nonumber \\
+ & & \label{s11e20}
+\end{eqnarray}}
+Similarly, we have
+{\tiny
+\begin{eqnarray}
+\sqrt{(j+m)(j-m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) &=&
+\sqrt{(j_1+m_1^\prime+1)(j_1-m_1^\prime)}x_{m_1^\prime+1,m_2^\prime}
+     (y_{j,m}) + \nonumber \\
+ & & \sqrt{(j_1+m_2^\prime+1)(j_2-m_2^\prime)}x_{m_1^\prime,m_2^\prime+1}
+     (y_{j,m}) \nonumber \\
+ & & \label{s11e21}
+\end{eqnarray}}
+Equations \eqref{s11e20} and \eqref{s11e21} are the recurrence relations for
+the Clebsch-Gordon coefficients.
+
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
