@@ -54,7 +54,7 @@ of an operator $A$ is defined as
 If $\{e_1, \ldots\, e_n\}$ for a basis of $\mathcal{H}$ then
 \begin{equation}\label{s1e4}
 \left(\sum_{i=1}^n e_i e_i^\ast\right)(x) = \sum_{i=1}^n e_i e_i^\ast(x) = 
-\sum_{i=1}^n e_i (x, e_i) = x
+\sum_{i=1}^n e_i (e_i, x) = x
 \end{equation}
 as a result
 \begin{equation}\label{s1e5}
@@ -1388,9 +1388,170 @@ Since $y_{j,m}$ are an orthonormal basis we have
 \sum_{m_1,m_2} y_{j^\prime,m^\prime}^\ast(x_{m_1,m_2}) x^\ast_{m_1,m_2}(y_{j,m})
 = \delta_{jj^\prime}\delta_{mm^\prime}.
 \]
-
 \end{proof}
 
+\section{Recurrence relations for Clebsch-Gordon coefficients}\label{s11}
+We will need expressions for the action of the ladder operators $J_\pm$ on the
+state $x_{m_1,m_2}$ to develop the recurrence relations for the Clebsch-Gordon
+coefficients. We will do so first for the states $x_{j,m}$. Since
+\[
+J_+ = J_x + iJ_y,
+\]
+we have
+\[
+J_+^\ast = J_x^\ast - iJ_y^\ast = J_x - iJ_y
+\]
+so that
+\begin{equation}\label{s11e1}
+J_+^\ast J_+ = J_x^2 + J_y^2 -i[J_x, J_y] = J^2 - J_z^2 + i(i\hslash J_z)
+= J^2 - J_z^2 - \hslash J_z
+\end{equation}
+If 
+\begin{equation}\label{s11e2}
+J_+(x_{j,m}) = c_{j,m}x_{j,m+1}
+\end{equation} 
+then 
+\begin{equation}\label{s11e3}
+(x_{j,m}, J_+^\ast J_+(x_{j,m}) = (J_+(x_{j,m}), J_+(x_{j,m})) = 
+|J_+(x_{j,m})|^2 = |c_{j,m}|^2,
+\end{equation}
+if we assume that $x_{j,m+1}$ is normalised. If we substitute \eqref{s11e1}
+into the lhs of \eqref{s11e3} then we get
+\begin{eqnarray}
+(x_{j,m}, J_+^\ast J_+(x_{j,m})) &=& 
+ (x_{j,m}, (j(j+1) - m^2 - m)x_{j,m})\hslash^2 \nonumber \\
+ &=& (j(j+1) - m^2 - m)\hslash^2 \label{s11e4} 
+\end{eqnarray}
+so that we have
+\begin{equation}\label{s11e5}
+c_{j,m} = \sqrt{j(j+1)-m^2-m}\hslash.
+\end{equation}
+We choose $c_{j,m}$ to be positive by convention. That is its phase is $0$.
+Thus, we have
+\begin{eqnarray}
+J_+(x_{j,m}) &=& \sqrt{j(j+1)-m^2-m}\hslash x_{j,m+1} \nonumber \\
+ &=& \sqrt{(j-m)(j+m+1)}\hslash x_{j,m+1} \label{s11e6}
+\end{eqnarray}
+Similarly, we have
+\begin{eqnarray}
+J_-(x_{j,m}) &=& \sqrt{j(j+1)-m^2+m}\hslash x_{j,m-1} \nonumber \\
+ &=& \sqrt{(j+m)(j-m+1)}\hslash x_{j,m-1} \label{s11e7}
+\end{eqnarray}
+The ladder operators on the space $\mathcal{H}_1 \otimes \mathcal{H}_2$ are
+defined as
+\begin{eqnarray}
+J_+ &=& J_{1+} \otimes I_2 + I_1 \otimes J_{2+} \label{s11e8} \\
+J_- &=& J_{1-} \otimes I_2 + I_1 \otimes J_{2-}. \label{s11e9}
+\end{eqnarray}
+Now,
+\begin{equation}\label{s11e10}
+x_{m_1,m_2} \equiv x_{j_1,m_1;j_2,m_2} = x_{j_1,m_1} \otimes x_{j_2,m_2}
+\end{equation}
+so that
+\begin{eqnarray}
+J_+(x_{m_1,m_2}) &=&
+ J_{1+}(x_{j_1,m_1}) \otimes I_2 + I_1 \otimes J_{2+}(x_{j_2,m_2}) \nonumber \\
+ &=& \sqrt{(j_1-m_1)(j_1+m_1+1)}\hslash x_{j_1,m_1+1} \otimes I_2 + \nonumber \\
+ & &I_1 \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}\hslash x_{j_2,m_2+1}.\label{s11e11}
+\end{eqnarray}
+Similarly,
+\begin{eqnarray}
+J_-(x_{m_1,m_2})
+ &=& \sqrt{(j_1+m_1)(j_1-m_1+1)}\hslash x_{j_1,m_1-1} \otimes I_2 + \nonumber \\
+ & &I_1 \otimes \sqrt{(j_2+m_2)(j_2-m_2+1)}\hslash x_{j_2,m_2-1}.\label{s11e12}
+\end{eqnarray}
+Recall that the state $x_{j_1,m_1;j_2,m_2}$ is an abbreviation for $x_{j_1,m_1}
+\otimes x_{j_2,m_2}$ and we have studied the effect of the ladder operators on
+$x_{j,m}$. The ladder operators on $\mathcal{H}_1 \otimes \mathcal{H}_2$ are
+also defined as
+\begin{equation}\label{s11e13}
+J_{\pm} = J_x \pm iJ_y
+\end{equation}
+where the operators $J_x$ and $J_y$ are defined on $\mathcal{H}_1 \otimes 
+\mathcal{H}_2$. Therefore,
+\begin{equation}\label{s11e14}
+J\pm(x_{j_1,j_2;j,m}) \equiv J_\pm(x_{j,m}) = 
+\sqrt{(j \mp m)(j \pm m + 1)}\hslash x_{j,m}.
+\end{equation}
+Recall the definition \eqref{s10e28} of the Clebsch-Gordon coefficients
+\[
+y_{j,m} = \sum_{m_1, m_2}x_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m})
+\]
+so that
+\begin{eqnarray*}
+J_+(y_{j,m}) &=& \sum_{m_1,m_2}J_+(x_{m_1,m_2})x_{m_1,m_2}^\ast (y_{j,m})
+\\
+\sqrt{(j-m)(j+m+1)}\hslash y_{j,m+1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}
+\\
+ & &\left(\sqrt{j_1-m_1)(j_1+m_1+1)}\hslash x_{j_1,m_1+1} \otimes I_2 + \right. 
+\\
+ & & \left. I_1 \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}\hslash x_{j_2,m_2+1}\right)
+\end{eqnarray*}
+or
+\begin{eqnarray}
+\sqrt{(j-m)(j+m+1)}y_{j,m+1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
+\nonumber \\
+ & & \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{j_1,m_1+1} \otimes I_2 + \right. 
+\nonumber \\
+ & & \left. I_1 \otimes \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_2,m_2+1}\right)
+\nonumber \\
+ & & \label{s11e15}
+\end{eqnarray}
+Similarly by considering $J_-(y_{j,m})$ we get
+\begin{eqnarray}
+\sqrt{(j+m)(j-m+1)}y_{j,m-1} &=& \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
+\nonumber \\
+ & & \left(\sqrt{j_1+m_1)(j_1-m_1+1)}x_{j_1,m_1-1} \otimes I_2 + \right. 
+\nonumber \\
+ & & \left. I_1 \otimes \sqrt{(j_2+m_2)(j_2-m_2+1)}x_{j_2,m_2-1}\right)
+\nonumber \\
+ & & \label{s11e16}
+\end{eqnarray}
+Recall that the Clebsch-Gordon coefficients are $x_{m_1,m_2}^\ast(y_{j,m}) = 
+(x_{m_1,m_2}, y_{j,m})$. To get a recurrence relation for them, apply the 
+functional $x_{j_1,j_2;m_1^\prime, m_2^\prime}^\ast \equiv x_{m_1^\prime, 
+m_2^\prime}^\ast$ on equation \eqref{s11e15}. This is equivalent to taking an 
+inner product of the equation with $x_{m_1^\prime, m_2^\prime}$. Thus,
+\begin{eqnarray}
+\sqrt{(j-m)(j+m+1)}x^\ast_{m_1^\prime, m_2^\prime}(y_{j,m+1}) &=& 
+ \sum_{m_1,m_2}x_{m_1,m_2}^\ast (y_{j,m}) 
+\nonumber \\
+ & & \left(\sqrt{j_1-m_1)(j_1+m_1+1)}x_{m_1^\prime, m_2^\prime}^\ast
+(x_{j_1,m_1+1} \otimes I_2) + \right. 
+\nonumber \\
+ & & \left. \sqrt{(j_2-m_2)(j_2+m_2+1)}x_{m_1^\prime,m_2^\prime}^\ast
+(I_1 \otimes x_{j_2,m_2+1})\right)
+\nonumber \\
+ & & \label{s11e17}
+\end{eqnarray}
+We now consider the expression
+\begin{eqnarray}
+x_{m_1^\prime, m_2^\prime}^\ast(x_{j_1,m_1+1} \otimes I_2) &=& 
+x_{j_1, m_1^\prime}^\ast \otimes x_{j_2, m_2^\prime}^\ast
+(x_{j_1,m_1+1} \otimes I_2)
+\nonumber \\
+ &=& x_{j_1, m_1^\prime}^\ast(x_{j_1,m_1+1}) \otimes x_{j_2, m_2^\prime}
+\nonumber \\
+ &=& \delta_{m_1^\prime, m_1+1} \otimes x_{j_2,m_2^\prime} \label{s11e18}
+\end{eqnarray}
+Similarly,
+\begin{eqnarray}
+x_{m_1^\prime,m_2^\prime}^\ast(I_1 \otimes x_{j_2,m_2+1}) &=&
+ x_{j_1,m_1^\prime}^\ast \otimes x_{j_2,m_2^\prime}^\ast
+(I_1 \otimes x_{j_2,m_2+1}) \nonumber \\
+ &=& x_{j_1,m_1^\prime} \otimes x_{j_2,m_2^\prime}^\ast(x_{j_2,m_2+1})
+\nonumber \\
+ &=& x_{j_1,m_1^\prime} \otimes \delta_{m_2^\prime,m_2+1} \label{s11e19}
+\end{eqnarray}
+Using equations \eqref{s11e18} and \eqref{s11e19} in \eqref{s11e17} we get
+\begin{eqnarray}
+\sqrt{(j-m)(j+m+1)}x_{m_1^\prime,m_2^\prime}^\ast(y_{j,m+1}) &=&
+\sum_{m_1,m_2}x_{m_1,m_2}^\ast(y_{j,m}) \nonumber \\
+& & \left(\sqrt{(j_1-m_1)(j_1+m_1+1)}\delta_{m_1^\prime,m_1+1}\otimes
+x_{j_2,m_2^\prime} \right. + \nonumber \\
+& & \left.\sqrt{(j_2-m_2)(j_2+m_2+1)}x_{j_1,m_1^\prime}\otimes
+\delta_{m_2^\prime,m_2+1}\right) \nonumber 
+\end{eqnarray}
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
