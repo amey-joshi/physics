@@ -1600,7 +1600,8 @@ a_-^\ast(x_{0,0}) &=& x_{0,1} \label{s12e16}
 \end{eqnarray}
 we can obtain any state $x_{m,n}$ as
 \begin{equation}\label{s12e17}
-x_{m,n} = \frac{(a_+^\ast)^m (a_-^\ast)^m}{\sqrt{m!}\sqrt{n!}} x_{0,0}.
+x_{n_+,n_-} = \frac{(a_+^\ast)^{n_+}(a_-^\ast)^{n_-}}{\sqrt{n_+!}\sqrt{n_- !}} 
+x_{0,0}.
 \end{equation}
 Define the operators
 \begin{eqnarray}
@@ -1705,6 +1706,167 @@ J^2(x_{n_+,n_-}) = \hslash j(j+1)x_{n_+,n_-}.
 \end{equation}
 Observe the similarity with equations \eqref{s11e14}, \eqref{s10e29} and
 \eqref{s10e24}.
+
+\section{Representation of rotation operator}\label{s13}
+The operator representing a rotation of the system by an angle $\phi$ about
+an axis along $\vec{e}_n$ is
+\begin{equation}\label{s13e1}
+D(R) = \exp\left(-\frac{i\vec{J}\cdot\vec{e}_n\phi}{\hslash}\right).
+\end{equation}
+In the space with basis $x_{j,m}$, its matrix elements are
+\begin{equation}\label{s13e2}
+D^{j_1, j_2}_{m_1, m_2}(R) = x^\ast_{j_1,m_1}(D(R)(x_{j_2,m_2})).
+\end{equation}
+If $j_1 = j_2 = j$, we write the above equation as
+\begin{equation}\label{s13e3}
+D^j_{m_1,m_2}(R) = x^\ast_{j, m_1} (D(R)(x_{j_2,m_2})).
+\end{equation}
+$D^{j}_{m_1,m_2}$ are called Wigner rotation functions. If we represent the
+rotation with the three Euler angles then, from equation \eqref{s6e6}
+\begin{equation}\label{s13e4}
+D(R) = \exp\left(-i\frac{J_z\alpha}{\hslash}\right)
+\exp\left(-i\frac{J_y\beta}{\hslash}\right)
+\exp\left(-i\frac{J_z\gamma}{\hslash}\right)
+\end{equation}
+so that
+\begin{equation}\label{s13e5}
+D^j_{m_1,m_2} = x^\ast_{j,m_1}\exp\left(-i\frac{J_z\alpha}{\hslash}\right)
+\exp\left(-i\frac{J_y\beta}{\hslash}\right)
+\exp\left(-i\frac{J_z\gamma}{\hslash}\right) x_{j,m_2}.
+\end{equation}
+Now,
+\begin{equation}\label{s13e6}
+\exp\left(-i\frac{J_z\gamma}{\hslash}\right) x_{j,m_2} = e^{-im_2\gamma}
+x_{j,m_2}
+\end{equation}
+and
+\begin{equation}\label{s13e7}
+\exp\left(+i\frac{J_z\alpha}{\hslash}\right) x_{j,m_1} = e^{+im_1\alpha}
+x_{j,m_1} \Rightarrow x^\ast_{j,m_1}\exp\left(-i\frac{J_z\alpha}{\hslash}\right)
+ = e^{-im_1\alpha}x_{j,m_1}^\ast
+\end{equation}
+so that \eqref{s13e5} becomes
+\begin{equation}\label{s13e8}
+D^j_{m_1,m_2} = e^{-im_1\alpha - im_2\gamma}x_{j,m_1}^\ast 
+\exp\left(-i\frac{J_y\beta}{\hslash}\right) x_{j,m_2}.
+\end{equation}
+We now define
+\begin{equation}\label{s13e9}
+d^j_{m_1,m_2}(\beta)=x_{j,m_1}^\ast \exp\left(-i\frac{J_y\beta}{\hslash}\right) 
+x_{j,m_2}
+\end{equation}
+so that
+\begin{equation}\label{s13e10}
+D^j_{m_1,m_2} = e^{-im_1\alpha - im_2\gamma} d^j_{m_1,m_2}(\beta).
+\end{equation}
+The complexity of computing the Wigner rotation function thus reduces to 
+computing $d^j_{m_1, m_2}(\beta)$.
+
+We will use Schwinger's formalism developed in section \ref{s12} to compute
+$d^j_{m_1,m_2}(\beta)$. When we use the Euler angle notation, the factors in
+$J_z$ introduce only a phase. Therefore, to keep notation simple, we will 
+assume that $\alpha = \gamma = 0$ and consider
+\begin{equation}\label{s13e11}
+D(R) = D(0, \beta, 0) = \exp\left(-\frac{iJ_y\beta}{\hslash}\right).
+\end{equation}
+Under this operation, a state $x_{j, m}$ changes to
+\begin{equation}\label{s13e12}
+D(R)(x_{j, m}) = e^{iJ_y\beta/\hslash} x_{j,m},
+\end{equation}
+and the operators change to
+\begin{eqnarray}
+D(R) a_\pm D^{-1}(R) &=& e^{-iJ_y\beta/\hslash}a_\pm 
+e^{iJ_y\beta/\hslash} \label{s13e13} \\
+D(R) a_\pm^\ast D^{-1}(R) &=& e^{-iJ_y\beta/\hslash}a_\pm^\ast 
+e^{iJ_y\beta/\hslash} \label{s13e14}
+\end{eqnarray}
+By following a method similar to the one used to get \eqref{s4e27} and 
+\eqref{s4e28} we get
+\begin{eqnarray}
+D(R)a^\ast_+ D^{-1}(R) &=& a_+^\ast\cos\left(\frac{\beta}{2}\right) + 
+a_-^\ast\sin\left(\frac{\beta}{2}\right) \label{s13e15} \\
+D(R)a^\ast_- D^{-1}(R) &=& a_-^\ast\cos\left(\frac{\beta}{2}\right) - 
+a_+^\ast\sin\left(\frac{\beta}{2}\right) \label{s13e16}
+\end{eqnarray}
+From equations \eqref{s12e17}, \eqref{s12e31} and \eqref{s12e32} we get
+\begin{equation}\label{s13e17}
+x_{j,m} = \frac{(a^\ast_+)^{j+m}(a^\ast_-)^{j-m}}{\sqrt{(j+m)!(j-m)!}}x_{0,0}
+\end{equation}
+so that
+\begin{eqnarray}
+D(R)(x_{j,m}) &=& \frac{1}{\sqrt{(j+m)!(j-m)!}} \nonumber \\
+& & \left(D(R)a^\ast_+ D^{-1}(R)\right)^{j+m}
+\left(D(R)a^\ast_- D^{-1}(R)\right)^{j-m} \nonumber \\
+& & D(R)(x_{0,0}) \label{s13e18}
+\end{eqnarray}
+From equation \eqref{s13e15}
+\begin{equation}\label{s13e19}
+\left(D(R)a^\ast_+ D^{-1}(R)\right)^{j+m} = \sum_{r=0}^{j+m}
+\binom{j+m}{r} (a_+^\ast)^r\cos^r\left(\frac{\beta}{2}\right)
+(a_-^\ast)^{j+m-r}\sin^{j+m-r}\left(\frac{\beta}{2}\right).
+\end{equation}
+Similarly
+\begin{equation}\label{s13e20}
+\left(D(R)a^\ast_- D^{-1}(R)\right)^{j-m} = \sum_{s=0}^{j-m}
+\binom{j-m}{s} (a_-^\ast)^s\cos^s\left(\frac{\beta}{2}\right)
+(-a_+^\ast)^{j-m-s}\sin^{j-m-s}\left(\frac{\beta}{2}\right).
+\end{equation}
+Their product is the expression
+\begin{eqnarray*}
+& & \sum_{r=0}^{j+m}\sum_{s=0}^{j-m}\binom{j+m}{r}\binom{j-m}{s} 
+\left(\cos\left(\frac{\beta}{2}\right)\right)^{r+s}
+\left(\sin\left(\frac{\beta}{2}
+\right)\right)^{2j-r-s} \\
+& & (a_+^\ast)^r(a_-^\ast)^{j+m-r+s}(-a_+^\ast)^{j-m-s}.
+\end{eqnarray*}
+The operators $a_+^\ast$ and $a_-^\ast$ commute. It allows us to write equation 
+\eqref{s13e18} as
+\begin{eqnarray}
+D(R)(x_{j,m}) &=& \frac{1}{\sqrt{(j+m)!(j-m)!}} \nonumber \\
+& & \sum_{r=0}^{j+m}\sum_{s=0}^{j-m}\binom{j+m}{r}\binom{j-m}{s} 
+\left(\cos\left(\frac{\beta}{2}\right)\right)^{r+s}
+\left(\sin\left(\frac{\beta}{2}
+\right)\right)^{2j-r-s} \nonumber \\
+& & (a_+^\ast)^{j-m-s+r}(a_-^\ast)^{j+m-r+s}(-1)^{j-m-s} \nonumber \\
+& & D(R)(x_{0,0}) \label{s13e21}
+\end{eqnarray}
+There is no $y$ component of $\vec{J}$ in the ground state so that, after
+expanding the exponential, equation \eqref{s13e12} gives
+\begin{equation}\label{s13e22}
+D(R)x_{0,0} = x_{0,0}
+\end{equation}
+so that
+\begin{eqnarray}
+D(R)(x_{j,m}) &=& \frac{1}{\sqrt{(j+m)!(j-m)!}} \nonumber \\
+& & \sum_{r=0}^{j+m}\sum_{s=0}^{j-m}\binom{j+m}{r}\binom{j-m}{s} 
+\left(\cos\left(\frac{\beta}{2}\right)\right)^{r+s}
+\left(\sin\left(\frac{\beta}{2}
+\right)\right)^{2j-r-s} \nonumber \\
+& & (a_+^\ast)^{j-m-s+r}(a_-^\ast)^{j+m-r+s}(-1)^{j-m-s}(x_{0,0}) 
+\label{s13e23}
+\end{eqnarray}
+
+Now, $D(R)(x_{j,m}) = I D(R)(x_{j,m})$, where $I$ is the identity operator.
+Using the completeness property of the $\{x_{j,m}\}$ we have
+\begin{equation}\label{s13e24}
+I = \sum_{m^\prime} x_{j,m^\prime} x_{j,m^\prime}^\ast.
+\end{equation}
+Therefore,
+\begin{equation}\label{s13e25}
+D(R)(x_{j,m}) = \sum_{m^\prime} x_{j,m^\prime} x_{j,m^\prime}^\ast
+D(R)(x_{j,m}) = \sum_{m^\prime} D^j_{m,m^\prime} x_{j,m^\prime}.
+\end{equation}
+For our choice of rotation, $\alpha = \gamma = 0$ and $D^j_{m, m^\prime}
+= d^j_{m, m^\prime}$ giving 
+\begin{equation}\label{s13e26}
+D(R)(x_{j,m}) = \sum_{m^\prime} d^j_{m,m^\prime} x_{j,m^\prime}.
+\end{equation}
+Using \eqref{s13e17} we get
+\begin{equation}\label{s13e27}
+D(R)(x_{j,m}) = \sum_{m^\prime} d^j_{m,m^\prime} 
+\frac{(a^\ast_+)^{j+m^\prime}(a^\ast_-)^{j-m^\prime}}
+{\sqrt{(j+m^\prime)!(j-m^\prime)!}}x_{0,0}
+\end{equation}
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
