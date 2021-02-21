@@ -1636,6 +1636,75 @@ Now consider
 &=& 2\hslash J_z \label{s12e23}
 \end{eqnarray}
 
+Recall equation \eqref{s9e15} from which we infer that
+\begin{equation}\label{s12e24}
+J^2 = J_z^2 + \frac{J_x^2 + J_y^2}{2} = J_z^2 + \frac{J_+J_- + J_-J_+}{2}.
+\end{equation}
+In the present context, we define the $J^2$ operator using the extreme lhs and
+extreme rhs of the above equation. That is, we define
+\begin{equation}\label{s12e25}
+J^2 = J_z^2 + \frac{J_+J_- + J_-J_+}{2}.
+\end{equation}
+We also define the total number operator
+\begin{equation}\label{s12e26}
+N = N_+ + N_- = a_+^\ast a_+ + a_-^\ast a_-.
+\end{equation}
+From equation \eqref{s12e25},
+\begin{eqnarray}
+J^2 &=& \frac{\hslash^2}{4}(N_+ - N_-)^2 + \frac{\hslash^2}{2}
+\left(a_+^\ast a_-a_-^\ast a_+ + a_-^\ast a_+a_+^\ast a_-\right) \nonumber \\
+&=& \frac{\hslash^2}{4}(N_+ - N_-)^2 + \frac{\hslash^2}{2}
+\left(a_+^\ast a_+a_-a_-^\ast  + a_-^\ast a_-a_+a_+^\ast \right) \nonumber \\
+&=& \frac{\hslash^2}{4}(N_+ - N_-)^2 + \frac{\hslash^2}{2}
+\left(a_+^\ast a_+a_-^\ast a_- a_+^\ast a_+ + a_-^\ast a_-a_+^\ast a_+ + a_-^\ast a_-\right)
+\nonumber \\
+&=& \frac{\hslash^2}{4}\left((N_+ - N_-)^2 + 2(N_+N_- + N_+ + + N_-N_+ + N_-)
+\right) \nonumber \\
+&=& \frac{\hslash^2}{4}(N_+^2 - N_+N_- - N_-N_+ + N_-^2 + 2N_+N_- +2N_-N_+ + 
+2N_+ + 2N_-) \nonumber \\
+&=& \frac{\hslash^2}{4}\left((N_+ + N_-)^2 + 2(N_+ + N_-)\right) \nonumber \\
+&=& \frac{\hslash^2}{4}(N^2 + 2N) \nonumber \\
+&=& \frac{\hslash^2}{2}N\left(\frac{N}{2} + 1\right) \label{s12e27}
+\end{eqnarray}
+We also confirm that
+\begin{eqnarray}
+J_+(x_{n_+,n_-}) &=& \sqrt{(n_+ + 1)n_-}\hslash
+x_{n_+ + 1, n_- - 1} \label{s12e28} \\
+J_-(x_{n_+,n_-}) &=& \sqrt{n_+(n_- + 1)}\hslash
+x_{n_+ - 1, n_- + 1} \label{s12e29} \\
+J_z(x_{n_+,n_-}) &=& \frac{\hslash}{2}(n_+ - n_-)x_{n_+, n_-} \label{s12e30}
+\end{eqnarray}
+
+From the analysis so far we infer that
+\begin{itemize}
+\item There are two types of particles, `+' and `-'.
+\item $a_+^\ast$ ($a_-^\ast$) creates one quantum of `+' (`-') particles. Their
+adjoints destroy the particles.
+\item $N_+$ ($N_-$) counts the number of `+' (`-') particles.
+\item $J_+$ destroys a `-' particle and creates a `+' particle. Likewise, $J_-$
+destroys a `+' particle and creates a `-' particle.  
+\item $J_z$ counts the signed difference between the number of `+' and `-' 
+particles multiplied by $\hslash/2$. $x_{n_+,n_-}$ is an eigenfunction of $J_z$.
+\end{itemize}
+We now introduce the numbers
+\begin{eqnarray}
+j &=& \frac{n_+ + n_-}{2} \label{s12e31} \\
+m &=& \frac{n_+ - n_-}{2} \label{s12e32}
+\end{eqnarray}
+in terms of which equations \eqref{s12e28} to \eqref{s12e29} become
+\begin{eqnarray}
+J_+(x_{n_+,n_-}) &=& \sqrt{(j-m)(j+m+1)}\hslash
+x_{n_+ + 1, n_- - 1} \label{s12e33} \\
+J_-(x_{n_+,n_-}) &=& \sqrt{(j+m)(j-m+1)}\hslash
+x_{n_+ - 1, n_- + 1} \label{s12e34} \\
+J_z(x_{n_+,n_-}) &=& \hslash m x_{n_+, n_-}. \label{s12e35}
+\end{eqnarray}
+Equation \eqref{s12e27} leads to
+\begin{equation}\label{s12e36}
+J^2(x_{n_+,n_-}) = \hslash j(j+1)x_{n_+,n_-}.
+\end{equation}
+Observe the similarity with equations \eqref{s11e14}, \eqref{s10e29} and
+\eqref{s10e24}.
 \bibliographystyle{plain}
 \bibliography{am}
 \end{document}
