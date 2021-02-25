@@ -1,0 +1,269 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{bm}
+\usepackage{color}
+\numberwithin{equation}{section}
+\let\vec\bm
+\newcommand{\qev}[1]{\langle #1 \rangle} % Quantum mechanical average.
+\newcommand{\eav}[1]{\{ #1 \}}           % Ensemble average.
+\DeclareMathOperator{\Tr}{Tr}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+\title{Entropy and Information}
+\author{Amey Joshi}
+\begin{document}
+\maketitle
+\abstract{This article reviews the various notions of entropy prevalent in
+physics and information theory.}
+\section{Mathematical preliminaries}\label{s1}
+\begin{defn}\label{s1d1}
+The sample space $\Omega$ is the set of all outcomes of an experiment. 
+\end{defn}
+\begin{defn}\label{s1d2}
+A $\sigma$-algebra $\mathcal{F}$ over $\Omega$ is the family of sets with the 
+following properties
+\begin{enumerate}
+\item $\Omega \in \mathcal{F}$.
+\item If $A \in \mathcal{F}$ then so does $A^c$.
+\item If $\{A_n\}$ is a sequence of elements of $\mathcal{F}$ then
+\[
+\bigcup_{n \ge 1} A_n \in \mathcal{F}.
+\]
+\end{enumerate}
+\end{defn}
+\begin{defn}\label{s1d3}
+Members of $\mathcal{F}$ are called measurable sets.
+\end{defn}
+\begin{defn}\label{s1d4}
+The pair $\{\Omega, \mathcal{F}\}$ is called a measurable space.
+\end{defn}
+\begin{defn}\label{s1d5}
+A measure on the measurable space $\{\Omega, \mathcal{F}\}$ is a mapping
+$m: \mathcal{F} \mapsto \mathbf{R}$ with the properties
+\begin{enumerate}
+\item $m(\varnothing) = 0$.
+\item If $A_1, A_2, \ldots$ are disjoint members of $\mathcal{F}$ then
+\[
+m\left(\bigcup_{n \ge 1} A_n \right) = \sum_{n \ge 1}m(A_n).
+\]
+\end{enumerate}
+\end{defn}
+\begin{defn}\label{s1d6}
+The triple $\{\Omega, \mathcal{F}, m\}$ is called a measure space.
+\end{defn}
+\begin{defn}\label{s1d7}
+A probability measure $P$ on a measurable space $\{\Omega, \mathcal{F}\}$ is
+is a measure with the additional property that $P(\Omega) = 1$.
+\end{defn}
+\begin{defn}\label{s1d8}
+The triple $\{\Omega, \mathcal{F}, P\}$ is called a probability space.
+\end{defn}
+\begin{defn}\label{s1d9}
+Let $\{\Omega,\mathcal{F}\}$ be a measurable set. A function $f:\Omega \mapsto
+\mathbf{R}$ is measurable if the set $\{\omega \in \Omega : f(\omega) \le a\}$ 
+is measurable for all $a \in \mathbf{R}$.
+\end{defn}
+\begin{defn}\label{s1d10}
+A random variable is a measurable function on a probability space.
+\end{defn}
+The probability that a random variable $X$ on a probability space $\{\Omega,
+\mathcal{F}, P\}$ takes values lesser than a number $a$ is the probability of
+the set $\{\omega \in \Omega: X(\omega) \le a\}$.
+
+\begin{defn}\label{s1d11}
+The function $F_X: \mathbf{R} \mapsto [0, 1]$ defined by
+\[
+F_X(x) = P(X \le x)
+\]
+is called the distribution function of the random variable $X$.
+\end{defn}
+
+\begin{defn}\label{s1d12}
+A random variable whose range is a countable set is called a discrete
+random variable. Otherwise, it is called a continuous random variable.
+\end{defn}
+
+If $X$ is discrete random variable then one can describe it by specifying the
+probablity that $X$ takes a particular value $x$. The function
+\begin{equation}\label{s1e1}
+p_X(x) = P(X = x)
+\end{equation}
+is called the \emph{probability mass function} of the discrete random variable
+$X$.
+
+If $X$ is a continuous random variable then it can be described by a \emph{
+probability density function} 
+\begin{equation}\label{s1e2}
+\int_a^b p_X(x)dx = P(X \in [a, b]).
+\end{equation}
+
+\section{Information}\label{s2}
+Information revealed by an event is measured by the `degree of surprise' one
+experiences after getting to know that it has occured. This anthropomorphic
+definition can be cast into mathematical terms by noticing that the `degree of
+surprise' associated with an event is inversely proportionate to the 
+probability of the event. We also demand that the information content of two 
+independent events is additive. A function that satisfies these criteria is
+\cite[Lemma in section 1]{renyi1961measures}
+\begin{equation}\label{s2e1}
+h(x) = -\log p(x),
+\end{equation}
+where $p$ is the probability mass function of the random variable $X$. If $X$
+takes values $x_1, x_2, \ldots,$ then the expectation value of $h$ is
+\begin{equation}\label{s2e2}
+H = \sum_{i \ge 1}p(x_i)h(x_i) = -\sum_{i \ge 1}p(x_i)\log p(x_i).
+\end{equation}
+$H$ is called the entropy \cite[section 6 and appendix II]{shannon1948} of the 
+random variable $X$. It is measured in bits if
+the base of the logarithm is $2$, nats if the base is $e$ and hartleys if the
+base is $10$. If $X$ is a continuous random variable with density $p$ then
+its equation \eqref{s2e1} remains unchanged and \eqref{s2e2} is written as
+\begin{equation}\label{s2e3}
+H = -\int p(x)\log p(x)dx.
+\end{equation}
+In this case $H$ is called the \emph{differential entropy} of the continuous 
+random variable $X$.
+
+We will compute the entropy for a few random variables.
+\begin{enumerate}
+\item Bernoulli random variable $X$ that takes a value $1$ with probability $p$
+and $0$ with probability $1 - p$.
+\begin{equation}\label{s2e4}
+H = -p(0)\log p(0) - p(1)\log p(1) = -(1 - p)\log(1 - p) - p\log p.
+\end{equation}
+It is quite common to write $1 - p$ as $q$ so that
+\begin{equation}\label{s2e5}
+H = -q\log q - p\log p.
+\end{equation}
+\item If $X$ is a random variable representing the outcome of a fair die then
+its entropy is
+\begin{equation}\label{s2e6}
+H = -\sum_{i=1}^6 p(X=i)\log p(X=i) = -\log\frac{1}{6} = \log 6.
+\end{equation}
+\item If $X$ is a binomial random variable with parameters $n$ and $p$ then
+\begin{equation}\label{s2e7}
+H = -\sum_{i=0}^n p(X=i)\log p(X=i),
+\end{equation}
+with
+\begin{equation}\label{s2e8}
+p(X=i) = \binom{n}{i}p^i(1 - p)^{n-i}
+\end{equation}
+This sum cannot be expressed in a close form. However, if $n$ is large then
+one can use de Moivre-Laplace theorem to approximate
+\begin{equation}\label{s2e9}
+\binom{n}{i}p^i(1-p)^{n-i} = \frac{1}{\sigma\sqrt{2\pi}}
+\exp\left(-\frac{1}{2}\left(\frac{i - \mu}{\sigma}\right)^2\right),
+\end{equation}
+where
+\begin{eqnarray}
+\mu &=& np \label{s2e10} \\
+\sigma^2 &=& np(1-p) \label{s2e11}
+\end{eqnarray}
+The sum in equation \eqref{s2e7} can be approximated as the integral 
+\begin{equation}\label{s2e12}
+-\frac{1}{\sigma\sqrt{2\pi}}\int_0^\infty 
+\exp\left(-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)
+\left(-\log (\sigma\sqrt{2\pi}) - 
+\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)dx.
+\end{equation}
+Since the integrand is even, we can write it as
+\begin{equation}\label{s2e13}
+H \approx \frac{1}{2\sigma\sqrt{2\pi}}\int_{-\infty}^\infty
+\exp\left(-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)
+\left(\log (\sigma\sqrt{2\pi}) + 
+\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)dx.
+\end{equation}
+If $y = (x - \mu)/\sigma$ then
+\begin{equation}\label{s2e14}
+H \approx \frac{1}{2\sqrt{2\pi}}\int_{-\infty}^\infty e^{-y^2/2}
+\left(\log(\sigma\sqrt{2\pi}) + \frac{y^2}{2}\right)dy.
+\end{equation}
+We now use the standard Gaussian integrals
+\begin{eqnarray}
+\int_{-\infty}^\infty e^{-ax^2}dx &=& \sqrt{\frac{\pi}{a}} \label{s2e15} \\
+\int_{-\infty}^\infty x^2e^{-ax^2}dx &=& \frac{1}{2}\sqrt{\frac{\pi}{a^3}}
+\label{s2e16}
+\end{eqnarray}
+to get
+\begin{equation}\label{s2e17}
+H \approx \frac{\log(\sigma\sqrt{2\pi})}{2} + \frac{1}{4} = 
+\frac{1 + \log (2\pi np(1-p))}{4}.
+\end{equation}
+\item If $X \sim \mathcal{N}(\mu,\sigma)$ then
+\begin{equation}\label{s2e18}
+p(x) = \frac{1}{\sigma\sqrt{2\pi}}
+\exp\left(-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right).
+\end{equation}
+The differential entropy is
+\begin{eqnarray*}
+H &=& -\int_{-\infty}^\infty p(x)\log p(x)dx \\
+ &=& \frac{\log(\sigma\sqrt{2\pi})}{\sigma\sqrt{2\pi}}\int_{-\infty}^\infty
+\exp\left(-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)dx + \\
+ & & \frac{1}{2\sigma\sqrt{2\pi}}
+ \int_{-\infty}^\infty\left(\frac{x - \mu}{\sigma}\right)^2
+\exp\left(-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right)dx \\
+ &=& \log(\sigma\sqrt{2\pi}) + \frac{1}{2}.
+\end{eqnarray*}
+Simplifying further, we get
+\begin{equation}\label{s2e19}
+H = \frac{1 + \log(2\pi\sigma^2)}{2}.
+\end{equation}
+\end{enumerate}
+
+\subsection{Relation with Boltzmann's definition}
+Boltzmann defined entropy of a system as 
+\cite[equation (6), chapter 1]{pathria32statistical}
+\begin{equation}\label{s2e20}
+S = k\log W,
+\end{equation}
+where the constant $k = 1.38 \times 10^{-16}$ erg/K is now called Boltzmann's
+constant and $W$ is the number of microstates corresponding to a given 
+macrostate. Consider a system of $N$ particles such that $n_i$ of them are
+in state $i = 1, \ldots, m$. There are $N!$ permutations of $N$ distinguishable
+objects. Since the rearrangements within a state do not matter,
+\begin{equation}\label{s2e21}
+W = \frac{N!}{\prod_{i=1}^m n_i}.
+\end{equation}
+Now,
+\begin{eqnarray*}
+\log W &=& \log N! - \sum_{i=1}^m \log n_i! \\
+ &=& N\log N - N - \sum_{i=1}^n n_i\log n_i + \sum_{i=1}^m n_i \\
+ &=& -\sum_{i=1}^n \frac{n_i}{N}\log\frac{n_i}{N}.
+\end{eqnarray*}
+where we have used Stirling's approximation $\log N! \approx N\log N - N$ and
+the fact that
+\[
+\sum_{i=1}^m n_i = N.
+\]
+If we define
+\begin{equation}\label{s2e22}
+p_i = \frac{n_i}{N},
+\end{equation}
+as the probability of an object to be in state $i$ then
+\begin{equation}\label{s2e23}
+\log W = -\sum_{i=1}^m p_i \log p_i.
+\end{equation}
+This equation coincides with equation \eqref{s2e1} of the information theoretic
+entropy. Thus, the relation between Boltzmann's thermodynamic entropy and 
+information theoretic entropy is
+\begin{equation}\label{s2e24}
+S = kH.
+\end{equation}
+
+\bibliographystyle{plain}
+\bibliography{re}
+\end{document}
