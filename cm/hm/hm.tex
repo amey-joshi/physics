@@ -318,9 +318,11 @@ On rearranging and writing it in terms or differentials,
 \sum_{i=1}^n(p_i dq_i - p^\ast_i dq^\ast_i) = H^\ast dt - Hdt + dF.
 \end{equation}
 
-The function $F$ in \eqref{s4e14} is called the \emph{generating function}
-and we can choose it to depend on one `old' and one `new' coordinate. Thus,
-the four possibilities are
+The function $F$ in \eqref{s4e14} is called the \emph{generating function}. One
+might think that it depends on all $4n$ variables $q_i, p_i, q_i^\ast, p_i^\ast$
+. However, there are $2n$ equations relating the two. Therefore, only half of
+them are independent. Therefore, we choose it to depend on one `old' and one 
+`new' coordinate. Thus, the four possibilities are
 \begin{eqnarray}
 F = F(q_i, q_i^\ast) \label{s4e16} \\
 F = F(q_i, p_i^\ast) \label{s4e17} \\
@@ -361,6 +363,26 @@ or, using equation \eqref{s4e23}
 \pd{S}{t} + H\left(q_i, \pd{S}{q_i}, t\right) = 0.
 \end{equation}
 This is Hamilton-Jacobi equation.
+
+Before we proceed for a more detailed consideration of the Hamilton-Jacobi
+equation we will remark on why canonical transformations are interesting. If
+we are able to find $q_i^\ast$ such that $H^\ast$ does not depend on any one
+of them then all the conjugate momenta $p_i^\ast$ are constant because
+\begin{equation}\label{s4e28}
+p_i^\ast = \pd{H^\ast}{q_i^\ast} = 0.
+\end{equation}
+If we call the constant momenta
+\begin{equation}\label{s4e29}
+p_i^\ast = \beta_i
+\end{equation}
+then
+\begin{equation}\label{s4e30}
+q_i^\ast = \pd{H^\ast}{p_i^\ast} = \pd{H^\ast}{\beta_i} = \alpha_i,
+\end{equation}
+another constant. As a result,
+\begin{equation}\label{s4e31}
+q_i^\ast(t) = \alpha_i t + q_i^\ast(0).
+\end{equation}
 
 \section{Hamilton-Jacobi equation}\label{s5}
 The Hamilton-Jacobi equation is a first order partial differential equation
