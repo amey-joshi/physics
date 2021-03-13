@@ -188,3 +188,101 @@ generalised velocities and will change across frames of reference. Therefore,
 $T$ should always be calculated with respect to an inertial frame of 
 reference \cite[p. 31]{akr}.
 \end{itemize}
+
+Problems.
+\begin{enumerate}
+\item A uniform rod leans against a wall \cite[Problem 1, chapter 4]{akr}.
+Let $l$ be its length. Its motion is confined to a plane. Its unconstrained
+motion has three degrees of freedom, the position of its centre of mass and
+its orientation. In the present problem, the $x$ coordinate of its end
+touching the wall is constrained to be $0$ and the $y$ coordinate of its 
+end touching the floor is constrained to be $0$. Therefore, one generalised
+coordinate suffices to describe the motion. 
+
+We choose $\theta$ the (smaller) angle made by the rod with the $x$ axis. If
+the rod is in the first quadrant then it makes and angle $\pi -\theta$ with
+the positive $x$ axis.
+
+The centre of the rod is at point $(0, l/2)$ when $\theta = \pi/2$ and it is
+at $(0, l/2)$ when $\theta = 0$. It traces the arc of a circle of radius
+$l/2$ as the rod slides down the path.
+
+The moment of inertia of the rod abouts its centre of mass is $ml^2/12$. 
+Therefore, the rotational kinetic energy is
+\[
+T_r = \frac{I}{2}\dot{\theta}^2 = \frac{m}{24}l^2\dot{\theta}^2
+\]
+The translational kinetic energy of its centre of mass is
+\[
+T_c = \frac{m}{2}v^2 = \frac{m}{8}l^2\dot{\theta}^2
+\]
+The total kinetic energy is 
+\[
+T = \frac{ml^2}{12}\dot{\theta}^2.
+\]
+
+We will now find the potential energy. If $dm$ is the mass element of the
+rod at a height $h$ then
+\[
+dV = gy dm
+\]
+If $\lambda$ be the linear mass density of the rod, $dm = \lambda ds = mds/l$.
+Thus,
+\[
+dV = \frac{mg}{l} yds = \frac{mg}{l}y \sqrt{(dx)^2 + (dy)^2} = 
+\frac{mg}{l}ydy\sqrt{1 + \left(\frac{dx}{dy}\right)^2}.
+\]
+Now the equation of the straight line representing the rod is $y = y_0 -
+\tan\theta x$ so that 
+\[
+\frac{dx}{dy} = \cot\theta
+\]
+so that
+\[
+dV = \frac{mg}{l}\csc\theta ydy
+\]
+or
+\[
+V = \int_{lsin\theta}^0 dV = -\frac{mg}{2}l\sin\theta.
+\]
+Therefore, the Lagrangian is
+\[
+L = \frac{ml^2}{12}\dot{\theta}^2 + \frac{mg}{2}l\sin\theta
+\]
+and the equation of motion is
+\[
+\frac{ml^2}{6}\ddot{\theta} - \frac{mgl}{2}\cos\theta = 0 \Rightarrow
+\frac{l}{3}\ddot{\theta} - g\cos\theta = 0 \Rightarrow \ddot{x} = 
+\frac{3g}{l}\cos\theta.
+\]
+
+\item An old model of the He atom consisted of a fixed nucleus and two
+electrons on the opposite ends of the diameter of the circle centred at
+the nucleus \cite[Problem 3, chapter 4]{akr}. Without the constraints, the
+motion of the two electrons in a plane would have required four coordinates.
+Their constraints are:
+\begin{itemize}
+\item They are always at the opposite ends of a diameter. This means that
+we can consider them to be end of a rigid, weightless rod.
+\item Their centre of mass is fixed at the nucleus. This fixes the two 
+coordinates of their centre of mass.
+\end{itemize}
+This leaves the system with just one degree of freedom. If $\theta$ is the
+angle made by one electron with the positive $x$ axis, the other electron
+makes an angle $\theta + \pi/2$. If $m$ is the mass of the electrons, their
+kinetic energy is
+\[
+T = \frac{m}{2}r^2\dot{\theta}^2 + \frac{m}{2}r^2\dot{\theta}^2 =
+mr^2\dot{\theta}^2.
+\]
+Their potential energy is
+\[
+V = -\frac{2e^2}{r} - \frac{2e^2}{r} = -\frac{4e^2}{r}
+\]
+so that the Lagrangian is
+\[
+L = mr^2\dot{\theta}^2 + \frac{4e^2}{r^2}.
+\]
+The equation of motion is $\ddot{\theta} = 0$ or that $\theta = \alpha t + 
+\beta$, where $\alpha$ and $\beta$ are the initial conditions.
+\end{enumerate}
