@@ -1,0 +1,386 @@
+\chapter{d'Alembert's Principle}\label{c1}
+\section{Beyond Newton's laws}\label{c1s1}
+Newton's programme of classical mechanics has a few limitations.
+\begin{enumerate}
+\item It needs a frame of reference in which Newton's first law is valid.
+\item Newton's second law
+\begin{equation}\label{c1s1e1}
+m\ddot{x} = F_x, m\ddot{y} = F_y, m\ddot{z} = F_z
+\end{equation}
+requires that we use the Cartesian coordinate system. However, the symmetry of
+a few problems suggests that we use other systems. If $q_i$ are the coordinates
+in the other systems then in general,
+\begin{equation}\label{c1s1e2}
+m\ddot{q}_i \ne F_i,
+\end{equation}
+where $F_i$ in this case is the $q_i$ component of the force which \emph{may
+not} be the same as the $F_i$ in equation \eqref{c1s1e1}.
+\item Equation \eqref{c1s1e1} requires that we know $F_i$. This is often not the
+case when the motion is constrained. When a bead is constrained to move along
+the wire in which it is woven we do not know the force that stops the bead
+from leaving the wire.
+\item Newton's third law does not hold good when electromagnetic forces are
+involved.
+\end{enumerate}
+
+The first of these limitations can be overcome by introducing pseudo-forces.
+The second one can be circumvented by carefully evaluating the components of
+the acceleration in coordinate systems other than the Cartesian. The third one
+is can be tamed by using d'Alembert's principle which we introduce next. The
+fourth one requires a redefinition of momentum which can be done systematically
+in Lagrange's formulation of classical mechanics.
+
+\section{d'Alembert's principle}\label{c1s2}
+Consider a few examples of constrained motion.
+\begin{enumerate}
+\item A beam constrained to move along a circular hoop. If the hoop is centred
+at the origin and in the $xy$ plan then the constraint is
+\begin{equation}\label{c1s2e1}
+x^2 + y^2 = a^2,
+\end{equation}
+where $a$ is the radius of the hoop.
+\item A particle constrained to move along an inclined plane. If $x, y,
+z$ are the coordinates of the particle then they must be confined to
+the plane 
+\begin{equation}\label{c1s2e2}
+lx + my + nz = p
+\end{equation}
+where $l, m, n$ are the direction cosines of the normal to the plane
+and $p$ is its distance from the origin.
+\item Particles of a rigid body in which the distances between the particles
+is constant. If $(x_n, y_n, z_n$ denote the coordinates of the $n$th particle 
+then
+\begin{equation}\label{c1s2e3}
+\sum_{i=1}^3\sqrt{(x_n-x_m)^2 + (y_n-y_m)^2 + (z_n-z_m)^2} = \text{constant}
+\end{equation}
+for all $n, m = 1, \ldots, N$, $N$ being the number of particles of the rigid
+body.
+\item Molecules of a monoatomic gas confined to a box. If the box is centred
+at the origin and is a cube of side $a$ then
+\begin{equation}\label{c1s2e4}
+-\frac{a}{2} \le x_n, y_n, z_n \le \frac{a}{2},
+\end{equation}
+where $(x_n, y_n, z_n)$ are the coordinates of the $n$th gas molecule.
+\item A disc rolling without slipping on a plane. Let us assume that the disc
+has a radius $a$ and it rolls on the $xy$ plane. To specify the motion we 
+need to know where on the plane the disc is, which point of the disc is in 
+contact with the plane and how is the disc oriented. The point of contact can 
+be specified by its coordinates $(x, y)$, the point of the disc by its 
+angular separation $\phi$ from a fixed line on the disc and the orientation 
+of the disc by another angle $\theta$ between the disc and the $x$ direction.
+The velocity of the point of contact has a magnitude $a\dot{\phi}$ and a 
+direction perpendicular to the plane of the disc. The plane of the disc makes 
+an angle $\theta$ with the positive $x_1$ direction. Therefore, the velocity 
+makes an angle $\pi/2 - \theta$ with the positive $x$ direction. Thus,
+\begin{eqnarray}
+v_x &=& a\sin\theta\dot{\phi} \label{c1s2e5} \\
+v_y &=& a\cos\theta\dot{\phi} \label{c1s2e6} 
+\end{eqnarray}
+We can write these equations in terms of the coordinates $(x, y, \phi, 
+\theta)$ used to specify the motion.
+\begin{eqnarray}
+dx &=& a\sin\theta d\phi \label{c1s2e7} \\
+dy &=& a\cos\theta d\phi \label{c1s2e8} 
+\end{eqnarray}
+\end{enumerate}
+Refer to section 1.2 of Rana and Joag's book \cite{rc} for many more examples
+of contraints of various kinds. Constraints in the first three examples are
+called \emph{holonomic} because they can be expressed as a (whole) function
+\begin{equation}\label{c1s2e9}
+f(q_1, q_1, \ldots) = 0.
+\end{equation}
+The constraint of equation \eqref{c1s2e4} is not holonomic because it involves
+inequalities. The constraints of equations \eqref{c1s2e7} and \eqref{c1s2e8}
+are not holonomic because the two equations cannot be integrated unless we
+fix $\theta$ \cite{goldstein2002classical}. We further note that for all
+holonomic constraints the force of constraint is perpendicular to the direction
+of motion of the particles. Therefore, the forces of constraint do not do any
+work on the particles. This is not the case when the holonomic constraints 
+depend on time. For example, if the length of the bob changes with time, the
+actual motion of the bob is not perpendicular to the tension in the string.
+In order to treat such constraints like the time-independent ones, d'Alembert
+introduced the idea of a \emph{virtual displacement}. A virtual displacement
+happens instantaneously without violating the constraint. In the case of the
+bob of a pendulum whose length varies with time, the virtual displacement is
+always perpendicular to the tension in the string because it happens without
+a passage of time. The work done in a virtual displacement is called the 
+\emph{virtual work}. 
+
+d'Alembert proposed the principle that infinitesimal virtual work by forces of
+constraint is zero when the virtual displacement is reversible. The condition
+of reversibility rules out dissipative constraints like frictional forces.
+
+Let us now consider Newton's equation for a single particle. We can write the 
+total force on the particle as sum of external forces
+$F_i$ and constraint forces $F^c_i$ so that
+\begin{align}
+\left.
+\begin{array}{ll}
+m\ddot{x} &= F_x + F^c_x \\
+m\ddot{y} &= F_y + F^c_y \\
+m\ddot{z} &= F_z + F^c_z 
+\end{array}
+\right\}\label{c1s2e10}
+\end{align}
+If $\delta x, \delta y, \delta z$ denote an infinitesimal virtual displacement 
+in each coordinate then
+\begin{equation}\label{c1s2e11}
+(m\ddot{x} - F_x)\delta x + (m\ddot{y} - F_y)\delta y + (m\ddot{z} - F_z)
+\delta z = F^c_x\delta x + F^c_y\delta y + F^c_z\delta z
+\end{equation}
+d'Alembert's principle of virtual work states that the right hand side is zero
+so that
+\begin{equation}\label{c1s2e12}
+(m\ddot{x} - F_x)\delta x + (m\ddot{y} - F_y)\delta y + (m\ddot{z} - F_z)
+\delta z = 0.
+\end{equation}
+This is the mathematical form of d'Alembert's principle. Its chief advantage 
+is that it does not involve the forces of constraint. However, it is not at
+all as simple as equation \eqref{c1s1e1} because the virtual displacements
+$\delta x, \delta y, \delta z$ are not independent. We can generalise it to a 
+system of $N$ particles as
+\begin{equation}\label{c1s2e13}
+\sum_{i=1}^N\left(
+(m_i\ddot{x}_i - X_i)\delta x_i + (m\ddot{y_i} - Y_i)\delta y_i + 
+(m_i\ddot{z}_i - Z_i) \delta z_i\right) = 0,
+\end{equation}
+where $X_i, Y_i, Z_i$ are the $x, y, z$ components of the external forces on
+the $i$th particle. Once again we emphasize that the virtual displacements 
+$\delta x_i, \delta y_i, \delta z_i$ are not independent if the system moves 
+under constraints.  Therefore, there is no way to simplify \eqref{c1s2e13} 
+any further.
+
+Examples of d'Alembert's principle.
+\begin{enumerate}
+\item Consider the motion of a simple pendulum in $xz$ plane. The motion
+of the bob is constrained by the equation
+\begin{equation}\label{c1s2e14}
+x^2 + z^2 = l^2,
+\end{equation}
+where $l$ is the length of the string. We can express it as
+\begin{equation}\label{c1s2e15}
+x\delta x + z\delta z = 0,
+\end{equation}
+where we interpret $\delta x$ and $\delta z$ as virtual displacements.
+From d'Alembert's principle of equation \eqref{c1s2e13} we get
+\begin{equation}\label{c1s2e16}
+(m\ddot{x} - F_x)\delta x + (m\ddot{z} - F_z)\delta z = 0.
+\end{equation}
+$F_x = 0$ and $F_z = -mg$ gives
+\begin{equation}\label{c1s2e17}
+\ddot{x} \delta x + (\ddot{z} + g)\delta z = 0.
+\end{equation}
+For small oscillations $z \approx -l$ (origin being at the point the string 
+is held fixed) so that equation \eqref{c1s2e15} becomes
+$x \delta x \approx l \delta z$ so that equation \eqref{c1s2e17} can
+be written as
+\begin{equation}\label{c1s2e18}
+\ddot{x} \delta x + (0 + g)\left(\frac{x}{l}\right)\delta x = 0
+\Rightarrow \left(\ddot{x} + \frac{g}{l}x\right)\delta x = 0.
+\end{equation}
+If this equation must be true for all virtual displacements,
+\begin{equation}\label{c1s2e19}
+\ddot{x} + \frac{g}{l}x = 0.
+\end{equation}
+Note that the d'Alembert's principle of equation \eqref{c1s2e17} could be
+simplified only after we used the equation of constraint \eqref{c1s2e15}. This
+theme will recur each time we apply d'Alembert's principle for constrained 
+dynamical systems.
+
+\item Consider Atwood's machine with masses $m_1$ and $m_2$ connected with
+an ideal string wound aroung an ideal pulley. If $x_1$ and $x_2$ denote their
+displacements then the equation of constraint is
+\begin{equation}\label{c1s2e20}
+x_1 + x_2 = l,
+\end{equation}
+$l$ being the length of the string connecting the two masses. In terms of
+virtual displacement, the equation of constraint becomes
+\begin{equation}\label{c1s2e21}
+\delta x_1 + \delta x_2 = 0.
+\end{equation}
+d'Alembert's principle applied to the system gives
+\begin{equation}\label{c1s2e22}
+(m_1\ddot{x}_1 - F_1)\delta x_1 + (m_2\ddot{x}_2 - F_2)\delta x_2
+= 0.
+\end{equation}
+Since $F_1 = -m_1g, F_2 = -m_2g$ we have
+\begin{equation}\label{c1s2e23}
+m_1(\ddot{x}_1 + g)\delta x_1 + m_2(\ddot{x}_2 + g)\delta x_2 = 0.
+\end{equation}
+From equation \eqref{c1s2e20} $\ddot{x}_1 = -\ddot{x}_2$ and from equation
+\eqref{c1s2e21} we have $\delta x_1 = -\delta x_2$ so that \eqref{c1s2e23}
+becomes
+\begin{equation}
+\left(m_1(\ddot{x}_1 + g) - m_2(-\ddot{x}_1 + g)\right)\delta x_1 = 0.
+\end{equation}
+As this equation is valid for all virtual displacements we have
+\begin{equation}\label{c1s2e25}
+\ddot{x}_1 = -\frac{m_1 - m_2}{m_1 + m_2}g.
+\end{equation}
+
+\item If a particle is constrained to move along a circle of radius $a$,
+centred at the origin and if there are no external forces then d'Alembert's 
+principle gives
+\begin{equation}\label{c1s1e26}
+m\ddot{x}\delta x + m\ddot{y}\delta y = 0.
+\end{equation}
+Since the particle is constrained to move on the circle, $x = a\cos\theta$ 
+and $y = a\sin\theta$. Therefore,
+\begin{eqnarray}
+\delta x &=& -a\sin\theta \delta\theta \\
+\delta y &=& a\cos\theta  \delta\theta
+\end{eqnarray}
+and
+\begin{eqnarray}
+\dot{x} &=& -a\sin\theta\dot{\theta} \\
+\ddot{x} &=& -a\cos\theta\dot{\theta}^2 - a\sin\theta\ddot{\theta} \\
+\dot{y} &=& a\cos\theta\dot{\theta} \\
+\ddot{y} &=& -a\sin\theta\dot{\theta}^2 + a\cos\theta\ddot{\theta}
+\end{eqnarray}
+so that equation \eqref{c1s1e26} becomes
+\[
+\ddot{x}\delta x + \ddot{y}\delta y = (a^2\sin\theta\cos\theta
+\dot{\theta}^2 + a^2\sin^2\theta\ddot{\theta} - a^2\sin\theta\cos\theta
+\dot{\theta}^2 + a^2\cos^2\theta\ddot{\theta})\delta\theta = 0
+\]
+or $\ddot{\theta}\delta\theta = 0$ which implies that $\dot{\theta} = $ a
+constant. In this problem we used the equation of constraint to replace
+the two coordinates $x$ and $y$ with a single one $\theta$.
+\end{enumerate}
+
+Some more examples of constraints.
+\begin{enumerate}
+\item A rigid rod is constrained to move within a spherical bowl so that
+is tends always touch the bowl's inner surface \cite[Problem 3, chapter 2]
+{akr}. Without the constraint of the bowl, six degrees of freedom suffice t
+describe the motion of the rod.  If $x_1, y_1, z_1$ and $x_2, y_2, z_2$ are
+the coordinates of the end-points of the rod then then equations of
+constraint are
+\begin{eqnarray}
+x_1^2 + y_1^2 + z_1^2 &=& a^2 \\
+x_2^2 + y_2^2 + z_2^2 &=& a^2 \\
+(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2 &=& l^2 \\
+l &\le& a
+\end{eqnarray}
+Thus, the motion of the rod can be described by two coordinates alone. One 
+of them tells the `latitude' of the centre of the rod and the other one the
+`longitude'.
+
+\item A spherical pendulum is not restricted to move in a plane. Therefore,
+we need three coordinates $x, y, z$ to describe its motion. They are
+constrained to obey
+\begin{equation}\label{c1s2e37}
+x^2 + y^2 + z^2 = l^2.
+\end{equation}
+Expressing the constraint in terms of virtual displacements,
+\begin{equation}\label{c1s2e38}
+x\delta{x} + y\delta{y} + z\delta{x} = 0
+\end{equation}
+d'Alembert's principle gives
+\begin{equation}\label{c1s2e39}
+\ddot{x}\delta{x} + \ddot{y}\delta{y} + (\ddot{z} + g)\delta{z} = 0
+\end{equation}
+\end{enumerate}
+
+\section{Lagrange's equations of the first kind}\label{c1s3}
+We mentioned that the virtual displacements $\delta x_i, \delta y_i, 
+\delta z_i$ are not 
+independent in a system under constraints. If we restrict ourselves to
+holonomic constraints then each constraint is an equation of the form
+\begin{equation}\label{c1s3e1}
+\varphi_i(x_1, \ldots, z_N) = 0.
+\end{equation}
+The index $i$ ranges from $1$ to $m$, the number of constraints. We can
+write each of these equations as
+\begin{equation}\label{c1s3e2}
+\sum_{j=1}^{N}\left(\pd{\varphi_i}{x_j}\delta x_j 
++ \pd{\varphi_i}{y_j}\delta y_j
++ \pd{\varphi_i}{z_j}\delta z_j\right) = 0
+\end{equation}
+We now multiply each of these equations with a constant $\lambda_i$ and
+add them to \eqref{c1s2e13} to get
+\begin{align}
+\sum_{j=1}^N \left(m_j\ddot{x}_j - X_j + 
+\sum_{k=1}^m \lambda_k\pd{\varphi_i}{x_j} \right)\delta x_j & + \nonumber \\
+\sum_{j=1}^N \left(m_j\ddot{y}_j - Y_j + 
+\sum_{k=1}^m \lambda_k\pd{\varphi_i}{y_j} \right)\delta y_j & + \nonumber \\
+\sum_{j=1}^N \left(m_j\ddot{z}_j - Z_j + 
+\sum_{k=1}^m \lambda_k\pd{\varphi_i}{z_j} \right)\delta z_j & = 0 \label{c1s3e3}
+\end{align}
+This equation has $3N$ terms on the left hand side. Choose $\lambda_k$
+such that for the first $m$ terms
+\begin{equation}\label{c1s3e4}
+\sum_{j=1}^N \left(m_j\ddot{u}_j - U_j + 
+\sum_{k=1}^m \lambda_k\pd{\varphi_i}{u_j} \right)\delta u_j = 0,
+\end{equation}
+where $u$ and $U$ could denote $x, y, z$ or $X, Y, Z$ depending on $m$.
+Equation \eqref{c1s3e3} now has only $3N - m$ terms. The virtual displacements
+in each of these can be considered to be independent. Therefore, \eqref{c1s3e4}
+can be considered to be true for all $3N$ terms. Equation \eqref{c1s3e4} is
+called \emph{Lagrange's equation of the first kind}. In fact,
+\begin{equation}
+Q_i = \left(\sum_{k=1}^r\lambda_k \pd{\varphi_k}{x_i},
+            \sum_{k=1}^r\lambda_k \pd{\varphi_k}{y_i},
+            \sum_{k=1}^r\lambda_k \pd{\varphi_k}{z_i}\right)
+\end{equation}
+is the force of constraint on the $i$th particle.
+
+As an example of this approach, consider the equation of constraint of a 
+spherical pendulum given in \eqref{c1s2e38}. We can combine it with 
+d'Alembert's equation \eqref{c1s2e39} to get
+\begin{equation}\label{c1s3e6}
+(\ddot{x} + \lambda x)\delta{x} + (\ddot{y} + \lambda y)\delta{y} + 
+(\ddot{z} + g + \lambda z)\delta{z} = 0
+\end{equation}
+Now we consider the amplitude of oscillation to be small, that is $x_3 \approx
+-l$ and $\ddot{x}_3 \approx 0$ so that the third term \eqref{c1s3e6} is
+\[
+0 + g - \lambda l.
+\]
+It vanishes if we choose $\lambda = g/l$ and we get
+\begin{eqnarray}
+\ddot{x} + \frac{g}{l}x &=& 0 \\
+\ddot{y} + \frac{g}{l}y &=& 0 
+\end{eqnarray}
+are the equations of motion of the spherical pendulum.
+
+We next use Lagrange's method to find the force of constraint in Atwood 
+machine. Combining the equation of constraint \eqref{c1s2e21} with 
+d'Alembert's equation \eqref{c1s2e23} we get
+\begin{equation}
+m_1\left(\ddot{x}_1 + g + \frac{\lambda}{m_1}\right)\delta x_1 + 
+m_2\left(\ddot{x}_2 + g + \frac{\lambda}{m_2}\right)\delta x_2 = 0.
+\end{equation}
+Choose $\lambda$ such that
+\begin{equation}
+\ddot{x}_1 + g + \frac{\lambda}{m_1} = 0
+\end{equation}
+that is
+\begin{equation}
+\lambda = -m_1(\ddot{x}_1 + g).
+\end{equation}
+Using equation \eqref{c1s2e25} we get
+\begin{equation}
+\lambda = \frac{2m_1m_2}{m_1 + m_2}g
+\end{equation}
+as the tension in the string.
+
+Lagrange's equations of the first kind solve the problem of involving the
+forces of constraint in the problem. Yet, they are firmly rooted in the 
+Cartesian coordinate system. In the next chapter we will severe this connection
+with the Cartesian coordinates.
+
+Before we close we remark that the framework of this section can be used
+for time-dependent constraints. If equation \eqref{c1s3e1} is written as
+\begin{equation}\label{c1s3e13}
+\varphi_i(x_1, \ldots, z_N, t) = 0
+\end{equation}
+then equation \eqref{c1s3e2} becomes
+\begin{equation}\label{c1s3e14}
+\sum_{j=1}^{N}\left(\pd{\varphi_i}{x_j}\delta x_j 
++ \pd{\varphi_i}{y_j}\delta y_j
++ \pd{\varphi_i}{z_j}\delta z_j + \pd{\varphi_i}{t}\delta t\right) = 0
+\end{equation}
+However, when we interpret $\delta x_j, \delta y_j, \delta z_j$ as virtual 
+displacements then $\delta t$ is zero and the rest of the analysis applies 
+without change.

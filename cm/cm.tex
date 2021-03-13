@@ -1,0 +1,37 @@
+\documentclass{report}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{bm}
+\usepackage{color}
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+
+\numberwithin{equation}{section}
+\let\vec\bm
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\numberwithin{thm}{section}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+\numberwithin{prop}{section}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\numberwithin{defn}{section}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+\newtheorem*{cor}{Corollary}
+
+\title{Classical Mechanics - A Quick Recapitulation}
+\author{Amey Joshi}
+\date{06-Mar-2021}
+\begin{document}
+\include{c1}
+\include{c2}
+
+\bibliographystyle{plain}
+\bibliography{cm}
+\end{document}
+

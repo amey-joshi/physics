@@ -1,0 +1,190 @@
+\chapter{Lagrange's Equations of the Second Kind}\label{c2}
+\section{Generalised coordinates}\label{c2s1}
+In the previous chapter we observed that in a system of $N$ particles and $r$
+constraints, the $3N$ virtual displacements $\delta x^{(n)}_i$ are not 
+independent. Any subset of $f = 3N - r$ virtual displacements is independent. 
+$f$ is called the \emph{number of degrees of freedom} of the system.
+
+Consider a system of two particles connected by a rigid rod. The two particles
+each need three Cartesian coordinates. But the constraint makes only five of
+them independent. It is not clear which five to choose. Although the lack of
+independence of virtual displacements in all coordinates is taken into account
+by the Lagrange's equations of the first kind, one still has to describe the 
+system in terms of $6$ coordinates. This situation gets worse in the case of
+a rigid body. If it made up of $N$ particles then we need $3N$ coordinates to
+describe its position when only $6$ of them are independent.
+
+Generalised coordinates are any $f$ numbers that suffice to describe the
+position of a system of $f$ degrees of freedom. For example, a rigid body
+with $N$ particles can be described by three Cartesian coordinates of its
+centre of mass and three Euler angles. We shall denote the $f$ generalised
+coordiates by $\{q_1, \ldots, q_f\}$.
+
+Let us therefore consider a system of $N$ particles and $f$ degrees of freedom
+and let $q_1, \ldots, q_f$ be its generalised coordinates. Then the Cartesian
+coordinates of its particles can be written as
+\begin{eqnarray}
+x_i &=& x_i(q_1, \ldots, q_f, t) \\
+y_i &=& y_i(q_1, \ldots, q_f, t) \\
+z_i &=& z_i(q_1, \ldots, q_f, t).
+\end{eqnarray}
+Note that the Cartesian coordinates of a particle are allowed to depend on 
+\emph{all} generalised coordinates. Unlike their Cartesian counterparts, the
+generalised coordinates are not tied to a single particle. Further, note that
+the Cartesian coordinates may depend on time as well. From these equations
+we have
+\begin{eqnarray}
+dx_i &=& \pd{x_i}{q_j}dq_j + \pd{x_i}{t}dt \\
+dy_i &=& \pd{y_i}{q_j}dq_j + \pd{y_i}{t}dt \\
+dz_i &=& \pd{z_i}{q_j}dq_j + \pd{z_i}{t}dt
+\end{eqnarray}
+We have used the summation convention in these three equations. Although
+the functional forms of $x_i, y_i, z_i$ are arbitrary, the differentials
+$dx_i, dy_i, dz_i$ are linear functions of $dq_j$ and $dt$.
+
+The three Cartesian velocities are
+\begin{eqnarray}
+\dot{x}_i &=& \pd{x_i}{q_j}\dot{q}_j + \pd{x_i}{t} \label{c2s1e7} \\
+\dot{y}_i &=& \pd{y_i}{q_j}\dot{q}_j + \pd{y_i}{t} \label{c2s1e8} \\
+\dot{z}_i &=& \pd{z_i}{q_j}\dot{q}_j + \pd{z_i}{t} \label{c2s1e9}  
+\end{eqnarray}
+Note that the symbol $\dot{x}_i$ denotes the total time derivative of $x_i$ and
+it differs from $\partial x_i/\partial t$. The generalised coordinates, however,
+do not depend explicitly on time. The kinetic energy of the system is
+\begin{eqnarray}
+T &=& \frac{1}{2}m_i(\dot{x}_i^2 + \dot{y}_i^2 + \dot{z}_i^2) \nonumber \\
+ &=& \frac{1}{2}m_i\left(\pd{x_i}{q_j}\dot{q}_j + \pd{x_i}{t}\right)
+                   \left(\pd{x_i}{q_k}\dot{q}_k + \pd{x_i}{t}\right) + 
+     \nonumber \\
+ & & \frac{1}{2}m_i\left(\pd{y_i}{q_j}\dot{q}_j + \pd{y_i}{t}\right)
+                   \left(\pd{y_i}{q_k}\dot{q}_k + \pd{y_i}{t}\right) + 
+	 \nonumber \\
+ & & \frac{1}{2}m_i\left(\pd{z_i}{q_j}\dot{q}_j + \pd{z_i}{t}\right)
+                   \left(\pd{z_i}{q_k}\dot{q}_k + \pd{z_i}{t}\right) 
+	 \label{c1s1e10} 
+\end{eqnarray}
+We now compute the derivative of $T$ with respect to the generalised 
+velocity $\dot{q}_l$.
+\begin{eqnarray}
+\pd{T}{\dot{q}_l} &=& 
+  m_i\left(\pd{x_i}{q_j}\dot{q}_j + \pd{x_i}{t}\right)\pd{x_i}{q_l} +
+ m_i\left(\pd{y_i}{q_j}\dot{q}_j + \pd{y_i}{t}\right)\pd{y_i}{q_l} +
+  \nonumber \\
+& &  m_i\left(\pd{z_i}{q_j}\dot{q}_j + \pd{z_i}{t}\right)\pd{z_i}{q_l} 
+  \label{c2s1e11} 
+\end{eqnarray}
+Using equations \eqref{c2s1e7}, \eqref{c2s1e8} and \eqref{c2s1e9} we get
+\begin{equation}\label{c2s1e12}
+\pd{T}{\dot{q}_l} = m_i\left(\dot{x}_i\pd{x_i}{q_l} + \dot{y}_i\pd{y_i}{q_l} + 
+ \dot{z}_i\pd{z_i}{q_l}\right).
+\end{equation}
+We now take the total time derivative of this equation.
+\begin{eqnarray}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) &=& 
+  m_i\left(\ddot{x}_i\pd{x_i}{q_l} + \dot{x}_i\frac{d}{dt}
+  \left(\pd{x_i}{q_l}\right)\right)  + 
+  m_i\left(\ddot{y}_i\pd{y_i}{q_l} + \dot{y}_i\frac{d}{dt}
+  \left(\pd{y_i}{q_l}\right)\right) + \nonumber \\
+& & m_i\left(\ddot{z}_i\pd{z_i}{q_l} + \dot{z}_i\frac{d}{dt}
+  \left(\pd{z_i}{q_l}\right)\right) 
+\end{eqnarray}
+Evaluating the total time derivatives on the right hand side,
+\begin{eqnarray}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) &=& 
+ m_i\left(\ddot{x}_i\pd{x_i}{q_l} + 
+ \dot{x}_i\dot{q}_k\frac{\partial^2 x_i}{\partial q_k\partial q_l} +
+ \dot{x_i}\frac{\partial}{\partial q_l}\pd{x_i}{t}\right) \nonumber \\
+ & & m_i\left(\ddot{y}_i\pd{y_i}{q_l} + 
+ \dot{y}_i\dot{q}_k\frac{\partial^2 y_i}{\partial q_k\partial q_l} +
+ \dot{y_i}\frac{\partial}{\partial q_l}\pd{y_i}{t}\right) \nonumber \\
+ & & m_i\left(\ddot{z}_i\pd{z_i}{q_l} + 
+ \dot{z}_i\dot{q}_k\frac{\partial^2 z_i}{\partial q_k\partial q_l} +
+ \dot{z_i}\frac{\partial}{\partial q_l}\pd{z_i}{t}\right) \label{c2s1e14}
+\end{eqnarray}
+We now observe that
+\[
+\pd{\dot{q_1}}{q_k} = \frac{\partial}{\partial t}\delta_{lk} = 0
+\]
+so that we can write
+\begin{eqnarray}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) &=& 
+ m_i\left(\ddot{x}_i\pd{x_i}{q_l} + 
+ \dot{x}_i\frac{\partial}{\partial q_l}
+ \left(\dot{q}_k\pd{x_i}{q_k} + \pd{x_i}{t}\right)\right) \nonumber \\
+ & &  m_i\left(\ddot{y}_i\pd{y_i}{q_l} + 
+ \dot{y}_i\frac{\partial}{\partial q_l}
+ \left(\dot{q}_k\pd{y_i}{q_k} + \pd{y_i}{t}\right)\right) \nonumber \\
+ & &  m_i\left(\ddot{z}_i\pd{z_i}{q_l} + 
+ \dot{z}_i\frac{\partial}{\partial q_l}
+ \left(\dot{q}_k\pd{z_i}{q_k} + \pd{z_i}{t}\right)\right) \label{c2s1e15}
+\end{eqnarray}
+Using equations \eqref{c2s1e7}, \eqref{c2s1e8} and \eqref{c2s1e9} we get
+\[
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) =
+m_i\left[\left(\ddot{x}_i\pd{x_i}{q_l} + \dot{x}_i\pd{\dot{x}_i}{{q}_l}\right) 
+ + \nonumber \\
+\left(\ddot{y}_i\pd{y_i}{q_l} + \dot{y}_i\pd{\dot{y}_i}{{q}_l}\right) 
+ + \nonumber \\
+\left(\ddot{z}_i\pd{z_i}{q_l} + \dot{z}_i\pd{\dot{z}_i}{{q}_l}\right)\right].
+\]
+Rearranging it
+\[
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) =
+\pd{T}{q_l} + m_i\left(\ddot{x}_i\pd{x_i}{q_l} +
+\ddot{y}_i\pd{y_i}{q_l} +\ddot{z}_i\pd{z_i}{q_l}\right)
+\]
+or
+\begin{equation}\label{c2s1e16}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) - \pd{T}{q_l} =
+ m_i\left(\ddot{x}_i\pd{x_i}{q_l} +
+ \ddot{y}_i\pd{y_i}{q_l} +\ddot{z}_i\pd{z_i}{q_l}\right)
+\end{equation}
+Multiplying both sides by $\delta q_l$,
+\begin{equation}\label{c2s1e17}
+\left(\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) - \pd{T}{q_l}\right)\delta q_l
+= m_i\left(\ddot{x}_i\delta x_i + \ddot{y}_i\delta y_i +
+ \ddot{z}_i\delta z_i\right)
+\end{equation}
+Comparing with equation \eqref{c1s2e13} we surmise that the left hand side
+of the above equation is
+\begin{equation}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) - \pd{T}{q_l}\delta q_l =
+X_i\delta x_i + Y_i\delta y_i + Z_i \delta z_i,
+\end{equation}
+where $(X_i, Y_i, Z_i)$ are components of the external force on the $i$th
+particle. If this force is conservative, we can write it in terms of a 
+potential $V$ as
+\begin{eqnarray}
+\frac{d}{dt}\left(\pd{T}{\dot{q}_l}\right) - \pd{T}{q_l}\delta q_l &=&
+\pd{V}{x_i}\delta x_i + \pd{V}{z_i}\delta y_i + \pd{V}{z_i} \delta z_i \nonumber \\
+&=&
+\pd{V}{x_i}\pd{x_i}{q_l}\delta q_l + \pd{V}{z_i}\pd{y_i}{q_l}\delta q_l + 
+\pd{V}{z_i} \pd{z_i}{q_l}\delta q_l \nonumber \\
+&=& \pd{V}{q_1}\delta q_l \label{c1s1e20}
+\end{eqnarray}
+Note that the last term here is not $3\partial V/\partial q_l$ because $V$
+depends on all $x_1, \ldots, z_N$ and each of these is a function of all 
+generalised coordinates. If $V$ \emph{does not} depend on generalised 
+velocities then we can write \eqref{c1s1e20} as
+\begin{equation}\label{c2s1e21}
+\frac{d}{dt}\pd{L}{\dot{q}_l} - \pd{L}{q_l} = 0,
+\end{equation}
+where the function
+\begin{equation}\label{c1s1e22}
+L(q_1, \ldots, q_f, \dot{q}_1, \ldots, \dot{q}_f) = T - V
+\end{equation}
+is the Lagrangian of the system and equations \eqref{c2s1e21} are called
+Lagrange's equation of the second kind.
+
+A few remarks about \eqref{c2s1e21}:
+\begin{itemize}
+\item Often times the phrase `second kind' is omitted and equations
+are called Lagrange's equations.
+\item They equations are presently derived only for conservative forces.
+\item They do not involve the forces of constraint. Neither do they insist on
+the Cartesian coordinates. 
+\item They are valid in all frames of references. However $T$ depends on 
+generalised velocities and will change across frames of reference. Therefore,
+$T$ should always be calculated with respect to an inertial frame of 
+reference \cite[p. 31]{akr}.
+\end{itemize}
