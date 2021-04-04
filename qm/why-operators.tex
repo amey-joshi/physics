@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title{Operators in Quantum Mechanics}
+\author{Amey Joshi}
+\begin{document}
+\maketitle
+\abstract{One of the postulates of quantum physics states that a dynamical 
+variable in classical physics is represented by an operator in the quantum 
+theory. It is hard to imagine what does it mean by `representing' a classical
+dynamical variable with an operator. It is even harder to understand how anyone
+could think of such a representation. This article attempts to shed light on
+the origin of this postulate}
+
+\section{Dynamical variables as matrices}
+Heisenberg \cite{heisenberg1925quantum} laid down the foundations of quantum 
+mechanics by starting to construct its theory based on the quantities that are 
+observable in an experiment. The position and momentum of an electron are not 
+observable.  However, the spectral lines are observed. Their frequency and 
+intensity are measured in experiments. Heisenberg proposes a representation of
+the position of an electron in terms of the spectral frequencies and concludes
+that the only way to do so is by representing position as a matrix of numbers.
+This paper of Heisenberg's is famous for being hard to understand
+\cite{aitchison2004understanding}. However, Heisenberg states his thoughts more
+lucidly in the appendix `Mathematical Apparatus' of his book 
+\cite{heisenberg1949physical}.
+
+Heisenberg's cautions \cite{heisenberg1949physical} that his argument for
+representing dynamical variables as operators should not be viewed as a 
+mathematical proof. It is a physicist's insight whose correctness should be
+judged on its success in describing natural processes measured in experiments.
+
+\section{The experimental facts}
+Heisenberg takes into account the following well-established experimental facts
+to build his theory:
+\begin{enumerate}
+\item The Rydberg-Ritz combination principle that all spectral lines of an
+element may be represented as the differences of small number of terms. If
+$T_1, T_2, \ldots$ are the terms then the atomic frequencies form a two
+dimensional array
+\begin{equation}\label{e1}
+\nu_{nm} = T_n - T_m
+\end{equation}
+and obey the combination principle
+\begin{equation}\label{e2}
+\nu_{nk} + \nu_{km} = \nu_{nm}.
+\end{equation}
+\item The energy levels of an atom have a discrete sets of values as observed
+in the Frank-Hertz experiments.
+\item The spectral frequencies are related to energy levels through the 
+Einstein-Bohr relation
+\begin{equation}\label{e3}
+\nu_{nm} = \frac{E_n - E_m}{h}.
+\end{equation}
+\end{enumerate}
+
+One way to relate the dynamical variables to spectral frequencies is to write
+them as Fourier series. Thus, a generalised coordinate $q_k$ of a periodic 
+system of $f$ degrees of freedom is
+\begin{equation}\label{e4}
+q_k(t)=\sum_{n_1, \ldots, n_f}q^{(k)}_{n_1, \ldots, n_f}\exp[2\pi i(n_1\nu_1 +
+\cdots + n_f\nu_f)t],
+\end{equation}
+where $\nu_1, \ldots, \nu_f$ are the fundamental frequencies of the system.
+Heisenberg considered periodic systems because an atom is one such.
+
+If equation \eqref{e4} is to be taken over to quantum mechanics, it should
+be changed so that
+\begin{enumerate}
+\item The amplitudes depend on frequencies of two states of the atom and
+\item When we combine quantities like $q_k(t)$, the Rydberg-Ritz combination
+principle should be obeyed.
+\end{enumerate}
+
+The first condition forces us to write $q_k(t)$ in terms of the quantities
+\begin{equation}\label{e5}
+q^{(k)}(n_1, \ldots, n_f;m_1, \ldots, m_f)
+\exp\left[2\pi i\nu(n_1,\ldots,n_f;m_1,\ldots, m_f)t\right]
+\end{equation}
+where the amplitude and the frequencies are the ones observed in the atom's
+spectrum. Instead of summing numbers of this form in a Fourier series, 
+Heisenberg postulated that these numbers together represent the generalised
+coordinate. Thus, in quantum mechanics,
+\begin{equation}\label{e6}
+q_k(t) = \begin{bmatrix}
+q^{(k)}_{1;1}e^{2\pi i\nu(1;1)t} & \ldots &q^{(k)}_{1;m_f}e^{2\pi i\nu(1;m_f)t}
+\\
+\vdots & \\
+q^{(k)}_{n_f;1}e^{2\pi i\nu(n_f;1)t} & \ldots &q^{(k)}_{1;m_f}
+e^{2\pi i\nu(n_f;m_f)t}
+\end{bmatrix}
+\end{equation}
+We now use the classical representation of equation \eqref{e4} to build 
+analogies to put constraints on the form of the representation of equation
+\eqref{e6}.
+\begin{enumerate}
+\item The quantity $q_k(t)$ on the left hand side of equation \eqref{e4} must
+be real. Therefore, the sum on the right hand side should have pairs of 
+complex cojugate elements. Likewise, if the matrix must represent a dynamical 
+variable and if its entries are complex then we must insist that the complex 
+quantities occur in pairs of conjugates. From the Rydberg-Ritz combination
+principle we know that $\nu(n, m) = -\nu(m, n)$. Therefore we must also have
+\begin{equation}\label{e7}
+q_k(m, n) = \overline{q_k(n, m)}.
+\end{equation}
+
+\item One can add quantities like \eqref{e4} so that amplitudes corresponding
+to the same frequency add up. Likewise, we can add the array of numbers in 
+equation \eqref{e6} such that the elements corresponding to same frequencies 
+add up. Thus, the array of number corresponding to $q_1(t) + q_2(t)$ has 
+elements
+\begin{equation}\label{e8}
+(q^{(1)}_{m, n} + q^{(2)}_{m, n})e^{2\pi i\nu(m, n)t}.
+\end{equation}
+
+\item Each frequency $\nu(n, m)$ in \eqref{e6} must be of the form $\Omega_n
+- \Omega_n$ \cite{dirac1925fundamental}. When we multiply arrays of the form
+\eqref{e6} we must remember to add together the terms that belong to the
+same frequency. Consider the a combination of terms like $q^{(1)}_{l, m}
+q^{(2)}_{m, n}$. It corresponds to the frequency $\Omega_m - \Omega_l + \Omega_n
+- \Omega_m = \Omega_n - \Omega_l$. Therefore, we must add together terms like
+$q^{(1)}_{l, m}q^{(2)}_{m, n}$ for all $m$ to get the term corresponding to
+the frequency $\Omega_n - \Omega_l$.
+\end{enumerate}
+Thus, the arrays of numbers in equation \eqref{e6} are added and multiplied like
+matrices. That is how the representation of dynamical variables as matrices
+came about to be in quantum mechanics.
+\bibliographystyle{plain}
+\bibliography{why}
+\end{document}
