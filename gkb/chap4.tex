@@ -1,0 +1,727 @@
+\chapter{Flow of a uniform incompressible viscous fluid}\label{c4}
+\section{Introduction}\label{c4s1}
+\begin{itemize}
+\item A fluid is considered to be incompressible if
+\begin{equation}\label{c4s1e1}
+\md{\rho} = 0,
+\end{equation}
+in which case, the equation of mass conservation \eqref{c3s6e1} reduces to
+\begin{equation}\label{c4s1e2}
+\Delta = \dive\vec{u} = 0
+\end{equation}
+Equation \eqref{c4s1e2} when used in the momentum balance equation \eqref{c3s6e2} gives
+\[
+\rho\md{u_i} = \rho F_i - \pdt{p}{x_i} + 2\mu\frac{\partial e_{ij}}{\partial x_j} = 
+\rho F_i - \pdt{p}{x_i} + \mu\frac{\partial u_i}{\partial x_j \partial x_j} + \frac{\partial}{\partial x_i}\pdt{u_j}{x_j}
+\]
+The last term on the right hand side is zero so that
+\begin{equation}\label{c4s1e3} 
+\rho\md{\vec{u}} = \rho\vec{F} - \grad p + \mu\nabla^2\vec{u}
+\end{equation}
+is the equation of motion. Further, since $\rho$ is a constant, there are only four unknowns, $\vec{u}$ and $p$. If $\rho$ and $T$ are fixed, then by the equation of state, the thermodyamic
+pressure is fixed. For an incompressible fluid, the thermodynamic and mechanical pressures are identical so that $p$ in \eqref{c4s1e3} is a fixed quantity. Therefore, equation \eqref{c4s1e3} 
+suffices for finding the unknowns.
+
+\item We make an assumption, stronger than incompressibility, that the density of the fluid is uniform. That is, $\rho$ is independent of $\vec{x}$. Such an assumption is valid if there
+is no motion driven by buoyancy forces. Thus, we do not consider \enquote*{free convection} in this chapter.
+
+\item Writing \eqref{c4s1e3} so that the left hand side is accelaration, 
+\[
+\md{\vec{u}} = \vec{F} - \frac{1}{\rho}\grad p + \nu\nabla^2\vec{u},
+\]
+where $\nu = \mu/\rho$ is the kinematic viscosity of the fluid. It is the \enquote*{diffusivity} of fluid velocity and like all such quantities has dimensions $[L^2 T^{-1}]$.
+
+\item It is difficult to tell when the effects of viscosity can be ignored or when they matter, despite the small value of $\mu$ for common fluids. Therefore, we take the conservative stand
+and study its effect.
+
+\item If $\rho$ is uniform and if we write $p = p_0 + \rho\vec{g}\cdot\vec{x} + P$, where $p_0$ is a constant and $P$ is a function of $\vec{x}$ and $t$, then
+\[
+\grad p = 0 + \rho\vec{g} + \grad{P}
+\]
+or $\rho\vec{g} - \grad{p} = -\grad{P}$ and hence the equation of motion \eqref{c4s1e3} becomes 
+\[
+\rho\md{\vec{u}} = -\grad P + \mu\nabla^2\vec{u}
+\]
+The effect of gravity is then folded in the new variable $P$. Thus, we can use the quantity $P$ instead of mechanical pressure $p$ if it does not show up in the boundary conditions. For $P$
+is a mathematical artefact while boundary conditions are always in terms of a physical quantity. If $\rho$ is constant then $P = p - \rho\vec{g}\cdot\vec{x}$ is indeed a known quantity.
+\end{itemize}
+\subsection{Exercises}
+\begin{enumerate}
+\item Consider a fluid moving through a cylinder and a cylindrical polar coordinate system with its $z$ axis 
+coinciding with the axis of the cylinder. Then the normal component of the deviatoric stress is
+\[
+\mu e_{\sigma\sigma} = \mu\pdt{u_\sigma}{\sigma}.
+\]
+Since the fluid does not penetrate the cylinder, $u_\sigma = 0$ and the result follows immediately.
+
+\item The expression for the stress tensor is
+\[
+\sigma_{ij} = -p\delta_{ij} + 2\mu e_{ij},
+\]
+where the rate of strain tensor 
+\[
+e_{ij} = \frac{1}{2}\left(\pdt{u_i}{x_j} + \pdt{u_j}{x_i}\right).
+\]
+We know that
+\[
+\pdt{u_i}{x_j} = e_{ij} + \xi_{ij}
+\]
+so that
+\[
+\sigma_{ij} = -p\delta_{ij} + \mu(2\pdt{u_i}{x_j} - 2\xi_{ij}).
+\]
+Using equation (2.3.9) from the book, 
+\[
+\sigma_{ij} = -p\delta_{ij} + \mu\left(2\pdt{u_i}{x_j} + \epsilon_{ijk}\omega_k\right)
+\]
+so that
+\[
+\sigma_{ij}n_j = -p\delta_{ij}n_j + \mu\left(2n_j\pdt{u_i}{x_j} + \epsilon_{ijk}n_j\omega_k\right).
+\]
+The left hand side is the force per unit area exerted across a surface element with normal $\un$. The right
+hand side, written in Gibbs' notation is
+\[
+-p\un + \mu(2\un\cdot\grad\vec{u} + \un \times \vec{\omega}).
+\]
+Now consider the stress at a rigid boundary. If $n_j$ is a normal to the right surface then there is no velocity
+along that direction. That is $u_j = 0$. Therefore, in this situation $e_{ij} = \xi_{ij}$ and hence
+\[
+\sigma_{ij} = -p\delta_{ij} + 2\mu \xi_{ij}.
+\]
+Once again using equation (2.3.9) from the book, we get
+\[
+\sigma_{ij} = -p\delta_{ij} - \mu \epsilon_{ijk}\omega_k,
+\]
+so that the force per unit area on the surface normal to $n_j$ is
+\[
+\sigma_{ij}n_j = -p\delta_{ij}n_j - \mu \epsilon_{ijk}n_j\omega_k,
+\]
+In Gibbs' notation, the right hand side is
+\[
+-p\un - \mu\un\times\vec{\omega}.
+\]
+\end{enumerate}
+
+\section{Steady unidirectional flow}\label{c4s2}
+\begin{itemize}
+\item The equation of a steady flow along the $x$ axis is
+\begin{equation}\label{c4s2e1}
+\frac{\partial^2 u_x}{\partial y^2} + \frac{\partial^2 u_x}{\partial z^2} = -\frac{G}{\rho},
+\end{equation}
+where $G$ is the pressure gradient. $u_y$ and $u_z$ are both zero and $u_x = u_x(y, z)$.
+
+\item In the case of flow through a long pipe of a circular cross section, we transform equation \eqref{c4s2e1}
+in cylindrical polar coordinates so that it becomes
+\begin{equation}\label{c4s2e2}
+\frac{1}{r}\frac{\partial}{\partial r}\left(r\pdt{u}{r}\right) = -\frac{G}{\rho}.
+\end{equation}
+Its solution subject to the boundary conditions $u(r) = 0$ and $u$ is finite is
+\begin{equation}\label{c4s2e3}
+u(r) = \frac{G}{4\mu}(a^2 - r^2).
+\end{equation}
+The volume flux is calculated as follows. Consider two cylinders coaxial with the pipe having radii $r$ and $r + 
+dr$. If their ``height" is $dx$ then the volume between them is $dV = 2\pi (r + dr) dx - 2\pi rdx = 2\pi rdrdx$.
+Since $dx = udt$, $dV = 2\pi r dr u dt$ or
+\[
+\td{V}{t} = 2\pi r u dr.
+\]
+This is the rate of flow of volume between the two cylinders. Therefore, the total flux is
+\begin{equation}\label{c4s2e4}
+Q = \int_0^a \td{V}{t} = \frac{\pi G a^4}{8\mu}.
+\end{equation}
+The only non-zero components of the rate of strain tensor are
+\[
+e_{rx} = e_{xr} = \frac{1}{2}\pdt{u}{r}
+\]
+so that the tangential stress at the wall is
+\[
+\mu\left[e_{rx} + e_{xr}\right]_{r=a} = -\frac{1}{2}Ga
+\]
+The rate of dissipation is
+\[
+\Phi = \frac{2\mu}{\rho}e_{ij}e_{ij} = \frac{G^2\rho^2}{4\rho\mu}.
+\]
+
+\item We will now solve the Navier-Stokes equation for a steady, laminar flow through an elliptical pipe. But
+before we do that, we note that curves of equal velocity in a pipe of circular cross section are circles. For
+equation \eqref{c4s2e3} can be written in the form $r^2 = $constant for a fixed value of $u$. We expect that the
+flow through an elliptical pipe too will have the same property.
+
+Let the equation of the cross section be
+\[
+\frac{y^2}{b^2} + \frac{z^2}{c^2} = 1 
+\]
+or $c^2y^2 + b^2z^2 = b^2c^2$ and let the velocity profile be of the form $u(y, z) =\alpha y^2 + \beta z^2 + 
+\gamma$. Substituting it in
+\eqref{c4s2e1}, we get
+\begin{equation}\label{c4s2e5}
+\alpha + \beta = -\frac{G}{2\mu}.
+\end{equation}
+The velocity profile will coincide with the ellipse of $\alpha = kc^2, \beta = kb^2, \gamma = -kb^2c^2$ for some
+constant $k$. Substituting these in equation \eqref{c4s2e5} we get
+\begin{equation}\label{c4s2e6}
+k = -\frac{G}{2(b^2 + c^2)\mu}
+\end{equation}
+Now that we have got $k$ in terms of the physical parameters of the problem, we immediately have
+\begin{eqnarray*}
+\alpha &=& -\frac{Gc^2}{2(b^2 + c^2)\mu} \\
+\beta  &=& -\frac{Gb^2}{2(b^2 + c^2)\mu} \\
+\gamma &=& -\frac{Gb^2c^2}{2(b^2 + c^2)\mu}
+\end{eqnarray*}
+so that the velocity profile is 
+\begin{equation}\label{c4s2e7}
+u(y, z) = \frac{G}{2\mu(b^{-2} + c^{-2})}\left(\frac{y^2}{b^2} + \frac{z^2}{c^2} - 1\right)
+\end{equation}
+
+\item Navier-Stokes equation for a steady, laminar flow through a rectangular pipe is
+\begin{equation}\label{c4s2e8}
+\nabla^2 u = -\frac{G}{\mu}.
+\end{equation}
+Supposing $u^\prime$ is a solution of the Laplace's equation then it is easy to check
+that
+\[
+u^\prime - \frac{G}{2\mu}(b^2 - y^2)
+\]
+is a solution of \eqref{c4s2e8}. The goal then is to find $u^\prime$. $u(\pm b, z) = 0$ and 
+$u(y, \pm c) = 0$ implies that $u^\prime(\pm b, z) = 0$ and $u^\prime(y, \pm c) = G(b^2 - y^2)/(2\mu)$.
+Let us assume that $u^\prime(y, z) = Y(y)Z(z)$, so that
+\begin{eqnarray*}
+Y^\tp &=& -k^2 Y \\
+Z^\tp &=& k^2 Z
+\end{eqnarray*}
+where $k^2$ is a constant. The choice of sign of $k^2$ is determined by the need to satisfy the
+boundary conditions on $u^\prime$. The other choice of sign will make $Y$ a hyperbolic function,
+for which we cannot satisfy the boundary conditions. The solutions of the above ordinary differential
+equations are
+\begin{eqnarray*}
+Y &=& A\cos(ky) + B\sin(ky) \\
+Z &=& C\cosh(kz) + D\sinh(kz)
+\end{eqnarray*}
+$Y(\pm b) = 0$ gives $k = (2n+1)\pi/(2b)$ and $B = 0$. $Z$ being an even function of $z$ requires that
+$D = 0$. Thus,
+\[
+u^\prime = A_n\cos\left(\frac{(2n+1)\pi y}{2b}\right)\cosh\left(\frac{(2n+1)\pi z}{2b}\right)
+\]
+or that the general solution of the Laplace's equation is
+\begin{equation}\label{c4s2e9}
+u^\prime = \sum_{n \ge 0}A_n\cos\left(\frac{(2n+1)\pi y}{2b}\right)\cosh\left(\frac{(2n+1)\pi z}{2b}\right).
+\end{equation}
+Finally, the solution of \eqref{c4s2e8} is
+\begin{equation}\label{c4s2e10}
+u(y,z)=\sum_{n \ge 0}A_n\cos\left(\frac{(2n+1)\pi y}{2b}\right)\cosh\left(\frac{(2n+1)\pi z}{2b}\right) - \frac{G}{2\mu}(b^2 - y^2).
+\end{equation}
+Equivalently,
+\begin{equation}\label{c4s2e11}
+u(y,z)=\sum_{n \text{ odd}}A_n\cos\left(\frac{n\pi y}{2b}\right)\cosh\left(\frac{n\pi z}{2b}\right) - \frac{G}{2\mu}(b^2 - y^2).
+\end{equation}
+
+\item The remark above equation (4.3.13) is a bit confusing. When the flow is steady there is no
+net force on it and the acceleration is zero. The force of gravity balances the viscous drag.
+
+\item The governing equation for paint brush flow is
+\begin{equation}\label{c4s2e12}
+\nabla^2 u = 0,
+\end{equation}
+where $u$ is a function of $y$ and $z$ coordinates. The boundary conditions are
+\begin{eqnarray}
+u(0, z) &=& 0 \label{c4s2e13} \\
+u(b, z) &=& 0 \label{c4s2e14} \\
+u(y, 0) &=& U,\; 0 < y < b \label{c4s2e15} \\
+\lim_{z \rightarrow \infty}u(y, z) &=& 0 \label{c4s2e16}
+\end{eqnarray}
+Once again, we use the method of separation of variables to write $u(y, z) = Y(y)Z(z)$ and hence
+\begin{eqnarray*}
+Y^\tp &=& -k^2 Y \\
+Z^\tp &=& k^2 Z
+\end{eqnarray*}
+The choice of sign of the constant of separation is dictated by the boundary conditions. If
+\[
+Y(y) = A\cos(ky) + B\sin(ky)
+\]
+then $Y(0) = 0$ and $Y(b) = 0$ require us to have $A = 0$ and $kb = n\pi$ or
+\begin{equation}\label{c4s2e17}
+Y(y) = B\sin\left(\frac{n\pi y}{b}\right).
+\end{equation}
+The solution of the $z$-equation is
+\[
+Z(z) = Ce^{kz} + De^{-kz}.
+\]
+Equation \eqref{c4s2e16} requires $C = 0$. The solution $u$ can thus be written as
+\begin{equation}\label{c4s2e18}
+u(y, z) = \sum_{n=1}^\infty A_n \exp\left(-\frac{n\pi z}{b}\right)\sin\left(\frac{n\pi y}{b}\right).
+\end{equation}
+We still have not used the boundary condition \eqref{c4s2e15}. Putting it in the
+previous equation gives
+\begin{equation}\label{c4s2e19}
+U = \sum_{n=1}^\infty A_n \sin\left(\frac{n\pi y}{b}\right).
+\end{equation}
+We now use the relation
+\begin{equation}\label{c4s2e20}
+\int_0^\pi\sin(mx)\sin(nx)dx = \frac{\pi}{2}\delta_{mn}
+\end{equation}
+or,
+\begin{equation}\label{c4s2e21}
+\int_0^b \sin\left(\frac{m\pi y}{b}\right)\sin\left(\frac{n\pi y}{b}\right)dy = \frac{b}{2}\delta_{mn}.
+\end{equation}
+Using it in equation \eqref{c4s2e22} we get
+\begin{equation}\label{c4s2e22}
+A_n = \begin{cases}
+0 & \text{ if } n \text{ is even.} \\
+\frac{4U}{n\pi} & \text{ if } n \text{ is odd.}
+\end{cases}
+\end{equation}
+Thus, the solution of the boundary value problem is
+\begin{equation}\label{c4s2e23}
+u(y, z) = \frac{4U}{\pi}\sum_{n\text{ odd}} \frac{1}{n}\exp\left(-\frac{n\pi z}{b}\right)\sin\left(\frac{n\pi y}{b}\right).
+\end{equation}
+
+\item Before leaving this section, we revisit the opening remarks in the book. If the flow is uni-directional and
+if the flow velocity is independent of the coordinate in the flow direction then the convective term $\vec{u}\cdot
+\grad{\vec{u}}$ is zero. The equation of motion becomes
+\[
+\pdt{\vec{u}}{t} = -\grad{p} + \mu\nabla^2\vec{u}.
+\]
+Without loss of generality assume that the flow is in the $x$ direction. Since $\vec{u}$ is independent of $x$, it is
+evident that so is $\grad{p}$, or $p$. The flow wise motion is thus independent of the span wise motion. The motion in
+the $yz$-plane is independent of the flow. 
+
+\item Let us now confine ourselves to the motion of a fluid in a long cylindrical pipe whose generators are parallel
+to the $x$-axis. There is no pressure gradient in the $y$ or $z$ axes and hence
+\begin{eqnarray*}
+\pdt{v}{t} &=& -\mu\nabla^2 v \\
+\pdt{w}{t} &=& -\mu\nabla^2 w 
+\end{eqnarray*}
+Such a motion cannot be sustained against the viscous dissipation unless sustained by continual energy supply from
+the tangential stresses at the boundary. The tangential stress is $\tau_{ij} = \mu e_{ij}$ so that the force per unit
+area is $f_j = n_i\tau_{ij} = \mu n_i e_{ij}$ and the power supplied by it is $f_j u_j = \mu n_i e_{ij} u_j$. In the
+span-wise plane, $n_1 = 0, u_1 = 0$ and this expression becomes
+\[
+\mu\left\{n_2 (e_{22}u_2 + e_{23}u_3) + n_3(e_{32}u_2 + e_{33}u_3)\right\}.
+\]
+Integrating this expression along a curve in the span-wise plane gives
+\[
+\mu\oint\left\{n_2 (e_{22}u_2 + e_{23}u_3) + n_3(e_{32}u_2 + e_{33}u_3)\right\}dl
+\]
+This expression is the power supplied by the boundary via tangential stresses. In the motion of a fluid through a
+pipe, there are no tangential stresses and therefore there is no motion in the span-wise plane.
+\end{itemize}
+
+\section{Unsteady unidirectional flow}\label{c4s3}
+\begin{itemize}
+\item In this section we consider motion triggered by an unsteady movement of a boundary keeping the pressures
+far upstream and far downstream equal. We can control only the pressures far upstream and far downstream in an
+experiment. When we describe the problem statement we restrict ourselves in keeping them equal and we make no
+statement about the pressure midway.
+
+\item Navier-Stokes equation when $\grad{p} = 0$ and when the motion is in a single direction, say $x$, is
+\begin{equation}\label{c4s3e1}
+\pdt{u}{t} = \nu\left(\frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right),
+\end{equation}
+where we wrote $\vec{u} = (u, v, w)$. We solve this equation using Fourier transforms. We define them as
+\begin{eqnarray}
+\hat{u}(k_y, k_z, t) &=&  \iint_{\mathbb{R}^2}u(y, z, t)e^{-i\vec{k}\cdot\vec{x}}dydz \\
+u(y, z, t) &=& \frac{1}{4\pi^2}\iint_{\mathbb{R}^2} \hat{u}(k_y, k_z, t)e^{i\vec{k}\cdot\vec{x}}dk_ydk_z,
+\end{eqnarray}
+where $\vec{k} = k_y\uvec{y} + k_z\uvec{z}$ and $\vec{x} = y\uvec{y} + z\uvec{z}$. If we take the Fourier 
+transform of \eqref{c4s3e1} we get
+\[
+\pdt{\hat{u}}{t} = -\nu k^2 \hat{u}.
+\]
+Its solution is 
+\begin{equation}\label{c4s3e4}
+\hat{u}(k_y, k_z, t) = \phi(k_y, k_z)e^{-\nu k^2 t}.
+\end{equation}
+From the above equation it is immediately clear that $\phi(\vec{k}) = \hat{u}(\vec{k}, 0)$, the initial value of
+the Fourier transform of $u$, that is,
+\[
+\phi(\vec{k}) = \iint_{\mathbb{R}^2} u(y, z, 0)e^{-i\vec{k}\cdot\vec{x}}dydz.
+\]
+Substituting this in equation \eqref{c4s3e4} we get
+\[
+\hat{u}(\vec{k}, t) = \iint_{\mathbb{R}^2} u(y, z, 0)e^{-i\vec{k}\cdot\vec{x} - \nu k^2t}dydz.
+\]
+Therefore,
+\[
+u(\vec{x},t)=\frac{1}{4\pi^2}\iint_{\mathbb{R}^2} dk_ydk_z e^{i\vec{k}\cdot\vec{x}}\iint_{\mathbb{R}^2} dy^\op dz^\op u(y, z, 0) e^{-i\vec{k}\cdot\vec{x}^\op - k^2\nu t}
+\]
+Interchanging the order of integration,
+\begin{equation}\label{c4s3e5}
+u(\vec{x},t)=\frac{1}{4\pi^2}\iint_{\mathbb{R}^2} dy^\op dz^\op \iint_{\mathbb{R}^2} dk_ydk_z u(y, z, 0) e^{i\vec{k}\cdot(\vec{x}-\vec{x}^\op) - k^2\nu t}.
+\end{equation}
+Let us write the $\vec{k}-$integral as
+\begin{equation}\label{c4s3e6}
+K(\vec{x}, \vec{x}^\op) = \iint_{\mathbb{R}^2} dk_ydk_z u(y, z, 0) e^{i\vec{k}\cdot(\vec{x}-\vec{x}^\op) - k^2\nu t}.
+\end{equation}
+The integral readily factorizes as
+\begin{equation}\label{c4s3e7}
+K(\vec{x}, \vec{x}^\op) = u(y, z, 0) \int_{\mathbb{R}} dk_y e^{ik_y(y-y^\op)-k_y^2\nu t}\int_{\mathbb{R}} dk_z e^{ik_z(y-y^\op)-k_z^2\nu t}
+\end{equation}
+The two integrals are identical and we can as well focus only on one of them
+\[
+I(y, y^\op) = \int_{\mathbb{R}} dk_y e^{ik_y(y-y^\op)-k_y^2\nu t}
+\]
+After `completing the square' of the arguments of the exponential,
+\[
+I(y, y^\op) = \exp\left(-\frac{(y - y^\op)^2}{4\nu t}\right)\int_{\mathbb{R}}\exp\left(-\left(k_y\sqrt{\nu t} + i\frac{y^\op - y}{2\sqrt{\nu t}}\right)\right)dk_y
+\]
+or,
+\[
+I(y, y^\op) = \exp\left(-\frac{(y - y^\op)^2}{4\nu t}\right)\frac{1}{\sqrt{\nu t}}\int_{\mathbb{R}}\exp\left(-\left(k_y\sqrt{\nu t} + i\frac{y^\op - y}{2\sqrt{\nu t}}\right)\right)d(k_y\sqrt{\nu t}).
+\]
+The integral is of the form
+\[
+\int_{\mathbb{R}} e^{-(x + ia)^2}dx,
+\]
+where $a$ is a constant. It can be shown that
+\begin{equation}\label{c4s3e8}
+\int_{\mathbb{R}} e^{-(x + ia)^2}dx = \int_{\mathbb{R}}e^{-x^2}dx = \sqrt{\pi}
+\end{equation}
+so that
+\begin{equation}\label{c4s3e9}
+I(y, y^\op) = \exp\left(-\frac{(y - y^\op)^2}{4\nu t}\right)\sqrt{\frac{\pi}{\nu t}}
+\end{equation}
+and hence
+\begin{equation}\label{c4s3e10}
+K(\vec{x}, \vec{x}^\op) = \frac{\pi}{\nu t}u(y, z, 0) \exp\left(-\frac{(y - y^\op)^2 + (z - z^\op)^2}{4\nu t}\right).
+\end{equation}
+From equations \eqref{c4s3e5}, \eqref{c4s3e6} and \eqref{c4s3e10} we get
+\begin{equation}\label{c4s3e11}
+u(\vec{x}, t) = \frac{1}{4\pi\nu t}\iint_{\mathbb{R}^2}dy^\op dz^\op u(y^\op, z^\op, 0)\exp\left(-\frac{(y - y^\op)^2 + (z - z^\op)^2}{4\nu t}\right).
+\end{equation}
+
+\item Equation \eqref{c4s3e11} is a solution of the partial differential equation \eqref{c4s3e1} whose exact form
+depends on the initial value $u(y, z, 0)$. We will now apply it to various cases of the initial values.
+
+\item Supposing there are two streams of fluid moving with different velocities and suppose that there is
+initially a sharp boundary between them. If we choose our reference frame as the one moving with a speed
+equal to the mean of the two streams then with respect to it, one field moves with velocity, say, $U$ and 
+the other one with velocity $-U$. Further, let the initial boundary between the streams coincide with
+the $xz$ plane so that
+\begin{eqnarray*}
+u(y^\op, z^\op, 0) &=& U \text{ if } y^\op > 0 \\
+u(y^\op, z^\op, 0) &=& -U \text{ if } y^\op < 0.
+\end{eqnarray*}
+Putting these values in equation \eqref{c4s3e11} we get
+\[
+u(\vec{x},t) = \frac{1}{4\pi\nu t}\int_{\mathbb{R}}e^{-(z-z^\op)^2/(4\nu t)}dz^\op\left[\int_0^\infty U e^{-(y-y^\op)^2/(4\nu t)}dy^\op - \int_{-\infty}^0 U e^{-(y-y^\op)^2/(4\nu t)}dy^\op\right].
+\]
+The $z^\op$ integral can be readily evaluated so that
+\[
+u(\vec{x},t) = \frac{1}{\sqrt{4\pi\nu t}}\left[\int_0^\infty U e^{-(y-y^\op)^2/(4\nu t)}dy^\op - \int_{-\infty}^0 U e^{-(y-y^\op)^2/(4\nu t)}dy^\op\right].
+\]
+In the second integral, make the substitution $y^\op \mapsto -y^\op$ so that
+\begin{equation}\label{c4s3e12}
+u(\vec{x},t) = \frac{U}{\sqrt{4\pi\nu t}}\left[\int_0^\infty e^{-(y-y^\op)^2/(4\nu t)}dy^\op - \int_0^\infty e^{-(y+y^\op)^2/(4\nu t)}dy^\op\right].
+\end{equation}
+In the first integral, put $\xi = y - y^\op$ so that it becomes
+\[
+-\int_y^{-\infty}\exp\left(-\frac{\xi^2}{4\nu t}\right)d\xi = \int_{-y}^\infty\exp\left(-\frac{\xi^2}{4\nu t}\right)d\xi.
+\]
+Similarly, in the second integral put $\xi = y + y^\op$ so that it becomes
+\[
+\int_y^\infty\exp\left(-\frac{\xi^2}{4\nu t}\right)d\xi.
+\]
+Equation \eqref{c4s3e12} thus becomes,
+\[
+u(\vec{x}, t) = \frac{U}{\sqrt{4\pi\nu t}}\int_{-y}^y\exp\left(-\frac{\xi^2}{4\nu t}\right)d\xi = \frac{U}{\sqrt{\pi\nu t}}\int_0^y\exp\left(-\frac{\xi^2}{4\nu t}\right)d\xi.
+\]
+Finally, make the substitution $\chi = \xi/\sqrt{4\nu t}$ to
+\[
+u(\vec{x}, t) = \frac{2U}{\sqrt{\pi}}\int_0^{y/\sqrt{4\nu t}} e^{-\chi^2}d\chi.
+\]
+We now use the definition of the error function,
+\begin{equation}\label{c4s3e13}
+\text{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}dt.
+\end{equation}
+Therefore, 
+\begin{equation}\label{c4s3e14}
+u(\vec{x}, t) = U\text{erf}\left(\frac{y}{\sqrt{4\nu t}}\right).
+\end{equation}
+The velocity profile is shown in figure \ref{c4f1}
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{c4f1}
+\caption{Transition layer between two parallel streams}\label{c4f1}
+\end{figure}
+This figure was produced using the following code.
+\begin{verbatim}
+x <- seq(from = 0, to = 3, len = 100)
+y <- pnorm(x) - pnorm(0)
+X <- c(-rev(x), x)
+# Recall that we are in the frame of reference such that upper 
+# fluid moves with velocity U and the lower one with velocity -U.
+Y <- c(-rev(y), y)
+plot(
+  Y,
+  X,
+  type = 'l',
+  main = 'Transition layer',
+  xlab = 'u/U',
+  ylab = expression(y / sqrt(4 * nu * t))
+)
+abline(h = 0, lty = 2)
+abline(v = 0, lty = 2)
+\end{verbatim}
+
+The distance between the points where $u/U = \pm 0.99$ is computed using the following code.
+\begin{verbatim}
+d1 <- qnorm(0.99)
+d2 <- qnorm(0.1)
+delta_u_by_U <- d1 - d2
+\end{verbatim}
+It is $4.652696$ so that 
+\[
+\delta y = \sqrt{\nu t} \times 2 \times 4.652696 = 9.3053.
+\]
+The coefficient will be $8$ if we use $u/U = \pm 0.9772499$.
+
+\item We next show that the asymptotic behaviour of the solution will remain unchanged if instead of the
+sharp discontinuity that we assumed previously we have 
+\begin{equation}\label{c4s3e15}
+u(y) = \frac{y}{|y|}U + F(y),
+\end{equation}
+where the function $F$ goes to zero rapidly as $y \rightarrow \pm\infty$ and 
+\begin{equation}\label{c4s3e16}
+\int_\mathbb{R} F(y)dy = 0.
+\end{equation}
+Note that the first term in equation \eqref{c4s3e15} is just $\pm U$. When the $u$ of \eqref{c4s3e15} 
+is used in equation \eqref{c4s3e11}, the first term will give the right hand side of equation
+\eqref{c4s3e14} and the second term will give
+\[
+I = \frac{1}{4\pi\nu t}\iint_{\mathbb{R}^2}F(y^\op)\exp\left(-\frac{(y - y^\op)^2 + (z - z^\op)^2}{4\nu t}\right)dy^\op dz^\op.
+\]
+The $z^\op$ integral readily evaluates to $\sqrt{4\pi\nu t}$ so that
+\begin{eqnarray*}
+I &=& \frac{1}{\sqrt{4\pi\nu t}}\int_\mathbb{R}F(y^\op)\exp\left(-\frac{(y - y^\op)^2}{4\nu t}\right)dy^\op \\
+&=& \frac{e^{-y^2/(4\nu t)}}{\sqrt{4\pi\nu t}}\int_\mathbb{R}F(y^\op)\exp\left[\frac{2yy^\op - {y^\op}^2}{4\nu t}\right]dy^\op
+\end{eqnarray*}
+Let us approximate the exponential as $e^x \approx 1 + x$ for small values of $x$ so that
+\[
+I = \frac{e^{-y^2/(4\nu t)}}{\sqrt{4\pi\nu t}}\left\{\int_\mathbb{R}F(y^\op)dy^\op + \frac{y}{2\nu t}\int_\mathbb{R}F(y^\op)y^\op dy^\op - \int_\mathbb{R}F(y^\op)\frac{{y^\op}^2}{4\nu t}dy^\op\right\}.
+\]
+From \eqref{c4s3e16} it is clear that $F$ is an odd function so that the first and the third integrals
+are zero and
+\[
+I = \frac{1}{4}\frac{1}{\nu t}\frac{y}{\sqrt{\pi\nu t}}\exp\left(-\frac{y^2}{4\nu t}\right)\int_\mathbb{R}F(y^\op)y^\op dy^\op 
+\]
+For a fixed $y/\sqrt{\nu t}$, $I = O(t^{-1})$.
+
+\item Before proceeding we show that the condition on $F$ in equation \eqref{c4s3e15} can be
+relaxed. If $F(y) = \exp(iay)$ for a real constant $a$ then 
+\[
+I = \frac{1}{\sqrt{4\pi\nu t}}\int_{\mathbb{R}}e^{iay^\op}\exp\left(-\frac{(y - y^\op)^2}{4\nu t}\right)dy^\op.
+\]
+It can be simplified as
+\[
+I = \frac{e^{iay}}{\sqrt{4\pi\nu t}}\int_{\mathbb{R}}\exp\left(-ia(y - y^\op) - \frac{(y - y^\op)^2}{4\nu t}\right)dy^\op.
+\]
+Under the transformation $y^\op \mapsto y - y^\op$, the integral becomes
+\begin{eqnarray*}
+I &=& \frac{e^{iay}}{\sqrt{4\pi\nu t}}\int_{\mathbb{R}}\exp\left(-iay^\op - \frac{{y^\op}^2}{4\nu t}\right)dy^\op \\
+ &=& \frac{e^{iay - a^2\nu t}}{\sqrt{4\pi\nu t}}\int_{\mathbb{R}}\exp\left(-\left(\frac{y^\op}{\sqrt{4\pi\nu t}} + ia\sqrt{\nu t}\right)^2\right) dy^\op.
+\end{eqnarray*}
+Under yet another transformation $y^\op/\sqrt{4\pi\nu t} \mapsto y^\op$, we have
+\[
+I = e^{iay - a^2\nu t}\int_{\mathbb{R}}e^{-({y^\op} + ia\nu t)^2}dy^\op = \sqrt{\pi}e^{iay - a^2\nu t}.
+\]
+As $t \rightarrow \infty$, $I \rightarrow 0$. Thus any function that can be written as a sum of normal modes $e^{iay}$ 
+will decay to zero as time goes by.
+
+This analysis demonstrates that an instability at the interface of fluids moving with differing velocities
+should decay rapidly with time. It seems to contradict the standard analysis of Kelvin-Helmholtz instability.
+However, one must remember that the standard analysis assumes that the fluids are ideal while we work
+with real fluids.
+
+\item In the case of a plane boundary moved suddenly in a fluid initially at rest, the boundary value
+problem is $u_t = \nu u_{yy}$, subject to
+\begin{eqnarray*}
+u(y, 0) &=& 0, \text{ for } y > 0 \\
+u(0, t) &=& U, \text{ for } t > 0.
+\end{eqnarray*}
+If we move the to the frame of reference of the moving plane, the initial and boundary conditions become
+\begin{eqnarray*}
+u(y, 0) &=& -U, \text{ for } y > 0 \\
+u(0, t) &=& 0, \text{ for } t > 0.
+\end{eqnarray*}
+In this form the problem is identical to the upper half-space of the previous item. The solution is, following
+\eqref{c4s3e14},
+\begin{equation}
+u(y, t) = -U\text{erf}\left(\frac{y}{4\nu t}\right)
+\end{equation}\label{c4s3e17}
+which in the laboratory frame of reference becomes
+\begin{equation}\label{c4s3e18}
+u(y, t) = U - U\text{erf}\left(\frac{y}{4\nu t}\right)
+\end{equation}
+We cannot use equation \eqref{c4s3e11} in this case because we do not know that $u$ is in the lower half-space.
+We cannot put it zero because it is not the case that there is fluid at rest in the lower half-space.
+
+\item We now consider the motion of a fluid between two parallel plates of which one is at rest and the other
+moves with a uniform velocity $U$ in its own plane. The boundary value problem for this case is $u_t = \nu u_{yy}$
+subject to
+\begin{eqnarray*}
+u(0, t) &=& U, t > 0 \\
+u(d, t) &=& 0, t > 0 \\
+u(y, 0) &=& 0, 0 \le y \le d.
+\end{eqnarray*}
+The boundary conditions for this problem are inhomogeneous so that we cannot use the separation of variables to
+solve the problem. We introduce a new variable,
+\begin{equation}\label{c4s3e19}
+w(y, t) = U\left(1 - \frac{y}{d}\right) - u(y, t).
+\end{equation}
+It is easy to verify that $w_t = \nu w_{yy}$ and
+\begin{eqnarray*}
+w(0, t) &=& 0, t > 0 \\
+w(d, t) &=& 0, t > 0 \\
+w(y, 0) &=& U\left(1 - \frac{y}{d}\right).
+\end{eqnarray*}
+If $w(y, t) = Y(y)T(t)$ then
+\[
+\frac{1}{T}\td{T}{t} = \frac{\nu}{Y}\frac{d^2Y}{dy^2} = -k^2,
+\]
+where $-k^2$ is a constant of separation. We chose its sign keeping in mind that the solution cannot blow up
+as time goes by. Thus,
+\begin{equation}\label{c4s3e20}
+T(t) = \alpha e^{-k^2 t}
+\end{equation}
+and
+\begin{equation}\label{c4s3e21}
+Y(y) = A\exp\left(\frac{ik}{\sqrt{\nu}}y\right) + B\exp\left(-\frac{ik}{\sqrt{\nu}}y\right).
+\end{equation}
+The solution $w$ is
+\begin{equation}\label{c4s3e22}
+w(y, t) = Ae^{-k^2 t}\exp\left(\frac{ik}{\sqrt{\nu}}y\right) + Be^{-k^2 t}\exp\left(-\frac{ik}{\sqrt{\nu}}y\right)
+\end{equation}
+where the constant $\alpha$ has been `absorbed' in $A$ and $B$. The condition $w(0, t) = 0$ gives $B = -A$ so that
+\begin{equation}\label{c4s3e23}
+w(y, t) = 2Aie^{-k^2 t}\sin\left(\frac{ky}{\sqrt{\nu}}\right).
+\end{equation}
+The condition $w(d, t) = 0$ restricts $k$ to
+\begin{equation}\label{c4s3e24}
+k = \frac{n\pi\sqrt{\nu}}{d}, n \in \mathbb{Z}.
+\end{equation}
+Thus,
+\begin{equation}\label{c4s3e25}
+w(y, t) = A_n\exp\left(-n^2\pi^2\frac{\nu t}{d^2}\right)\sin\left(\frac{n\pi y}{d}\right).
+\end{equation}
+The constant is now denoted as $A_n$ to indicate the possibility that it will depend on $n$, They are determined by
+the initial condition. Thus, we have
+\[
+\sum_{n=1}^\infty A_n\sin\left(\frac{n\pi y}{d}\right) = U\left(1 - \frac{y}{d}\right)
+\]
+so that
+\[
+\sum_{n=1}^\infty A_n\int_0^d\sin\left(\frac{m\pi y}{d}\right)\sin\left(\frac{n\pi y}{d}\right)dy = U\int_0^d\left(1 - \frac{y}{d}\right)\sin\left(\frac{m\pi y}{d}\right)dy
+\]
+or
+\[
+\sum_{n=1}^\infty A_n \frac{d}{2}\delta_{mn} = \frac{Ud}{\pi m}
+\]
+or
+\begin{equation}\label{c4s3e26}
+A_m = \frac{2U}{\pi m}.
+\end{equation}
+The solution to the initial, boundary value problem is thus,
+\begin{equation}\label{c4s3e27}
+u(y, t) = U\left(1 - \frac{y}{d}\right) - \frac{2U}{\pi}\sum_{n=1}^\infty \frac{1}{n}\exp\left(-n^2\pi^2\frac{\nu t}{d^2}\right)\sin\left(\frac{n\pi y}{d}\right).
+\end{equation}
+
+\item We next consider the motion of a fluid due to an oscillating plate. Suppose that the upper half of the
+$xy$-plane is filled with a fluid and is bounded by a plate lying in the $xy$-plane. If the plate oscillates
+with a velocity $U\cos(nt)$ then we can assume that in the steady state the velocity of the fluid too will
+have a harmonic component of frequency $n$. Thus, we can assume that
+\[
+u(y, t) = \Re(e^{int}F(y)),
+\]
+for a function $F$. Substituting this form in the differential equation of the fluid we get $\nu F^{\tp} =
+inF$. If we write $in/\nu = \alpha^2$ then the solution to this equation is
+\[
+F(y) = A e^{-\alpha y} + Be^{\alpha y}.
+\]
+From the definition of $\alpha^2$ it follows that
+\[
+\alpha = (1 + i)\sqrt{\frac{n}{2\nu}}
+\]
+so that the requirement that $F$ stays finite as $y \rightarrow \infty$ needs $B = 0$. Note that the fluid
+is confined to the upper half of the $xy$-plane so that the condition $y \rightarrow -\infty$ is irrelevant.
+Thus,
+\[
+u(y, t) = A\exp\left(-\sqrt{\frac{n}{2\nu}}y\right)\cos\left(nt - \frac{n}{2\nu}y\right).
+\]
+Since $u(0, t) = U\cos(nt)$, we have $A = U$ and the solution of the problem is
+\begin{equation}\label{c4s3e28}
+u(y, t) = U\exp\left(-\sqrt{\frac{n}{2\nu}}y\right)\cos\left(nt - \frac{n}{2\nu}y\right).
+\end{equation}
+
+\item The differential equation for starting flow is
+\begin{equation}\label{c4s3e29}
+\pdt{u}{t} = \frac{G}{\rho} + \nu\left(\frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\pdt{u}{r}\right),
+\end{equation}
+where $G$ the constant pressure gradient. The boundary and initial conditions on $u$ are
+\begin{eqnarray}
+u(a, t) &=& 0, \text{ for } t \ge 0 \label{c4s3e30} \\
+u(r, 0) &=& 0, \text{ for } 0 \le r \le a.\label{c4s3e31}
+\end{eqnarray}
+In this problem the equation is inhomogeneous but the boundary condition is homogeneous. We can make the
+equation homogeneous by writing $u$ as a sum of the steady state solution plus the transient solution. Let
+\begin{equation}\label{c4s3e32}
+u(r, t) = \frac{G}{4\nu}(a^2 - r^2) + w(r, t).
+\end{equation}
+It is easy to confirm that $w$ satisfies the equation
+\begin{equation}\label{c4s3e33}
+\pdt{w}{t} = \nu\left(\frac{\partial^2 w}{\partial r^2} + \frac{1}{r}\pdt{w}{r}\right),
+\end{equation}
+subject to
+\begin{eqnarray}
+w(a, t) &=& 0, \text{ for } t \ge 0 \label{c4s3e34} \\
+w(r, 0) &=& \frac{G}{4\mu}(a^2 - r^2), \text{ for } 0 \le r \le a.\label{c4s3e35}
+\end{eqnarray}
+This is a homogenous partial differential equation with homogeneous boundary conditions. We can solve it
+using the `separation of variables' method. If we write $w(r, t) = R(r)T(t)$ then
+\[
+\frac{1}{T}\td{T}{t} = \frac{\nu}{R}\left(\frac{d^2R}{dr^2} + \frac{1}{r}\td{R}{r}\right) = -k^2\nu,
+\]
+where $-k^2\nu$ is the constant of separation. Its sign is chosen to ensure that the solution does not
+diverge as $t \rightarrow \infty$. We thus get two ordinary differential equations
+\begin{eqnarray}
+T^\op + k^2\nu T &=& 0 \label{c4s3e36} \\
+r^2R^\tp + rR^\op + k^2r^2R &=& 0 \label{c4s3e37}
+\end{eqnarray}
+Introduce a new variable $x = kr$ in equation \eqref{c4s3e37} to get
+\begin{equation}\label{c4s3e38}
+x^2R^\tp + xR^\op + x^2R = 0.
+\end{equation}
+Bessel equation of order $n$ is $z^2w^\tp + zw^\op + (z^2 - n^2)w = 0$, where $w$ is a function of $z$. 
+Comparing it with equation \eqref{c4s3e38} suggests that it is Bessel equation of order $0$ and its
+solution is
+\begin{equation}\label{c4s3e39}
+R(x) = \alpha J_0(x) + \beta Y_0(x),
+\end{equation}
+where $J_0$ is the Bessel function of first kind order $0$ and $Y_0$ is Bessel function of second kind
+of order $0$. Since $Y_0 \rightarrow \infty$ as $x = kr \rightarrow 0$ we must have $\beta = 0$ and
+\begin{equation}\label{c4s3e40}
+R(x) = \alpha J_0(x).
+\end{equation}
+Using the boundary condition $R(r = a) = 0$ or $R(x = ka) = 0$ in the above equation gives
+\[
+\alpha J_0(ra) = 0.
+\]
+If we want a non-trivial solution then $ra$ should be a zero of the function $J_0$, say $\lambda_n$.
+Thus,
+\[
+R(kr) = \alpha J_0\left(\lambda_n\frac{r}{a}\right).
+\]
+Since $ka = \lambda_n$, $k = \lambda_n/a$ so that the solution to \eqref{c4s3e36} is
+\[
+T(t) = \alpha^\op\exp\left(-\lambda_n^2\frac{\nu t}{a^2}\right)
+\]
+so that
+\begin{equation}\label{c4s3e41}
+w(r, t) = \frac{G}{4\mu}\sum_{n=1}^\infty A_n J_0\left(\lambda_n\frac{r}{a}\right)\exp\left(-\lambda_n^2\frac{\nu t}{a^2}\right),
+\end{equation}
+where we pulled out $G/(4\mu)$ outside the sum for convenience. Using the initial condition in 
+\eqref{c4s3e35} we get
+\begin{equation}\label{c4s3e42}
+a^2 - r^2 = \sum_{n=1}^\infty A_n J_0\left(\lambda_n\frac{r}{a}\right)
+\end{equation}
+
+\end{itemize}

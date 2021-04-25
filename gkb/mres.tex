@@ -1,0 +1,1149 @@
+\chapter{Some mathematical results}
+\section{Green's theorem}\label{c2sa1}
+We will prove Green's theorem
+\begin{equation}\label{c2sae1}
+\int\left(\phi\nabla^2\psi - \psi\nabla^2\phi\right)dV = \int\left(\phi\grad{\psi} - \psi\grad{\phi}\right)\cdot\un dA
+\end{equation}
+Let $\vec{A} = \phi\grad{\psi}$ and $\vec{B} = \psi\grad{\psi}$. Then,
+\[
+\int\left(\vec{A} - \vec{B}\right)\cdot\un dA = \int\dive{(\vec{A} - \vec{B})}dV
+\]
+Now, $\dive{\vec{A}} = \dive{(\phi\grad{\psi})} = \grad{\phi}\cdot\grad{\psi} + \phi\nabla^2\psi$. Similarly, $\dive{\vec{B}} = \grad{\psi}\cdot\grad{\phi} + \psi\nabla^2\phi$. Therefore,
+\[
+\int(\vec{A} - \vec{B})\cdot\un dA = \int\left(\phi\nabla^2\psi - \psi\nabla^2\phi\right)dV
+\]
+
+\section{Solution of Poisson equation}\label{c2sa2} 
+We will show that the solution of the Poisson's equation $\nabla^2\phi = \Delta$ is
+\[
+\phi(\vec{x}) = -\frac{1}{4\pi}\int\frac{\Delta(\vec{x}^\op)}{|\vec{x} - \vec{x}^\op|} dV(\vec{x}^\op)
+\]
+We begin with Fourier transform of $\nabla^2\phi = \Delta(\vec{x})$. Thus,
+\[
+\frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}}\nabla^2\phi dV = \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}}\Delta(\vec{x}) dV
+\]
+Use Green's theorem \eqref{c2sae1} on the left hand side to get,
+\begin{eqnarray*}
+\frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} \phi\nabla^2e^{-i\vec{k}\cdot\vec{x}} dV &=& \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}}\Delta(\vec{x}) dV \\
++ \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}} \grad{\phi}\cdot\un dA & & \\
+- \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} \phi \grad{e^{-i\vec{k}\cdot\vec{x}}}\cdot\un dA
+\end{eqnarray*}
+The second and the third term on the left hand side can be written as
+\[
+\lim_{R \rightarrow \infty} \frac{R^2}{(2\pi)^{3/2}}\int_0^\pi\int_0^{2\pi}\left(e^{-i\vec{k}\cdot\vec{x}} \grad{\phi} - \phi \grad{e^{-i\vec{k}\cdot\vec{x}}}\right)\sin\theta 
+d\theta d\varphi
+\]
+For a function $\phi$ that goes to zero faster than $1/r^2$ as $r \rightarrow \infty$, the above expression will be zero. Therefore,
+\begin{equation}\label{c2sae2}
+\frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} \phi\nabla^2e^{-i\vec{k}\cdot\vec{x}} dV = \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}}\Delta(\vec{x}) dV 
+\end{equation}
+To calculate $\nabla^2e^{-i\vec{k}\cdot\vec{x}}$, we assume, without loss of generality, that $\vec{k}$ is along the positive $z$ axis so that $\vec{k}\cdot\vec{x} = kr\cos\theta$.
+Therefore,
+\begin{eqnarray*}
+\nabla^2e^{-i\vec{k}\cdot\vec{x}} &=& \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r} e^{-ikr\cos\theta}\right) + \\
+ & & \frac{1}{r^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta} e^{-ikr\cos\theta}\right) + \\
+ & & \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}e^{-ikr\cos\theta}
+\end{eqnarray*}
+or
+\[
+\nabla^2e^{-i\vec{k}\cdot\vec{x}} = -k^2e^{-ikr\cos\theta} = -k^2e^{-i\vec{k}\cdot\vec{x}}
+\]
+Therefore, equation \eqref{c2sae2} becomes,
+\[
+-\frac{k^2}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} \phi e^{-i\vec{k}\cdot\vec{x}} dV = \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} e^{-i\vec{k}\cdot\vec{x}}\Delta(\vec{x}) dV 
+\]
+If $\hat{f}(\vec{k})$ denotes the Fourier transform of $f(\vec{x})$, the above equation means,
+\[
+-k^2\hat{\phi}(\vec{k}) = \hat{\Delta}(\vec{k}) \Rightarrow \hat{\phi}(\vec{k}) = -\frac{\hat{\Delta}(\vec{k})}{k^2}
+\]
+Therefore,
+\[
+\phi(\vec{x}) = \phi_h(\vec{x}) - \frac{1}{(2\pi)^{3/2}}\int_{-\infty}^{\infty} \frac{\hat{\Delta}(\vec{k})}{k^2} e^{i\vec{k}\cdot\vec{x}} dV_k
+\]
+where $dV_k$ denotes the volume element in the $\vec{k}$-space and $\phi_h(\vec{x})$ is any solution of the homogeneous equation $\nabla^2\phi = 0$. Using the expression for 
+$\hat{\Delta}(\vec{k})$, we get
+\[
+\phi(\vec{x})=\phi_h(\vec{x})-\frac{1}{(2\pi)^{3}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Delta(\vec{x}^\op)\frac{e^{i\vec{k}\cdot(\vec{x}-\vec{x}^\op)}}{k^2}dV^\op dV_k,
+\]
+where $dV^\op$ is integration over $\vec{x}^\op$. Let,
+\[
+G(\vec{x}, \vec{x}^\op) = -\frac{1}{(2\pi)^{3}}\int_{-\infty}^{\infty}\frac{e^{i\vec{k}\cdot(\vec{x}-\vec{x}^\op)}}{k^2}dV_k
+\]
+be the Green function so that,
+\begin{equation}\label{c2sae3}
+\phi(\vec{x})=\phi_h(\vec{x}) + \int_{-\infty}^{\infty}G(\vec{x}, \vec{x}^\op)\Delta(\vec{x}^\op) dV^\op
+\end{equation}
+The Green function is an integral in $\vec{k}$-space. Therefore, without loss of generality, we can orient the $k_z$ axis parallel 
+to the vector $\vec{x}-\vec{x}^\op$ so that
+\[
+G(\vec{x}, \vec{x}^\op) = -\frac{1}{(2\pi)^{3}}\int_{0}^{\infty}\int_0^\pi\int_0^{2\pi}\frac{e^{ik|\vec{x}-\vec{x}^\op|\cos\theta}}{k^2}k^2\sin\theta dk d\theta d\varphi
+\]
+or
+\[
+G(\vec{x}, \vec{x}^\op) = -\frac{1}{(2\pi)^{2}}\int_{0}^{\infty}\int_0^\pi e^{ik|\vec{x}-\vec{x}^\op|\cos\theta}\sin\theta dk d\theta
+\]
+Put $t = \cos\theta$ so that,
+\[
+G(\vec{x}, \vec{x}^\op) = \frac{1}{(2\pi)^{2}}\int_{0}^{\infty}\int_1^{-1} e^{ik|\vec{x}-\vec{x}^\op| t} dt dk
+\]
+or
+\[
+G(\vec{x}, \vec{x}^\op) = \frac{1}{(2\pi)^{2}}\int_{0}^{\infty}\left( \frac{e^{ik|\vec{x}-\vec{x}^\op| t}}{ik|\vec{x}-\vec{x}^\op|}\Big|_{1}^{-1}\right)dk
+\]
+or
+\[
+G(\vec{x}, \vec{x}^\op) = \frac{i}{(2\pi)^{2}}\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|} - e^{-ik|\vec{x}-\vec{x}^\op|}}{k|\vec{x}-\vec{x}^\op|} dk
+\]
+or,
+\[
+G(\vec{x}, \vec{x}^\op) = \frac{i}{(2\pi)^{2}}\frac{1}{|\vec{x}-\vec{x}^\op|}\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|} - e^{-ik|\vec{x}-\vec{x}^\op|}}{k} dk
+\]
+Now,
+\begin{eqnarray*}
+\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|} - e^{-ik|\vec{x}-\vec{x}^\op|}}{k} dk &=& \\
+\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk - \int_{0}^{\infty} \frac{e^{-ik|\vec{x}-\vec{x}^\op|}}{k} dk &=& \\
+\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk - \int_{0}^{-\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{(-k)} d(-k) &=& \\
+\int_{0}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk + \int_{-\infty}^{0} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk &=& \\
+\int_{-\infty}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk
+\end{eqnarray*}
+so that,
+\begin{equation}\label{c2sae4}
+G(\vec{x}, \vec{x}^\op) = \frac{i}{(2\pi)^{2}}\frac{1}{|\vec{x}-\vec{x}^\op|}\int_{-\infty}^{\infty} \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk
+\end{equation}
+We can evaluate the integral using residue theorem. Consider a semi-circular contour with diameter along the real axis, from $-R$ to $R$ and arc in the first two quadrants. Now the
+integrand has a singularity the origin, a point on the contour. Therefore, we have to take the Cauchy principal value of the integrand. To that end, indent the contour by a small 
+semi-circulararc with diameter along the real axis, from $-a$ to $a$ and arc in the first two quadrants. The indented contour now no longer has the singularity in its interior and
+hence by Cauchy theorem, the integral around it is zero. If $C_1$ denotes the larger arc and $C_2$ the smaller one, then
+\begin{equation}\label{c2sae5}
+\left(\int_{C_1} + \int_{-R}^{-a} + \int_{C_2} + \int_{a}^R\right)\frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk = 0
+\end{equation}
+In the limit $R \rightarrow \infty$, the integral along $C_1$ vanishes because the integrand itself goes to zero. Along $C_2$, $k = \rho e^{i\theta}$, $dk = i\rho e^{i\theta}d\theta$ and
+the limits of the integral are from $\pi$ to $0$. Thus,
+\begin{eqnarray*}
+\int_{C_2}\frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk &=& \int_{\pi}^0 \exp\left(i\rho|\vec{x}-\vec{x}^\op|(\cos\theta+i\sin\theta)\right)\frac{i\rho e^{i\theta}d\theta}{\rho e^{i\theta}} \\
+ &=& i\int_{\pi}^0 \exp\left(i\rho|\vec{x}-\vec{x}^\op|(\cos\theta+i\sin\theta)\right) d\theta
+\end{eqnarray*}
+In the limit $\rho \rightarrow 0$, we can approximate the integrand by its Maclaurin series so that,
+\begin{eqnarray*}
+\int_{C_2}\frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk &=& i\int_{\pi}^0 \left(1 + i\rho|\vec{x}-\vec{x}^\op|(\cos\theta+i\sin\theta)\right) d\theta \\
+ &=& -i\pi + 2\rho|\vec{x}-\vec{x}^\op|,
+\end{eqnarray*}
+which, in the limit of vanishing $\rho$ gives $-i\pi$. Therefore, equation \eqref{c2sae5} becomes,
+\[
+\int_{-\infty}^\infty \frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk = -\int_{C_2}\frac{e^{ik|\vec{x}-\vec{x}^\op|}}{k} dk = i\pi
+\]
+Therefore, equation \eqref{c2sae4} becomes,
+\[
+G(\vec{x}, \vec{x}^\op) = -\frac{1}{4\pi}\frac{1}{|\vec{x}-\vec{x}^\op|}
+\]
+Therefore from \eqref{c2sae3}
+\[
+\phi(\vec{x})=\phi_h(\vec{x}) - \frac{1}{4\pi}\int_{-\infty}^{\infty}\frac{\Delta(\vec{x}^\op)}{|\vec{x}-\vec{x}^\op|} dV^\op
+\]
+Since $\phi_h(r) = 0$ is a solution of the Laplace's equation,
+\[
+\phi(\vec{x}) = - \frac{1}{4\pi}\int_{-\infty}^{\infty}\frac{\Delta(\vec{x}^\op)}{|\vec{x}-\vec{x}^\op|} dV^\op
+\]
+is a solution of the Poisson's equation $\nabla^2\phi = \Delta(\vec{x})$.
+
+\section{Another form of Stokes's theorem}\label{c2sa3} 
+We will prove an analog of Stokes' theorem for a scalar field,
+\begin{equation}\label{c2sae6}
+\oint f d\vec{l} = -\int(\grad{f} \vp \un)dA
+\end{equation}
+Let $\vec{F}(\vec{x}) = \vec{\alpha} f(\vec{x})$, where $\vec{\alpha}$ is a constant vector. Therefore, Stokes' theorem for $\vec{F}$ is
+\[
+\oint\vec{F}\cdot d\vec{l} = \int\curl{\vec{F}}\cdot\un dA
+\]
+that is
+\[
+\vec{\alpha}\cdot\oint f(\vec{x}) d\vec{l} = \int \left(\grad{f(\vec{x})} \vp \vec{\alpha}\right)\cdot\un dA,
+\]
+or,
+\[
+\vec{\alpha}\cdot\oint f(\vec{x}) d\vec{l} = -\int \left(\vec{\alpha} \vp \grad{f(\vec{x})}\right)\cdot\un dA,
+\]
+Interchanging the dot and the cross products on the right hand side,
+\[
+\vec{\alpha}\cdot\oint f(\vec{x}) d\vec{l} = -\vec{\alpha}\cdot\int\left(\grad{f(\vec{x})} \vp \un\right)dA
+\]
+or
+\[
+\vec{\alpha}\cdot\left\{\oint f(\vec{x}) d\vec{l} + \int\left(\grad{f(\vec{x})} \vp \un\right)dA\right\} = 0
+\]
+Since $\vec{\alpha}$ is an arbitrary vector,
+\[
+\oint f(\vec{x}) d\vec{l} + \int\left(\grad{f(\vec{x})} \vp \un\right)dA = 0
+\]
+
+\section{Multipole expansion}\label{c2sa4} 
+We will demonstrate the multipole expansion for an electrostatic potential. If $\rho(\vec{x})$ is an arbitrary charge distribution then the potential due to it at a 
+point $\vec{x}$, in gaussian units, is
+\[
+\phi(\vec{x}) = \int\frac{\rho(\vec{x}^\op)}{|\vec{x} - \vec{x}^\op|}dV(\vec{x}^\op)
+\]
+If $\vec{s} = \vec{x} - \vec{x}^\op$ then the Taylor expansion for $s^{-1}$ is
+\[
+\frac{1}{s} = \frac{1}{r} + x_i^\op\frac{\partial}{\partial x_i}\left(\frac{1}{s}\right) + \frac{x_i^\op x_j^\op}{2!}\frac{\partial^2}{\partial x_i \partial x_j}\left(\frac{1}{s}\right)
++ \frac{x_i^\op x_j^\op x_k^\op}{3!} \frac{\partial^3}{\partial x_i \partial x_j \partial x_k}\left(\frac{1}{s}\right) + \cdots
+\]
+Therefore,
+\[
+\phi(\vec{x}) = \frac{Q^{(0)}}{r} + Q_i^{(1)}\frac{\partial}{\partial x_i}\left(\frac{1}{s}\right) + 
+\frac{Q_{ij}^{(2)}}{2!}\frac{\partial^2}{\partial x_i \partial x_j}\left(\frac{1}{s}\right) +
+\frac{Q_{ijk}^{(3)}}{3!}\frac{\partial^3}{\partial x_i \partial x_j \partial x_k}\left(\frac{1}{s}\right) + \cdots
+\]
+where
+\begin{eqnarray*}
+Q^{(0)} &=& \int \rho(\vec{x}^\op)dV(\vec{x}^\op) \\
+Q_i^{(1)} &=& \int x_i \rho(\vec{x}^\op)dV(\vec{x}^\op) \\
+Q_{ij}^{(2)} &=& \int x_i x_j \rho(\vec{x}^\op)dV(\vec{x}^\op) \\
+Q_{ijk}^{(3)} &=& \int x_i x_j x_k \rho(\vec{x}^\op)dV(\vec{x}^\op) \\
+\end{eqnarray*}
+are the multipoles of charge density. The zeroth order term $Q^{(0)}$ is the total charge, the first order term $Q_i^{(1)}$ is the dipole moment, the second order term $Q_{ij}^{(2)}$ is 
+the quadrupole moment and $Q_{ijk}^{(3)}$ is the octupole moment of the charge distribution. If we write $s^2 = \sum_{a}(x_a - x_a^\op)^2$ then we observe that
+\begin{eqnarray*}
+\frac{\partial}{\partial x_i}\left(\frac{1}{s}\right) &=& -\frac{x_i - x_i^\op}{s^3} \\
+\frac{\partial^2}{\partial x_i \partial x_j}\left(\frac{1}{s}\right) &=& 3\frac{(x_i - x_i^\op)(x_j - x_j^\op)}{s^5} -\frac{\delta_{ij}}{s^3} \\
+\frac{\partial^3}{\partial x_i \partial x_j \partial x_k}\left(\frac{1}{s}\right) &=& -15\frac{(x_i - x_i^\op)(x_j - x_j^\op)(x_k - x_k^\op)}{s^7} + \\
+ & & \frac{3}{s^5}\left[(x_i - x_i^\op)\delta_{jk} + (x_j - x_j^\op)\delta_{ik} + (x_k - x_k^\op)\delta_{ij}\right]
+\end{eqnarray*}
+Thus,
+\begin{eqnarray*}
+\phi(\vec{x}) &=& \frac{Q^{(0)}}{r} - \frac{(x_i - x_i^\op)Q_i^{(1)}}{s^3} + \frac{3(x_i - x_i^\op)(x_j - x_j^\op)Q_{ij}^{(2)} - Q_{ii}^{(2)}}{s^5} -\\
+ & & \frac{15(x_i - x_i^\op)(x_j - x_j^\op)(x_k - x_k^\op)Q_{ijk}^{(3)} + 3(x_i - x_i^\op)Q_{ijj}^{(3)}}{s^7} + \\ 
+ & & O\left(\frac{1}{s^5}\right),
+\end{eqnarray*}
+where we have used the symmetry of the octupole moment tensor to get
+\[
+(x_i - x_i^\op)Q_{ijj}^{(3)} + (x_j - x_j^\op)Q_{iji}^{(3)} + (x_k - x_k^\op)Q_{iik}^{(3)} = 3(x_i - x_i^\op)Q_{ijj}^{(3)}
+\]
+The $n$th term of the expansion of $\phi$ goes as $r^{n}$. We will not get an expression for the field due to an arbitrary charge distribution. Since $\vec{E} = -\grad{\phi}$,
+\begin{eqnarray*}
+E_a &=& - Q^{(0)}\pdt{(r^{-1})}{x_a} + Q_i^{(1)}\frac{\partial}{\partial x_a}\left(\frac{(x_i - x_i^\op)}{s^3}\right) - \\
+ & & Q_{ij}^{(2)}\frac{\partial}{\partial x_a}\left(\frac{3(x_i - x_i^\op)(x_j - x_j^\op) - \delta_{ij}}{s^5}\right) + \\
+ & & Q_{ijk}^{(3)}\frac{\partial}{\partial x_a}\left(\frac{15(x_i - x_i^\op)(x_j - x_j^\op)(x_k - x_k^\op) + 3(x_i - x_i^\op)\delta_{jk}}{s^7}\right) - \\
+ & & \cdots
+\end{eqnarray*}
+Thus, the field due to a monopole goes as $r^{-2}$, that due to a dipole as $r^{-3}$, quadrupole as $r^{-4}$ and so on.
+
+\section{Solid harmonics}\label{c2sa5}
+We consider the solution of Laplace's equation using the method of separation of variables. Let $\Phi(r, \varphi, \theta) = R(r)S(\varphi, \theta)$ be the solution of $\nabla^2\Phi=0$. 
+Writing the Laplacian in spherical polar coordinates,
+\[
+\frac{S}{r^2}\frac{d}{dr}\left(r^2\td{R}{r}\right) + 
+\frac{R}{r^2}\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\pdt{S}{\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2S}{\partial\varphi^2}\right] = 0
+\]
+Multiplying both sides by $r^2/\Phi$,
+\[
+\frac{1}{R}\frac{d}{dr}\left(r^2\td{R}{r}\right) =
+-\frac{1}{S}\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\pdt{S}{\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2S}{\partial\varphi^2}\right]
+\]
+Since the left hand side is a function of $r$ alone while the right hand side is a function of $\varphi$ and $\theta$, each side is a constant. We write it as $n(n+1)$ in view of the
+fact that the $S$ is a spherical harmonic. Thus, the Laplace's equation splits into
+\begin{eqnarray*}
+\frac{1}{R}\frac{d}{dr}\left(r^2\td{R}{r}\right) &=& n(n+1) \\
+\frac{1}{S}\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\pdt{S}{\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2S}{\partial\varphi^2}\right] &=& -n(n+1)
+\end{eqnarray*}
+The second equation can be written as
+\[
+\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\pdt{S_n}{\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2S_n}{\partial\varphi^2} + n(n+1)S_n = 0
+\]
+where we add a subscript $n$ to $S$ following the convention to indicate the eigenvalue. Since $S_n$ is not a function of $r$, we can as well write it as
+\[
+r^2\nabla^2S_n + n(n+1)S_n = 0
+\]
+We can readily verify that $R(r) = r^n$ is a solution of
+\[
+\frac{1}{R}\frac{d}{dr}\left(r^2\td{R}{r}\right) = n(n+1)
+\]
+Thus, $\Phi_n(r, \varphi, \theta) = r^nS_n(\varphi, \theta)$ is a solution of $\nabla^2\Phi = 0$. The functions $\Phi_n$ are called solid harmonics. We will now show that if $\Phi_n$
+solves the Laplace's equation then so does $\Phi_{-n-1}$. To do so, let us find the conditions for $r^m\Phi_n$ to be a solution of the Laplace's equation, where $n$ is fixed. We
+observe that
+\begin{eqnarray*}
+\nabla^2(r^m\Phi_n) &=& (m + n)(m + n + 1)r^{m + n - 2}S_n - n(n + 1)r^{m + n - 2}S_n \\
+ &=& m(m + 2n + 1)r^{m - 2}\Phi_n,
+\end{eqnarray*}
+where we used the fact that $S_n$ is a spherical harmonic. Clearly, $r^m\Phi_n$ is a solution of Laplace's equation only if $m = -(2n + 1)$. Thus $r^{-(2n + 1)}\Phi_n = 
+r^{-(2n + 1)}r^nS_n = r^{-n-1}S_n$ is a solution of Laplace's equation.
+
+The only spherically symmetric solutions which vanish at infinity are the ones with $n = -1$. They are
+\[
+\Phi = \frac{A}{r},
+\]
+where $A$ is a suitably chosen constant. If $\Phi$ is a solution of Laplace's equation then so are its derivatives. We consider only these solutions in the book.
+
+\section{Green function of Laplacian}
+\subsection{Method 1}\label{c2sa6} 
+Let $f(x_1, x_2, \ldots, x_n) = g(r)$ where $r = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}$. Therefore,
+\begin{eqnarray*}
+f_{x_1}    &=& g^\op(r) r_x \\
+		  &=& g^\op(r)\frac{x_1}{\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}} \\
+f_{x_1x_1} &=& g^\tp(r)\frac{x_1^2}{x_1^2 + x_2^2 + \cdots + x_n^2} + g^\op(r)\frac{1}{\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}} - \\
+           & & g^\op(r)\frac{x_1^2}{(x_1^2 + x_2^2 + \cdots + x_n^2)^{3/2}} \\
+f_{x_1x_1} &=& g^\tp(r)\frac{x_1^2}{x_1^2 + x_2^2 + \cdots + x_n^2} + g^\op(r)\frac{x_2^2 + x_3^2 + \cdots + x_n^2}{(x_1^2 + x_2^2 + \cdots + x_n^2)^{3/2}} \\
+\end{eqnarray*}
+Therefore,
+\[
+f_{x_1x_1} + f_{x_2x_2} + \cdots + f_{x_nx_n} = g^\tp(r) + (n - 1)\frac{g^\op(r)}{\sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}} 
+\]
+or,
+\[
+f_{x_1x_1} + f_{x_2x_2} + \cdots + f_{x_nx_n} = g^\tp(r) + (n - 1)\frac{g^\op(r)}{r} 
+\]
+If $f_{x_1x_1} + f_{x_2x_2} + \cdots + f_{x_nx_n} = 0$ then 
+\[
+g^\tp(r) = -(n - 1)\frac{g^\op(r)}{r} \Rightarrow \frac{g^\tp(r)}{g^\op(r)} = -(n - 1)\frac{1}{r}
+\]
+which implies
+\[
+\ln g^\op(r) = -(n - 1)\ln r + \ln\alpha,
+\]
+where $\alpha$ is a constant of integration. Therefore $g^\op(r)r^{n - 1} = \alpha$. We solve this ordinary differential equation for the following three cases
+\begin{enumerate}
+\item If $n = 2$, $g(r) = \alpha\ln r + \beta$ and
+\item If $n \ne 2$, 
+\[
+g(r) = \frac{\alpha}{r^{n - 2}} + \beta,
+\]
+\end{enumerate}
+where $\alpha$ and $\beta$ are constants of integration. For $n \ge 2$, the function $g$ is singular at the origin. Therefore, it is also the Green function of Laplacian. If 
+$r = |\vec{x} - \vec{x}^\op|$ then
+\[
+G(\vec{x}, \vec{x}^\op) = \begin{cases}
+\alpha\ln|\vec{x} - \vec{x}^\op| + \beta & \text{ if } n = 2 \\
+\alpha|\vec{x} - \vec{x}^\op|^{-(n - 2)} + \beta & \text{ if } n \ne 2
+\end{cases}
+\]
+ 
+\subsection{Method 2}\label{c2sa7} 
+Green function of a Laplacian is defined as
+\[
+\nabla^2 G(\vec{x}, \vec{x}^\op) = \begin{cases}
+\delta(\vec{x} - \vec{x}^\op) & \text{ on } V \\
+0 & \text{ on } S
+\end{cases}
+\]
+where $V$ is the volume enclosed by a surface $S$. When Neumann boundary conditions are specified, the second condition is usually $\grad{G(\vec{x}, \vec{x}^\op)}\cdot\un = A^{-1}$, 
+where $A$ is the area of a \enquote*{sphere} of unit radius centerd at $\vec{x}^\op$. To get the Green function, we will integrate $\nabla^2 G(\vec{x}, \vec{x}^\op) = 
+\delta(\vec{x} - \vec{x}^\op)$. In each case, the Green function depends only on $|\vec{x} - \vec{x}^\op|$ because of the \enquote*{spherical} symmetry of the problem.
+\begin{enumerate}
+\item In three dimensions,
+\[
+\int\nabla^2 G(\vec{x}, \vec{x}^\op) dV = \int \delta(\vec{x} - \vec{x}^\op) dV
+\]
+or
+\[
+\int\dive{(\grad{G(\vec{x}, \vec{x}^\op)})}dV = 1
+\]
+Using divergence theorem,
+\[
+\int \grad{G(\vec{x}, \vec{x}^\op})\cdot\un dS = 1
+\]
+If the volume of integration were a sphere of radius $r$, since $G$ is a function of $|\vec{x} - \vec{x}^\op|$ alone, $\grad{G(\vec{x}, \vec{x}^\op}) = G^\op(r)\uvec{r}$. Further, 
+since the unit normal $\un$ to the sphere is in the radial direction, $\grad{G(\vec{x}, \vec{x}^\op})\cdot\un = G^\op(r)$. Hence,
+\begin{equation}\label{c2sa7e1}
+\int G^\op(r) dS = 1
+\end{equation}
+On a sphere, $G^\op(r)$ is constant, Therefore,
+\[
+G^\op(r)\int dS = 1 \Rightarrow G^\op 4\pi r^2 = 1
+\]
+or
+\[
+G(r) = -\frac{1}{4\pi r} + c,
+\]
+where $c$ is a constant of integration. Since $r = |\vec{x} - \vec{x}^\op|$,
+\[
+G(|\vec{x} - \vec{x}^\op|) = -\frac{1}{4\pi|\vec{x} - \vec{x}^\op|}
+\]
+if we also choose $c = 0$.
+
+\item In two dimensions, the treatment up to \eqref{c2sa7e1} is same as in the case of three dimensions, except that the volume integral is really over a disk and the surface integral is 
+over a circle. Therefore,
+\[
+G^\op(r)\int dS = 1 \Rightarrow G^\op 2\pi r = 1
+\]
+or
+\[
+G(r) = \frac{1}{2\pi}\ln r + c,
+\]
+where $c$ is a constant of integration. Since $r = |\vec{x} - \vec{x}^\op|$,
+\[
+G(|\vec{x} - \vec{x}^\op|) = \frac{1}{2\pi}\ln|\vec{x} - \vec{x}^\op|
+\]
+if we also choose $c = 0$.
+
+\item For $n \ge 3$ dimensions, the equation \eqref{c2sa7e1} evaluates to
+\[
+G^\op(r)\int dS = 1 \Rightarrow G^\op \frac{n \pi^{n/2} r^{n - 1}}{\Gamma(1 + n/2)} = 1,
+\]
+where we have used the result that the surface area of a $n$-sphere of radius $r$ is{\footnote{Equation 18.77 in \enquote*{Statistical Mechanics} by K. Huang, 2nd edition.}}
+\[
+S_n(r) = \frac{n \pi^{n/2} r^{n - 1}}{\Gamma(1 + n/2)}
+\]
+Therefore,
+\[
+G^\op(r) = \Gamma\left(1 + \frac{n}{2}\right)\frac{1}{n \pi^{n/2}}\frac{1}{r^{n-1}}
+\]
+or
+\[
+G^\op(r) = -\Gamma\left(1 + \frac{n}{2}\right)\frac{1}{n(n - 2) \pi^{n/2}}\frac{1}{r^{n - 2}} + c,
+\]
+where $c$ is a constant of integration. Since $r = |\vec{x} - \vec{x}^\op|$,
+\begin{equation}\label{c2sa7e2}
+G(|\vec{x} - \vec{x}^\op|) = -\Gamma\left(1 + \frac{n}{2}\right)\frac{1}{n(n - 2) \pi^{n/2}}\frac{1}{|\vec{x} - \vec{x}^\op|^{n - 2}}
+\end{equation}
+if we also choose $c = 0$. If $n = 3$, we get 
+\[
+G(|\vec{x} - \vec{x}^\op|) = -\frac{1}{4\pi|\vec{x} - \vec{x}^\op|}
+\]
+
+\item Interestingly, the \eqref{c2sa7e2} is valid even for $n = 1$, when we get
+\[
+ G(|\vec{x} - \vec{x}^\op|) = \frac{1}{2}|\vec{x} - \vec{x}^\op|
+\]
+\end{enumerate}
+
+\subsection{Method 3}\label{c2sa8}
+The definition of Green function is
+\begin{equation}\label{c2sa8e1}
+\nabla^2 G(\vec{x}, \vec{x}^\op) = \delta^{(n)}(\vec{x} - \vec{x}^\op)
+\end{equation}
+where $n$ could be any dimension. Thus, in general,
+\[
+\nabla^2 \equiv \sum_{k=1}^n \frac{\partial^2}{\partial x_k^2}
+\]
+Without loss of generality, choose $\vec{x}^\op = 0$ and take Fourier transform of \eqref{c2sa8e1} to get
+\[
+k^2\tilde{G}(\vec{k}) = 1
+\]
+Thus, the Fourier transform of Green function of Laplacian of any dimensions, in the momentum space is $1/k^2$. Finding an expression in position space is just a matter of finding an
+inverse Fourier transform suitable for that space. This technique works for all dimensions except $n = 2$. We know that in two dimensions the Green function of a Laplacian is $\ln r$. 
+It diverges as $r \rightarrow \infty$. The theory of Fourier transforms needs the functions to be localized and decaying to zero at infinity. Therefore, the usual techniques of 
+integration do not work in this case. Refer to the \href{http://math.stackexchange.com/questions/847706/does-the-integral-in-the-formal-2d-fourier-transform-of-the-logarithm-converge}
+{StackExchange} conversation for more details{\footnote{Dr. Robert E. Hunt of Cambridge University, in a private correspondence, explained this point to me and directed me to the
+StackExchange conversation}}.
+
+\section{Divergence theorem in a plane}\label{c2sa9} 
+Consider a vector field $\vec{F}(x, y)$ defined over a closed region $S$ whose boundary is denoted by $\partial S$. If $ds$ denotes a small displacement along the boundary, the tangent
+$\ut$ and the normal $\un$ are defined as
+\begin{eqnarray*}
+\ut &=& \td{x}{s}\uvec{x} + \td{y}{s}\uvec{y} \\
+\un     &=& \td{y}{s}\uvec{x} - \td{x}{s}\uvec{y}
+\end{eqnarray*}
+Refer to \href{http://mathworld.wolfram.com/NormalVector.html}{Mathworld} for more details. The circulation of $\vec{F} = L\uvec{x} + M\uvec{y}$ is defined as
+\[
+\oint\vec{F}\cdot\ut ds = \oint\left(L\td{x}{s} + M\td{y}{s}\right)ds = \oint(Ldx + Mdy)
+\]
+while the flux through $\partial S$ is
+\[
+\oint\vec{F}\cdot\un ds = \oint\left(L\td{y}{s} - M\td{x}{s}\right)ds = \oint(Ldy - Mdx)
+\]
+Green's theorem in a plane is
+\[
+\oint (Ldx + Mdy) = \iint \left(\pdt{M}{x} - \pdt{L}{y}\right) dxdy
+\]
+Therefore,
+\begin{eqnarray*}
+\oint\vec{F}\cdot\ut ds &=& \iint\left(\pdt{M}{x} - \pdt{L}{y}\right)dxdy \\
+\oint\vec{F}\cdot\un ds     &=& \iint\left(\pdt{L}{x} + \pdt{M}{y}\right)dxdy
+\end{eqnarray*}
+However, the circulation is a line integral of the curl while the flux is a \enquote*{surface} integral of the field. Therefore, the above equations can as well be written as
+\begin{eqnarray*}
+\oint\vec{F}\cdot\ut ds &=& \iint\left(\curl{F}\right)_zdxdy \\
+\oint\vec{F}\cdot\un ds     &=& \iint(\dive{\vec{F}})dxdy
+\end{eqnarray*}
+
+\section{Circular harmonics}\label{c2sa10} 
+Consider Laplace's equation in plane polar coordinates for $\Phi(r, \theta)$,
+\[
+\frac{1}{r}\frac{\partial}{\partial r}\left(r\pdt{\Phi}{r}\right) + \frac{1}{r^2}\pdts{\Phi}{\theta} = 0
+\]
+Let $\Phi(r, \theta) = R(r)S(\theta)$ so that
+\[
+\frac{r}{R}\frac{d}{dr}\left(r\td{R}{r}\right) = -\frac{1}{S}\frac{d^2S}{d\theta^2}
+\]
+Since the left side depends on $r$ alone while the right hand side depends on $\theta$, each side is equal to a constant, say $m$. Thus,
+\[
+-\frac{1}{S}\frac{d^2S}{d\theta^2} = m \Rightarrow \frac{d^2S}{d\theta^2} + mS = 0
+\]
+Since $S(\theta) = S(\theta + 2\pi)$, we require $m$ to be square of an integer. Let us therefore write $m = n^2$. The $R$ equation is
+\[
+\frac{r}{R}\frac{d}{dr}\left(r\td{R}{r}\right) = m^2
+\]
+It is easy to check that if $m^2 \ne 0$ then $R = r^l$ is a solution while if $m = 0$, $R = \ln r$ is a solution. Thus, the complete solution of Laplace's equation is
+\begin{eqnarray*}
+\Phi(r, \theta) &=& (a_0 + b_0\ln r)(c_0 + d_0\theta) + \\
+ & & \sum_{k \ne 0}\left(a_k r^k + b_k r^{-k}\right)\left(c_ke^{ik\theta} + d_ke^{-ik\theta}\right),
+\end{eqnarray*}
+where $a_k, b_k, c_k, d_k$ are constants. $\Phi(r, \theta) = \Phi(r, \theta + 2\pi)$ requires $d_0 = 0$ so that,
+\[
+\Phi(r, \theta) = (a_0 + b_0\ln r) + \sum_{k \ne 0}\left(a_k r^k + b_k r^{-k}\right)\left(c_ke^{ik\theta} + d_ke^{-ik\theta}\right),
+\]
+If the solution is required to be \enquote*{circularly symmetric}, that is independent of polar angle $\theta$ then we have to choose $a_k, b_k, c_k, d_k = 0$ for all $k \ne 0$, in
+which case,
+\[
+\Phi(r, \theta) = a_0 + b_0\ln r
+\]
+Solutions of Laplace's equation in plane polar coordinates are called circular harmonics. In the book considers only those which are \enquote*{circularly symmetric}.
+
+Recall that if $f(r)$ is a solution of Laplace's equation then so are all derivatives of $f$ with respect to $r$. 
+
+\section{A property of harmonic functions}\label{c2sa11}
+Let $\phi_1(\vec{x})$ and $\phi_2(\vec{x})$ be two solution of Laplace's equation. That it, $\nabla^2\phi_1 = 0$ and $\nabla^2\phi_2 = 0$. Consider
+\[
+\dive\left(\phi_1\grad\phi_2\right) = \grad\phi_1\cdot\grad\phi_2 + \phi_1\nabla^2\phi_2 = \grad\phi_1\cdot\grad\phi_2,
+\]
+because $\nabla^2\phi_2 = 0$. Similarly,
+\[
+\dive\left(\phi_2\grad\phi_1\right) = \grad\phi_2\cdot\grad\phi_1 + \phi_2\nabla^2\phi_1 = \grad\phi_1\cdot\grad\phi_2,
+\]
+because $\nabla^2\phi_1 = 0$. Therefore, $\dive\left(\phi_1\grad\phi_2\right) = \dive\left(\phi_2\grad\phi_1\right)$. Taking a volume integral of the equation,
+\[
+\int\dive\left(\phi_1\grad\phi_2\right)dV = \int\dive\left(\phi_2\grad\phi_1\right)dV,
+\]
+after using divergence theorem,
+\begin{equation}\label{c2sa11e1}
+\int\phi_1\grad\phi_2\cdot\un dA = \int\phi_2\grad\phi_1\cdot\un dA
+\end{equation}
+
+\section{Proof of \texorpdfstring{$\int n_i n_j d\Omega = (4\pi/3)\delta_{ij}$}{}}
+Consider the integral,
+\[
+I_{ij} = \int n_i n_j d\Omega
+\]
+where $n_i, n_j$ are unit normals and $d\Omega$ denotes the solid angle. We will evaluate this integral for the following sub-cases, which are all the ones that are possible.
+\begin{itemize}
+\item $i = j = x$. In this case, putting $n_i = n_j = \sin\theta\cos\varphi$,
+\[
+I_{xx} = \int_0^\pi\int_0^{2\pi} \sin^2\theta \cos^2\varphi \sin\theta d\theta d\varphi
+\]
+We observe that
+\[
+\int_0^{2\pi} \cos^2\varphi d\varphi = \int_0^{2\pi}\left(\frac{1 + \cos(2\varphi)}{2}\right)d\varphi = \pi
+\]
+and
+\begin{eqnarray*}
+\int_0^{\pi}\sin^3\theta d\theta &=& \int_0^\pi(1 - \cos^2\theta)\sin\theta d\theta \\
+ &=& -\int_{1}^{-1} (1 - u^2)(-du) \\
+ &=& \int_{-1}^1(1 - u^2)du \\
+ &=& 2 - \frac{2}{3} = \frac{4}{3}
+\end{eqnarray*}
+Therefore,
+\[
+I_{xx} = \frac{4\pi}{3}
+\]
+
+\item $i = j = y$. In this case, put $n_i = n_j = \sin\theta\sin\varphi$, so that
+\[
+I_{yy} = \int_0^\pi\int_0^{2\pi} \sin^2\theta \sin^2\varphi \sin\theta d\theta d\varphi
+\]
+Since
+\[
+\int_0^{2\pi} \sin^2\varphi d\varphi = \int_0^{2\pi}\left(\frac{1 - \cos(2\varphi)}{2}\right)d\varphi = \pi,
+\]
+we get
+\[
+I_{yy} = \frac{4\pi}{3}
+\]
+
+\item $i = j = z$. In this case, put $n_i = n_j = \cos\theta$, so that
+\[
+I_{zz} = \int_0^\pi\int_0^{2\pi} \cos^2\theta \sin\theta d\theta d\varphi = 2\pi\int_{-1}^1 u^2 (-du) = \frac{4\pi}{3}
+\]
+
+\item $i = x, j = y$. In this case, put $n_i = \sin\theta\cos\varphi$ and $n_j = \sin\theta\sin\varphi$, so that
+\[
+I_{xy} = \int_0^{\pi}\sin^3\theta d\theta \int_0^{2\pi} \sin\varphi\cos\varphi d\varphi
+\]
+The $\varphi$ integral is zero making $I_{xy} = 0$.
+
+\item $i = y, j = z$. In this case, put $n_i = \sin\theta\sin\varphi$ and $n_j = \cos\theta$, so that
+\[
+I_{yz} = \int_0^{\pi}\sin^2\theta\cos\theta d\theta \int_0^{2\pi} \sin\varphi d\varphi
+\]
+The $\varphi$ integral is zero making $I_{yz} = 0$.
+
+\item $i = z, j = x$. In this case, put $n_i = \cos\theta\sin\varphi$ and $n_j = \sin\theta\cos\phi$, so that
+\[
+I_{zx} = \int_0^{\pi}\sin^2\theta\cos\theta d\theta \int_0^{2\pi} \cos\varphi d\varphi
+\]
+The $\varphi$ integral is zero making $I_{zx} = 0$.
+The six cases above can be summarized as
+\begin{equation}\label{c3sae1}
+\int n_i n_j d\Omega = \frac{4\pi}{3}\delta_{ij}
+\end{equation}
+\end{itemize}
+
+\section{Proof of \texorpdfstring{$\int n_i n_j n_k n_l d\Omega = (4\pi/15)(\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})$}{}}
+We will consider the following cases,
+\begin{itemize}
+\item All indices are the same. In this case, the integral is one of $x^4$, $y^4$ or $z^4$, where $x = \sin\theta\cos\varphi$, $y = \sin\theta\sin\varphi$ and $z = \cos\theta$.
+We first consider,
+\begin{eqnarray*}
+I_{xxxx} &=& \int_0^\pi \int_0^{2\pi} \sin^4\theta \cos^4\varphi \sin\theta d\theta d\varphi \\
+ &=& \int_0^\pi\sin^5\theta d\theta \int_0^{2\pi}\cos^4\varphi d\varphi
+\end{eqnarray*}
+Now,
+\begin{eqnarray*}
+\int_0^\pi\sin^5\theta d\theta &=& \int_0^\pi\sin^4\theta \sin\theta d\theta \\
+ &=& \int_0^\pi(1 - \cos^2\theta)^5 \sin\theta d\theta \\
+ &=& -\int_1^{-1}(1 - 2u^2 + u^4)du \\
+ &=& \frac{16}{15}
+\end{eqnarray*}
+and
+\begin{eqnarray*}
+\int_0^{2\pi}\cos^4\varphi d\varphi &=& \int_0^{2\pi}\left(\frac{3}{8} + \frac{\cos 2\varphi}{2} + \frac{\cos 4\varphi}{8}\right)d\varphi \\
+ &=& \frac{3\pi}{4}
+\end{eqnarray*}
+Therefore,
+\[
+I_{xxxx} = \frac{4\pi}{5}
+\]
+Now consider,
+\begin{eqnarray*}
+I_{yyyy} &=& \int_0^\pi \int_0^{2\pi} \sin^4\theta \sin^4\varphi \sin\theta d\theta d\varphi \\
+ &=& \int_0^\pi\sin^5\theta d\theta \int_0^{2\pi}\sin^4\varphi d\varphi
+\end{eqnarray*}
+We evaluate
+\begin{eqnarray*}
+\int_0^{2\pi}\sin^4\varphi d\varphi &=& \int_0^{2\pi}\left(\frac{3}{8} - \frac{\cos 2\varphi}{2} + \frac{\cos 4\varphi}{8}\right)d\varphi \\
+ &=& \frac{3\pi}{4}
+\end{eqnarray*}
+Therefore,
+\[
+I_{yyyy} = \frac{4\pi}{5}
+\]
+Finally, consider
+\begin{eqnarray*}
+I_{zzzz} &=& \int_0^\pi \int_0^{2\pi} \cos^4\theta \sin\theta d\theta d\varphi \\
+ &=& \int_0^\pi \cos^4\theta \sin\theta \int_0^{2\pi}d\varphi \\
+ &=& 2\pi\int_1^{-1}u^4(-du) \\
+ &=& \frac{4\pi}{5}
+\end{eqnarray*}
+Thus, this point covers $3$ cases.
+
+\item Three indices are same, one is different. This case includes integrands of the form $xyyy, xzzz, yzzz, yxxx, zyyy, zxxx$. We evaluate each on of them.
+\begin{eqnarray*}
+I_{xyyy} &=& \int_0^\pi\sin^5\theta d\theta \int_0^{2\pi}\sin^3\varphi\cos\varphi d\varphi \\
+ &=& \frac{16}{15} \times 0 \\
+ &=& 0 \\
+I_{xzzz} &=& \int_0^\pi\cos^3\theta\sin^2\theta d\theta \int_0^{2\pi}\cos\varphi d\varphi \\
+ &=& \int_0^\pi\cos^3\theta\sin^2\theta d\theta \times 0 \\
+ &=& 0 \\
+I_{yzzz} &=& \int_0^\pi\cos^3\theta\sin^2\theta d\theta \int_0^{2\pi}\sin\varphi d\varphi \\
+ &=& \int_0^\pi\cos^3\theta\sin^2\theta d\theta \times 0 \\
+ &=& 0 \\
+I_{yxxx} &=& \int_0^\pi\sin^5\theta d\theta \int_0^{2\pi}\sin\varphi\cos^3\varphi d\varphi \\
+ &=& \frac{16}{15} \times 0 \\
+ &=& 0 \\
+I_{zxxx} &=& \int_0^\pi\sin^3\theta \cos\theta d\theta \int_0^{2\pi}\sin^3\varphi d\varphi \\
+ &=& 0 \times \int_0^{2\pi}\sin^3\varphi d\varphi \\
+ &=& 0\\
+I_{zyyy} &=& \int_0^\pi\sin^3\theta \cos\theta d\theta \int_0^{2\pi}\cos^3\varphi d\varphi \\
+ &=& 0 \times \int_0^{2\pi}\cos^3\varphi d\varphi \\
+ &=& 0
+\end{eqnarray*}
+Note that 
+\[
+I_{xyyy} = I_{yxyy} = I_{yyxy} = I_{yyyx} = 0
+\]
+and similarly for other cases. Thus, this point covers $6 \times 4 = 24$ cases.
+
+\item Two of them of one kind and two of the other. We therefore, consider the cases
+\begin{eqnarray*}
+I_{xxyy} &=& \int_0^\pi\sin^5\theta d\theta \int_0^{2\pi}\sin^2\varphi\cos^2\varphi d\varphi \\
+ &=& \frac{16}{15}\int_0^{2\pi}\frac{\cos^2(2\varphi)}{4}d\varphi \\
+ &=& \frac{16}{15}\int_0^{2\pi}\frac{1 + \cos(4\varphi)}{8}d\varphi \\
+ &=& \frac{16}{15}\times\frac{\pi}{4} \\
+ &=& \frac{4\pi}{15} \\
+I_{xxzz} &=& \int_0^\pi\sin^3\theta\cos^2\theta d\theta \int_0^{2\pi}\cos^2\varphi d\varphi \\
+ &=& \left(\int_0^\pi\sin^3\theta d\theta - \int_0^\pi\sin^5\theta d\theta\right)\int_0^{2\pi}\frac{1 + \cos(2\varphi)}{2}d\varphi \\
+ &=& \left(\frac{4}{3} - \frac{16}{15}\right)\pi \\
+ &=& \frac{4\pi}{15} \\
+I_{yyzz} &=& \int_0^\pi\sin^3\theta\cos^2\theta d\theta \int_0^{2\pi}\sin^2\varphi d\varphi \\
+ &=& \left(\int_0^\pi\sin^3\theta d\theta - \int_0^\pi\sin^5\theta d\theta\right)\int_0^{2\pi}\frac{1 - \cos(2\varphi)}{2}d\varphi \\
+ &=& \left(\frac{4}{3} - \frac{16}{15}\right)\pi \\
+ &=& \frac{4\pi}{15} \\
+\end{eqnarray*}
+Note that
+\[
+I_{xxyy} = I_{xyyx} = I_{yxyx} = I_{xyxy} = I_{yxxy} = I_{yyxx} = \frac{4\pi}{15}
+\]
+and similarly for other cases. Thus, this point covers $3 \times 6 = 18$ cases.
+
+\item Two of them of one kind and the remaining of two different kinds. We therefore, consider the cases
+\begin{eqnarray*}
+I_{xxyz} &=& \int_0^\pi\sin^4\theta \cos\theta d\theta \int_0^{2\pi}\cos^2\varphi \sin\varphi d\varphi \\
+ &=& 0 \times 0 \\
+ &=& 0 \\
+I_{yyxz} &=& \int_0^\pi\sin^4\theta \cos\theta d\theta \int_0^{2\pi}\cos\varphi \sin^2\varphi d\varphi \\
+ &=& 0 \times 0 \\
+ &=& 0 \\
+I_{zzxy} &=& \int_0^\pi\sin^2\theta \cos^3\theta d\theta \int_0^{2\pi}\cos\varphi\sin\varphi d\varphi \\
+ &=& \int_0^\pi\sin^2\theta \cos^3\theta d\theta \times 0 \\
+ &=& 0
+\end{eqnarray*}
+Note that
+\[
+I_{xxyz} = I_{xyzx} = I_{xyxz} = I_{xzyx} = I_{xzxy} = I_{xxzy} = I_{yzxx} = I_{yxxz} = 
+\]
+\[
+I_{zxxy} = I_{zxyx} = I_{zyxx} = I_{yxzx}
+\]
+and similarly for the other cases. Thus, this point covers $3 \times 12 = 36$ cases.
+\end{itemize}
+The four points cover $3 + 24 + 18 + 36 = 81$ cases, which are all the cases possible. We can summarize all of them in the equation,
+\begin{equation}\label{c3sae2}
+\int n_i n_j n_k n_l d\Omega = \frac{4\pi}{15}(\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})
+\end{equation}
+
+\section{Isotropic tensors}\label{mr12}
+We will examine the nature of isotropic tensors of orders $0, 1, 2, 3$ and $4$. A tensor is isotropic if it is invariant under a rotation of axes. The treatment in this section follows
+that in H. Jeffrey's \enquote*{Cartesian Tensors}\cite{jeffreys1961cartesian}.
+
+\begin{itemize}
+\item A tensor of zero order is a scalar and it is invariant under a rotation of coordinate axes. 
+
+\item We will show that there are no isotropic tensors of order $1$. A rotation of coordinate axes by and angle $\theta$ about the $z$ axis is represented by a the orthogonal matrix,
+\[
+\begin{pmatrix}
+\cos\theta & \sin\theta & 0 \\
+-\sin\theta & \cos\theta & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+For small angles of rotation, it can be approximated as
+\[
+\begin{pmatrix}
+1 & \theta & 0 \\
+-\theta & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+and decomposed as $\delta_{ij} + c_{ij}$, where the anti-symmetric matrix $\{c_{ij}\}$ is
+\[
+\begin{pmatrix}
+0 & \theta & 0 \\
+-\theta & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+We have thus shown that any small rotation can be represented by $\delta_{ij} + c_{ij}$, where $\{c_{ij}\}$ is an anti-symmetric matrix. A vector $u_i$ under a small rotation is
+transformed to
+\[
+u_j^\op = (\delta_{ij} + c_{ij})u_i
+\]
+It will remain unvariant under the rotation only if $c_{ij}u_i = 0$. Writing in full,
+\begin{eqnarray*}
+ 0.u_1 + c_{12}u_2 + c_{13}u_3 &=& 0 \\
+-c_{12}u_1 + 0.u_2 + c_{23}u_3 &=& 0 \\
+-c_{13}u_1 - c_{23}u_2 + 0.u_3 &=& 0
+\end{eqnarray*}
+Since
+\[
+\begin{vmatrix}
+ 0 & c_{12} & c_{13} \\
+-c_{12} & 0 & c_{23} \\
+-c_{13} & -c_{23} & 0
+\end{vmatrix} = 0
+\]
+the only solution to $c_{ij}u_i = 0$ is $u_i = 0$. Thus, the only isotropic vector is the null vector.
+
+\item Let $u_{ij}$ be a second order tensor. Then $u_{kl}^\op = (\delta_{ik} - c_{ik})u_{ij}(\delta_{jl} - c_{jl})$. Up to first order in $c_{ij}$,
+\[
+u_{kl}^\op = u_{kl} - u_{kj}c_{jl} - u_{il}c_{ik}
+\]
+The tensor, $u_{ij}$ will be isotropic only if $u_{kj}c_{jl} + u_{il}c_{ik} = 0$. If $k \ne l$, choose $k = 1$ and $l = 2$ so that $u_{1j}c_{j2} + u_{i2}c_{i1} = 0$ or
+\[
+u_{11}c_{12} + u_{12}c_{22} + u_{12}c_{32} + u_{12}c_{11} + u_{22}c_{21} + u_{32}c_{31} = 0
+\]
+Using symmetry properties of $\{c_{ij}\}$,
+\[
+u_{11}c_{12} - u_{12}c_{23} - u_{22}c_{12} - u_{32}c_{13} = 0
+\]
+or
+\[
+(u_{11} - u_{22})c_{12} - u_{12}c_{23} - u_{32}c_{13} = 0
+\]
+This can be true, in general, only if $u_{11} = u_{22}$ and $u_{12} = u_{32} = 0$. Similarly, by choosing $k = 1$ and $l = 3$, we get $u_{11} = u_{33}$ and $u_{12} = u_{23} = 0$. 
+Further, choosing $k = 2$ and $l = 3$ gives $u_{22} = u_{33}$ and $u_{21} = u_{13} = 0$.
+
+If we choose $k = l = 1$, $u_{1j}c_{j1} + u_{i1}c_{i1} = 0$ or
+\[
+u_{11}c_{11} + u_{12}c_{21} + u_{13}c_{31} + u_{11}c_{11} + u_{21}c_{21} + u_{31}c_{31} = 0
+\]
+Using symmetry properties of $\{c_{ij}\}$,
+\[
+(u_{12} + u_{21})c_{21} + (u_{13} + u_{31})c_{31} = 0
+\]
+which can be true, in general, only if $u_{12} = -u_{21}$ and $u_{13} = -u_{31}$. But we have already shown that $u_{12} = 0$ and $u_{13} = 0$. Thus, $u_{21}$ and $u_{31}$ also vanish.
+Choosing $k = l = 3$ we can show that $u_{23} + u_{32} = 0$, which since $u_{23} = 0$ implies vanishing of both. We have thus shown that the only isotropic tensor is a multiple of the
+Kronecker delta $\delta_{ij}$.
+
+\item Let $u_{ijk}$ be a third order tensor. Then
+\[
+u_{lmn}^\op = (\delta_{il} - c_{il})(\delta_{jm} - c_{jm})(\delta_{kn} - c_{kn})u_{ijk}
+\]
+Up to first order in $c_{ij}$,
+\[
+u_{lmn}^\op = u_{lmn} - \delta_{il}\delta_{jm}c_{kn}u_{ijk} - \delta_{il}\delta_{kn}c_{jm}u_{ijk} - \delta_{jm}\delta_{kn}c_{il}u_{ijk},
+\]
+or
+\[
+u_{lmn}^\op = u_{lmn} - c_{kn}u_{lmk} - c_{jm}u_{ljn} - c_{il}u_{imn}
+\]
+The tensor $u_{ijk}$ will be isotropic only if $u_{lmn}^\op = u_{lmn}$ or, if
+\[
+c_{kn}u_{lmk} + c_{jm}u_{ljn} + c_{il}u_{imn} = 0
+\]
+If $l = m = 1$, the above equation becomes $c_{kn}u_{11k} + c_{j1}u_{1jn} + c_{i1}u_{i1n} = 0$. Summing it over all indices, except $n$, we get
+\begin{eqnarray*}
+c_{1n}u_{111} + c_{2n}u_{112} + c_{3n}u_{113} + c_{11}u_{11n} + c_{21}u_{12n}  + & & \\
+c_{31}u_{13n} + c_{11}u_{11n} + c_{21}u_{21n} + c_{31}u_{31n} &=& 0
+\end{eqnarray*}
+Using symmetry properties of $\{c_{ij}\}$,
+\[
+c_{1n}u_{111} + c_{2n}u_{112} + c_{3n}u_{113} + c_{21}(u_{12n} + u_{21n}) + c_{31}(u_{13n} + u_{31n})= 0
+\]
+In the particular case of $n = 2$, we get
+\[
+c_{12}(u_{111} - u_{122} - u_{212}) + c_{32}u_{113} + c_{31}(u_{132} + u_{312}) = 0
+\]
+This can be true, in general, only of
+\begin{eqnarray*}
+u_{122} + u_{212} &=& u_{111} \\
+u_{132} + u_{312} &=& 0 \\
+u_{113} &=& 0
+\end{eqnarray*}
+From the last of the above three equations, $u_{ijk} = 0$ if any two of the three indices are same. This fact, coupled with the first of the three equations tells that $u_{ijk} = 0$
+if all indices are equal. Finally, the second of the above equations tells that $u_{ijk} = -u_{jik}$. Thus, the tensor entry for $(i, j, k)$ changes sign under an odd permutation of
+indices. Thus, the only isotropic tensor of third order is a scalar multiple of Levi-Civita tensor $\epsilon_{ijk}$.
+
+\item Let $u_{ijkl}$ be a fourth order tensor and let
+\[
+u_{pqrs}^\op = (\delta_{ip} - c_{ip})(\delta_{jq} - c_{jq})(\delta_{kr} - c_{kr})(\delta_{ls} - c_{ls})u_{ijkl}
+\]
+Then, up to first order in $c_{ij}$,
+\begin{eqnarray*}
+u_{pqrs}^\op &=& \delta_{ip}\delta_{jq}\delta_{kr}\delta_{ls}u_{ijkl} - c_{ip}\delta_{jq}\delta_{kr}\delta_{ls}u_{ijkl} \\
+ & & - \delta_{ip}c_{jq}\delta_{kr}\delta_{ls}u_{ijkl} - \delta_{ip}\delta_{jq}c_{kr}\delta_{ls}u_{ijkl} -\delta_{ip}\delta_{jq}\delta_{kr}c_{ls}u_{ijkl} \\
+ &=& u_{pqrs} - c_{ip}u_{iqrs} - c_{jq}u_{pjrs} - c_{kr}u_{pqks} - c_{ls}u_{pqrl}
+\end{eqnarray*}
+The tensor $u_{ijkl}$ will be isotropic only if
+\begin{equation}\label{mr12e1}
+c_{ip}u_{iqrs} + c_{jq}u_{pjrs} + c_{kr}u_{pqks} + c_{ls}u_{pqrl} = 0
+\end{equation}
+There are three possible values for the four indices $i, j, k, l$. They give rise to four possibilities:
+\begin{enumerate}
+\item Two indices are equal and the other two are unequal. Choose $p = q = 1$, $r = 2$ and $s = 3$ so that \eqref{mr12e1} becomes
+\[
+c_{i1}u_{i123} + c_{j1}u_{1j23} + c_{k2}u_{11k3} + c_{l3}u_{112l} = 0
+\]
+which is same as
+\begin{eqnarray*}
+c_{11}u_{1123} + c_{21}u_{2123} + c_{31}u_{3123} + c_{11}u_{1123} &+& = 0 \\ 
+c_{21}u_{1223} + c_{31}u_{1323} + c_{12}u_{1113} + c_{22}u_{1123} &+& \\
+c_{32}u_{1133} + c_{13}u_{1121} + c_{23}u_{1122} + c_{33}u_{1123} & &
+\end{eqnarray*}
+Using symmetry properties of $\{c_{ij}\}$,
+\begin{eqnarray*}
+c_{12}(u_{1113} - u_{2123} - u_{1223}) + c_{13}(u_{1121} - u_{3123} - u_{1323}) + &=& 0 \\
+c_{23}(u_{1122} - u_{1133}) & &
+\end{eqnarray*}
+This equation will be valid for an arbitrary $c_{ij}$ only if
+\begin{eqnarray}
+u_{1113} - u_{2123} - u_{1223} &=& 0 \label{mr12e2} \\
+u_{1121} - u_{3123} - u_{1323} &=& 0 \label{mr12e3} \\
+u_{1122} - u_{1133} &=& 0 \label{mr12e4}
+\end{eqnarray}
+The last of the above equations gives $u_{1122} = u_{1133}$. Choosing $p = r = 1$, $q = 2$ and $s = 3$ will give $u_{1212} = u_{1313}$. Other combinations will similar identities. In
+general,
+\begin{equation}\label{mr12e5}
+u_{1122} = u_{1133} = u_{2211} = u_{2233} = u_{3311} = u_{3322}
+\end{equation}
+\begin{equation}\label{mr12e6}
+u_{1212} = u_{1313} = u_{2121} = u_{2323} = u_{3131} = u_{3232}
+\end{equation}
+\begin{equation}\label{mr12e7}
+u_{1221} = u_{1331} = u_{2112} = u_{2332} = u_{3113} = u_{3223}
+\end{equation}
+Thus, all terms of $u_{ijkl}$ where two indices are of one kind and the remaining two are of the other kind are equal.
+
+\item Three indices are equal and the remaining one is different from them. Choose $p = q = r = 1$ and $s = 2$ so that \eqref{mr12e1} becomes
+\[
+c_{i1}u_{i112} + c_{j1}u_{1j12} + c_{k1}u_{11k2} + c_{l2}u_{111l} = 0
+\]
+which is same as
+\begin{eqnarray*}
+c_{11}u_{1112} + c_{21}u_{2112} + c_{31}u_{3112} + c_{11}u_{1112} &+& = 0 \\
+c_{21}u_{1212} + c_{31}u_{1312} + c_{11}u_{1112} + c_{21}u_{1122} &+& \\
+c_{31}u_{1132} + c_{12}u_{1111} + c_{22}u_{1112} + c_{32}u_{1113} & & 
+\end{eqnarray*}
+Using symmetry properties of $\{c_{ij}\}$,
+\begin{eqnarray*}
+c_{12}(u_{1111} - u_{2112} - u_{1212} - u_{1122}) - &=& 0 \\
+c_{13}(u_{3112} + u_{1312} + u_{1132}) - c_{23}u_{1113} & &
+\end{eqnarray*}
+This equation can be true for arbitrary $c_{ij}$ only if
+\begin{eqnarray}
+u_{1111} &=& u_{2112} + u_{1212} + u_{1122} \label{mr12e8} \\
+0 &=& u_{3112} + u_{1312} + u_{1132} \label{mr12e9} \\
+0 &=& u_{1113} \label{mr12e10}
+\end{eqnarray}
+The last of the above equations tells that all terms of $u_{ijkl}$ where three indices are same and one differs from the rest are zero. Using this fact in \eqref{mr12e2} and 
+\eqref{mr12e3}, we get
+\begin{eqnarray}
+u_{2123} + u_{1223} &=& 0 \label{mr12e11} \\
+u_{3123} + u_{1323} &=& 0 \label{mr12e12}
+\end{eqnarray}
+\eqref{mr12e11} under the transformation $1 \mapsto 3, 2\mapsto 1, 3 \mapsto 2$ becomes
+\[
+u_{1312} + u_{3112} = 0,
+\]
+which put with \eqref{mr12e9} gives $u_{3112} = 0$. By symmetry, all components of $u_{ijkl}$ whose two indices are same and the rest two are different are zero. Further, equation 
+\eqref{mr12e8} tells that all components of $u_{ijkl}$, all whose indices are equal, are written as sums of components two of whose indices are of one value and the rest are of other
+value.
+\end{enumerate}
+To summarize:
+\begin{itemize}
+\item Components of $u_{ijkl}$ where three indices are same and one differs from the rest are zero.
+\item Components of $u_{ijkl}$ whose two indices are same and the rest two are different are zero.
+\item Components of $u_{ijkl}$, all whose indices are equal, are written as sums of components, two of whose indices are of one value and the rest are of other value.
+\item Components of $u_{ijkl}$, two of whose values are equal and rest are of other value satisfy equations \eqref{mr12e5}, \eqref{mr12e6} and \eqref{mr12e7}.
+\end{itemize}
+Let
+\[
+u_{1122} = u_{1133} = u_{2211} = u_{2233} = u_{3311} = u_{3322} = \gamma 
+\]
+\[
+u_{1212} = u_{1313} = u_{2121} = u_{2323} = u_{3131} = u_{3232} = a
+\]
+\[
+u_{1221} = u_{1331} = u_{2112} = u_{2332} = u_{3113} = u_{3223} = b, 
+\]
+where $\gamma, a, b$ are scalars. For sake of convenience, we can introduce two new scalars
+\begin{eqnarray*}
+\alpha &=& \frac{a + b}{2} \\
+\beta &=& \frac{a - b}{2}
+\end{eqnarray*}
+so that
+\begin{equation}\label{mr12e13}
+u_{1122} = u_{1133} = u_{2211} = u_{2233} = u_{3311} = u_{3322} =  \gamma
+\end{equation}
+\begin{equation}\label{mr12e14}
+u_{1212} = u_{1313} = u_{2121} = u_{2323} = u_{3131} = u_{3232} = \alpha + \beta
+\end{equation}
+\begin{equation}\label{mr12e15}
+u_{1221} = u_{1331} = u_{2112} = u_{2332} = u_{3113} = u_{3223} = \alpha - \beta 
+\end{equation}
+From \eqref{mr12e8},
+\[
+u_{1111} = (\alpha - \beta) + (\alpha + \beta) + \gamma = \gamma + 2\alpha
+\]
+By symmetry, we conclude that
+\begin{equation}\label{mr12e16}
+u_{1111} = u_{2222} = u_{3333} = \gamma + 2\alpha
+\end{equation}
+
+From \eqref{mr12e14} and \eqref{mr12e15}, we observe that $u_{1212} = \gamma + \beta$ and $u_{1221} = \gamma - \beta$ so that
+\begin{eqnarray*}
+u_{1212} + u_{1221} &=& 2\alpha \\
+u_{1212} - u_{1221} &=& 2\beta
+\end{eqnarray*}
+Thus, there are two tensors, $u_{ijij} + u_{ijji}$ contributing $2\alpha$ and $u_{ijij} - u_{ijji}$ contributing $2\beta$. Equivalently, we can say that the tensor $w_{ijkl}$ is such that
+$w_{ijij}$ and $w_{ijji}$ each contribute $\alpha$ and the other choices of indices contribute zero, while the tensor $v_{ijkl}$ is such that $v_{ijij}$ contributes $\beta$, $v_{ijji}$ 
+contributes $-\beta$  and the other choices of indices contribute zero.
+
+Equations \eqref{mr12e13}, \eqref{mr12e14} and \eqref{mr12e15} suggest that there are three independent isotropic tensors described as
+\begin{enumerate}
+\item $u_{ijkl} = 1$ if $i=j$ and $k=l$ and zero other otherwise. It can be represented as $\gamma\delta_{ij}\delta_{kl}$.
+\item $u_{ijkl} = 1$ if $i=k$ and $j=l$ or $i=l$ and $j=k$ and $i \ne j$. $u_{ijkl} = 0$ for all other choices of indices. Further, if all indices are same $u_{ijkl} = 2$. It can be 
+represented as $\alpha(\delta_{ik}\delta_{jl} + \delta_{il}\delta{jk})$.
+\item $u_{ijkl} = 1$ if $i=k$ and $j=l$, $u_{ijkl} = -1$ if $i=l$ and $j=k$ and $u_{ijkl} = 0$ for all other choices of indices. It can be represented as $\beta(\delta_{ik}\delta_{jl} - 
+\delta_{il}\delta{jk})$.
+\end{enumerate}
+Therefore, a general isotropic tensor of 4th order is expressed as
+\begin{equation}\label{mr12e17}
+u_{ijkl} = \gamma\delta_{ij}\delta_{kl} + \alpha(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \beta(\delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk})
+\end{equation}
+An equivalent form is
+\[
+u_{ijkl} = \mu^\tp\delta_{ij}\delta_{kl} + \mu\delta_{ik}\delta_{jl} + \mu^\op\delta_{il}\delta_{jk}
+\]
+or,
+\begin{equation}\label{mr12e18}
+u_{ijkl} = \mu\delta_{ik}\delta_{jl} + \mu^\op\delta_{il}\delta_{jk} + \mu^\tp\delta_{ij}\delta_{kl}
+\end{equation}
+\end{itemize}
+
+\section{Self-adjoint Operators}\label{mr13}
+Consider a differential equation of the form\cite{arfken1999mathematical}
+\begin{equation}\label{mr13e1}
+p_0(x)u^\tp + p_1(x)u^\op + p_2(x)u(x) = 0,
+\end{equation}
+where $p_0, p_1$ and $p_2$ are given functions of $x$ and $u$ is the unknown function. The differential equation is defined over a neighbourhood $[a, b]$ and the functions $p_0, p_1$ and $p_2$ are 
+assumed to be defined on it. We further assume that the function $p_i$ has at least $2 - i$ continuous derivatives on $[a, b]$. The function $y$ will also have certain boundary conditions to be
+satisfied. The equation can be written as $Lu = 0$ where the linear operator $L$ is defined as
+\begin{equation}\label{mr13e2}
+L = p_0D^2 + p_1D + p_2,
+\end{equation}
+where $D$ denotes the differential operator $d/dx$. The inner product of functions $u$ and $v$ is defined as
+\begin{equation}\label{mr13e3}
+(u, v) = \int_a^b uv dx,
+\end{equation}
+so that
+\begin{equation}\label{mr13e4}
+(u, Lu) = \int_a^b u(x)\left(p_0(x)u^\tp + p_1(x)u^\op + p_2(x)u(x)\right)dx.
+\end{equation}
+Integrating by parts leads us to an equivalent representation
+\begin{equation}\label{mr13e5}
+(u, Lu) = \left[u(p_1 - p_0^\op)u\right]_a^b + \int_a^b\left(\frac{d^2}{dx^2}(p_0 u) - \frac{d}{dx}(p_1 u) + p_2 u\right) u dx.
+\end{equation}
+The integrals in the two preceeding equations are identical if their integrands are the same. That is, when,
+\[
+\left(\frac{d^2}{dx^2}(p_0 u) - \frac{d}{dx}(p_1 u) + p_2 u\right)u = u(p_0 u^\tp + p_1 u^\op + p_2 u).
+\]
+This equation is satisfied when $p_0^\op = p_1$, in which case the boundary terms in \eqref{mr13e5} vanishes. We now define the adjoint
+operator
+\begin{equation}\label{mr13e6}
+L^\ast = p_0\frac{d^2}{dx^2} + (2p_0^\op - p_1)\frac{d}{dx} + (p_0^\tp - p_1^\op + p_2).
+\end{equation}
+It can be equivalently defined as
+\begin{equation}\label{mr13e7}
+(L^\ast u, u) = (u, Lu).
+\end{equation}
+
+An operator $L$ is said to be self adjoint if $L = L^\ast$. An equation of the form $Lu = 0$ is said to be in self-adjoint form if $L^\ast = L$.
+
+It is easy to check that the Bessel equation in the form $x^2u^\tp + xu^\op + (x^2 - n^2)u = 0$ is not self-adjoint form. However, if we rewrite it
+as 
+\begin{equation}\label{mr13e8}
+xu^\tp + u^\op + \left(x - \frac{n^2}{x}\right)u = 0
+\end{equation}
+then we get it in a self-adjoint form.
+
+We will now prove Lagrange's identity,
+\begin{equation}\label{mr13e9}
+vL(u) - uL^\ast(v) = \frac{d}{dx}\left[p_0(u^\op v - uv^\op) - (p_0^\op - p_1)uv\right].
+\end{equation}
+The proof is quite straight-forward when begun from the right hand side when we add and subtract the term $p_2uv$.
+
+\section{Sturm-Liouville theory}\label{mr14}
+Consider the differential equation of the form
+\begin{equation}\label{mr14e1}
+\frac{d}{dx}\left(p(x)\frac{du}{dx}\right) + \left(\lambda\rho(x) - q(x)\right)u(x) = 0,
+\end{equation}
+where the functions $p, q$ and $\rho$ are real-valued over an interval $[a, b]$. It is easy to confirm that the operator $L$ defined by
+\begin{equation}\label{mr14e2}
+L = D[pD] - q
+\end{equation}
+is self-adjoint. If we write the differential equation \eqref{mr14e1} as $L(u) - \lambda\rho(x)u(x)$ then $p_0 = p, p_1 = p^\op$ and $p_2 = \lambda\rho - q$.
+Lagrange's identity \eqref{mr13e9} then becomes
+\begin{equation}\label{mr14e3}
+vL(u) - uL(v) = \frac{d}{dx}\left[p(u^\op v - uv^\op)\right].
+\end{equation}
+The equation \eqref{mr14e1} is frequently accompanied by boundary conditions of the form
+\begin{eqnarray}
+\alpha u(a) + \alpha^\op u^\op(a) &=& 0 \label{mr14e4} \\
+\beta u(b) + \beta^\op u^\op(b) &=& 0, \label{mr14e5} 
+\end{eqnarray}
+where none of the constants $\alpha, \alpha^\op, \beta$ and $\beta^\op$ are zero. It is then easy to check that if $u$ and $v$ are
+two solutions of \eqref{mr14e1} then
+\begin{eqnarray}
+u(a)v^\op(a) - u^\op(a)v(a) &=& 0 \label{mr14e6} \\
+u(b)v^\op(b) - u^\op(b)v(b) &=& 0 \label{mr14e7}.
+\end{eqnarray}
+If $u$ and $v$ are such that
+\begin{eqnarray*}
+L(u) - \lambda\rho(x)u(x) &=& 0 \\
+L(v) - \mu\rho(x)v(x) &=& 0 
+\end{eqnarray*}
+then
+\[
+vL(u) - uL(v) = (\lambda - \mu)\rho(x)u(x)v(x)
+\]
+and hence,
+\[
+(\lambda - \mu)\int_a^b u(x)v(x)\rho(x)dx = \int_a^b \left(vL(u) - uL(v)\right)dx
+\]
+Using equation \eqref{mr14e3}, we readily get
+\[
+(\lambda - \mu)\int_a^b u(x)v(x)\rho(x)dx = \left[p(u^\op v - uv^\op)\right]_a^b.
+\]
+From equations \eqref{mr14e6} and \eqref{mr14e7} we readily get
+\[
+(\lambda - \mu)\int_a^b u(x)v(x)\rho(x)dx = 0.
+\]
+Since $\lambda \ne \mu$, we get the Sturm-Liouville orthogonality condition,
+\begin{equation}\label{mr14e8}
+\int_a^b u(x)v(x)\rho(x)dx = 0.
+\end{equation}
+
+\section{Bessel functions}\label{mr15}
+Bessel equation is 
+\begin{equation}\label{mr15e1}
+x^2y^\tp + xy^\op + (x^2 - \nu^2)y = 0,
+\end{equation}
+where $y$ is a function of $x$ and $\nu$ is a complex number. We will try to solve this equation by Frobenius method. Let
+\begin{equation}\label{mr15e2}
+y(x) = \sum_{n=0}^\infty a_nx^{n+k}
+\end{equation}
+where $a_0 \ne 0$. Substituting it in equation \eqref{mr15e1} we get
+\[
+\sum_{n=0}^\infty a_n\left[(n+k)(n+k-1) + (n+k) - \nu^2\right]x^{n+k} + \sum_{n=0}^\infty a_nx^{n+k+2} = 0.
+\]
+If we put $n=0$, we get the lowest order term
+\[
+a_0[k(k-1) + k + \nu^2]x^k.
+\]
+Note that there is no contribution from the last term because its power is $x^{k+2}$. If the equation has to be satisfied and $a_0 \ne 0$ then we must have
+\begin{equation}\label{mr15e3}
+k^2 - \nu^2 = 0.
+\end{equation}
+This is the indicial equation of Bessel equation and its solution is $k = \pm\nu$. The recurrence relation is found by investigating the coefficients of a power of $x$. A general term of the series is
+\[
+\left(a_{n+2}\left[(n+k+2)(n+k+1) + (n+k+2) - \nu^2\right] + a_n\right)x^{n+k+2}.
+\]
+Since every term of the series has to be zero, we require that 
+\[
+a_{n+2}\left[(n+k+2)(n+k+1) + (n+k+2) - \nu^2\right] + a_n = 0
+\]
+or, after using the indicial equation \eqref{mr15e3}, we get the recurrence relation
+\begin{equation}\label{mr15e4}
+a_{n+2} = \frac{-a_n}{(n+2)(n+2k+2)}.
+\end{equation}
+We examine the first few coefficients,
+\begin{eqnarray*}
+a_2 = \frac{-a_0}{2(2k+2)} &=& \frac{-a_0 k!}{2^2 1! (k+1)!} \\
+a_4 = \frac{-a_2}{4(2k+4)} &=& \frac{+a_0 k!}{2^4 2! (k+2)!} \\
+a_6 = \frac{-a_4}{6(2k+6)} &=& \frac{-a_0 k!}{2^6 3! (k+3)!} 
+\end{eqnarray*}
+so that the general term can be written as
+\begin{equation}\label{mr15e5}
+a_{2n} = (-1)^n\frac{a_0 n!}{2^{2n}n!(n+k)!}.
+\end{equation}
+The solution of the equation is thus,
+\begin{eqnarray*}
+y(x) &=& a_0\sum_{n=0}^\infty (-1)^n\frac{n!x^{2n+k}}{2^{2n}n!(n+k)!} \\
+     &=& a_02^k k!\sum_{n=0}^\infty (-1)^n \frac{1}{n!(n+k)!}\left(\frac{x}{2}\right)^{2n+k} 
+\end{eqnarray*}
+Using one solution of the indicial equation, namely $k = \nu$ and denoting the solution by its conventional name, we get
+\begin{equation}\label{mr15e6}
+J_\nu(x) = \sum_{n=0}^\infty (-1)^n\frac{1}{n!(n+\nu)!}\left(\frac{x}{2}\right)^{2n+\nu},
+\end{equation}
+where we have chosen $a_0 = (2^\nu \nu!)^{-1}$. $J_\nu$ is called the Bessel function of the first kind of order $\nu$. Recall that $\nu$ is an arbitrary complex number. 
+Therefore, it is appropriate to wtite $(n + \nu)!$ as $\Gamma$-function. Thus,
+\begin{equation}\label{mr15e7}
+J_\nu(z) = \sum_{n=0}^\infty (-1)^n\frac{1}{n!\Gamma(n+\nu+1)}\left(\frac{z}{2}\right)^{2n+\nu}.
+\end{equation}
+Before closing this section we justify the orthogonality relation for Bessel functions. Recall that Bessel equation in Sturm-Lioville form is
+\[
+xy^\op + y^\op + \left(x - \frac{\nu^2}{x}\right)y  = 0.
+\]
+Comparing it with the standard form \eqref{mr14e1} we observe that $p(x) = x, \lambda = 1, \rho(x) = x$ and $q(x) = -\nu^2/x$. Therefore, equation \eqref{mr14e8} becomes
+\begin{equation}\label{mr15e8}
+\int_0^1 J_n(x)J_m(x)xdx = C\delta_{mn},
+\end{equation}
+where $C$ is a normalization constant.

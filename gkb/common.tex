@@ -1,0 +1,59 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{bm}
+\usepackage[pdftex]{graphicx}	% To allow embedding of images.
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage{enumitem}
+%\renewcommand{\rmdefault}{ppl}
+%\usepackage[small, euler-digits]{eulervm}
+
+%\usepackage{accents}
+%\usepackage{isomath}
+
+% Analysis and algebra
+\newcommand{\td}[2]{\frac{d{#1}}{d{#2}}}	% Total derivative
+\newcommand{\pdt}[2]{\frac{\partial{#1}}{\partial{#2}}}							% Partial derivative in first traditional form
+\newcommand{\pdts}[2]{\frac{\partial}{\partial{#2}}\left({#1}\right)}					% Partial derivative in second traditional form
+\newcommand\cc[1]{{#1}^\ast}				% Complex conjugate
+\newcommand{\md}[1]{\frac{D{#1}}{Dt}}		% Material derivative
+\newcommand\inp[2]{\langle #1,#2 \rangle}	% Inner product
+\newcommand\Tr{\mbox{Tr}}					% Trace
+
+% Circular and hyperbolic functions
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+% Vectors and tensors
+%\renewcommand{\vec}{\vectorsym}
+%\let\vec\bm
+\newcommand{\uvec}[1]{\hat{e_{#1}}}	    % Unit vector
+\newcommand{\un}{\hat{n}}	       		% Unit normal
+\newcommand{\ut}{\hat{t}}	       		% Unit normal
+%\newcommand{\uvec}[1]{\hat{\bm{e}_{#1}}}	% Unit vector
+%\newcommand{\un}{\hat{\bm{n}}}	       		% Unit normal
+%\newcommand{\ut}{\hat{\bm{t}}}	       		% Unit normal
+
+%\newcommand{\uvec}[1]{\hat{e}_{#1}}
+%\newcommand{\un}{\hat{n}}
+%\newcommand{\ut}{\hat{t}}
+\DeclareMathOperator{\vp}{\times}	
+\DeclareMathOperator{\grad}{\nabla}
+\DeclareMathOperator{\dive}{\nabla\cdot}
+\DeclareMathOperator{\curl}{\nabla\vp}
+
+% Miscellaneous
+\newcommand\etal{\mbox{\textit{et al.}}}
+\newcommand\etc{etc.\ }
+\newcommand\eg{e.g.\ }
+\newcommand{\op}{\prime}
+\newcommand{\tp}{{\prime\prime}}
+\def\dbar{{\mathchar'26\mkern-12mu d}}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+

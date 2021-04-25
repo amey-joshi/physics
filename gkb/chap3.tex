@@ -1,0 +1,1185 @@
+\chapter{Equations governing the motion of a fluid}\label{c3}
+\section{Material integrals in a moving fluid}\label{c3s1}
+\begin{itemize}
+\item We prove that
+\begin{equation}\label{c3s1e1}
+\td{\tau^\ast}{t} = (\dive\vec{u})\tau^\ast,
+\end{equation}
+where
+\begin{equation}\label{c3s1e2}
+\tau^\ast = \lim_{\delta\tau(t_0) \rightarrow 0}\frac{\delta\tau(t)}{\delta\tau(t_0)}
+\end{equation}
+We begin with the definition of the first derivative,
+\[
+\td{\tau^\ast}{t} = \lim_{h \rightarrow 0}\frac{\tau(t + h) - \tau(t)}{h}
+\]
+Using \eqref{c3s1e2},
+\[
+\td{\tau^\ast}{t} = \lim_{h \rightarrow 0}\frac{1}{h}\left(\lim_{\delta\tau(t_0) \rightarrow 0}\frac{\delta\tau(t+h)}{\delta\tau(t_0)} - 
+\lim_{\delta\tau(t_0) \rightarrow 0}\frac{\delta\tau(t)}{\delta\tau(t_0)}\right)
+\]
+or,
+\[
+\td{\tau^\ast}{t} = \lim_{h \rightarrow 0}\frac{1}{h}\lim_{\delta\tau(t_0) \rightarrow 0}\frac{\delta\tau(t+h) - \delta\tau(t)}{\delta\tau(t_0)},
+\]
+But
+\[
+\delta\tau(t+h) - \delta\tau(t) = h\td{\delta\tau}{t},
+\]
+which from equation (3.1.1) of the book is
+\[
+\delta\tau(t+h) - \delta\tau(t) = h\dive\vec{u}\delta\tau(t)
+\]
+so that
+\[
+\td{\tau^\ast}{t} = \lim_{h \rightarrow 0}\frac{1}{h}\lim_{\delta\tau(t_0) \rightarrow 0}\frac{h\dive\vec{u}\delta\tau(t)}{\delta\tau(t_0)} =
+\lim_{h \rightarrow 0}\lim_{\delta\tau(t_0) \rightarrow 0}\frac{\dive\vec{u}\delta\tau(t)}{\delta\tau(t_0)}
+\]
+Since the function no longer depends on $h$, the limit as $h \rightarrow 0$ is ineffective and
+\[
+\td{\tau^\ast}{t} = \dive\vec{u}\lim_{\delta\tau(t_0) \rightarrow 0}\frac{\delta\tau(t)}{\delta\tau(t_0)} = (\dive\vec{u})\tau^\ast
+\]
+
+\item We will now argue that, if $\delta\vec{l}$ is a material line element, then
+\begin{equation}\label{c3s1e3}
+\td{\delta\vec{l}}{t} = \delta\vec{l}\cdot\grad\vec{u} + o(|\delta\vec{l}|)
+\end{equation}
+A material line element's length changes only if the velocity of the fluid at its either ends is not the same. Let $\vec{u}_0$ and $\vec{u}_1$ be the velocities of the two ends. Then, for
+a small element, $\vec{u}_1 = \vec{u}_0 + \delta\vec{l}\cdot\grad\vec{u} + o(|\delta\vec{l}|)$ so that the difference in velocities is $\delta\vec{l}\cdot\grad\vec{u} + 
+o(|\delta\vec{l}|)$.
+
+\item The volume of a cylindrical volume element with end faces of area $\delta\vec{S}$ and generator $\delta\vec{l}$ is $\delta\tau = \delta\vec{S}\cdot\delta\vec{l}=
+\delta S_i\delta l_i$.
+Since we have
+\[
+\lim_{\delta\tau \rightarrow 0}\frac{1}{\delta\tau}\td{\delta\tau}{t} = \dive\vec{u},
+\]
+we can as well write
+\begin{equation}\label{c3s1e4}
+\td{\delta\tau}{t} = \dive\vec{u}\delta\tau + o(\delta\tau)
+\end{equation}
+or
+\[
+\td{\delta{l}_i}{t}\delta S_i + \delta{l}_i\td{\delta{S}_i}{t} = \pdt{u_j}{x_j}\delta S_i\delta l_i + o(\delta\tau)
+\]
+Using \eqref{c3s1e3} in Cartesian tensor form,
+\[
+\delta{l}_j\pdt{u_i}{x_j}\delta S_i + \delta{l}_i\td{\delta{S}_i}{t} = \pdt{u_j}{x_j}\delta S_i\delta l_i + o(\delta\tau)
+\]
+Interchanging $i$ and $j$ in the first term,
+\[
+\delta{l}_i\pdt{u_j}{x_i}\delta S_j + \delta{l}_i\td{\delta{S}_i}{t} = \pdt{u_j}{x_j}\delta S_i\delta l_i + o(\delta\tau)
+\]
+or
+\[
+\delta{l}_i\left(\pdt{u_j}{x_i}\delta S_j + \td{\delta{S}_i}{t} - \pdt{u_j}{x_j}\delta S_i\right) = o(\delta\tau)
+\]
+If this were to be true in general then,
+\begin{equation}\label{c3s1e5}
+\td{\delta{S}_i}{t} = \pdt{u_j}{x_j}\delta S_i - \pdt{u_j}{x_i}\delta S_j + o(|\delta\vec{S}|)
+\end{equation}
+We can use the above equation to obtain an expression for,
+\begin{eqnarray}
+\frac{d}{dt}(\rho\delta S_i) &=& \rho\td{\delta S_i}{t} + \delta S_i\td{\rho}{t} \nonumber \\
+ &=& \rho\left(\pdt{u_j}{x_j}\delta S_i - \pdt{u_j}{x_i}\delta S_j + o(|\delta\vec{S}|)\right) + \nonumber \\
+ & & \delta S_i\left(-\rho\pdt{u_j}{x_j}\right) \nonumber \\
+ &=& -\rho\delta S_j \pdt{u_j}{x_i} + o(|\delta\vec{S}|) \label{c3s1e6}
+\end{eqnarray}
+
+\item From \eqref{c3s1e3},
+\[
+2\delta\vec{l}\cdot\td{\delta\vec{l}}{t} = 2\delta\vec{l}\cdot\grad\vec{u}\cdot\delta\vec{l} + o(|\delta\vec{l}|^2)
+\]
+or,
+\[
+2\delta{l}\td{\delta{l}}{t} = 2\delta{l}m_i\pdt{u_j}{x_i}\delta{l}m_j + o(|\delta\vec{l}|^2)
+\]
+or,
+\begin{equation}\label{c3s1e7}
+\frac{1}{\delta{l}}\td{\delta{l}}{t} = m_im_j\pdt{u_j}{x_i} + o(|\delta\vec{l}|),
+\end{equation}
+where we wrote $\delta\vec{l} = \delta{l}\vec{m}$, $\vec{m}$ being a unit vector along the material line element. Similarly, from \eqref{c3s1e6},
+\begin{eqnarray}
+\delta S_i \frac{d}{dt}(\rho\delta S_i) &=& -\rho\delta S_j \pdt{u_j}{x_i}\delta S_i + o(|\delta\vec{S}|^2) \nonumber \\
+\delta S \frac{d}{dt}(\rho\delta S) &=& -\rho(\delta S)^2 n_j\pdt{u_j}{x_i}n_i + o(|\delta\vec{S}|^2) \nonumber \\
+\frac{1}{\rho\delta S}\frac{d}{dt}(\rho\delta S) &=& -n_in_j\pdt{u_j}{x_i} + o(|\delta\vec{S}|), \label{c3s1e7a}
+\end{eqnarray}
+where we wrote $\delta\vec{S} = \delta{S}\vec{n}$, $\vec{n}$ being a unit vector normal to the material area element.
+
+\item Let us consider the change of a line integral over a material element. Let
+\[
+I = \int_P^Q \theta d\vec{l},
+\]
+where $\theta$ is an intensive property of the fluid, dependent only on $\vec{x}$ and $t$. We first express the integral as a Riemann sum,
+\[
+\int_P^Q \theta d\vec{l} = \lim_{\epsilon \rightarrow 0}\sum_n \theta_n \delta\vec{l}_n,  
+\]
+where $\epsilon$ is the size of the largest sub-interval. Thus,
+\begin{eqnarray*}
+\frac{d}{dt}\int_P^Q \theta d\vec{l} &=& \frac{d}{dt}\lim_{\epsilon \rightarrow 0}\sum_n \theta_n \delta\vec{l}_n \\
+ &=& \lim_{\epsilon \rightarrow 0}\sum_n \frac{D}{Dt}\left(\theta_n \delta\vec{l}_n \right) \\
+ &=& \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n}\delta\vec{l}_n + \theta_n\md{\delta\vec{l}_n} \right) 
+\end{eqnarray*}
+For a material element, the material derivative is same as total derivative so that
+\[
+\frac{d}{dt}\int_P^Q \theta d\vec{l} = \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n}\delta\vec{l}_n + \theta_n\td{\delta\vec{l}_n}{t} \right) 
+\]
+Using \eqref{c3s1e3},
+\[
+\frac{d}{dt}\int_P^Q \theta d\vec{l} = \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n}\delta\vec{l}_n + \theta_n\delta\vec{l}\cdot\grad\vec{u} + \theta_no(|\delta\vec{l}|) \right) 
+\]
+or, since $o(|\delta\vec{l}|) < \epsilon$
+\[
+\frac{d}{dt}\int_P^Q \theta d\vec{l} = \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n}\delta\vec{l}_n + \theta_n\delta\vec{l}\cdot\grad\vec{u}\right)
+\]
+or
+\begin{equation}\label{c3s1e8}
+\frac{d}{dt}\int_P^Q \theta d\vec{l} = \int_P^Q \md{\theta}d\vec{l}_n + \int_P^Q \theta d\vec{l}\cdot\grad\vec{u}
+\end{equation}
+
+\item Now consider the surface integral over a material element,
+\[
+I = \int \theta \un dS = \int \theta dS_i
+\]
+Writing the integral as a Riemann sum
+\[
+I = \lim_{\epsilon \rightarrow 0} \sum_n \theta_n \delta S_i^{(n)},
+\]
+where $\epsilon$ is the size of the largest area interval and $\delta S_i^{(n)}$ is the $n$th area element. Thus,
+\begin{eqnarray*}
+\td{I}{t} &=& \frac{d}{dt}\lim_{\epsilon \rightarrow 0} \sum_n \theta_n \delta S_i^{(n)} \\
+ &=& \lim_{\epsilon \rightarrow 0} \sum_n \frac{D}{Dt}\left(\theta_n \delta S_i^{(n)}\right) \\
+ &=& \lim_{\epsilon \rightarrow 0} \sum_n \left(\md{\theta_n}\delta S_i^{(n)} + \theta_n \md{\delta S_i^{(n)}}\right)
+\end{eqnarray*}
+For a material element, the material derivative is same as total derivative so that
+\[
+\td{I}{t} = \lim_{\epsilon \rightarrow 0} \sum_n \left(\md{\theta_n}\delta S_i^{(n)} + \theta_n \td{\delta S_i^{(n)}}{t}\right)
+\]
+Using \eqref{c3s1e5},
+\[
+\td{I}{t} = 
+\lim_{\epsilon \rightarrow 0} \sum_n \left[\md{\theta_n}\delta S_i^{(n)} + \theta_n\left(\pdt{u_j}{x_j}\delta S_i^{(n)} - \pdt{u_j}{x_i}\delta S_j^{(n)} + o(|\delta\vec{S}|)\right)\right]
+\]
+Since $o(|\delta\vec{S}|) < \epsilon$,
+\[
+\td{I}{t} = \lim_{\epsilon \rightarrow 0} \sum_n \left[\md{\theta_n}\delta S_i^{(n)} + \theta_n\left(\pdt{u_j}{x_j}\delta S_i^{(n)} - \pdt{u_j}{x_i}\delta S_j^{(n)}\right)\right]
+\]
+or
+\begin{equation}\label{c3s1e9}
+\frac{d}{dt}\int \theta dS_i = \int\md{\theta}dS_i + \int\theta\pdt{u_j}{x_j}dS_i - \int\theta\pdt{u_j}{x_i}dS_j
+\end{equation}
+
+\item An integral over a material volume element is
+\[
+I = \int\theta d\tau,
+\]
+Expressed as a Riemann sum,
+\[
+I = \lim_{\epsilon \rightarrow 0}\sum_n \theta_n \delta \tau_n,
+\]
+where $\epsilon$ is the size of the largest volume interval so that
+\begin{eqnarray*}
+\td{I}{t} &=& \frac{d}{dt}\lim_{\epsilon \rightarrow 0}\sum_n \theta_n \delta \tau_n \\
+ &=& \lim_{\epsilon \rightarrow 0}\sum_n \frac{D}{Dt}\left(\theta_n \delta \tau_n\right) \\
+ &=& \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n} \delta \tau_n + \theta_n\md{\delta \tau_n}\right)
+\end{eqnarray*}
+For a material element, the material derivative is same as total derivative so that
+\[
+\td{I}{t} = \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n} \delta \tau_n + \theta_n\td{\delta \tau_n}{t}\right)
+\]
+Using \eqref{c3s1e1},
+\[
+\td{I}{t} = \lim_{\epsilon \rightarrow 0}\sum_n \left(\md{\theta_n} \delta \tau_n + \theta_n\dive\vec{u}\delta \tau_n\right)
+\]
+or
+\begin{equation}\label{c3s1e10}
+\frac{d}{dt}\int\theta d\tau = \int\md{\theta} d\tau + \int\theta\dive\vec{u} d\tau
+\end{equation}
+
+\item A useful form of \eqref{c3s1e10} is
+\begin{eqnarray*}
+\frac{d}{dt}\int\theta\rho d\tau &=& \int\left(\md{(\theta\rho)} + \theta\rho\dive{u}\right)d\tau \\
+ &=& \int\left(\md{\theta}\rho + \theta\md{\rho} + \theta\rho\dive{u}\right)d\tau \\
+\end{eqnarray*}
+From the equation of mass conservation,
+\[
+\md{\rho} = -\rho\dive{u}
+\]
+so that
+\begin{equation}\label{c3s1e11}
+\frac{d}{dt}\int\theta\rho d\tau = \int\rho\md{\theta}d\tau
+\end{equation}
+
+\item Several conservation laws can be put in the form
+\[
+\frac{d}{dt}\int\theta\rho d\tau = \int Q d\tau
+\]
+Using \eqref{c3s1e11}, the left hand side becomes,
+\[
+\int\rho\md{\theta}d\tau = \int Qd\tau,
+\]
+which can be true only if
+\begin{equation}\label{c3s1e12}
+\rho\md{\theta} = Q
+\end{equation}
+
+\item While deriving \eqref{c3s1e12} we travelled with the material element. We can get to the same conclusion if we, instead, focus on a fixed volume in space. If $V$ is such a volume
+with surface area $A$ then
+\[
+\frac{d}{dt}\int\rho\theta dV
+\]
+is the rate of change of the quantity $\rho\theta$ contained in $V$. The change can be either because of a flux through the boundary or a source (or a sink) in $V$. If $\un$ is the
+outward normal,
+\[
+\frac{d}{dt}\int\rho\theta dV = -\int\theta\rho\vec{u}\cdot\un dA + \int QdV
+\]
+Since the volume of integration is fixed, we can interchange the order of differentiation and integration on the left hand side to get
+\[
+\int\frac{\partial}{\partial t} (\theta\rho) dV = -\int\theta\rho\vec{u}\cdot\un dA + \int QdV
+\]
+Using the divergence theorem on the first term on the right,
+\begin{equation}\label{c3s1e13}
+\int\frac{\partial}{\partial t} (\theta\rho) dV = -\int\dive(\theta\rho\vec{u})dV + \int QdV
+\end{equation}
+which immediately leads to the differential form,
+\begin{equation}\label{c3s1e14}
+\frac{\partial}{\partial t} (\theta\rho) dV = -\dive(\theta\rho\vec{u}) + Q
+\end{equation}
+\end{itemize}
+
+\section{Equations of motion}\label{c3s2}
+\begin{itemize}
+\item We note that the relation between time derivative of a vector $\vec{A}$ in a fixed and a rotating frame of reference is
+\begin{equation}\label{c3s2e1}
+\left(\td{\vec{A}}{t}\right)_f = \left(\td{\vec{A}}{t}\right)_r + \vec{\Omega} \vp \vec{A},
+\end{equation}
+where the subscripts $f$ and $r$ mean \enquote*{fixed} and \enquote*{rotating}. $\vec{\Omega}$ is the angular velocity of the rotating frame of reference with respect to the fixed 
+frame of reference. An immediate consequence of this equation is 
+\begin{equation}\label{c3s2e2}
+\left(\td{\vec{\Omega}}{t}\right)_f = \left(\td{\vec{\Omega}}{t}\right)_r
+\end{equation}
+
+\item If $\vec{A} = \vec{x}$,
+\[
+\left(\td{\vec{x}}{t}\right)_f = \left(\td{\vec{x}}{t}\right)_r + \vec{\Omega} \vp \vec{x},
+\]
+Differentiating once more
+\[
+\left(\frac{d^2\vec{x}}{dt^2}\right)_f = \left[\frac{d}{dt}\left(\td{\vec{x}}{t}\right)_r\right]_f + \left(\td{\vec{\Omega}}{t}\right)_f\vp\vec{x} + 
+\vec{\Omega}\vp\left(\td{\vec{x}}{t}\right)_f 
+\]
+or
+\[
+\left(\td{\vec{x}}{t}\right)_f = \left(\frac{d^2\vec{x}}{dt^2}\right)_r + \vec{\Omega}\vp\left(\td{\vec{x}}{t}\right)_r + \left(\td{\vec{\Omega}}{t}\right)_f \vp \vec{x} + 
+\vec{\Omega}\vp\left[\left(\td{\vec{x}}{t}\right)_r + \vec{\Omega} \vp \vec{x}\right] 
+\]
+or
+\begin{equation}\label{c3s2e3}
+\left(\frac{d^2\vec{x}}{dt^2}\right)_f = \left(\frac{d^2\vec{x}}{dt^2}\right)_r + \left(\td{\vec{\Omega}}{t}\right)_r \vp \vec{x} + 2\vec{\Omega}\vp\left(\td{\vec{x}}{t}\right)_r
++ \vec{\Omega}\vp(\vec{\Omega} \vp \vec{x})
+\end{equation}
+where we used \eqref{c3s2e2}.
+
+\item The momentum density of a fluid element is $\rho\vec{u}$. The rate of change of this quantity is
+\[
+\frac{d}{dt}\int\rho\vec{u}d\tau,
+\]
+which using \eqref{c3s1e11} can be written as
+\[
+\int \rho\md{\vec{u}}d\tau
+\]
+If $\vec{F}$ is the body force per unit volume and $\sigma_{ij}$ is the surface force
+per unit area. then the total force is
+\[
+\int\rho F_i d\tau + \int\sigma_{ij}n_j dS = \int\rho F_i d\tau + \int\pdt{\sigma_{ij}}{x_j} d\tau
+\]
+By Newton's second law, this quantity is equal to the total force acting on the fluid element, so that
+\begin{equation}\label{c3s2e4}
+\int \rho\md{u_i}d\tau = \int\rho F_i d\tau + \int\pdt{\sigma_{ij}}{x_j} d\tau,
+\end{equation}
+which, in differential form is,
+\begin{equation}\label{c3s2e5}
+\rho\md{u_i} = \rho F_i + \pdt{\sigma_{ij}}{x_j},
+\end{equation}
+
+\item We can get an equation of motion even by considering a fixed volume $V$ of the fluid. The rate of change of momentum of fluid in $V$ is
+\[
+\frac{d}{dt}\int\rho u_i dV,
+\]
+Since the volume of integration is fixed, we can as well write it as
+\[
+\int\frac{\partial}{\partial t}(\rho u_i)dV
+\]
+The flux of momentum through the surface $A$ of the volume is
+\[
+-\int\rho u_i u_j n_j dA
+\]
+while the \enquote*{source terms} are
+\[
+\int\rho F_i dV + \int\sigma_{ij}n_j dA
+\]
+so that the equation of motion is
+\begin{equation}\label{c3s2e6}
+\int\frac{\partial}{\partial t}(\rho u_i)dV = -\int\rho u_i u_j n_j dA + \int\rho F_i dV + \int\sigma_{ij}n_j dA
+\end{equation}
+Using divergence theorem for the last term on the right hand side,
+\begin{equation}\label{c3s2e7}
+\int\frac{\partial}{\partial t}(\rho u_i)dV = -\int\rho u_i u_j n_j dA + \int\rho F_i dV + \int\pdt{\sigma_{ij}}{x_j} dV
+\end{equation}
+
+\item If $\vec{F}$ is a conservative force so that $\rho\vec{F} = -\grad(\rho\Psi)$, for a potential function $\Psi$, the second term on the right hand side of \eqref{c3s2e6} can be
+written as
+\[
+\int\rho F_i dV = -\int\pdt{\rho\Psi}{x_i}dV = -\int\rho\Psi n_i dA
+\]
+so that 
+\[
+\int\frac{\partial}{\partial t}(\rho u_i)dV = -\int\rho u_i u_j n_j dA + \int\left(-\rho\Psi n_i + \sigma_{ij}n_j\right) dA
+\]
+If the motion is steady, the integrand on the left hand side is zero and
+\begin{equation}\label{c3s2e8}
+\int\rho u_i u_j n_j dA = \int\left(-\rho\Psi n_i + \sigma_{ij}n_j\right) dA
+\end{equation}
+Equation \eqref{c3s2e8} says that \emph{under steady state} the convective flux of momentum out of the surface $A$ bounding $V$ is balanced by the resultant contact force exerted at
+the boundary by the surrounding medium and the resultnt force at the boundary arising from the stress system equivalent to the body force. The loss of momemtum is exactly compensated by
+the two forces.
+\end{itemize}
+
+\section{The expression for the stress tensor}\label{c3s3}
+\begin{itemize}
+\item The average value of the normal component of stress on a surface element at $\vec{x}$, over all directions of $\un$ is
+\[
+\langle\sigma\rangle = \frac{1}{4\pi}\int n_i\sigma_{ij}n_j d\Omega(\un)
+\]
+Since we are changing only the directions of the normals, staying at the same point $\vec{x}$, we can pull out $\sigma_{ij}$ out of the integral,
+\[
+\langle\sigma\rangle = \frac{1}{4\pi}\sigma_{ij}\int n_i n_j d\Omega(\un)
+\]
+Using \eqref{c3sae1},
+\begin{equation}\label{c3s3e1}
+\langle\sigma\rangle = \frac{1}{4\pi}\sigma_{ij}\frac{4\pi}{3}\delta_{ij} = \frac{1}{3}\sigma_{ii}
+\end{equation}
+
+\item For any tensor $\{\sigma_{ij}\}$, the quantity $\sigma_{ii}$ is an invariant under rotations. Therefore, from \eqref{c3s3e1}, $\langle\sigma\rangle$ is an invariant quantity. If
+the fluid were static, $\sigma_{ij} = -p\delta_{ij}$ and hence $\langle\sigma\rangle = -p$. Thus, the analog of pressure, in general flow conditions is $-\langle\sigma\rangle$.
+
+\item Taking the analogy in the reverse direction, we \emph{define} the pressure at a point in a moving fluid as
+\begin{equation}\label{c3s3e2}
+p = -\frac{\sigma_{ii}}{3}
+\end{equation}
+
+\item The pressure so defined is \emph{not} the same as the thermodynamic pressure. The latter quantity is defined for equilibrium conditions while the former, being a purely mechanical
+quantity, is defined for fluids in motion. It is only when the fluid is at rest does the mechanical pressure defined by \eqref{c3s3e2} become identical with thermodynamic pressure.
+
+\item We write the stress tensor as a sum of an isotropic tensor and a \enquote*{deviatoric} tensor. Thus,
+\[
+\sigma_{ij} = -p\delta_{ij} + d_{ij}
+\]
+The deviatoric part, $d_{ij}$ is assumed to be proportional to the local velocity gradient. The most general linear relationship between the two tensors $d_{ij}$ and $\grad\vec{u}$ is
+\[
+d_{ij} = A_{ijkl}\pdt{u_k}{x_l}
+\]
+Since we wrote
+\[
+\pdt{u_k}{x_l} = \frac{1}{2}\left(\pdt{u_k}{x_l} + \pdt{u_l}{x_k}\right) + \frac{1}{2}\left(\pdt{u_k}{x_l} - \pdt{u_l}{x_k}\right) = e_{kl} + \xi_{kl}
+\]
+and we further noticed that $\xi_{kl}$ is an anti-symmetric tensor so that it can be expressed in terms of a single vector $\vec{\omega}$ as
+\[
+\xi_{kl} = -\frac{1}{2}\epsilon_{klm}\omega_m
+\]
+and hence
+\[
+d_{ij} = A_{ijkl}e_{kl} - \frac{1}{2}A_{ijkl}\epsilon_{klm}\omega_m
+\]
+The tensor $A_{ijkl}$ is a characteristic of the fluid alone. If the fluid is isotropic then so is $A_{ijkl}$. Now, an isotropic tensor of fourth order can be written, following 
+\eqref{mr12e18}, as
+\[
+A_{ijkl} = \mu\delta_{ik}\delta_{jl} + \mu^\op\delta_{il}\delta_{jk} + \mu^\tp\delta_{ij}\delta_{kl},
+\]
+where $\mu, \mu^\op$ and $\mu^\tp$ are scalars. Since the stress tensor is symmetric, $\mu = \mu^\op$ so that
+\[
+A_{ijkl} = \mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \mu^\tp\delta_{ij}\delta_{kl},
+\]
+Therefore,
+\begin{eqnarray*}
+d_{ij} &=& A_{ijkl}e_{kl} - \frac{1}{2}A_{ijkl}\epsilon_{klm}\omega_m \\
+ &=& \mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk})e_{kl} + \mu^\tp\delta_{ij}\delta_{kl}e_{kl} - \\
+ & & \frac{\mu}{2}\left(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}\right)\epsilon_{klm}\omega_m - \frac{\mu^\tp\delta_{ij}\delta_{kl}}{2}\epsilon_{klm}\omega_m \\
+ &=& 2\mu e_{ij} + \mu^\tp e_{kk} \delta_{ij} - \frac{\mu}{2}(\epsilon_{ijm} + \epsilon_{jim})\omega_m - \frac{\mu^\tp}{2}\delta_{ij}\epsilon_{kkm}\omega_m
+\end{eqnarray*}
+Now, $\epsilon_{ijm} + \epsilon_{jim} = 0$ and $\epsilon_{kkm} = 0$, so that
+\begin{equation}\label{c3s3e3}
+d_{ij} = 2\mu e_{ij} + \mu^\tp\Delta\delta_{ij}
+\end{equation}
+
+\item Since the deviatoric tensor $d_{ij}$ does not contribute to the normal stress, $d_{ii} = 0$. From \eqref{c2s3e3}, 
+\[
+d_{ii} = 2\mu e_{ii} + \mu^\tp \Delta \delta_{ii} = 2\mu\Delta + 3\mu^\tp\Delta = \Delta(2\mu + 3\mu^\tp)
+\]
+$d_{ii} = 0$ implies 
+\[
+\mu^\tp = -\frac{2}{3}\mu,
+\]
+so that \eqref{c3s3e3} becomes,
+\begin{equation}\label{c3s3e4}
+d_{ij} = 2\mu\left(e_{ij} -\frac{1}{3}\Delta\delta_{ij}\right)
+\end{equation}
+
+\item Molecular relaxation times involving mass transport are usually of the order of $10^{-9}s$\cite{bagchi2012molecular}. Time scale corresponding to macroscopic velocity gradient is 
+reciprocal of $|\grad\vec{u}|$. Thus, only when $|\grad\vec{u}|$ is of $O(10^9)$ does molecular motion affect the continuum variables. That is the reason why the linear relationship 
+between $d_{ij}$ and $\grad\vec{u}$ is valid for a very large range of gradients.
+
+\item Using \eqref{c3s3e4} in the expression for the stress tensor, we get
+\begin{equation}\label{c3s3e5}
+\sigma_{ij} = -p\delta_{ij} + 2\mu\left(e_{ij} - \frac{1}{3}\Delta\delta_{ij}\right)
+\end{equation}
+Putting it in the equation of motion \eqref{c3s2e5},
+\begin{equation}\label{c3s3e5a}
+\rho\md{u_i} = \rho F_i - \pdt{p}{x_i} + \frac{\partial}{\partial x_j}\left[2\mu\left(e_{ij} - \frac{1}{3}\Delta\delta_{ij}\right)\right],
+\end{equation}
+Since
+\[
+e_{ij} = \frac{1}{2}\left(\pdt{u_i}{x_j} + \frac{u_j}{x_i}\right),
+\]
+the divergence of rate-of-strain tensor is
+\[
+\frac{1}{2}\left[\frac{\partial^2 u_i}{\partial x_j \partial x_j} + \frac{\partial}{\partial x_i}\left(\pdt{u_j}{x_j}\right)\right] = 
+\frac{1}{2}\left(\nabla^2 u_i + \pdt{\Delta}{x_i}\right)
+\]
+Therefore, the equation of motion is
+\begin{equation}\label{c3s3e6}
+\rho\md{u_i} = \rho F_i - \pdt{p}{x_i} + \mu\left(\nabla^2 u_i + \frac{1}{3}\pdt{\Delta}{x_i}\right)
+\end{equation}
+This is the Navier-Stokes equation. If the fluid is incompressible, it is simplified to
+\[
+\rho\md{u_i} = \rho F_i - \pdt{p}{x_i} + \mu\nabla^2 u_i
+\]
+and be expressed in Gibbs notation as
+\begin{equation}\label{c3s3e7}
+\rho\md{\vec{u}} = \rho\vec{F} - \grad p + \mu\nabla^2\vec{u}
+\end{equation}
+
+\item Equation (1.3.2) of the book defined the vector $\vec\Sigma(\un)$ as the force exerted by the fluid on the side of the surface element to which $\un$ points, on the fluid on the
+side which $\un$ points away from. Further, equation (1.3.5) of the book defined the stress tensor as $\Sigma_j = \sigma_{ij}n_j$. $\sigma_{ij}$ is the $i$ component of the force per
+unit area exerted on a plane surface whose normal is in the $j$ direction. If we consider a simple shearing motion with velocity $(U(y), 0, 0)$, the only non-zero components of the
+deviatoric stress tensor, in an incompressible fluid, are
+\[
+d_{12} = d_{21} = \mu\td{U}{y}
+\]
+$d_{12}$ is the $x$ component of the force per unit area on a plane surface element whose normal points in the positive $y$ direction. Further, it is the force exerted by the fluid on 
+the side to which the normal points on the fluid on the side which $\un$ points away from. Therefore, if we consider an area element in the $xz$ plane, then the fluid in the upper part
+($y > 0$) exerts a force in the positive $x$ direction. Clearly, the force is in a direction to erase the velocity difference between a layer of fluid in the $xz$ plane and the one just
+above it. This can happen only if $\mu > 0$.
+
+\item Consider an interface separating two media. Referring to figure (1.9.4) of the book, if $t_i$ denotes the tangent to the interface then the tangential stress in upper medium is
+$t_i\sigma^\tp_{ij}n_j$. Continuity of tangential stress implies
+\begin{equation}\label{c3s3e8}
+t_i\sigma^\tp_{ij}n_j = t_i\sigma^\op_{ij}n_j
+\end{equation}
+Using \eqref{c1s7e7} for the normal components
+\begin{equation}\label{c3s3e9}
+n_i\sigma^\op_{ij}n_j - n_i\sigma^\tp_{ij}n_j = \gamma\left(\frac{1}{R_1} + \frac{1}{R_2}\right)
+\end{equation}
+\end{itemize}
+
+\subsection{Exercise}
+\begin{enumerate}
+\item Continuing to refer to figure (1.9.4) of the book, if the upper medium is a gas, then the continuity of tangential stress, given by \eqref{c3s3e8} becomes
+\[
+0 = t_i\sigma^\op_{ij}n_j
+\]
+Thus, if there is a material line element normal to the interface, then there is no tangential force acting on it. Therefore, it will continue to be in the normal direction.
+
+(Note that $\sigma_{ij}$ is the force per unit area in the $i$ direction on a small material area element, normal to which points in the $j$ direction. Further, it is the force by the
+fluid in which the normal points, on the fluid on the side which the normal points away from. If we choose a coordinate system such that the interface lies in the $xy$ plane and the $z$
+axis points upwards then $\sigma_{12}n_2$ is the force in the $x$ direction and $\sigma_{12}n_1$ is the force in the $y$ direction. To get their magnitudes, we just need to take a
+dot product with a unit vector in that direction. Thus, the magnitude of the two forces in $xy$ plane are $n_1\sigma_{12}n_2$ and $n_2\sigma_{12}n_1$.)
+\end{enumerate}
+
+\section{Changes in the internal energy of a fluid in motion}\label{c3s4}
+\begin{itemize}
+\item A material element of a fluid in motion is not a thermodynamic system in equilibrium. Therefore, it is not right to assign thermodynamic variables to it without close examination.
+Of the thermodynamical variables, density $\rho$ can be defined as a local mass per unit volume even if the material element is not in equilibrium. The first law of thermodynamics is
+applicable even to systems not in equilibrium. Since the heat added to the element $\dbar Q$ and the work done on it $\dbar W$ are experimental quantities those can be observed, so is 
+their sum $dU$. Therefore, even internal energy can be defined for a material element.
+
+\item If the fluid is homogeneous, then we can use the instantenous values of $\rho$ and $U$ to define other thermodynamic quantities. For instance, we can define $T$ using the equation 
+of state. 
+
+\item Consider a fluid element of volume $\tau$ and surface area $S$. The volume forces $F_i$ do a work on it at the rate
+\[
+\int u_i F_i d\tau
+\]
+while the surface forces $\sigma_{ij}$ do work at the rate
+\[
+\int u_i\sigma_{ij}n_j dS = \int\pdt{u_i\sigma_{ij}}{x_j} d\tau 
+\]
+Thus, the rate at which all forces do work on the fluid is
+\begin{eqnarray*}
+ &=& \int u_i F_i d\tau + \int\pdt{u_i\sigma_{ij}}{x_j} d\tau \\
+ &=& \int u_i F_i d\tau + \int\pdt{\sigma_{ij}}{x_j}u_i d\tau + \int\pdt{u_i}{x_j}\sigma_{ij}d\tau
+\end{eqnarray*}
+The second term above arises because of a variation in stress across the fluid element.It leads to change in the element's kinetic energy. The third term above arises because of a 
+variation in velocity across the fluid element. It causes the element to deform without a change in the element's kinetic energy. The work done in deformation shows as an increase in 
+internal energy of the element. The three integrals can be written as one with the integrand,
+\[
+u_iF_i + \pdt{\sigma_{ij}}{x_j}u_i + \pdt{u_i}{x_j}\sigma_{ij} = u_i\left(F_i + \pdt{\sigma_{ij}}{x_j}\right) + \pdt{u_i}{x_j}\sigma_{ij}
+\]
+Using \eqref{c3s2e5} the terms in the bracket can be combined to get
+\begin{equation}\label{c3s4e1}
+\rho u_i\md{u_i} + \pdt{u_i}{x_j}\sigma_{ij}
+\end{equation}
+The integrand, written above, can be interpreted as a the rate at which work is being done on a fluid element per unit volume. To get the rate per unit mass, we divide it be $\rho$. Thus,
+the rate at which work is done by volume and surface forces per unit mass is
+\begin{equation}\label{c3s4e2}
+u_i\md{u_i} + \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} = \frac{1}{2}\md{(u_iu_i)} + \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j}
+\end{equation}
+The form on the right hand side makes it clear that the first term represents the change in kinetic energy while the second term represents the change in internal energy.
+
+\item The rate at which heat enters a fluid element due to temperature gradient is
+\[
+\int k\grad T\cdot\un dS = \int\dive(k\grad T)d\tau
+\]
+Thus the rate, per unit mass, of addition of heat to the element is
+\begin{equation}\label{c3s4e3}
+\frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+
+\item If $u$ is the internal energy per unit mass, then by first law of thermodynamics, the rate of its change per unit mass is
+\begin{equation}\label{c3s4e3a}
+\md{u} = \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+or
+\[
+\md{u} = \frac{1}{2}\left(\frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} + \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j}\right) + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+We can always interchange the indices in the second term in the bracket, it is a scalar after all, to get
+\[
+\md{u} = \frac{1}{2}\left(\frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} + \frac{\sigma_{ji}}{\rho}\pdt{u_j}{x_i}\right) + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+But the stress tensor is symmetric, so that
+\[
+\md{u} = \frac{1}{2}\left(\frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} + \frac{\sigma_{ij}}{\rho}\pdt{u_j}{x_i}\right) + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\begin{equation}\label{c3s4e4}
+\md{u} = \frac{\sigma_{ij}}{\rho}e_{ij} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+Using \eqref{c3s3e5},
+\[
+\md{u} = \frac{e_{ij}}{\rho}\left[-p\delta_{ij} + 2\mu\left(e_{ij} -\frac{1}{3}\Delta\delta_{ij}\right)\right] + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\[
+\md{u} = \left[-p\frac{e_{ii}}{\rho} + 2\frac{\mu}{\rho}\left(e_{ij}e_{ij} -\frac{1}{3}\Delta e_{ii}\right)\right] + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+Putting $e_{ii} = \Delta$,
+\begin{equation}\label{c3s4e5}
+\md{u} = -p\frac{\Delta}{\rho} + 2\frac{\mu}{\rho}\left(e_{ij}e_{ij} -\frac{1}{3}\Delta^2\right) + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+
+\item We will now show that
+\[
+-p\Delta + 2\mu\left(e_{ij}e_{ij} - \frac{\Delta^2}{3}\right) = -p\delta_{ij}\left(\frac{\Delta\delta_{ij}}{3}\right) + 
+2\mu\left(e_{ij} - \frac{\Delta\delta_{ij}}{3}\right)\left(e_{ij} - \frac{\Delta\delta_{ij}}{3}\right)
+\]
+\begin{eqnarray*}
+\text{RHS} &=& -p\delta_{ij}\left(\frac{\Delta\delta_{ij}}{3}\right) + 2\mu\left(e_{ij} - \frac{\Delta\delta_{ij}}{3}\right)\left(e_{ij} - \frac{\Delta\delta_{ij}}{3}\right) \\
+ &=& -p\Delta\frac{\delta_{ij}\delta_{ij}}{3} + 2\mu\left(e_{ij}e_{ij} - 2e_{ij}\frac{\Delta\delta_{ij}}{3} + \frac{\Delta^2\delta_{ij}\delta_{ij}}{9}\right) \\
+ &=& -p\Delta + 2\mu\left(e_{ij}e_{ij} - \frac{2}{3}\Delta e_{ii} + \frac{\Delta^2}{3}\right) \\
+ &=& -p\Delta + 2\mu\left(e_{ij}e_{ij} - \frac{1}{3}\Delta^2\right) \\
+ &=& \text{LHS}
+\end{eqnarray*}
+
+\item In \eqref{c3s4e5}, the first term on the right hand side involves only the isotropic part of stress and rate-of-strain while the second term has only the corresponding 
+deviatoric parts. Further, the second term is non-negative. It represents the heating of the element due to frictional forces. It is a quantity of interest and therefore deserves
+a separate symbol
+\begin{equation}\label{c3s4e6}
+\Phi = 2\frac{\mu}{\rho}\left(e_{ij}e_{ij} -\frac{1}{3}\Delta^2\right)
+\end{equation}
+
+\item We have so far argued that the usual definitions of $\rho$ and $U$ can be used in non-equilibrium states of the fluid element. We denote the pressure obtained from using 
+instantaneous values of $\rho$ and $U$ in equilibrium equations of state by $p_e$. Recall that $p$, as used in the equations above, is \emph{defined} to be the average stress at a 
+point. In general $p$ and $p_e$ are not the same when the fluid is in motion, although they are identical in a static fluid.
+
+\item Since the difference between $p$ and $p_e$ is solely due to fluid's motion, we assume that $p - p_e$ depends only on the local velocity gradient. We further assume that the
+dependence is linear so that 
+\[
+p - p_e = B_{ij}\pdt{u_i}{x_j} = B_{ij}e_{ij} - \frac{1}{2}B_{ij}\epsilon_{ijk}\omega_k
+\]
+If the fluid is isotropic, we can expect $B_{ij}$ to be an isotropic tensor. From section \ref{mr12}, an isotropic sencond rank tensor is a scalar multiple of Kronecker delta. Therefore,
+let
+\begin{equation}\label{c3s4e7}
+B_{ij} = -\kappa\delta_{ij}
+\end{equation}
+so that
+\begin{equation}\label{c3s4e8}
+p - p_e = -\kappa\Delta
+\end{equation}
+The constant $\kappa$ is usually called the bulk viscosity of the fluid.
+
+\item Since $p$ and $p_e$ are identical in a static fluid, we can surmise that $p - p_e$ is due to deviatoric part of the stress. If the fluid contracts during the motion, that is its 
+local $\Delta$ is negative, $p$ will be greater than $p_e$. Therefore, we can write $p - p_e = -\kappa\Delta$, assuming that $\kappa > 0$. If the fluid expands during the motion, then
+its local $\Delta$ is positive and $p$ will end up being smaller than $p_e$. Therefore, once again $p - p_e = -\kappa\Delta$ is a valid relation if $\kappa > 0$. 
+
+\item We can now write the first term on the right hand side of \eqref{c3s4e5} as
+\begin{equation}\label{c3s4e9}
+-p\frac{\Delta}{\rho} = -p_e\frac{\Delta}{\rho} + \kappa\frac{\Delta^2}{\rho}
+\end{equation}
+The term
+\[
+-p_e\frac{\Delta}{\rho}
+\]
+is contribution by the reversible effects of equilibrium pressure while the term
+\[
+\kappa\frac{\Delta^2}{\rho} \ge 0
+\]
+is the dissipative effect of bulk viscosity. Although the second term is usually much smaller than the first one on the right hand side of \eqref{c3s4e9}, being a positive quantity,
+periodic pressure variations over a long enough time can make it significant. That is why, it is important in transmission of sound waves in fluids.
+
+\item We will now derive equation (3.4.11) of the book. Starting from \eqref{c3s4e5} and \eqref{c3s4e6},
+\[
+\md{u} = -p\frac{\Delta}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+From \eqref{c3s4e9},
+\[
+\md{u} = -p_e\frac{\Delta}{\rho} + \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+We can write the mass conservation equation as
+\[
+\Delta = -\frac{1}{\rho}\md{\rho}
+\]
+so that
+\[
+\md{u} = \frac{p_e}{\rho^2}\md{\rho} + \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\[
+\md{u} = -p_e\frac{D}{Dt}\left(\frac{1}{\rho}\right) + \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or, since volume per unit mass $v = 1/\rho$,
+\[
+\md{u} = -p_e\md{v} + \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\[
+\md{u} + p_e\md{v} = \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\begin{equation}\label{c3s4e9a}
+T\md{s} = \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+where we have used the first part of equation (1.5.20) of the book, namely, $Tds = du + p_edv$. If we also use the second part, that is $Tds = c_pdT - \beta v T dp_e$, we get
+\[
+c_p\md{T} - \beta v T \md{p_e} = \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+If we were to use $\rho$ throughout,
+\begin{equation}\label{c3s4e10}
+c_p\md{T} - \frac{\beta T}{\rho}\md{p_e} = \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+\end{itemize}
+
+\section{Bernoulli's theorem}\label{c3s5}
+\begin{itemize}
+\item We will derive equation (3.5.1) of the book. To do so, we begin with the equation of motion \eqref{c3s2e5}
+\[
+\rho\md{u_i} = \rho F_i + \pdt{\sigma_{ij}}{x_j}
+\]
+which is same as
+\[
+u_i\md{u_i} = u_iF_i + \frac{u_i}{\rho}\pdt{\sigma_{ij}}{x_j}
+\]
+Now,
+\[
+\frac{\partial}{\partial x_j} (u_i\sigma_{ij}) = u_i\pdt{\sigma_{ij}}{x_j} + \sigma_{ij}\pdt{u_i}{x_j}
+\]
+so that
+\[
+u_i\md{u_i} = u_iF_i + \frac{1}{\rho}\pdt{(u_i\sigma_{ij})}{x_j} - \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j}
+\]
+or
+\begin{equation}\label{c3s5e1}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2}\right) = u_iF_i + \frac{1}{\rho}\pdt{(u_i\sigma_{ij})}{x_j} - \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j}
+\end{equation}
+From \eqref{c3s4e3a}
+\[
+\md{u} = \frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+so that
+\[
+-\frac{\sigma_{ij}}{\rho}\pdt{u_i}{x_j} = -\md{u} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+Putting this in \eqref{c3s5e1}, we get
+\[
+\frac{D}{Dt}\left(\frac{u_iu_i}{2}\right) = u_iF_i + \frac{1}{\rho}\pdt{(u_i\sigma_{ij})}{x_j} -\md{u} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+or
+\begin{equation}\label{c3s5e2}
+\frac{D}{Dt}\left(u + \frac{u_iu_i}{2}\right) = u_iF_i + \frac{1}{\rho}\pdt{(u_i\sigma_{ij})}{x_j} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+
+\item If $\vec{F}$ is a conservative force with a potential function $\Psi$,
+\[
+u_iF_i = -u_i\pdt{\Psi}{x_i} = -\md{\Psi} + \pdt{\Psi}{t}
+\]
+If $\Psi$ is also independent of time, 
+\[
+u_iF_i = -\md{\Psi}
+\]
+Putting it in \eqref{c3s5e2}, we get
+\begin{equation}\label{c3s5e3}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \Psi\right) = \frac{1}{\rho}\pdt{(u_i\sigma_{ij})}{x_j} + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+From \eqref{c3s3e5}
+\[
+\sigma_{ij} = -p\delta_{ij} + 2\mu\left(e_{ij} -\frac{1}{3}\Delta\delta_{ij}\right)
+\]
+so that
+\[
+u_i\sigma_{ij} = -pu_j + 2\mu\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)
+\]
+and hence,
+\begin{eqnarray*}
+\pdt{(u_i\sigma_{ij})}{x_j} &=& -\pdt{(pu_j)}{x_j} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right) \\
+ &=& -p\pdt{u_j}{x_j} - u_j\pdt{p}{x_j} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right) \\
+ &=& -p\pdt{u_j}{x_j} - \md{p} + \pdt{p}{t} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)
+\end{eqnarray*}
+and hence, from \eqref{c3s5e3},
+\begin{eqnarray*}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \Psi\right) &=& 
+\frac{1}{\rho}\left[-p\pdt{u_j}{x_j} - \md{p} + \pdt{p}{t} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)\right]\\
+ & & + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{eqnarray*}
+Using mass conservation equation,
+\[
+\pdt{u_j}{x_j} = -\frac{1}{\rho}\md{\rho}
+\]
+so that
+\begin{eqnarray*}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \Psi\right) &=& 
+\frac{p}{\rho^2}\md{\rho} - \frac{1}{\rho}\md{p} + \frac{1}{\rho}\left[\pdt{p}{t} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)\right] \\
+ & & + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{eqnarray*}
+Now,
+\[
+\frac{p}{\rho^2}\md{\rho} - \frac{1}{\rho}\md{p} = -p\frac{D}{Dt}\left(\frac{1}{\rho}\right) - \frac{1}{\rho}\md{p} = -\frac{D}{Dt}\left(\frac{p}{\rho}\right),
+\]
+so that
+\begin{eqnarray*}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \Psi\right) &=& 
+-\frac{D}{Dt}\left(\frac{p}{\rho}\right) + \frac{1}{\rho}\left[\pdt{p}{t} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)\right] \\
+ & & + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{eqnarray*}
+or
+\begin{eqnarray*}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \frac{p}{\rho} + \Psi\right) &=& 
+\frac{1}{\rho}\left[\pdt{p}{t} + 2\mu\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right)\right] \\
+ & & + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{eqnarray*}
+If the pressure is steady,
+\begin{equation}\label{c3s5e4}
+\frac{D}{Dt}\left(\frac{u_iu_i}{2} + u + \frac{p}{\rho} + \Psi\right) = \frac{2\mu}{\rho}\frac{\partial}{\partial x_j}\left(u_ie_{ij} -\frac{\Delta}{3} u_j\right) +
+\frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+If the fluid is frictioness, $\mu = 0$ and it is non-conducting, $k = 0$ so that
+\begin{equation}\label{c3s5e5}
+\md{\mathcal{H}} = 0,
+\end{equation}
+where the function $\mathcal{H}$ is defined as
+\begin{equation}\label{c3s5e6}
+\mathcal{H} = \frac{u_iu_i}{2} + u + \frac{p}{\rho} + \Psi
+\end{equation}
+If we denote the speed of a fluid parcel by $q$,
+\begin{equation}\label{c3s5e7}
+\mathcal{H} = \frac{q^2}{2} + u + \frac{p}{\rho} + \Psi
+\end{equation}
+
+\item Since $Tds = du + pdv$, $T\grad S = \grad u + p\grad{v}$ or
+\[
+T\grad S = \grad u + p\grad\left(\frac{1}{\rho}\right) = \grad u + \grad\left(\frac{p}{\rho}\right) - \frac{1}{\rho}\grad p,
+\]
+or
+\begin{equation}\label{c3s5e8}
+T\grad S + \frac{1}{\rho}\grad p = \grad\left(u + \frac{p}{\rho}\right)
+\end{equation}
+From \eqref{c3s5e7}
+\[
+\grad\mathcal{H} = \grad\left(\frac{q^2}{2} + \Psi\right) + \grad\left(u + \frac{p}{\rho}\right)
+\]
+From \eqref{c3s5e8}, we get
+\begin{equation}\label{c3s5e9}
+\grad\mathcal{H} = T\grad S + \grad\left(\frac{q^2}{2} + \Psi\right) + \frac{1}{\rho}\grad p
+\end{equation}
+
+\item For a steady flow of a frictionless fluid, the equation of motion \eqref{c3s3e7} becomes
+\[
+\rho\vec{u}\cdot\grad\vec{u} = -\rho\grad\Psi - \grad p
+\]
+Since
+\[
+\grad(\vec{u}\cdot\vec{u}) = \grad{q^2} = 2\vec{u}\cdot\grad\vec{u} + 2\vec{u}\vp\curl\vec{u},
+\]
+we have
+\[
+\grad\left(\frac{q^2}{2}\right) = \vec{u}\cdot\grad\vec{u} + \vec{u}\vp\vec{\omega}
+\]
+or
+\[
+\rho\grad\left(\frac{q^2}{2}\right) - \rho\vec{u}\vp\vec{\omega} = -\rho\grad\Psi - \grad p
+\]
+or
+\[
+\grad\left(\frac{q^2}{2} + \psi\right)  + \frac{1}{\rho}\grad p = \vec{u}\vp\vec{\omega}
+\]
+Putting this relation in \eqref{c3s5e9}, we get
+\begin{equation}\label{c3s5e10}
+\grad\mathcal{H} = T\grad S + \vec{u}\vp\vec{\omega}
+\end{equation}
+
+\item From the relation, $Tds = du + pdv$, we get
+\[
+Tds = du + pd\left(\frac{1}{\rho}\right) = du + d\left(\frac{p}{\rho}\right) - \frac{1}{\rho}dp
+\]
+For an isentropic (adiabatic) process,
+\[
+\frac{1}{\rho}dp = d\left(u + \frac{p}{\rho}\right)
+\]
+If 
+\[
+c^2 = \left(\pdt{p}{\rho}\right)_S,
+\]
+we have
+\[
+dp = c^2d\rho
+\]
+or
+\[
+\frac{1}{\rho}dp = \frac{c^2}{\rho}d\rho
+\]
+so that
+\[
+\frac{c^2}{\rho}d\rho = d\left(u + \frac{p}{\rho}\right) 
+\]
+or
+\begin{equation}\label{c3s5e11}
+u + \frac{1}{\rho} = \int\frac{c^2}{\rho}d\rho
+\end{equation}
+or
+\begin{equation}\label{c3s5e12}
+\frac{D}{Dt}\left(u + \frac{1}{\rho}\right) = \frac{D}{Dt}\int\frac{c^2}{\rho}d\rho
+\end{equation}
+Using \eqref{c3s5e11} in the definition \eqref{c3s5e7} we get
+\begin{equation}\label{c3s5e13}
+\mathcal{H} = \frac{q^2}{2} + \int\frac{c^2}{\rho}d\rho + \Psi
+\end{equation}
+
+\item We will show that
+\begin{equation}\label{c3s5e14}
+-\vec{\Omega}\vp(\vec{\Omega}\vp\vec{x}) = \frac{1}{2}\grad(\vec{\Omega}\vp\vec{x})^2
+\end{equation}
+Starting from the right hand side,
+\begin{equation}\label{c3s5e15}
+\frac{1}{2}\grad(\vec{\Omega}\vp\vec{x})^2 = (\vec{\Omega}\vp\vec{x})\cdot\grad(\vec{\Omega}\vp\vec{x}) + (\vec{\Omega}\vp\vec{x})\vp\curl(\vec{\Omega}\vp\vec{x})
+\end{equation}
+Since $\vec{\Omega}$ is a constant,
+\[
+\curl(\vec{\Omega}\vp\vec{x}) = \vec{\Omega}\dive\vec{x} - \vec{\Omega}\cdot\grad\vec{x} = 3\vec{\Omega} - \vec{\Omega} = 2\vec{\Omega}
+\]
+so that
+\begin{equation}\label{c3s5e16}
+(\vec{\Omega}\vp\vec{x})\vp\curl(\vec{\Omega}\vp\vec{x}) = 2(\vec{\Omega}\vp\vec{x})\vp\vec{\Omega} = -2\vec{\Omega}\vp(\vec{\Omega}\vp\vec{x})
+\end{equation}
+Now consider
+\begin{eqnarray*}
+(\vec{\Omega}\vp\vec{x})\cdot\grad(\vec{\Omega}\vp\vec{x}) &=& 
+\left(\epsilon_{ijk}\uvec{i}\Omega_j x_k \cdot \uvec{l}\frac{\partial}{\partial x_l}\right)\left(\epsilon_{pqr}\uvec{p}\Omega_q x_r\right) \\
+ &=& \epsilon_{ijk}\Omega_j x_k\frac{\partial}{\partial x_i}\left(\epsilon_{pqr}\uvec{p}\Omega_q x_r\right) \\
+ &=& \epsilon_{ijk}\Omega_j x_k \epsilon_{pqr}\uvec{p}\Omega_q \delta_{ir} \\
+ &=& \epsilon_{ijk}\Omega_j x_k \epsilon_{pqi}\uvec{p}\Omega_q \\
+ &=& \epsilon_{ijk}\epsilon_{pqi} \Omega_j\Omega_q x_k\uvec{p} \\
+ &=& \epsilon_{ijk}\epsilon_{ipq} \Omega_j\Omega_q x_k\uvec{p} \\
+ &=& (\delta_{jp}\delta_{kq} - \delta_{jq}\delta_{kp})\Omega_j\Omega_q x_k\uvec{p} \\
+ &=& x_k\Omega_k \Omega_j\uvec{j} - \Omega_j\Omega_j x_k\uvec{k} \\
+ &=& (\vec{x}\cdot\vec{\Omega})\vec{\Omega} - \Omega^2\vec{x} 
+\end{eqnarray*}
+Thus,
+\begin{equation}\label{c3s5e17}
+(\vec{\Omega}\vp\vec{x})\cdot\grad(\vec{\Omega}\vp\vec{x}) = \vec{\Omega}\vp(\vec{\Omega}\vp\vec{x})
+\end{equation}
+Putting \eqref{c3s5e16} and \eqref{c3s5e17} on the right hand side of \eqref{c3s5e15},
+\[
+\frac{1}{2}\grad(\vec{\Omega}\vp\vec{x})^2 = -\vec{\Omega}\vp(\vec{\Omega}\vp\vec{x})
+\]
+\end{itemize}
+
+\section{The complete set of governing equations}\label{c3s6}
+\begin{itemize}
+\item Flow of a Newtonian fluid is described by
+\begin{enumerate}
+\item Mass conservation, \eqref{c2s2e1a},
+\begin{equation}\label{c3s6e1}
+\frac{1}{\rho}\md{\rho} + \dive\vec{u} = 0
+\end{equation}
+\item Momentum balance, \eqref{c3s3e5a}
+\begin{equation}\label{c3s6e2}
+\rho\md{u_i} = \rho F_i - \pdt{p}{x_i} + \frac{\partial}{\partial x_j}\left[2\mu\left(e_{ij} - \frac{1}{3}\Delta\delta_{ij}\right)\right]
+\end{equation}
+\item Energy balance, \eqref{c3s4e9a} and \eqref{c3s4e10}
+\[
+T\md{s} = c_p\md{T} - \frac{\beta T}{\rho}\md{p_e} = \kappa\frac{\Delta^2}{\rho} + \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\]
+If we ignore effects of expansion damping, we can drop the first term on the right hand side and replace $p_e$ with $p$ to get
+\begin{equation}\label{c3s6e3}
+T\md{s} = c_p\md{T} - \frac{\beta T}{\rho}\md{p} = \Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)
+\end{equation}
+\end{enumerate}
+The six quantities $\rho, \vec{u}, p$ and $T$ are the unknowns in these equations. Since these are only five equations, we need one more, namely the equation of state of the form
+\begin{equation}\label{c3s6e4}
+f(p, \rho, T) = 0
+\end{equation}
+to be able to solve for all the unknowns. The material parameters $\mu$ and $k$ are given functions of $\rho$ and $T$.
+\end{itemize}
+
+\subsection{Isentropic flows}
+\begin{itemize}
+\item Recall that an isentropic flow is the one for which entropy of a fluid element does not change throughout the course of its motion while a homentropic flow is the one for which 
+entropy per unit mass $s$ is same throughout the fluid.
+
+\item If we set the molecular transport coefficients, $\mu$ and $k$ to zero, equation \eqref{c3s6e3} gives,
+\begin{equation}\label{c3s6e5}
+c_p\md{T} - \frac{\beta T}{\rho}\md{p}
+\end{equation}
+Solving this equation gives $T$ as a function of $p$. Coupled with the equation of state, $f(p, \rho, T) = 0$ gives $\rho$ as a function of $p$. Now 
+\[
+\md{s} = 0
+\]
+implies that $s$ is a constant. To indicate that $\rho$ is a function of $p$ at constant entropy, we write
+\begin{equation}\label{c3s6e6}
+\rho = \rho(p, s)
+\end{equation}
+If the flow were homentropic, we would have written $\rho = \rho(p)$. For an isentropic flow, at a fixed entropy of a fluid element, \eqref{c3s6e6} gives
+\begin{eqnarray*}
+\pdt{\rho}{t} &=& \pdt{\rho}{p}\pdt{p}{t} \\
+\grad{\rho} &=& \pdt{\rho}{p}\grad p
+\end{eqnarray*}
+therefore,
+\begin{equation}\label{c3s6e7}
+\md{\rho} = \pdt{\rho}{p}\md{p}
+\end{equation}
+and hence equation \eqref{c3s6e1} for mass conservation becomes
+\begin{equation}\label{c3s6e8}
+\frac{1}{\rho c^2}\md{p} + \dive\vec{u} = 0
+\end{equation}
+where we have used the relation
+\begin{equation}\label{c3s6e9}
+c^2 = \left(\pdt{p}{\rho}\right)_s
+\end{equation}
+Putting $\mu = 0$ also simplifies the momentum balance equation \eqref{c3s6e2} to
+\begin{equation}\label{c3s6e10}
+\rho\md{\vec{u}} = \rho\vec{F} - \grad p
+\end{equation}
+
+\item Consider a fluid element at rest. Under the equilibrium condition, the pressure gradient and the body force balance each other so that $\rho_0\vec{F} = \grad p_0$, where the 
+subscript $0$ indicates equilibrium values. Now let the fluid be slightly perturbed so that the pressure becomes $p = p_0 + p_1$ and as a result the density becomes $\rho = \rho_0 +
+\rho_1$. Here, the subscript $1$ indicates the perturbed values. Now,
+\[
+\frac{1}{\rho} = \frac{1}{\rho_0 + \rho_1} = \frac{1}{\rho_0}\left(\frac{1}{1 + \rho_1/\rho_0}\right) = \frac{1}{\rho_0}\left(1 - \frac{\rho_1}{\rho_0}\right),
+\]
+up to first order in $\rho_1$. Further,
+\[
+\md{p} = \md{p_0} + \md{p_1},
+\]
+so that
+\[
+\frac{1}{\rho c^2}\md{p} = \frac{1}{\rho_0 c^2}\left(1 - \frac{\rho_1}{\rho_0}\right)\left(\md{p_0} + \md{p_1}\right)
+= \frac{1}{\rho_0 c^2}\left(\md{p_0} + \md{p_1} - \frac{\rho_1}{\rho_0}\md{p_0}\right),
+\]
+up to first order terms in perturbed quantities. Under equilibrium conditions, 
+\[
+\md{p_0} = \pdt{p_0}{t} = 0,
+\]
+because the equilibrium velocity $\vec{u}_0 = 0$. Therefore,
+\[
+\frac{1}{\rho c^2}\md{p} = \frac{1}{\rho_0 c^2}\md{p_1} = \frac{1}{\rho_0 c^2}\pdt{p_1}{t}
+\]
+Similarly, $\dive\vec{u} = \dive\vec{u}_0 + \dive\vec{u}_1 = \dive\vec{u}_1$ so that the equation of mass conservation \eqref{c3s6e8} becomes,
+\begin{equation}\label{c3s6e11}
+\frac{1}{\rho_0 c^2}\pdt{p_1}{t} + \dive\vec{u}_1 = 0
+\end{equation}
+Now,
+\begin{eqnarray*}
+\md{\vec{u}} &=& \md{\vec{u}_0} + \md{\vec{u}_1} \\
+ &=& \md{\vec{u}_1} \\ 
+ &=& \pdt{\vec{u_1}}{t} + \vec{u}\cdot\grad{\vec{u_1}} \\
+ &=& \pdt{\vec{u}_1}{t},
+\end{eqnarray*}
+up to first order terms in $\vec{u}_1$. Therefore, the momentum balance equation \eqref{c3s6e10} becomes
+\[
+\left(\rho_0 + \rho_1\right)\pdt{\vec{u}_1}{t} = (\rho_0 + \rho_1)\vec{F} - \grad p_0 - \grad p_1
+\]
+or
+\begin{equation}\label{c3s6e12}
+\rho_0\pdt{\vec{u}_1}{t} = \rho_1\vec{F} - \grad p_1
+\end{equation}
+where we used the equilibrium condition $\rho_0\vec{F} = \grad p_0$. Differentiating \eqref{c3s6e11} with respect to $t$ and substituting \eqref{c3s6e12} in the result gives
+\[
+\frac{1}{c^2}\pdt{p_1}{t} = \nabla^2 p_1 - \dive(\rho_1\vec{F})
+\]
+Now,
+\[
+\dive(\rho_1\vec{F}) = \rho_1\dive\vec{F} + \vec{F}\cdot\grad\rho_1 = \rho_1\dive\vec{F} + \vec{F}\cdot\left(\pdt{\rho_1}{p_1}\grad p_1\right) = 
+\rho_1\dive\vec{F} + \frac{\vec{F}\cdot\grad p_1}{c^2}
+\]
+so that
+\begin{equation}\label{c3s6e13}
+\frac{1}{c^2}\pdt{p_1}{t} = \nabla^2 p_1 - \rho_1\dive\vec{F} - \frac{\vec{F}\cdot\grad p_1}{c^2}
+\end{equation}
+If the only external field is gravity, $\vec{F} = \vec{g}$ so that $\dive{\vec{g}} = 0$ and hence,
+\[
+\frac{1}{c^2}\pdt{p_1}{t} = \nabla^2 p_1 - \frac{\vec{g}\cdot\grad p_1}{c^2}
+\]
+For air under normal pressure, the velocity of sound $c \approx 330$ $ms^{-1}$ and hence $g/c^2 \approx 9 \times 10^{-5}$. Thus, the second term on the right hand side is negligibly
+small and 
+\begin{equation}\label{c3e6e14}
+\frac{1}{c^2}\pdt{p_1}{t} = \nabla^2 p_1
+\end{equation}
+which is the equation of sound waves in fluids.
+\end{itemize}
+
+\section{Incompressible flows}\label{c3s7}
+\begin{itemize}
+\item Let the velocity $\vec{u}$ be such that it varies appreciably only over distances comparable to $L$. In other words, variation in $\vec{u}$ over distances small compared to $L$ is
+negligible. Further, let the variation of $\vec{u}$ in space or time be of a magnitude comparable to $U$. Then, the velocity field is approximately solenoidal if
+\[
+|\dive\vec{u}| \ll \frac{U}{L}
+\]
+or if
+\begin{equation}\label{c3s7e1}
+\Big|\frac{1}{\rho}\md{\rho}\Big| \ll \frac{U}{L}
+\end{equation}
+
+\item If we choose $\rho$ and $s$ as independent variables, then we can express $p = p(\rho, s)$. In that case,
+\[
+dp = \pdt{p}{\rho}d\rho + \pdt{p}{s}ds
+\]
+and hence
+\[
+\md{p} = \pdt{p}{\rho}\md{\rho} + \pdt{p}{s}\md{s}
+\]
+or, writing in the usual thermodynamic convention,
+\begin{equation}\label{c3s7e2}
+\md{p} = c^2\md{\rho} + \left(\pdt{p}{s}\right)_\rho\md{s}
+\end{equation}
+Using this equation, we can write
+\[
+\md{\rho} = \frac{1}{c^2}\md{p} - \frac{1}{c^2}\left(\pdt{p}{s}\right)_\rho\md{s}
+\]
+and hence the condition for incompressibility \eqref{c3e6e14} can be written as
+\begin{equation}\label{c3s7e3}
+\Big|\frac{1}{\rho c^2}\md{p} - \frac{1}{\rho c^2}\left(\pdt{p}{s}\right)_\rho\md{s}\Big| \ll \frac{U}{L}
+\end{equation}
+This relation is valid if each of the two terms on the left hand side have a magnitude small when compared with $U/L$. We will examine the two terms separately.
+
+\item For the moment, assume that the flow is isentropic, in which case, the equation of motion \eqref{c3s6e10} can be written as
+\[
+\grad p = \rho\vec{F} - \rho\md{\vec{u}}
+\]
+so that
+\[
+\vec{u}\cdot\grad p = \rho\vec{u}\cdot\vec{F} - \rho\vec{u}\cdot\md{\vec{u}} = \rho\vec{u}\cdot\vec{F} - \rho\frac{D}{Dt}\left(\frac{q^2}{2}\right)
+\]
+and
+\[
+\md{p} = \pdt{p}{t} + \vec{u}\cdot\grad p = \pdt{p}{t} + \rho\vec{u}\cdot\vec{F} - \rho\frac{D}{Dt}\left(\frac{q^2}{2}\right)
+\]
+due to which the first term on the left hand side of \eqref{c3s7e3} becomes
+\[
+\frac{1}{\rho c^2}\md{p} = \frac{1}{\rho c^2}\pdt{p}{t} + \frac{1}{c^2}\vec{u}\cdot\vec{F} - \frac{1}{c^2}\frac{D}{Dt}\left(\frac{q^2}{2}\right)
+\]
+and its smallness means
+\begin{equation}\label{c3s7e4}
+\Big|\frac{1}{\rho c^2}\pdt{p}{t} + \frac{\vec{u}\cdot\vec{F}}{c^2} - \frac{1}{2c^2}\md{q^2} \Big| \ll \frac{U}{L}
+\end{equation}
+\begin{enumerate}
+\item Smallness of 
+\[
+\Big|\frac{1}{2c^2}\md{q^2} \Big|
+\]
+means that the ratio
+\[
+\frac{U^2}{c^2} \ll 1 \Rightarrow \frac{U}{c} \ll 1
+\]
+The dimensionless quantity $U/c$ is called Mach number. If the Mach number of a flow is very small, then other terms on the left hand side of \eqref{c3s7e1} and \eqref{c3s7e2} also
+being small, the fluid can be considered effectively incompressible.
+
+\item Dimension of pressure is same as $\rho q^2$. If $U$ is the typical variation in velocity, $L$ is the typical length scale and $n$ the dominant frequency, $Ln$ too has dimensions
+of velocity and $ULn$ has dimensions of $q^2$. Thus the pressure change is of the order of $\rho UL n$ and rate of change of pressure is of the order of $\rho UL n^2$. Therefore,
+\[
+\Big|\frac{1}{\rho c^2}\pdt{p}{t}\Big| \ll \frac{U}{L} \Rightarrow \Big|\frac{1}{\rho c^2}\rho UL n^2 \Big| \ll \frac{U}{L}
+\]
+which is same as
+\begin{equation}\label{c3s7e5}
+\frac{L^2n^2}{c^2} \ll 1
+\end{equation}
+This condition will be obviously violated if $L$ is of the order of the wavelength of a sound wave and $n$ is of the order of its frequency. Thus, compressibility cannot be ignored if
+the flow is caused due to passage of sound.
+
+\item Smallness of
+\[
+\Big|\frac{\vec{u}\cdot\vec{F}}{c^2}\Big| \ll \frac{U}{L}
+\]
+in the case of gravitational fields means
+\[
+\frac{gL}{c^2} \ll 1
+\]
+Now for air, $c^2 = \gamma p/\rho$ (refer to \href{https://en.wikipedia.org/wiki/Speed_of_sound#Speed_of_sound_in_ideal_gases_and_air}{Wikipedia}) so that the smallness of the second 
+term on the left hand side of \eqref{c3s7e2} is equivalent to
+\[
+\frac{\rho g L}{\gamma p} \ll 1,
+\]
+where $\gamma$ is the adiabatic ratio. For air, 
+\[
+\frac{p}{\rho g} \approx 8 \text{ km }
+\]
+(refer to p. 20 of the book) so that the relation
+\[
+\frac{\rho g L}{\gamma p} \ll 1,
+\]
+is valid for if $L$ is much lesser than $\gamma \time 8 = 11.2$ kilometer, which means always at the scale of the lab.
+\end{enumerate}
+
+\item We will now consider the term
+\[
+T_2 = \Big|\frac{1}{\rho c^2}\left(\pdt{p}{s}\right)_\rho\md{s}\Big| 
+\]
+From (3.6.19),
+\[
+\frac{1}{\rho c^2}\left(\pdt{p}{s}\right)_\rho = \frac{\beta T}{c_p}
+\]
+so that 
+\[
+T_2 = \Big|\frac{\beta T}{c_p}\md{s}\Big| = \Big|\frac{\beta}{c_p}T\md{s}\Big|
+\]
+From \eqref{c3s6e3},
+\[
+T_2 = \Big|\frac{\beta}{c_p}\left[\Phi + \frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right)\right]\Big|
+\]
+Now,
+\[
+\frac{\beta}{c_p}\Phi = \frac{\beta}{c_p}\frac{\mu}{\rho}\frac{U^2}{L^2}
+\]
+and
+\[
+\frac{\beta}{c_p}\frac{1}{\rho}\frac{\partial}{\partial x_i}\left(k\pdt{T}{x_i}\right) = \beta\frac{k}{\rho c_p}\frac{\theta}{L^2}
+\]
+Thus $T_2 \ll U/L$ is possible is
+\begin{eqnarray}
+\frac{\beta U}{c_p}\frac{\mu}{\rho L} &\ll& 1 \label{c3s7e7} \\
+\frac{\beta\theta\kappa}{LU} &\ll& 1 \label{c3s7e8},
+\end{eqnarray}
+where
+\[
+\kappa = \frac{k}{\rho c_p}
+\]
+is the thermometric conductivity.
+\end{itemize}
